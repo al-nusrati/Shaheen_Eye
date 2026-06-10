@@ -1,8 +1,14 @@
+import os
+import pickle
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 import networkx as nx
+from groq import Groq
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class ShaheenForensicEngine:
     
@@ -220,7 +226,7 @@ class ShaheenForensicEngine:
             estimated_market *= 1.5  # Luxury premium
         ratio = float(declared_import_value) / estimated_market
         if ratio < 0.10:
-            return 55  # Declared < 10% = extreme fraud (like the Rs.17,635 Land Cruiser case)
+            return 55  # Declared < 10% = extreme fraud
         elif ratio < 0.25:
             return 40
         elif ratio < 0.50:
@@ -235,7 +241,7 @@ class ShaheenForensicEngine:
             return 25
         return 0
 
-    def detect_baggage_scheme_abuse(self, import_type, vehicle_count, vehicle_values_list):
+    def detect_baggage_scheme_abuse(self, import_type, vehicle_count, vehicle_values_list=None):
         """Fraud 14: Fake overseas Pakistani using baggage scheme repeatedly"""
         if 'baggage' in str(import_type).lower():
             if int(vehicle_count or 0) > 1:
@@ -300,40 +306,34 @@ class ShaheenForensicEngine:
         iso.fit(X_scaled)
         
         raw_scores = iso.decision_function(X_scaled)
-        # Normalize to 0-100: more negative = more anomalous = higher score
         normalized = 1 - (raw_scores - raw_scores.min()) / (raw_scores.max() - raw_scores.min() + 1e-9)
         return normalized * 100
 
     # ==========================================
-    # GRAPH LAYER: CENTRALITY + COMMUNITY
+    # GRAPH LAYER: CENTRALITY
     # ==========================================
     
     def compute_graph_features(self, graph, person_ids):
-        """Compute betweenness centrality and community membership"""
+        """Compute degree + betweenness centrality ONCE for the population"""
         centrality_scores = {}
-        community_risk = {}
-        
         if graph is not None:
             try:
                 betweenness = nx.betweenness_centrality(graph)
                 degree = nx.degree_centrality(graph)
                 for pid in person_ids:
-                    if pid in betweenness:
-                        # Normalize centrality to 0-15 bonus points
-                        bc = betweenness.get(pid, 0)
-                        dc = degree.get(pid, 0)
-                        centrality_scores[pid] = min((bc + dc) * 100, 15)
-                    else:
-                        centrality_scores[pid] = 0
-            except:
+                    bc = betweenness.get(pid, 0)
+                    dc = degree.get(pid, 0)
+                    # Scale and cap centrality bonus at 15 points
+                    centrality_scores[pid] = min((bc + dc) * 100, 15)
+            except Exception as e:
+                print(f"Graph centrality calculation failed: {e}")
                 centrality_scores = {pid: 0 for pid in person_ids}
-        
         return centrality_scores
 
     # ==========================================
     # RISK PROPAGATION: CONTAMINATION
     # ==========================================
-    
+
     def compute_risk_contamination(self, person_id, base_scores, graph):
         """Guilt-by-association: connected high-risk people raise your score"""
         if graph is None:
@@ -351,8 +351,8 @@ class ShaheenForensicEngine:
     # ==========================================
     # MASTER INTEGRATOR
     # ==========================================
-    
-    def calculate_master_score(self, row, df_full=None, graph=None, base_scores=None):
+
+    def calculate_master_score(self, row, df_full=None, graph=None, base_scores=None, precomputed_centralities=None):
         """
         The complete forensic scoring engine.
         Combines 18 fraud modules + Isolation Forest + Graph Centrality + Contamination
@@ -418,15 +418,10 @@ class ShaheenForensicEngine:
         # COMBINED FORENSIC TOTAL
         forensic_total = sum(forensic_scores.values())
         
-        # GRAPH CENTRALITY BONUS
+        # GRAPH CENTRALITY BONUS (Precomputed $\mathcal{O}(1)$ lookup)
         centrality_bonus = 0
-        if graph is not None:
-            try:
-                bc = nx.betweenness_centrality(graph).get(pid, 0)
-                dc = nx.degree_centrality(graph).get(pid, 0)
-                centrality_bonus = min((bc + dc) * 100, 15)
-            except:
-                pass
+        if precomputed_centralities is not None:
+            centrality_bonus = precomputed_centralities.get(pid, 0)
         
         # CONTAMINATION SCORE
         contamination = self.compute_risk_contamination(pid, base_scores or {}, graph)
@@ -454,3 +449,153 @@ class ShaheenForensicEngine:
         elif score >= 45: return 'MEDIUM'
         elif score >= 25: return 'LOW'
         else: return 'COMPLIANT'
+
+# ==========================================
+# PIPELINE FUNCTIONS
+# ==========================================
+
+def process_master_csv(input_csv="outputs/master_entities.csv", output_csv="outputs/scored_entities.csv"):
+    print(f"Loading data from {input_csv}...")
+    try:
+        df = pd.read_csv(input_csv)
+    except FileNotFoundError:
+        print(f"Waiting for Person 1 to generate {input_csv}...")
+        return
+    
+    engine = ShaheenForensicEngine()
+    
+    # Load NetworkX Graph once
+    graph = None
+    graph_path = "outputs/shaheen_graph.pkl"
+    if os.path.exists(graph_path):
+        try:
+            with open(graph_path, 'rb') as f:
+                graph = pickle.load(f)
+            print("Successfully loaded NetworkX graph for centrality scores.")
+        except Exception as e:
+            print(f"Error loading graph: {e}")
+            
+    # Precompute graph centralities once to avoid inner loop lag
+    precomputed_centralities = None
+    if graph is not None:
+        print("Calculating graph centralities once...")
+        pids = df['master_person_id'].tolist()
+        precomputed_centralities = engine.compute_graph_features(graph, pids)
+        print("Graph centralities computed successfully.")
+
+    scored_results = []
+    base_scores = {}
+    
+    print("Processing individual risk calculations...")
+    for idx, row in df.iterrows():
+        res = engine.calculate_master_score(row, df_full=df, graph=graph, base_scores=None, precomputed_centralities=precomputed_centralities)
+        scored_results.append(res)
+        pid = row.get('master_person_id', f"PK-{idx:03d}")
+        base_scores[pid] = res['deviation_score']
+        
+    if graph is not None:
+        print("Applying network risk contamination...")
+        final_results = []
+        for idx, row in df.iterrows():
+            res = engine.calculate_master_score(row, df_full=df, graph=graph, base_scores=base_scores, precomputed_centralities=precomputed_centralities)
+            final_results.append(res)
+        scored_results = final_results
+
+    print("Running Isolation Forest anomaly detection...")
+    # Clean/Add temporary features if missing from schema
+    for col in ['declared_income_pkr', 'total_asset_value', 'vehicle_count', 'max_vehicle_cc', 'property_count', 'avg_monthly_bill_pkr', 'annual_utility_bill', 'transfer_count']:
+        if col not in df.columns:
+            df[col] = 0.0
+            
+    # Add mapped total_asset_value temporarily for standardizer
+    df['total_asset_value'] = df.apply(lambda r: engine.get_vehicle_value(r.get('max_vehicle_cc', 0)) * int(r.get('vehicle_count', 0) or 0) + float(r.get('total_property_value', 0) or 0), axis=1)
+    
+    ml_scores = engine.compute_isolation_score(df)
+    
+    final_deviation_scores = []
+    risk_categories = []
+    top_flags_list = []
+    
+    for i, res in enumerate(scored_results):
+        blended_score = (res['deviation_score'] * 0.6) + (ml_scores[i] * 0.4)
+        final_score = min(round(blended_score, 1), 100)
+        final_deviation_scores.append(final_score)
+        risk_categories.append(engine._categorize(final_score))
+        
+        flags = [f"{k.replace('_', ' ').title()}" for k, v in res['top_fraud_flags']]
+        top_flags_list.append(", ".join(flags) if flags else "Lifestyle / Income Mismatch")
+        
+    df['deviation_score'] = final_deviation_scores
+    df['risk_category'] = risk_categories
+    df['top_risk_factor'] = top_flags_list
+    df['total_assets_val'] = df['total_asset_value'] # Sync column name
+    
+    os.makedirs(os.path.dirname(output_csv), exist_ok=True)
+    df.to_csv(output_csv, index=False)
+    print(f"✅ BINGO! Scored entities successfully outputted to {output_csv}")
+
+
+def query_intelligence_engine(query_text, data_path="outputs/scored_entities.csv"):
+    try:
+        df = pd.read_csv(data_path)
+    except FileNotFoundError:
+        return None, "System offline: Data not yet scored."
+
+    query_text = query_text.lower()
+    filtered_df = df.copy()
+
+    if "non-filer" in query_text or "non-atl" in query_text:
+        filtered_df = filtered_df[filtered_df['filer_status'] == 'Non-ATL']
+    elif "filer" in query_text or "atl" in query_text:
+        filtered_df = filtered_df[filtered_df['filer_status'] == 'ATL']
+
+    if "luxury" in query_text or "v8" in query_text or "2500cc" in query_text:
+        filtered_df = filtered_df[filtered_df['max_vehicle_cc'] >= 2500]
+    elif "high asset" in query_text:
+        filtered_df = filtered_df[filtered_df['total_assets_val'] > 10000000]
+
+    for city in ['lahore', 'karachi', 'islamabad', 'rawalpindi']:
+        if city in query_text:
+            filtered_df = filtered_df[filtered_df['city'].str.lower() == city]
+
+    results = filtered_df.head(15)
+    
+    summary_prompt = f"Write ONE short sentence summarizing this query result. Query: '{query_text}'. Result count: {len(filtered_df)} profiles found out of {len(df)} total."
+    try:
+        client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": summary_prompt}],
+            temperature=0.1,
+            max_tokens=100
+        )
+        summary = response.choices[0].message.content.strip()
+    except Exception:
+        summary = f"Query found {len(filtered_df)} profiles matching criteria."
+
+    return results, summary
+
+
+if __name__ == "__main__":
+    scorer = ShaheenForensicEngine()
+    # Test property estimation
+    test_prop = scorer.get_vehicle_value(3000)
+    print(f"Testing Vehicle Valuation Engine -> V8 Value: Rs. {test_prop:,.2f}")
+    
+    # Test scoring logic
+    row_data = {
+        'master_person_id': 'PK-TEST',
+        'occupation': 'Driver',
+        'total_property_value': 0.0,
+        'max_vehicle_cc': 3000,
+        'vehicle_count': 1,
+        'avg_monthly_bill_pkr': 50000.0,
+        'declared_income_pkr': 10000.0
+    }
+    test_score = scorer.calculate_master_score(row_data)
+    print(f"Testing Beast Engine Score -> Score: {test_score['deviation_score']}/100")
+    
+    print("---------------------------------------------------------")
+    
+    # Run pipeline over Master CSV
+    process_master_csv()
