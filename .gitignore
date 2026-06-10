@@ -1,0 +1,51 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Virtual Environments ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Security (CRITICAL: Do not leak your Groq API Key) ---
+.env
+.streamlit/secrets.toml
+
+# --- Project Specific: Data ---
+# We ignore the generated CSVs so the repo stays clean. 
+# Judges will run generate_data.py to create these.
+data/*.csv
+
+# --- Project Specific: Outputs ---
+# Ignore the reports you generate during testing
+outputs/reports/
+*.pdf
+*.pickle
+*.json
+
+# --- IDEs & OS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
