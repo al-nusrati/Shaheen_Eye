@@ -19,7 +19,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ── global CSS ───────────────────────────────────────────────
+# ── global CSS with sidebar contrast fix ─────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -35,9 +35,11 @@ html, body, [class*="css"] {
     background-color: #0f1623;
     border-right: 1px solid #1e2d40;
 }
+/* FIX: Sidebar text colour for better readability */
 [data-testid="stSidebar"] .stRadio label {
-    color: #94a3b8;
-    font-size: 13px;
+    color: #f1f5f9 !important;
+    font-size: 14px;
+    font-weight: 500;
 }
 .fbr-header {
     background: linear-gradient(135deg, #0f2a1a 0%, #1a3a28 50%, #0f2a1a 100%);
@@ -157,12 +159,10 @@ def load_data():
     master = "outputs/master_entities.csv"
     try:
         df = pd.read_csv(scored)
-        # rename column if it came out differently
         if 'top_risk_factor' in df.columns and 'top_fraud_flags' not in df.columns:
             df = df.rename(columns={'top_risk_factor': 'top_fraud_flags'})
         if 'total_assets_val' in df.columns and 'total_assets_estimated' not in df.columns:
             df = df.rename(columns={'total_assets_val': 'total_assets_estimated'})
-        # ensure city column exists
         if 'city' not in df.columns and os.path.exists(master):
             m = pd.read_csv(master)[['master_person_id', 'city']]
             df = df.merge(m, on='master_person_id', how='left')
@@ -271,6 +271,30 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
+# ── Query sanitisation and Urdu translation ──────────────────
+def sanitize_query(query: str) -> str:
+    """Remove dangerous patterns and reject injection attempts."""
+    dangerous = re.compile(
+        r"\b(select|insert|update|delete|drop|union|create|alter|truncate|exec|declare|xp_cmdshell)\b",
+        re.IGNORECASE
+    )
+    if dangerous.search(query):
+        return None
+    if re.search(r"(--|;|'|\"|\|)", query):
+        return None
+    cleaned = re.sub(r"[^a-zA-Z0-9\s\u0600-\u06FF\.,\-\?]", " ", query)
+    return cleaned.strip()
+
+# Urdu to English translation mapping
+URDU_TO_EN = {
+    "لاہور": "lahore", "کراچی": "karachi", "اسلام آباد": "islamabad",
+    "گاڑی": "vehicle", "کار": "car", "پراپرٹی": "property", "غیر فائلر": "non-filer"
+}
+def translate_urdu(txt: str) -> str:
+    for ur, en in URDU_TO_EN.items():
+        txt = txt.replace(ur, en)
+    return txt
+
 # ════════════════════════════════════════════════════════════
 # PAGE 1 — NATIONAL DASHBOARD
 # ════════════════════════════════════════════════════════════
@@ -279,7 +303,6 @@ if "National" in page:
         st.warning("No data loaded. Run the pipeline first.")
         st.stop()
 
-    # ── metric cards ─────────────────────────────────────────
     c1, c2, c3, c4 = st.columns(4)
     flagged   = int((df['deviation_score'] >= 65).sum())
     tax_gap   = float(
@@ -322,7 +345,6 @@ if "National" in page:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # ── charts row ───────────────────────────────────────────
     col_hist, col_city = st.columns([3, 2])
 
     with col_hist:
@@ -372,7 +394,6 @@ if "National" in page:
                                 margin=dict(t=10, b=10))
             st.plotly_chart(fig_c, use_container_width=True)
 
-    # ── map + pie ────────────────────────────────────────────
     col_map, col_pie = st.columns([3, 2])
 
     with col_map:
@@ -380,6 +401,7 @@ if "National" in page:
             "<p class='section-title'>🇵🇰 Pakistan Risk Heatmap</p>",
             unsafe_allow_html=True
         )
+        # Expanded city coordinates
         city_coords = {
             "Lahore":     (31.5204, 74.3587),
             "Karachi":    (24.8607, 67.0011),
@@ -389,6 +411,8 @@ if "National" in page:
             "Multan":     (30.1575, 71.5249),
             "Peshawar":   (34.0151, 71.5249),
             "Quetta":     (30.1798, 66.9750),
+            "Gujranwala": (32.1877, 74.1945),
+            "Sialkot":    (32.4945, 74.5229)
         }
         if 'city' in df.columns:
             avg_by_city = (df.groupby('city')['deviation_score']
@@ -455,7 +479,6 @@ if "National" in page:
             )
             st.plotly_chart(fig_p, use_container_width=True)
 
-    # ── fraud module heatmap ──────────────────────────────────
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown(
         "<p class='section-title'>Most Common Fraud Patterns Detected</p>",
@@ -506,7 +529,6 @@ elif "Leaderboard" in page:
         unsafe_allow_html=True
     )
 
-    # filters
     fc1, fc2, fc3, fc4 = st.columns(4)
     with fc1:
         cities = sorted(df['city'].dropna().unique().tolist()) \
@@ -542,7 +564,6 @@ elif "Leaderboard" in page:
         unsafe_allow_html=True
     )
 
-    # render table
     try:
         from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode, JsCode
 
@@ -597,15 +618,11 @@ elif "Leaderboard" in page:
             name = sel[0].get('full_name','')
             match = df[df['full_name']==name]
             if len(match) > 0:
-                st.session_state['sel_pid'] = \
-                    match.iloc[0]['master_person_id']
-                st.info(
-                    f"✅ Selected: **{name}** — "
-                    "navigate to Individual Profile"
-                )
+                st.session_state['sel_pid'] = match.iloc[0]['master_person_id']
+                st.session_state['selected_name'] = name
+                st.success(f"✅ Selected: **{name}** — navigate to Individual Profile")
 
     except ImportError:
-        # fallback: plain dataframe
         st.dataframe(fdf, use_container_width=True, height=500)
         st.info("For interactive table: pip install streamlit-aggrid")
 
@@ -635,7 +652,6 @@ elif "Individual" in page:
     cat    = str(person.get('risk_category','UNKNOWN')).upper()
     clr    = risk_color(cat)
 
-    # ── profile header ────────────────────────────────────────
     st.markdown(
         f"<div class='profile-header' style='border-left:4px solid {clr}'>"
         f"<div style='display:flex;justify-content:space-between;align-items:start'>"
@@ -659,7 +675,6 @@ elif "Individual" in page:
         unsafe_allow_html=True
     )
 
-    # ── graph + intelligence ──────────────────────────────────
     col_graph, col_intel = st.columns([1, 1])
 
     with col_graph:
@@ -678,7 +693,6 @@ elif "Individual" in page:
             "edges":{"shadow":{"enabled":true},"smooth":{"type":"continuous"}}
         }""")
 
-        # person node
         net.add_node(
             pid,
             label=sel_name.split()[0],
@@ -691,10 +705,8 @@ elif "Individual" in page:
             shape="dot"
         )
 
-        # vehicle
         if float(person.get('vehicle_count',0)) > 0:
             v_id  = f"V_{pid}"
-            v_val = float(person.get('total_assets_estimated',0))
             net.add_node(
                 v_id,
                 label=f"🚗 {str(person.get('vehicle_make_model','Vehicle'))[:18]}",
@@ -706,11 +718,8 @@ elif "Individual" in page:
                        f"Import: {person.get('import_type','N/A')}"),
                 shape="diamond"
             )
-            net.add_edge(pid, v_id,
-                         label="OWNS",
-                         color="#ef4444", width=2)
+            net.add_edge(pid, v_id, label="OWNS", color="#ef4444", width=2)
 
-        # property
         if float(person.get('property_count',0)) > 0:
             p_id = f"P_{pid}"
             net.add_node(
@@ -724,11 +733,8 @@ elif "Individual" in page:
                        f"NOC: {person.get('noc_status','N/A')}"),
                 shape="square"
             )
-            net.add_edge(pid, p_id,
-                         label="OWNS",
-                         color="#22c55e", width=2)
+            net.add_edge(pid, p_id, label="OWNS", color="#22c55e", width=2)
 
-        # meter
         if float(person.get('avg_monthly_bill_pkr',0)) > 0:
             m_id = f"M_{pid}"
             net.add_node(
@@ -742,14 +748,10 @@ elif "Individual" in page:
                        f"{float(person.get('avg_monthly_bill_pkr',0)):,.0f}"),
                 shape="triangle"
             )
-            net.add_edge(pid, m_id,
-                         label="CONSUMES",
-                         color="#fbbf24", width=2)
+            net.add_edge(pid, m_id, label="CONSUMES", color="#fbbf24", width=2)
 
-        # FBR filing
         fbr_id  = f"FBR_{pid}"
-        fbr_clr = "#22c55e" \
-            if person.get('filer_status')=='ATL' else "#ef4444"
+        fbr_clr = "#22c55e" if person.get('filer_status')=='ATL' else "#ef4444"
         net.add_node(
             fbr_id,
             label=(f"📋 FBR\n"
@@ -762,11 +764,8 @@ elif "Individual" in page:
                    f"Status: {person.get('filer_status','N/A')}"),
             shape="box"
         )
-        net.add_edge(pid, fbr_id,
-                     label="FILED",
-                     color=fbr_clr, width=2)
+        net.add_edge(pid, fbr_id, label="FILED", color=fbr_clr, width=2)
 
-        # SHARES_ADDRESS neighbours
         if G is not None:
             try:
                 for n_id in list(G.neighbors(pid))[:4]:
@@ -794,12 +793,18 @@ elif "Individual" in page:
 
         os.makedirs("outputs/graphs", exist_ok=True)
         graph_path = f"outputs/graphs/{pid}.html"
-        net.save_graph(graph_path)
-        with open(graph_path, "r", encoding="utf-8") as f:
-            components.html(f.read(), height=430)
+        try:
+            net.save_graph(graph_path)
+            with open(graph_path, "r", encoding="utf-8") as f:
+                components.html(f.read(), height=430)
+        except Exception as e:
+            st.warning(f"Graph rendering error: {e}. Showing basic info.")
+            if G is not None:
+                neighbors = list(G.neighbors(pid))
+                if neighbors:
+                    st.write("Connected entities:", [G.nodes[n].get('name', n) for n in neighbors[:5]])
 
     with col_intel:
-        # score breakdown
         declared  = float(person.get('declared_income_pkr', 0))
         lifestyle = float(person.get('annual_utility_bill', 0))
         assets    = float(person.get('total_assets_estimated', 0))
@@ -829,7 +834,6 @@ elif "Individual" in page:
             unsafe_allow_html=True
         )
 
-        # fraud flags
         st.markdown(
             "<p class='section-title' style='margin-top:16px'>"
             "Fraud Modules Triggered</p>",
@@ -851,7 +855,6 @@ elif "Individual" in page:
                 unsafe_allow_html=True
             )
 
-        # audit trail
         st.markdown(
             "<p class='section-title' style='margin-top:16px'>"
             "FBR Investigation Note</p>",
@@ -908,7 +911,6 @@ elif "Individual" in page:
                     except Exception as e:
                         st.error(f"Groq error: {e}")
 
-    # ── evidence timeline ─────────────────────────────────────
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown(
         "<p class='section-title'>"
@@ -962,7 +964,6 @@ elif "Individual" in page:
         )
         st.plotly_chart(fig_tl, use_container_width=True)
 
-    # ── export buttons ────────────────────────────────────────
     st.markdown("<hr style='border-color:#1f2937'>",
                 unsafe_allow_html=True)
     ex1, ex2, _ = st.columns([1, 1, 3])
@@ -1009,7 +1010,7 @@ elif "Individual" in page:
                 st.error(f"ZIP error: {e}")
 
 # ════════════════════════════════════════════════════════════
-# PAGE 4 — INTELLIGENCE QUERY
+# PAGE 4 — INTELLIGENCE QUERY (HARDENED)
 # ════════════════════════════════════════════════════════════
 elif "Query" in page:
     if df.empty:
@@ -1026,7 +1027,6 @@ elif "Query" in page:
         unsafe_allow_html=True
     )
 
-    # quick-query chips
     quick = [
         "Non-filers in DHA with 2000cc+ vehicles",
         "Citizens with zero income and property above 20M",
@@ -1050,157 +1050,94 @@ elif "Query" in page:
     )
 
     if st.button("🚀 Execute", type="primary") and query:
-        with st.spinner("Scanning population..."):
-            res = df.copy()
-            ql  = query.lower()
-
-            # city
-            for city in ['lahore','karachi','islamabad',
-                         'rawalpindi','peshawar','faisalabad']:
-                if city in ql and 'city' in res.columns:
-                    res = res[res['city'].str.lower()==city]
-
-            # area
-            for area in ['dha','defence','bahria','gulberg',
-                         'clifton','pechs','hayatabad']:
-                if area in ql and 'reported_address' in res.columns:
-                    res = res[res['reported_address']
-                              .str.lower()
-                              .str.contains(area, na=False)]
-
-            # ATL
-            if 'non-filer' in ql or 'non-atl' in ql or 'nonfiler' in ql:
-                res = res[res['filer_status']=='Non-ATL']
-            elif 'filer' in ql or ' atl ' in ql:
-                res = res[res['filer_status']=='ATL']
-
-            # CC
-            cc_m = re.search(r'(\d{3,4})\s*cc', ql)
-            if cc_m:
-                cc_t = int(cc_m.group(1))
-                if any(w in ql for w in ['above','more','+']):
-                    res = res[res['max_vehicle_cc'] >= cc_t]
-                else:
-                    res = res[res['max_vehicle_cc'] <= cc_t]
-
-            # zero income
-            if 'zero income' in ql or '0 income' in ql:
-                res = res[res['declared_income_pkr'] == 0]
-
-            # property value
-            pm = re.search(r'(\d+)\s*(million|crore|m\b|cr\b)', ql)
-            if pm and 'property' in ql:
-                v  = int(pm.group(1))
-                mx = (10_000_000 if 'crore' in pm.group(2)
-                      else 1_000_000)
-                thresh = v * mx
-                if any(w in ql for w in ['above','more']):
-                    res = res[res['total_property_value'] >= thresh]
-
-            # vehicle model
-            for kw, mdl in [
-                ('land cruiser','Land Cruiser'),
-                ('fortuner','Fortuner'),
-                ('prado','Prado'),
-                ('civic','Civic'),
-                ('corolla','Corolla'),
-                ('alto','Alto'),
-            ]:
-                if kw in ql and 'vehicle_make_model' in res.columns:
-                    res = res[res['vehicle_make_model']
-                              .str.contains(mdl, na=False)]
-
-            # occupation
-            for occ in ['driver','housewife','student','retired']:
-                if occ in ql and 'occupation' in res.columns:
-                    res = res[res['occupation']
-                              .str.lower().str.contains(occ, na=False)]
-
-            # risk level
-            if 'critical' in ql:
-                res = res[res['risk_category']=='CRITICAL']
-            elif 'high risk' in ql:
-                res = res[res['risk_category'].isin(['CRITICAL','HIGH'])]
-
-            # file trading
-            if 'file' in ql and 'registry' in ql \
-               and 'registry_type' in res.columns:
-                res = res[res['registry_type']
-                          .str.lower().str.contains('file', na=False)]
-
-            res = res.sort_values('deviation_score',
-                                  ascending=False)
-
-            # LLM summary
-            summary = (f"Query returned {len(res)} profiles. "
-                       f"Avg score: "
-                       f"{res['deviation_score'].mean():.0f}.")
-            try:
-                from groq import Groq
-                from dotenv import load_dotenv
-                load_dotenv()
-                client = Groq()
-                r = client.chat.completions.create(
-                    model="llama-3.3-70b-versatile",
-                    messages=[{"role":"user","content":
-                        f"Write ONE sentence summary for FBR auditor: "
-                        f"Query '{query}' returned {len(res)} profiles. "
-                        f"Avg score: "
-                        f"{res['deviation_score'].mean():.0f}/100. "
-                        f"Top: {res.iloc[0]['full_name'] if len(res)>0 else 'none'} "
-                        f"score {res.iloc[0]['deviation_score'] if len(res)>0 else 0:.0f}."}],
-                    max_tokens=80, temperature=0.1
-                )
-                summary = r.choices[0].message.content.strip()
-            except Exception:
-                pass
-
-        st.markdown(
-            f"<div class='query-result-box'>"
-            f"🤖 <b>Intelligence Summary:</b> {summary}"
-            f"</div>",
-            unsafe_allow_html=True
-        )
-
-        if len(res) > 0:
-            disp_c = ['full_name','city','deviation_score',
-                      'risk_category','filer_status',
-                      'declared_income_pkr','vehicle_make_model']
-            av = [c for c in disp_c if c in res.columns]
-            st.dataframe(res[av].head(20),
-                         use_container_width=True,
-                         height=280)
-
-            # mini graph of top 5
-            st.markdown(
-                "<p class='section-title' style='margin-top:16px'>"
-                "Risk Network — Top Results</p>",
-                unsafe_allow_html=True
-            )
-            net_q = Network(
-                height="260px", width="100%",
-                bgcolor="#111827", font_color="#e2e8f0"
-            )
-            for _, row_q in res.head(5).iterrows():
-                sc = float(row_q.get('deviation_score',0))
-                nc = score_color(sc)
-                net_q.add_node(
-                    row_q['master_person_id'],
-                    label=(f"{str(row_q['full_name']).split()[0]}"
-                           f"\n{sc:.0f}"),
-                    color={"background":nc,"border":"#ffffff"},
-                    size=int(sc/5)+12,
-                    title=(f"{row_q['full_name']}<br>"
-                           f"Score: {sc:.0f}<br>"
-                           f"{row_q.get('city','')}")
-                )
-            os.makedirs("outputs/graphs", exist_ok=True)
-            net_q.save_graph("outputs/graphs/_query.html")
-            with open("outputs/graphs/_query.html",
-                      "r", encoding="utf-8") as f:
-                components.html(f.read(), height=270)
+        safe_q = sanitize_query(query)
+        if safe_q is None:
+            st.error("🔒 Security violation: Unauthorized characters detected.")
+        elif safe_q.strip() == "":
+            st.warning("⚠️ Please enter a valid search query.")
         else:
-            st.info("No profiles match. Try different terms.")
+            q_lower = translate_urdu(safe_q).lower()
+            valid_keywords = ["lahore","karachi","islamabad","rawalpindi","non-filer","non-atl","filer","atl","cc","vehicle","luxury","high asset"]
+            if not any(kw in q_lower for kw in valid_keywords):
+                st.warning("No valid filter keywords found. Try 'lahore', 'non-filer', etc.")
+                res = pd.DataFrame()
+                summary = "No valid query terms."
+            else:
+                with st.spinner("Scanning population..."):
+                    res = df.copy()
+                    # ATL/Non-ATL
+                    if "non-filer" in q_lower or "non-atl" in q_lower or "nonfiler" in q_lower:
+                        res = res[res['filer_status'] == 'Non-ATL']
+                    elif "filer" in q_lower or " atl " in q_lower:
+                        res = res[res['filer_status'] == 'ATL']
+                    # Vehicle cc
+                    cc_match = re.search(r'(\d{3,4})\s*cc', q_lower)
+                    if cc_match:
+                        cc_val = int(cc_match.group(1))
+                        if "above" in q_lower or "more" in q_lower:
+                            res = res[res['max_vehicle_cc'] >= cc_val]
+                        else:
+                            res = res[res['max_vehicle_cc'] <= cc_val]
+                    # City
+                    for city in ['lahore','karachi','islamabad','rawalpindi']:
+                        if city in q_lower:
+                            res = res[res['city'].str.lower() == city]
+                            break
+                    # Zero income
+                    if "zero income" in q_lower or "0 income" in q_lower:
+                        res = res[res['declared_income_pkr'] == 0]
+                    # Property value
+                    pm = re.search(r'(\d+)\s*(million|crore|m\b|cr\b)', q_lower)
+                    if pm and 'property' in q_lower:
+                        v = int(pm.group(1))
+                        mx = 10_000_000 if 'crore' in pm.group(2) else 1_000_000
+                        thresh = v * mx
+                        if any(w in q_lower for w in ['above','more']):
+                            res = res[res['total_property_value'] >= thresh]
+                    # Vehicle model
+                    for kw, mdl in [('land cruiser','Land Cruiser'),('fortuner','Fortuner'),('prado','Prado'),('civic','Civic'),('corolla','Corolla'),('alto','Alto')]:
+                        if kw in q_lower and 'vehicle_make_model' in res.columns:
+                            res = res[res['vehicle_make_model'].str.contains(mdl, na=False)]
+                    # Occupation
+                    for occ in ['driver','housewife','student','retired']:
+                        if occ in q_lower and 'occupation' in res.columns:
+                            res = res[res['occupation'].str.lower().str.contains(occ, na=False)]
+                    # Risk level
+                    if 'critical' in q_lower:
+                        res = res[res['risk_category']=='CRITICAL']
+                    elif 'high risk' in q_lower:
+                        res = res[res['risk_category'].isin(['CRITICAL','HIGH'])]
+                    # File trading
+                    if 'file' in q_lower and 'registry' in q_lower and 'registry_type' in res.columns:
+                        res = res[res['registry_type'].str.lower().str.contains('file', na=False)]
+                    res = res.sort_values('deviation_score', ascending=False)
+                    summary = f"Query returned {len(res)} profiles. Avg score: {res['deviation_score'].mean():.0f}."
+                    try:
+                        from groq import Groq
+                        from dotenv import load_dotenv
+                        load_dotenv()
+                        client = Groq()
+                        r = client.chat.completions.create(model="llama-3.3-70b-versatile", messages=[{"role":"user","content":f"Write ONE sentence summary for FBR auditor: Query '{query}' returned {len(res)} profiles. Avg score: {res['deviation_score'].mean():.0f}/100. Top: {res.iloc[0]['full_name'] if len(res)>0 else 'none'} score {res.iloc[0]['deviation_score'] if len(res)>0 else 0:.0f}."}], max_tokens=80, temperature=0.1)
+                        summary = r.choices[0].message.content.strip()
+                    except Exception:
+                        pass
+            if len(res) > 0:
+                st.markdown(f"<div class='query-result-box'>🤖 <b>Intelligence Summary:</b> {summary}</div>", unsafe_allow_html=True)
+                disp_c = ['full_name','city','deviation_score','risk_category','filer_status','declared_income_pkr','vehicle_make_model']
+                av = [c for c in disp_c if c in res.columns]
+                st.dataframe(res[av].head(20), use_container_width=True, height=280)
+                st.markdown("<p class='section-title' style='margin-top:16px'>Risk Network — Top Results</p>", unsafe_allow_html=True)
+                net_q = Network(height="260px", width="100%", bgcolor="#111827", font_color="#e2e8f0")
+                for _, row_q in res.head(5).iterrows():
+                    sc = float(row_q.get('deviation_score',0))
+                    nc = score_color(sc)
+                    net_q.add_node(row_q['master_person_id'], label=f"{str(row_q['full_name']).split()[0]}\n{sc:.0f}", color={"background":nc,"border":"#ffffff"}, size=int(sc/5)+12, title=f"{row_q['full_name']}<br>Score: {sc:.0f}<br>{row_q.get('city','')}")
+                os.makedirs("outputs/graphs", exist_ok=True)
+                net_q.save_graph("outputs/graphs/_query.html")
+                with open("outputs/graphs/_query.html", "r", encoding="utf-8") as f:
+                    components.html(f.read(), height=270)
+            else:
+                st.info("No profiles match. Try different terms.")
 
 # ════════════════════════════════════════════════════════════
 # PAGE 5 — LIVE DATA UPLOAD
@@ -1308,7 +1245,6 @@ society_name, plot_number`
 
         if st.button("🚀 Run Complete Forensic Analysis",
                      type="primary"):
-            # save uploads
             os.makedirs("data/raw", exist_ok=True)
             for uf, fname in zip(
                 [fbr_f, exc_f, disco_f, prop_f],
@@ -1352,12 +1288,11 @@ society_name, plot_number`
             )
             st.cache_data.clear()
 
-            # results summary
             try:
                 rdf = pd.read_csv("outputs/scored_entities.csv")
                 rc1, rc2, rc3, rc4 = st.columns(4)
-                gap = (rdf[rdf['deviation_score']>=65]
-                       ['total_assets_val'].fillna(0).sum() * 0.15)
+                asset_col = 'total_assets_estimated' if 'total_assets_estimated' in rdf.columns else 'total_assets_val'
+                gap = (rdf[rdf['deviation_score']>=65][asset_col].fillna(0).sum() * 0.15)
                 for col, lbl, val, clr in [
                     (rc1,"Citizens Analyzed",
                      f"{len(rdf):,}","#94a3b8"),
@@ -1388,8 +1323,6 @@ society_name, plot_number`
 
     else:
         st.info("⬆️ Upload all 4 CSV files above.")
-
-        # template downloads
         st.markdown("---")
         st.markdown(
             "<p class='section-title'>📥 Download Sample Templates</p>",
