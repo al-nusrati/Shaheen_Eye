@@ -1,4 +1,5 @@
 import pandas as pd
+from rapidfuzz import fuzz
 import os
 
 def run_entity_resolution():
@@ -9,32 +10,45 @@ def run_entity_resolution():
 
     master_records = []
     
+    print("🔄 Mapping records and merging datasets with Fuzzy Matching...")
     for idx, row in fbr.iterrows():
         m_id = f"PK-{idx:03d}"
         phone = row['phone_number']
         clean_name = row['clean_name']
         
-        # Match Vehicles
-        matched_vehicles = excise[excise['clean_name'] == clean_name]
-        v_count = len(matched_vehicles)
-        max_cc = matched_vehicles['engine_capacity_cc'].max() if v_count > 0 else 0
-        v_model = matched_vehicles.iloc[0]['vehicle_make_model'] if v_count > 0 else "None"
-        import_t = matched_vehicles.iloc[0]['import_type'] if v_count > 0 else "Local"
-        import_val = matched_vehicles['declared_import_value_pkr'].sum() if v_count > 0 else 0
-        reg_yr = matched_vehicles['registration_year'].max() if v_count > 0 else 2020
+        # 1. Fuzzy Match Vehicles (Jaro-Winkler / Token Ratio)
+        matched_vehicles_list = []
+        for _, v_row in excise.iterrows():
+            if v_row['clean_name'] == clean_name:
+                matched_vehicles_list.append(v_row)
+            elif fuzz.token_sort_ratio(clean_name, v_row['clean_name']) >= 75:
+                matched_vehicles_list.append(v_row)
+                
+        v_count = len(matched_vehicles_list)
+        max_cc = max([v['engine_capacity_cc'] for v in matched_vehicles_list]) if v_count > 0 else 0
+        v_model = matched_vehicles_list[0]['vehicle_make_model'] if v_count > 0 else "None"
+        import_t = matched_vehicles_list[0]['import_type'] if v_count > 0 else "Local"
+        import_val = sum([v['declared_import_value_pkr'] for v in matched_vehicles_list]) if v_count > 0 else 0
+        reg_yr = max([v['registration_year'] for v in matched_vehicles_list]) if v_count > 0 else 2020
 
-        # Match Properties
-        matched_props = prop[prop['clean_name'] == clean_name]
-        p_count = len(matched_props)
-        p_val = matched_props['property_value_pkr'].sum() if p_count > 0 else 0
-        area = matched_props['area_marla'].sum() if p_count > 0 else 0
-        reg_type = matched_props.iloc[0]['registry_type'] if p_count > 0 else "None"
-        reg_no = matched_props.iloc[0]['registry_no'] if p_count > 0 else "None"
-        noc = matched_props.iloc[0]['noc_status'] if p_count > 0 else "Approved"
-        transfers = len(matched_props)
-        prop_yr = 2024 # default if no transfer year can be extracted
+        # 2. Fuzzy Match Properties
+        matched_props_list = []
+        for _, p_row in prop.iterrows():
+            if p_row['clean_name'] == clean_name:
+                matched_props_list.append(p_row)
+            elif fuzz.token_sort_ratio(clean_name, p_row['clean_name']) >= 75:
+                matched_props_list.append(p_row)
+                
+        p_count = len(matched_props_list)
+        p_val = sum([p['property_value_pkr'] for p in matched_props_list]) if p_count > 0 else 0
+        area = sum([p['area_marla'] for p in matched_props_list]) if p_count > 0 else 0
+        reg_type = matched_props_list[0]['registry_type'] if p_count > 0 else "None"
+        reg_no = matched_props_list[0]['registry_no'] if p_count > 0 else "None"
+        noc = matched_props_list[0]['noc_status'] if p_count > 0 else "Approved"
+        transfers = len(matched_props_list)
+        prop_yr = 2025 if p_count > 0 else 2020
 
-        # Match Utilities
+        # 3. Match Utilities (DISCO)
         matched_disco = disco[disco['clean_name'] == clean_name]
         m_bill = matched_disco['avg_monthly_bill_pkr'].mean() if not matched_disco.empty else 0.0
 
@@ -53,7 +67,7 @@ def run_entity_resolution():
 
     os.makedirs("outputs", exist_ok=True)
     pd.DataFrame(master_records).to_csv("outputs/master_entities.csv", index=False)
-    print("✅ Step 3 complete. Master Entities resolved and outputs/master_entities.csv generated.")
+    print("✅ Step 3 complete. Master Entities resolved with Fuzzy name matching.")
 
 if __name__ == "__main__":
     run_entity_resolution()
