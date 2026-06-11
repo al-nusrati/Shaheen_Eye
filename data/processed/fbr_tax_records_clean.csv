@@ -1,501 +1,502 @@
 fbr_id,full_name,declared_income_pkr,tax_paid_pkr,filer_status,reported_address,phone_number,income_source,wealth_source,occupation,years_as_nonfiler,has_bank_account,clean_name,clean_address,address_id
-FBR-7712,Ch. Muhammad Arshad,0,0,Non-ATL,"DHA Phase 6, Lahore",0300-1112223,Cash,Cash,Businessman,5,False,chaudhry. muhammad arshad,"dha phase 6, lahore",c84b32c4
-FBR-9012,Farhan Ahmed,0,0,Non-ATL,"House 5, Street 2, Gulberg III, Lahore",0300-0000001,Cash,Cash,,4,False,farhan ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
-FBR-9013,Rabia Ahmed,0,0,Non-ATL,"House 5, Street 2, Gulberg III, Lahore",0300-0000002,,Gift,,3,True,rabia ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
-FBR-9014,Kamran Ahmed,180000,0,Non-ATL,"House 5, Street 2, Gulberg III, Lahore",0300-0000003,Salary,Savings,,2,True,kamran ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
-FBR-9015,Bashir Ahmed,180000,0,Non-ATL,"House 5, Street 2, Gulberg III, Lahore",0300-0000004,Salary,Cash,,1,False,bashir ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
-FBR-5124,Syed Bilal Hassan,600000,15000,ATL,"Sector C, Bahria Town, Rawalpindi",0321-5556667,Salary,Foreign Remittance,,0,True,bilal hassan,"sector c, bahria town, rawalpindi",f3cfa711
-FBR-1189,Dr. Ayesha Malik,2400000,240000,ATL,"Bahria Town Phase 7, Islamabad",0333-9998887,Agriculture,Savings,,0,True,dr. ayesha malik,"bahria town phase 7, islamabad",1c155e01
-FBR-3321,Haji Abdul Razzaq,0,0,Non-ATL,"Pechs Block 2, Karachi",0345-4443332,,Cash,,7,False,haji abdul razzaq,"pechs block 2, karachi",387b754e
-FBR-8890,Tariq Mehmood,1200000,60000,ATL,"Phase 2, Hayatabad, Peshawar",0312-8887776,Business,Savings,,0,True,tariq mehmood,"phase 2, hayatabad, peshawar",259bda1e
-FBR-4412,Ali Raza,1800000,180000,ATL,"Flat 4, Block D, I-8, Islamabad",0322-7776665,Salary,Savings,,0,True,ali raza,"flat 4, block d, i-8, islamabad",de3b6e2a
-FBR-1011,Ali Sheikh,1200000,120000,ATL,"House 80, Sector C, Lahore",0300-7148367,Business,Savings,Unemployed,0,True,ali sheikh,"house 80, sector c, lahore",c85ac430
-FBR-1012,Hamza Khan,2500000,250000,ATL,"House 11, Sector C, Peshawar",0300-7914058,Business,Savings,Engineer,0,False,hamza khan,"house 11, sector c, peshawar",88c18829
-FBR-1013,Ahmed Ahmed,2500000,250000,ATL,"House 95, Sector C, Rawalpindi",0300-3532414,Agriculture,Savings,Businessman,0,True,ahmad ahmad,"house 95, sector c, rawalpindi",869d5f02
-FBR-1014,Ahmed Javed,300000,30000,Non-ATL,"House 27, Sector A, Lahore",0300-4498945,Business,Savings,Teacher,2,True,ahmad javed,"house 27, sector a, lahore",9edfebe4
-FBR-1015,Fatima Bibi,1200000,120000,Non-ATL,"House 53, Sector A, Peshawar",0300-1861824,Salary,Savings,Businessman,4,True,fatima bibi,"house 53, sector a, peshawar",36e142e1
-FBR-1016,Bilal Raza,1200000,120000,ATL,"House 33, Sector A, Peshawar",0300-9451642,Salary,Savings,Businessman,0,False,bilal raza,"house 33, sector a, peshawar",be99f5dd
-FBR-1017,Osman Siddiqui,2500000,250000,Non-ATL,"House 95, Sector A, Karachi",0300-2620306,Business,Savings,Doctor,0,False,osman siddiqui,"house 95, sector a, karachi",b6af59a9
-FBR-1018,Bilal Raza,300000,30000,Non-ATL,"House 16, Sector C, Karachi",0300-9838494,Salary,Savings,Teacher,5,True,bilal raza,"house 16, sector c, karachi",174f11e3
-FBR-1019,Bilal Ahmed,2500000,250000,ATL,"House 58, Sector D, Karachi",0300-5900002,Salary,Savings,Engineer,0,True,bilal ahmad,"house 58, sector d, karachi",b879cc9b
-FBR-1020,Muhammad Iqbal,0,0,Non-ATL,"House 90, Sector D, Islamabad",0300-5674625,Agriculture,Savings,Teacher,0,False,muhammad iqbal,"house 90, sector d, islamabad",a9f5d68f
-FBR-1021,Osman Sheikh,0,0,Non-ATL,"House 74, Sector A, Lahore",0300-5936375,Business,Savings,Doctor,1,True,osman sheikh,"house 74, sector a, lahore",1330358f
-FBR-1022,Sana Ahmed,1200000,120000,ATL,"House 13, Sector C, Lahore",0300-8469701,Salary,Savings,Engineer,0,False,sana ahmad,"house 13, sector c, lahore",0c84161f
-FBR-1023,Ayesha Bibi,300000,30000,Non-ATL,"House 63, Sector A, Karachi",0300-2106386,Salary,Savings,Teacher,4,True,ayesha bibi,"house 63, sector a, karachi",4b4a68c4
-FBR-1024,Zainab Bibi,600000,60000,Non-ATL,"House 82, Sector D, Rawalpindi",0300-9502047,Business,Savings,Driver,4,False,zainab bibi,"house 82, sector d, rawalpindi",d1575777
-FBR-1025,Osman Siddiqui,2500000,250000,Non-ATL,"House 51, Sector A, Rawalpindi",0300-5513150,Salary,Savings,Unemployed,5,True,osman siddiqui,"house 51, sector a, rawalpindi",f3346efd
-FBR-1026,Bilal Malik,600000,60000,ATL,"House 93, Sector C, Faisalabad",0300-4721998,Salary,Savings,Teacher,0,True,bilal malik,"house 93, sector c, faisalabad",219ac414
-FBR-1027,Ayesha Javed,0,0,Non-ATL,"House 93, Sector C, Peshawar",0300-2221273,Salary,Savings,Teacher,2,True,ayesha javed,"house 93, sector c, peshawar",6ca893f5
-FBR-1028,Muhammad Iqbal,1200000,120000,Non-ATL,"House 64, Sector D, Rawalpindi",0300-1538553,Agriculture,Savings,Driver,4,True,muhammad iqbal,"house 64, sector d, rawalpindi",4946b94c
-FBR-1029,Fatima Siddiqui,0,0,Non-ATL,"House 92, Sector B, Peshawar",0300-6849729,Agriculture,Savings,Engineer,3,True,fatima siddiqui,"house 92, sector b, peshawar",c6be3a85
-FBR-1030,Hamza Malik,1200000,120000,ATL,"House 18, Sector B, Karachi",0300-7633089,Salary,Savings,Engineer,0,True,hamza malik,"house 18, sector b, karachi",fe8a5680
-FBR-1031,Sana Raza,1200000,120000,Non-ATL,"House 96, Sector A, Lahore",0300-3418261,Agriculture,Savings,Doctor,2,True,sana raza,"house 96, sector a, lahore",7d77d4cd
-FBR-1032,Ahmed Sheikh,0,0,Non-ATL,"House 39, Sector A, Peshawar",0300-5806005,Agriculture,Savings,Engineer,0,False,ahmad sheikh,"house 39, sector a, peshawar",f7e0ef82
-FBR-1033,Bilal Bibi,0,0,Non-ATL,"House 81, Sector D, Peshawar",0300-2350451,Agriculture,Savings,Unemployed,2,False,bilal bibi,"house 81, sector d, peshawar",27833063
-FBR-1034,Ali Ahmed,1200000,120000,Non-ATL,"House 50, Sector C, Rawalpindi",0300-5259998,Agriculture,Savings,Driver,5,True,ali ahmad,"house 50, sector c, rawalpindi",ebd3d7f7
-FBR-1035,Bilal Khan,0,0,Non-ATL,"House 52, Sector D, Karachi",0300-4278851,Agriculture,Savings,Driver,0,True,bilal khan,"house 52, sector d, karachi",2ea565fe
-FBR-1036,Zainab Siddiqui,0,0,Non-ATL,"House 71, Sector C, Peshawar",0300-1591174,Business,Savings,Businessman,0,True,zainab siddiqui,"house 71, sector c, peshawar",c3859547
-FBR-1037,Sana Sheikh,1200000,120000,ATL,"House 80, Sector D, Islamabad",0300-2884317,Salary,Savings,Teacher,0,True,sana sheikh,"house 80, sector d, islamabad",bda3de27
-FBR-1038,Bilal Javed,2500000,250000,Non-ATL,"House 10, Sector B, Karachi",0300-5573600,Agriculture,Savings,Unemployed,2,False,bilal javed,"house 10, sector b, karachi",d5f282c7
-FBR-1039,Hamza Sheikh,2500000,250000,ATL,"House 93, Sector A, Islamabad",0300-8680684,Business,Savings,Driver,0,False,hamza sheikh,"house 93, sector a, islamabad",0878d971
-FBR-1040,Muhammad Raza,300000,30000,Non-ATL,"House 89, Sector D, Rawalpindi",0300-3098150,Agriculture,Savings,Engineer,5,True,muhammad raza,"house 89, sector d, rawalpindi",2c66cd65
-FBR-1041,Zainab Siddiqui,300000,30000,Non-ATL,"House 46, Sector C, Rawalpindi",0300-8542614,Salary,Savings,Driver,0,False,zainab siddiqui,"house 46, sector c, rawalpindi",eb32fb44
-FBR-1042,Ahmed Siddiqui,300000,30000,Non-ATL,"House 11, Sector D, Peshawar",0300-6775389,Salary,Savings,Doctor,2,False,ahmad siddiqui,"house 11, sector d, peshawar",20084b6a
-FBR-1043,Bilal Sheikh,0,0,Non-ATL,"House 76, Sector A, Lahore",0300-3710274,Salary,Savings,Unemployed,2,True,bilal sheikh,"house 76, sector a, lahore",3e4584b1
-FBR-1044,Ayesha Ahmed,2500000,250000,ATL,"House 86, Sector B, Islamabad",0300-3293010,Business,Savings,Driver,0,False,ayesha ahmad,"house 86, sector b, islamabad",d2ad1556
-FBR-1045,Bilal Iqbal,1200000,120000,ATL,"House 36, Sector D, Peshawar",0300-7478718,Salary,Savings,Engineer,0,False,bilal iqbal,"house 36, sector d, peshawar",ba25e6a8
-FBR-1046,Ahmed Javed,300000,30000,Non-ATL,"House 33, Sector A, Lahore",0300-2008548,Business,Savings,Businessman,0,True,ahmad javed,"house 33, sector a, lahore",1c0ecb6f
-FBR-1047,Ayesha Ahmed,600000,60000,ATL,"House 6, Sector B, Karachi",0300-1920070,Agriculture,Savings,Doctor,0,True,ayesha ahmad,"house 6, sector b, karachi",5e6cfea2
-FBR-1048,Ali Bibi,2500000,250000,ATL,"House 49, Sector D, Lahore",0300-1386850,Business,Savings,Doctor,0,True,ali bibi,"house 49, sector d, lahore",004ebbf6
-FBR-1049,Osman Iqbal,2500000,250000,ATL,"House 14, Sector B, Karachi",0300-2083515,Agriculture,Savings,Unemployed,0,True,osman iqbal,"house 14, sector b, karachi",b75144db
-FBR-1050,Zainab Javed,0,0,Non-ATL,"House 15, Sector D, Karachi",0300-7040921,Agriculture,Savings,Businessman,3,True,zainab javed,"house 15, sector d, karachi",e04c9b97
-FBR-1051,Muhammad Bibi,2500000,250000,Non-ATL,"House 3, Sector B, Faisalabad",0300-2180908,Salary,Savings,Unemployed,3,False,muhammad bibi,"house 3, sector b, faisalabad",946bcfdd
-FBR-1052,Fatima Raza,600000,60000,Non-ATL,"House 45, Sector B, Faisalabad",0300-7395814,Salary,Savings,Driver,1,True,fatima raza,"house 45, sector b, faisalabad",3e4bdae1
-FBR-1053,Osman Siddiqui,2500000,250000,Non-ATL,"House 86, Sector B, Islamabad",0300-1086999,Agriculture,Savings,Businessman,1,False,osman siddiqui,"house 86, sector b, islamabad",d2ad1556
-FBR-1054,Zainab Siddiqui,0,0,Non-ATL,"House 78, Sector D, Faisalabad",0300-1429768,Agriculture,Savings,Businessman,0,False,zainab siddiqui,"house 78, sector d, faisalabad",2eac3e16
-FBR-1055,Ayesha Siddiqui,600000,60000,ATL,"House 80, Sector A, Lahore",0300-2692447,Agriculture,Savings,Unemployed,0,False,ayesha siddiqui,"house 80, sector a, lahore",cf9d5ddb
-FBR-1056,Ali Iqbal,0,0,Non-ATL,"House 30, Sector A, Peshawar",0300-8740398,Business,Savings,Teacher,5,True,ali iqbal,"house 30, sector a, peshawar",e6cd314e
-FBR-1057,Fatima Ahmed,2500000,250000,ATL,"House 44, Sector B, Rawalpindi",0300-6849963,Salary,Savings,Unemployed,0,False,fatima ahmad,"house 44, sector b, rawalpindi",50b6b944
-FBR-1058,Ahmed Khan,600000,60000,ATL,"House 79, Sector B, Islamabad",0300-4677948,Agriculture,Savings,Teacher,0,False,ahmad khan,"house 79, sector b, islamabad",10c9e8b8
-FBR-1059,Ali Bibi,300000,30000,Non-ATL,"House 25, Sector A, Karachi",0300-8429177,Agriculture,Savings,Engineer,2,False,ali bibi,"house 25, sector a, karachi",3d32adcf
-FBR-1060,Bilal Hassan,300000,30000,Non-ATL,"House 69, Sector D, Faisalabad",0300-3682064,Business,Savings,Businessman,5,False,bilal hassan,"house 69, sector d, faisalabad",59a3b3d3
-FBR-1061,Ali Javed,2500000,250000,ATL,"House 18, Sector A, Islamabad",0300-2392174,Salary,Savings,Unemployed,0,False,ali javed,"house 18, sector a, islamabad",9144f042
-FBR-1062,Bilal Iqbal,0,0,Non-ATL,"House 8, Sector A, Faisalabad",0300-7094858,Agriculture,Savings,Unemployed,4,False,bilal iqbal,"house 8, sector a, faisalabad",aa0de3c7
-FBR-1063,Osman Ahmed,0,0,Non-ATL,"House 51, Sector D, Lahore",0300-6255269,Business,Savings,Unemployed,4,False,osman ahmad,"house 51, sector d, lahore",a4852c8a
-FBR-1064,Ayesha Javed,300000,30000,Non-ATL,"House 78, Sector D, Peshawar",0300-4317420,Business,Savings,Driver,4,False,ayesha javed,"house 78, sector d, peshawar",82427795
-FBR-1065,Zainab Malik,300000,30000,Non-ATL,"House 10, Sector C, Islamabad",0300-4984398,Business,Savings,Driver,3,True,zainab malik,"house 10, sector c, islamabad",ad360e36
-FBR-1066,Bilal Bibi,1200000,120000,ATL,"House 97, Sector B, Rawalpindi",0300-4362847,Business,Savings,Driver,0,True,bilal bibi,"house 97, sector b, rawalpindi",1961b8ca
-FBR-1067,Ali Sheikh,1200000,120000,ATL,"House 7, Sector B, Peshawar",0300-1416966,Agriculture,Savings,Driver,0,False,ali sheikh,"house 7, sector b, peshawar",61a920e0
-FBR-1068,Fatima Khan,300000,30000,Non-ATL,"House 50, Sector D, Faisalabad",0300-7527330,Agriculture,Savings,Doctor,4,False,fatima khan,"house 50, sector d, faisalabad",4692a947
-FBR-1069,Osman Khan,600000,60000,ATL,"House 24, Sector B, Lahore",0300-8607134,Salary,Savings,Engineer,0,True,osman khan,"house 24, sector b, lahore",fe1dbf95
-FBR-1070,Zainab Siddiqui,600000,60000,ATL,"House 43, Sector D, Karachi",0300-8469289,Agriculture,Savings,Businessman,0,False,zainab siddiqui,"house 43, sector d, karachi",59f6d5c6
-FBR-1071,Ayesha Sheikh,0,0,Non-ATL,"House 79, Sector B, Karachi",0300-2664283,Agriculture,Savings,Businessman,1,True,ayesha sheikh,"house 79, sector b, karachi",85497d66
-FBR-1072,Muhammad Raza,2500000,250000,ATL,"House 64, Sector A, Lahore",0300-1530384,Salary,Savings,Teacher,0,False,muhammad raza,"house 64, sector a, lahore",a762c952
-FBR-1073,Bilal Ahmed,600000,60000,ATL,"House 79, Sector D, Faisalabad",0300-4757721,Business,Savings,Engineer,0,False,bilal ahmad,"house 79, sector d, faisalabad",dbc02728
-FBR-1074,Zainab Sheikh,300000,30000,Non-ATL,"House 71, Sector D, Lahore",0300-6630677,Business,Savings,Teacher,0,True,zainab sheikh,"house 71, sector d, lahore",5e4e539d
-FBR-1075,Ahmed Raza,300000,30000,Non-ATL,"House 30, Sector C, Rawalpindi",0300-3712516,Agriculture,Savings,Doctor,2,True,ahmad raza,"house 30, sector c, rawalpindi",b7b2cff8
-FBR-1076,Ali Javed,2500000,250000,Non-ATL,"House 12, Sector B, Karachi",0300-2973584,Agriculture,Savings,Doctor,1,False,ali javed,"house 12, sector b, karachi",ddf81c76
-FBR-1077,Fatima Raza,0,0,Non-ATL,"House 13, Sector C, Karachi",0300-4798829,Business,Savings,Teacher,3,True,fatima raza,"house 13, sector c, karachi",2057af82
-FBR-1078,Bilal Hassan,300000,30000,Non-ATL,"House 18, Sector A, Karachi",0300-2813437,Salary,Savings,Unemployed,2,True,bilal hassan,"house 18, sector a, karachi",aeef9cae
-FBR-1079,Muhammad Siddiqui,1200000,120000,ATL,"House 38, Sector D, Peshawar",0300-2353845,Agriculture,Savings,Engineer,0,True,muhammad siddiqui,"house 38, sector d, peshawar",6c1caad3
-FBR-1080,Fatima Malik,600000,60000,Non-ATL,"House 30, Sector A, Rawalpindi",0300-8759862,Salary,Savings,Teacher,4,False,fatima malik,"house 30, sector a, rawalpindi",2ff54441
-FBR-1081,Hamza Khan,1200000,120000,Non-ATL,"House 66, Sector C, Karachi",0300-8527987,Business,Savings,Driver,1,False,hamza khan,"house 66, sector c, karachi",1a7fdb8e
-FBR-1082,Bilal Siddiqui,600000,60000,ATL,"House 68, Sector A, Lahore",0300-5860747,Agriculture,Savings,Engineer,0,True,bilal siddiqui,"house 68, sector a, lahore",6b71b71c
-FBR-1083,Bilal Bibi,2500000,250000,Non-ATL,"House 55, Sector A, Islamabad",0300-4786926,Salary,Savings,Engineer,3,True,bilal bibi,"house 55, sector a, islamabad",13298c7f
-FBR-1084,Osman Khan,600000,60000,Non-ATL,"House 62, Sector C, Lahore",0300-5562338,Business,Savings,Driver,4,True,osman khan,"house 62, sector c, lahore",d7d8c2f5
-FBR-1085,Muhammad Raza,600000,60000,ATL,"House 5, Sector A, Islamabad",0300-8803629,Agriculture,Savings,Engineer,0,False,muhammad raza,"house 5, sector a, islamabad",3c62d39b
-FBR-1086,Muhammad Khan,0,0,Non-ATL,"House 11, Sector D, Peshawar",0300-1084067,Business,Savings,Doctor,1,True,muhammad khan,"house 11, sector d, peshawar",20084b6a
-FBR-1087,Fatima Sheikh,600000,60000,ATL,"House 67, Sector D, Faisalabad",0300-5415557,Business,Savings,Engineer,0,True,fatima sheikh,"house 67, sector d, faisalabad",f9ce6a85
-FBR-1088,Ayesha Siddiqui,0,0,Non-ATL,"House 65, Sector D, Peshawar",0300-8750526,Agriculture,Savings,Driver,2,True,ayesha siddiqui,"house 65, sector d, peshawar",86d4a8f9
-FBR-1089,Ahmed Siddiqui,600000,60000,ATL,"House 42, Sector A, Karachi",0300-3683884,Salary,Savings,Driver,0,False,ahmad siddiqui,"house 42, sector a, karachi",5da83ff3
-FBR-1090,Hamza Malik,300000,30000,Non-ATL,"House 93, Sector C, Peshawar",0300-4027978,Salary,Savings,Doctor,3,True,hamza malik,"house 93, sector c, peshawar",6ca893f5
-FBR-1091,Ahmed Ahmed,0,0,Non-ATL,"House 24, Sector C, Peshawar",0300-6744630,Agriculture,Savings,Unemployed,0,False,ahmad ahmad,"house 24, sector c, peshawar",d2bc6be6
-FBR-1092,Sana Raza,2500000,250000,ATL,"House 52, Sector D, Lahore",0300-3187711,Business,Savings,Teacher,0,True,sana raza,"house 52, sector d, lahore",ee48ad64
-FBR-1093,Fatima Raza,0,0,Non-ATL,"House 90, Sector C, Islamabad",0300-6353694,Agriculture,Savings,Driver,2,False,fatima raza,"house 90, sector c, islamabad",acd649b9
-FBR-1094,Ali Siddiqui,1200000,120000,ATL,"House 75, Sector C, Peshawar",0300-9798345,Agriculture,Savings,Driver,0,False,ali siddiqui,"house 75, sector c, peshawar",439291c8
-FBR-1095,Bilal Bibi,600000,60000,ATL,"House 7, Sector D, Lahore",0300-9539622,Business,Savings,Businessman,0,True,bilal bibi,"house 7, sector d, lahore",f1b4fd05
-FBR-1096,Ayesha Raza,0,0,Non-ATL,"House 5, Sector B, Islamabad",0300-9928179,Agriculture,Savings,Driver,2,False,ayesha raza,"house 5, sector b, islamabad",e4d4e673
-FBR-1097,Ali Siddiqui,2500000,250000,ATL,"House 5, Sector D, Karachi",0300-7922102,Business,Savings,Doctor,0,True,ali siddiqui,"house 5, sector d, karachi",cc48b14f
-FBR-1098,Ayesha Siddiqui,0,0,Non-ATL,"House 55, Sector D, Rawalpindi",0300-4080666,Salary,Savings,Driver,0,False,ayesha siddiqui,"house 55, sector d, rawalpindi",50a7892a
-FBR-1099,Hamza Hassan,600000,60000,Non-ATL,"House 39, Sector D, Islamabad",0300-5257989,Salary,Savings,Businessman,4,False,hamza hassan,"house 39, sector d, islamabad",b201176c
-FBR-1100,Hamza Khan,300000,30000,Non-ATL,"House 44, Sector C, Karachi",0300-6748880,Salary,Savings,Teacher,4,True,hamza khan,"house 44, sector c, karachi",330d3dc5
-FBR-1101,Sana Javed,300000,30000,Non-ATL,"House 88, Sector A, Rawalpindi",0300-9763857,Agriculture,Savings,Unemployed,1,False,sana javed,"house 88, sector a, rawalpindi",946e0449
-FBR-1102,Muhammad Sheikh,1200000,120000,ATL,"House 71, Sector C, Peshawar",0300-7381743,Business,Savings,Driver,0,False,muhammad sheikh,"house 71, sector c, peshawar",c3859547
-FBR-1103,Bilal Siddiqui,2500000,250000,Non-ATL,"House 77, Sector B, Islamabad",0300-4266483,Agriculture,Savings,Doctor,5,False,bilal siddiqui,"house 77, sector b, islamabad",2485e4e5
-FBR-1104,Zainab Siddiqui,0,0,Non-ATL,"House 30, Sector C, Rawalpindi",0300-1092471,Salary,Savings,Driver,3,False,zainab siddiqui,"house 30, sector c, rawalpindi",b7b2cff8
-FBR-1105,Muhammad Iqbal,600000,60000,ATL,"House 33, Sector A, Lahore",0300-3099423,Salary,Savings,Teacher,0,True,muhammad iqbal,"house 33, sector a, lahore",1c0ecb6f
-FBR-1106,Hamza Sheikh,0,0,Non-ATL,"House 16, Sector C, Peshawar",0300-1915569,Salary,Savings,Doctor,0,False,hamza sheikh,"house 16, sector c, peshawar",b94bc1ff
-FBR-1107,Fatima Hassan,300000,30000,Non-ATL,"House 23, Sector A, Islamabad",0300-1093867,Business,Savings,Teacher,3,True,fatima hassan,"house 23, sector a, islamabad",b99eb071
-FBR-1108,Ali Khan,300000,30000,Non-ATL,"House 83, Sector B, Lahore",0300-9427937,Salary,Savings,Doctor,5,False,ali khan,"house 83, sector b, lahore",bda946b1
-FBR-1109,Ahmed Bibi,0,0,Non-ATL,"House 58, Sector B, Peshawar",0300-4897726,Business,Savings,Unemployed,4,False,ahmad bibi,"house 58, sector b, peshawar",fe080aa1
-FBR-1110,Ahmed Khan,600000,60000,ATL,"House 87, Sector A, Rawalpindi",0300-7164593,Salary,Savings,Unemployed,0,True,ahmad khan,"house 87, sector a, rawalpindi",98fed017
-FBR-1111,Osman Sheikh,600000,60000,ATL,"House 49, Sector B, Peshawar",0300-5507032,Business,Savings,Engineer,0,True,osman sheikh,"house 49, sector b, peshawar",345659bc
-FBR-1112,Fatima Sheikh,0,0,Non-ATL,"House 31, Sector D, Faisalabad",0300-1188429,Agriculture,Savings,Driver,3,True,fatima sheikh,"house 31, sector d, faisalabad",5b8bb718
-FBR-1113,Fatima Hassan,1200000,120000,Non-ATL,"House 69, Sector D, Karachi",0300-9542363,Salary,Savings,Driver,3,True,fatima hassan,"house 69, sector d, karachi",e28d61fd
-FBR-1114,Ali Ahmed,300000,30000,Non-ATL,"House 22, Sector A, Islamabad",0300-9998461,Agriculture,Savings,Businessman,1,True,ali ahmad,"house 22, sector a, islamabad",0a3aeed4
-FBR-1115,Muhammad Hassan,1200000,120000,ATL,"House 86, Sector A, Peshawar",0300-2738171,Business,Savings,Unemployed,0,False,muhammad hassan,"house 86, sector a, peshawar",76d12cf9
-FBR-1116,Ahmed Khan,300000,30000,Non-ATL,"House 82, Sector B, Islamabad",0300-9630610,Agriculture,Savings,Doctor,2,False,ahmad khan,"house 82, sector b, islamabad",51b02324
-FBR-1117,Ayesha Hassan,2500000,250000,ATL,"House 26, Sector C, Rawalpindi",0300-8623142,Salary,Savings,Businessman,0,False,ayesha hassan,"house 26, sector c, rawalpindi",1f2bb561
-FBR-1118,Ali Khan,1200000,120000,ATL,"House 82, Sector B, Lahore",0300-7776423,Salary,Savings,Doctor,0,True,ali khan,"house 82, sector b, lahore",adbeb679
-FBR-1119,Osman Iqbal,1200000,120000,ATL,"House 85, Sector A, Islamabad",0300-2022735,Business,Savings,Unemployed,0,False,osman iqbal,"house 85, sector a, islamabad",89e94d5d
-FBR-1120,Ali Sheikh,600000,60000,ATL,"House 100, Sector C, Rawalpindi",0300-8204445,Business,Savings,Businessman,0,True,ali sheikh,"house 100, sector c, rawalpindi",477d191c
-FBR-1121,Hamza Siddiqui,1200000,120000,ATL,"House 94, Sector A, Faisalabad",0300-6339620,Salary,Savings,Driver,0,False,hamza siddiqui,"house 94, sector a, faisalabad",fe640647
-FBR-1122,Bilal Hassan,1200000,120000,Non-ATL,"House 9, Sector D, Karachi",0300-1983351,Agriculture,Savings,Unemployed,1,False,bilal hassan,"house 9, sector d, karachi",92c4c5d7
-FBR-1123,Hamza Malik,600000,60000,Non-ATL,"House 25, Sector C, Peshawar",0300-4999408,Business,Savings,Doctor,1,True,hamza malik,"house 25, sector c, peshawar",4fedbebe
-FBR-1124,Zainab Malik,600000,60000,Non-ATL,"House 68, Sector C, Rawalpindi",0300-6715137,Agriculture,Savings,Unemployed,5,True,zainab malik,"house 68, sector c, rawalpindi",e43e9162
-FBR-1125,Bilal Malik,0,0,Non-ATL,"House 43, Sector B, Islamabad",0300-2388773,Salary,Savings,Doctor,5,True,bilal malik,"house 43, sector b, islamabad",12f3e07a
-FBR-1126,Muhammad Sheikh,300000,30000,Non-ATL,"House 28, Sector A, Lahore",0300-1664914,Salary,Savings,Teacher,2,False,muhammad sheikh,"house 28, sector a, lahore",dd976581
-FBR-1127,Muhammad Siddiqui,2500000,250000,ATL,"House 67, Sector D, Peshawar",0300-8582888,Business,Savings,Teacher,0,True,muhammad siddiqui,"house 67, sector d, peshawar",3ecdc4a9
-FBR-1128,Zainab Raza,1200000,120000,Non-ATL,"House 82, Sector A, Rawalpindi",0300-3386576,Business,Savings,Engineer,0,False,zainab raza,"house 82, sector a, rawalpindi",2fb6764f
-FBR-1129,Zainab Ahmed,600000,60000,ATL,"House 20, Sector A, Lahore",0300-2798910,Business,Savings,Driver,0,True,zainab ahmad,"house 20, sector a, lahore",7ce70882
-FBR-1130,Hamza Sheikh,2500000,250000,ATL,"House 55, Sector D, Islamabad",0300-1374295,Business,Savings,Businessman,0,False,hamza sheikh,"house 55, sector d, islamabad",f88aca48
-FBR-1131,Osman Khan,0,0,Non-ATL,"House 20, Sector A, Peshawar",0300-7353294,Salary,Savings,Driver,2,True,osman khan,"house 20, sector a, peshawar",746728bf
-FBR-1132,Sana Raza,600000,60000,Non-ATL,"House 36, Sector A, Islamabad",0300-5400336,Salary,Savings,Teacher,4,False,sana raza,"house 36, sector a, islamabad",381c1726
-FBR-1133,Zainab Siddiqui,600000,60000,ATL,"House 24, Sector A, Lahore",0300-5846815,Business,Savings,Engineer,0,True,zainab siddiqui,"house 24, sector a, lahore",8b5a7038
-FBR-1134,Osman Iqbal,2500000,250000,ATL,"House 32, Sector D, Peshawar",0300-9460842,Business,Savings,Teacher,0,False,osman iqbal,"house 32, sector d, peshawar",c6888f09
-FBR-1135,Hamza Sheikh,1200000,120000,Non-ATL,"House 94, Sector D, Islamabad",0300-7151526,Business,Savings,Engineer,3,False,hamza sheikh,"house 94, sector d, islamabad",b41aa997
-FBR-1136,Sana Siddiqui,2500000,250000,ATL,"House 33, Sector D, Peshawar",0300-2356737,Agriculture,Savings,Unemployed,0,True,sana siddiqui,"house 33, sector d, peshawar",e9e2d711
-FBR-1137,Fatima Raza,0,0,Non-ATL,"House 25, Sector A, Karachi",0300-3035800,Salary,Savings,Doctor,2,True,fatima raza,"house 25, sector a, karachi",3d32adcf
-FBR-1138,Ali Bibi,300000,30000,Non-ATL,"House 79, Sector B, Karachi",0300-7049739,Agriculture,Savings,Unemployed,0,True,ali bibi,"house 79, sector b, karachi",85497d66
-FBR-1139,Ayesha Hassan,1200000,120000,ATL,"House 81, Sector C, Faisalabad",0300-7813442,Agriculture,Savings,Businessman,0,True,ayesha hassan,"house 81, sector c, faisalabad",cae5c923
-FBR-1140,Hamza Hassan,2500000,250000,ATL,"House 4, Sector C, Karachi",0300-8521977,Agriculture,Savings,Driver,0,False,hamza hassan,"house 4, sector c, karachi",6192a45d
-FBR-1141,Ali Sheikh,300000,30000,Non-ATL,"House 42, Sector A, Lahore",0300-5450079,Salary,Savings,Unemployed,0,False,ali sheikh,"house 42, sector a, lahore",17de4ea5
-FBR-1142,Bilal Sheikh,300000,30000,Non-ATL,"House 66, Sector B, Faisalabad",0300-6796534,Agriculture,Savings,Engineer,0,False,bilal sheikh,"house 66, sector b, faisalabad",6d510ffd
-FBR-1143,Muhammad Ahmed,600000,60000,ATL,"House 67, Sector A, Karachi",0300-3081298,Business,Savings,Engineer,0,False,muhammad ahmad,"house 67, sector a, karachi",e9d3eca0
-FBR-1144,Zainab Siddiqui,0,0,Non-ATL,"House 40, Sector C, Karachi",0300-2797529,Salary,Savings,Businessman,5,False,zainab siddiqui,"house 40, sector c, karachi",54fa442d
-FBR-1145,Ali Hassan,2500000,250000,ATL,"House 47, Sector A, Islamabad",0300-4741643,Salary,Savings,Driver,0,True,ali hassan,"house 47, sector a, islamabad",ead9e941
-FBR-1146,Sana Raza,600000,60000,Non-ATL,"House 61, Sector A, Peshawar",0300-3016967,Agriculture,Savings,Driver,1,True,sana raza,"house 61, sector a, peshawar",d32c8551
-FBR-1147,Zainab Bibi,1200000,120000,ATL,"House 85, Sector D, Rawalpindi",0300-6235279,Agriculture,Savings,Doctor,0,True,zainab bibi,"house 85, sector d, rawalpindi",8608e7c7
-FBR-1148,Bilal Malik,1200000,120000,Non-ATL,"House 13, Sector A, Karachi",0300-8394894,Agriculture,Savings,Teacher,3,False,bilal malik,"house 13, sector a, karachi",893f93c5
-FBR-1149,Ali Ahmed,0,0,Non-ATL,"House 79, Sector B, Rawalpindi",0300-5995623,Business,Savings,Teacher,4,True,ali ahmad,"house 79, sector b, rawalpindi",e275b265
-FBR-1150,Ayesha Khan,1200000,120000,ATL,"House 97, Sector D, Rawalpindi",0300-2068518,Salary,Savings,Driver,0,True,ayesha khan,"house 97, sector d, rawalpindi",b784fda3
-FBR-1151,Ali Bibi,0,0,Non-ATL,"House 80, Sector A, Faisalabad",0300-4372735,Salary,Savings,Doctor,0,False,ali bibi,"house 80, sector a, faisalabad",d6f18d7d
-FBR-1152,Ali Hassan,2500000,250000,ATL,"House 20, Sector D, Islamabad",0300-9613643,Agriculture,Savings,Doctor,0,True,ali hassan,"house 20, sector d, islamabad",b04a9c82
-FBR-1153,Osman Khan,2500000,250000,ATL,"House 14, Sector C, Peshawar",0300-5069434,Agriculture,Savings,Driver,0,False,osman khan,"house 14, sector c, peshawar",5880ab52
-FBR-1154,Hamza Ahmed,600000,60000,ATL,"House 87, Sector A, Lahore",0300-9380957,Salary,Savings,Doctor,0,False,hamza ahmad,"house 87, sector a, lahore",31e3329b
-FBR-1155,Ayesha Bibi,300000,30000,Non-ATL,"House 88, Sector B, Islamabad",0300-1045936,Salary,Savings,Engineer,5,True,ayesha bibi,"house 88, sector b, islamabad",acae4324
-FBR-1156,Ayesha Raza,300000,30000,Non-ATL,"House 28, Sector B, Faisalabad",0300-6125598,Business,Savings,Doctor,4,True,ayesha raza,"house 28, sector b, faisalabad",0663b5e1
-FBR-1157,Sana Bibi,0,0,Non-ATL,"House 95, Sector A, Lahore",0300-9940209,Business,Savings,Teacher,4,True,sana bibi,"house 95, sector a, lahore",45b7eefc
-FBR-1158,Muhammad Javed,600000,60000,ATL,"House 28, Sector A, Peshawar",0300-2695638,Business,Savings,Businessman,0,False,muhammad javed,"house 28, sector a, peshawar",16e00c60
-FBR-1159,Sana Javed,1200000,120000,ATL,"House 57, Sector A, Rawalpindi",0300-9814600,Business,Savings,Teacher,0,False,sana javed,"house 57, sector a, rawalpindi",2bdecb77
-FBR-1160,Ahmed Bibi,1200000,120000,ATL,"House 79, Sector A, Faisalabad",0300-6179553,Business,Savings,Driver,0,True,ahmad bibi,"house 79, sector a, faisalabad",be5f6f51
-FBR-1161,Ahmed Siddiqui,2500000,250000,ATL,"House 46, Sector D, Karachi",0300-3072427,Business,Savings,Unemployed,0,False,ahmad siddiqui,"house 46, sector d, karachi",cdc783e4
-FBR-1162,Osman Siddiqui,0,0,Non-ATL,"House 43, Sector C, Faisalabad",0300-4640232,Business,Savings,Driver,1,False,osman siddiqui,"house 43, sector c, faisalabad",5e5a9844
-FBR-1163,Ali Siddiqui,2500000,250000,ATL,"House 43, Sector B, Peshawar",0300-6793496,Agriculture,Savings,Doctor,0,True,ali siddiqui,"house 43, sector b, peshawar",b4b2f388
-FBR-1164,Muhammad Javed,2500000,250000,Non-ATL,"House 39, Sector B, Islamabad",0300-6578459,Business,Savings,Doctor,3,False,muhammad javed,"house 39, sector b, islamabad",20fd796c
-FBR-1165,Sana Bibi,300000,30000,Non-ATL,"House 7, Sector A, Islamabad",0300-4188770,Business,Savings,Teacher,5,True,sana bibi,"house 7, sector a, islamabad",7b7b1745
-FBR-1166,Ahmed Bibi,2500000,250000,ATL,"House 48, Sector C, Islamabad",0300-5178576,Agriculture,Savings,Driver,0,False,ahmad bibi,"house 48, sector c, islamabad",8dcc04fd
-FBR-1167,Muhammad Javed,1200000,120000,Non-ATL,"House 37, Sector D, Faisalabad",0300-7273132,Agriculture,Savings,Teacher,3,False,muhammad javed,"house 37, sector d, faisalabad",6c39a953
-FBR-1168,Ahmed Siddiqui,300000,30000,Non-ATL,"House 81, Sector B, Karachi",0300-4995816,Business,Savings,Teacher,3,True,ahmad siddiqui,"house 81, sector b, karachi",78325133
-FBR-1169,Zainab Khan,300000,30000,Non-ATL,"House 29, Sector A, Karachi",0300-5943918,Salary,Savings,Businessman,5,True,zainab khan,"house 29, sector a, karachi",4ed69317
-FBR-1170,Osman Siddiqui,600000,60000,Non-ATL,"House 35, Sector C, Karachi",0300-3241334,Agriculture,Savings,Doctor,2,True,osman siddiqui,"house 35, sector c, karachi",3841fc2d
-FBR-1171,Muhammad Khan,600000,60000,ATL,"House 63, Sector B, Lahore",0300-8310004,Business,Savings,Engineer,0,False,muhammad khan,"house 63, sector b, lahore",40a2ec04
-FBR-1172,Sana Raza,1200000,120000,Non-ATL,"House 98, Sector A, Islamabad",0300-7440275,Salary,Savings,Engineer,3,True,sana raza,"house 98, sector a, islamabad",3db93382
-FBR-1173,Osman Sheikh,1200000,120000,ATL,"House 30, Sector D, Karachi",0300-4579180,Salary,Savings,Businessman,0,True,osman sheikh,"house 30, sector d, karachi",05d2809d
-FBR-1174,Osman Raza,600000,60000,ATL,"House 10, Sector B, Faisalabad",0300-4242567,Salary,Savings,Doctor,0,True,osman raza,"house 10, sector b, faisalabad",4d0097ce
-FBR-1175,Ahmed Iqbal,600000,60000,ATL,"House 99, Sector A, Rawalpindi",0300-5398366,Salary,Savings,Businessman,0,False,ahmad iqbal,"house 99, sector a, rawalpindi",a3cad098
-FBR-1176,Fatima Sheikh,2500000,250000,ATL,"House 28, Sector D, Faisalabad",0300-8647444,Salary,Savings,Unemployed,0,True,fatima sheikh,"house 28, sector d, faisalabad",66d29af3
-FBR-1177,Hamza Iqbal,600000,60000,ATL,"House 23, Sector B, Lahore",0300-6545284,Business,Savings,Driver,0,True,hamza iqbal,"house 23, sector b, lahore",fd7d76f1
-FBR-1178,Ayesha Malik,300000,30000,Non-ATL,"House 34, Sector D, Rawalpindi",0300-3609979,Salary,Savings,Engineer,1,False,ayesha malik,"house 34, sector d, rawalpindi",4afe15be
-FBR-1179,Osman Bibi,1200000,120000,ATL,"House 18, Sector C, Faisalabad",0300-7954782,Salary,Savings,Businessman,0,True,osman bibi,"house 18, sector c, faisalabad",5440ee6e
-FBR-1180,Zainab Raza,600000,60000,ATL,"House 81, Sector B, Peshawar",0300-9404466,Agriculture,Savings,Driver,0,True,zainab raza,"house 81, sector b, peshawar",79e2515e
-FBR-1181,Hamza Siddiqui,2500000,250000,ATL,"House 50, Sector A, Lahore",0300-3581844,Salary,Savings,Teacher,0,False,hamza siddiqui,"house 50, sector a, lahore",6fe95097
-FBR-1182,Ahmed Bibi,300000,30000,Non-ATL,"House 64, Sector D, Islamabad",0300-3762809,Business,Savings,Doctor,0,True,ahmad bibi,"house 64, sector d, islamabad",5d281315
-FBR-1183,Muhammad Ahmed,600000,60000,ATL,"House 16, Sector D, Lahore",0300-7884254,Salary,Savings,Unemployed,0,False,muhammad ahmad,"house 16, sector d, lahore",058c2b85
-FBR-1184,Ayesha Iqbal,2500000,250000,ATL,"House 87, Sector B, Islamabad",0300-8960626,Agriculture,Savings,Unemployed,0,False,ayesha iqbal,"house 87, sector b, islamabad",e879d623
-FBR-1185,Hamza Sheikh,1200000,120000,ATL,"House 13, Sector C, Faisalabad",0300-9226515,Agriculture,Savings,Teacher,0,False,hamza sheikh,"house 13, sector c, faisalabad",50dc5bdd
-FBR-1186,Ahmed Khan,300000,30000,Non-ATL,"House 99, Sector C, Faisalabad",0300-3944969,Business,Savings,Doctor,3,True,ahmad khan,"house 99, sector c, faisalabad",e8d5c2b9
-FBR-1187,Zainab Ahmed,1200000,120000,ATL,"House 2, Sector B, Faisalabad",0300-9556348,Salary,Savings,Teacher,0,False,zainab ahmad,"house 2, sector b, faisalabad",ece9788f
-FBR-1188,Fatima Khan,0,0,Non-ATL,"House 96, Sector A, Karachi",0300-6812216,Business,Savings,Unemployed,0,True,fatima khan,"house 96, sector a, karachi",bcce06ed
-FBR-1189,Ayesha Ahmed,1200000,120000,Non-ATL,"House 70, Sector C, Rawalpindi",0300-3885152,Agriculture,Savings,Engineer,1,True,ayesha ahmad,"house 70, sector c, rawalpindi",f6a93c05
-FBR-1190,Sana Hassan,300000,30000,Non-ATL,"House 17, Sector D, Islamabad",0300-6675025,Agriculture,Savings,Doctor,4,False,sana hassan,"house 17, sector d, islamabad",1346343c
-FBR-1191,Muhammad Raza,1200000,120000,ATL,"House 40, Sector D, Islamabad",0300-6090009,Agriculture,Savings,Driver,0,False,muhammad raza,"house 40, sector d, islamabad",6d7acbaf
-FBR-1192,Osman Ahmed,1200000,120000,ATL,"House 25, Sector B, Rawalpindi",0300-4701620,Salary,Savings,Unemployed,0,True,osman ahmad,"house 25, sector b, rawalpindi",78467327
-FBR-1193,Ali Iqbal,2500000,250000,ATL,"House 37, Sector D, Faisalabad",0300-5766565,Agriculture,Savings,Driver,0,True,ali iqbal,"house 37, sector d, faisalabad",6c39a953
-FBR-1194,Ayesha Iqbal,300000,30000,Non-ATL,"House 53, Sector C, Lahore",0300-8805448,Business,Savings,Driver,3,True,ayesha iqbal,"house 53, sector c, lahore",85d050fb
-FBR-1195,Bilal Siddiqui,0,0,Non-ATL,"House 31, Sector D, Islamabad",0300-9158408,Business,Savings,Unemployed,1,False,bilal siddiqui,"house 31, sector d, islamabad",fb862a65
-FBR-1196,Ahmed Hassan,600000,60000,Non-ATL,"House 6, Sector A, Rawalpindi",0300-4302378,Salary,Savings,Unemployed,4,True,ahmad hassan,"house 6, sector a, rawalpindi",a2190696
-FBR-1197,Bilal Sheikh,1200000,120000,ATL,"House 53, Sector C, Rawalpindi",0300-3076774,Agriculture,Savings,Doctor,0,True,bilal sheikh,"house 53, sector c, rawalpindi",067a2214
-FBR-1198,Fatima Javed,0,0,Non-ATL,"House 84, Sector C, Rawalpindi",0300-8858190,Agriculture,Savings,Driver,5,True,fatima javed,"house 84, sector c, rawalpindi",6b133cb1
-FBR-1199,Bilal Bibi,300000,30000,Non-ATL,"House 58, Sector C, Islamabad",0300-6650970,Salary,Savings,Doctor,1,False,bilal bibi,"house 58, sector c, islamabad",bfca4922
-FBR-1200,Zainab Khan,0,0,Non-ATL,"House 59, Sector A, Lahore",0300-3383389,Agriculture,Savings,Businessman,5,False,zainab khan,"house 59, sector a, lahore",660fd37c
-FBR-1201,Ali Siddiqui,0,0,Non-ATL,"House 77, Sector C, Peshawar",0300-5521607,Business,Savings,Teacher,3,False,ali siddiqui,"house 77, sector c, peshawar",9da72f27
-FBR-1202,Ahmed Ahmed,0,0,Non-ATL,"House 63, Sector A, Islamabad",0300-6694017,Salary,Savings,Doctor,5,False,ahmad ahmad,"house 63, sector a, islamabad",b31851e1
-FBR-1203,Muhammad Hassan,1200000,120000,ATL,"House 6, Sector D, Karachi",0300-6546147,Agriculture,Savings,Teacher,0,False,muhammad hassan,"house 6, sector d, karachi",60f707b5
-FBR-1204,Hamza Bibi,2500000,250000,Non-ATL,"House 13, Sector C, Faisalabad",0300-5975448,Salary,Savings,Businessman,2,False,hamza bibi,"house 13, sector c, faisalabad",50dc5bdd
-FBR-1205,Ahmed Malik,300000,30000,Non-ATL,"House 1, Sector A, Peshawar",0300-1883524,Business,Savings,Driver,4,True,ahmad malik,"house 1, sector a, peshawar",75b5778a
-FBR-1206,Ayesha Javed,600000,60000,Non-ATL,"House 73, Sector C, Peshawar",0300-3888706,Salary,Savings,Engineer,0,True,ayesha javed,"house 73, sector c, peshawar",612cbbbf
-FBR-1207,Hamza Khan,300000,30000,Non-ATL,"House 2, Sector A, Islamabad",0300-8022154,Agriculture,Savings,Teacher,1,True,hamza khan,"house 2, sector a, islamabad",dfa913b8
-FBR-1208,Ayesha Hassan,1200000,120000,ATL,"House 6, Sector D, Rawalpindi",0300-6863877,Business,Savings,Driver,0,True,ayesha hassan,"house 6, sector d, rawalpindi",a3654a6c
-FBR-1209,Hamza Malik,300000,30000,Non-ATL,"House 52, Sector B, Rawalpindi",0300-1491233,Business,Savings,Doctor,4,True,hamza malik,"house 52, sector b, rawalpindi",02edf517
-FBR-1210,Osman Sheikh,1200000,120000,ATL,"House 73, Sector D, Islamabad",0300-1753147,Business,Savings,Driver,0,True,osman sheikh,"house 73, sector d, islamabad",214761c7
-FBR-1211,Osman Hassan,0,0,Non-ATL,"House 15, Sector D, Islamabad",0300-4988173,Business,Savings,Teacher,5,True,osman hassan,"house 15, sector d, islamabad",9d816c37
-FBR-1212,Fatima Iqbal,600000,60000,ATL,"House 37, Sector A, Peshawar",0300-6302229,Agriculture,Savings,Driver,0,True,fatima iqbal,"house 37, sector a, peshawar",3c607d51
-FBR-1213,Osman Ahmed,1200000,120000,ATL,"House 96, Sector C, Rawalpindi",0300-3764131,Salary,Savings,Driver,0,True,osman ahmad,"house 96, sector c, rawalpindi",6869ee69
-FBR-1214,Sana Khan,2500000,250000,ATL,"House 28, Sector D, Lahore",0300-7493175,Salary,Savings,Engineer,0,False,sana khan,"house 28, sector d, lahore",e7b2e253
-FBR-1215,Osman Iqbal,1200000,120000,ATL,"House 23, Sector C, Rawalpindi",0300-1915399,Agriculture,Savings,Unemployed,0,False,osman iqbal,"house 23, sector c, rawalpindi",413a9568
-FBR-1216,Zainab Ahmed,0,0,Non-ATL,"House 11, Sector B, Lahore",0300-8831494,Agriculture,Savings,Engineer,4,True,zainab ahmad,"house 11, sector b, lahore",db25c227
-FBR-1217,Fatima Raza,0,0,Non-ATL,"House 31, Sector D, Karachi",0300-3064140,Salary,Savings,Engineer,1,False,fatima raza,"house 31, sector d, karachi",34529966
-FBR-1218,Fatima Siddiqui,1200000,120000,ATL,"House 30, Sector C, Lahore",0300-6718935,Business,Savings,Businessman,0,False,fatima siddiqui,"house 30, sector c, lahore",e4a8c623
-FBR-1219,Ahmed Malik,300000,30000,Non-ATL,"House 66, Sector C, Karachi",0300-2327877,Salary,Savings,Engineer,3,False,ahmad malik,"house 66, sector c, karachi",1a7fdb8e
-FBR-1220,Ahmed Iqbal,2500000,250000,ATL,"House 18, Sector B, Faisalabad",0300-9104408,Business,Savings,Teacher,0,False,ahmad iqbal,"house 18, sector b, faisalabad",ae3a851b
-FBR-1221,Osman Khan,0,0,Non-ATL,"House 55, Sector B, Karachi",0300-5116104,Agriculture,Savings,Businessman,2,False,osman khan,"house 55, sector b, karachi",64e176f4
-FBR-1222,Ayesha Sheikh,300000,30000,Non-ATL,"House 71, Sector A, Faisalabad",0300-1085178,Salary,Savings,Teacher,5,False,ayesha sheikh,"house 71, sector a, faisalabad",009e30e7
-FBR-1223,Ahmed Iqbal,300000,30000,Non-ATL,"House 14, Sector B, Karachi",0300-1466894,Agriculture,Savings,Businessman,5,False,ahmad iqbal,"house 14, sector b, karachi",b75144db
-FBR-1224,Osman Javed,2500000,250000,ATL,"House 95, Sector B, Rawalpindi",0300-5907954,Business,Savings,Unemployed,0,False,osman javed,"house 95, sector b, rawalpindi",da891770
-FBR-1225,Sana Javed,2500000,250000,ATL,"House 22, Sector D, Islamabad",0300-6558268,Business,Savings,Businessman,0,True,sana javed,"house 22, sector d, islamabad",ea4910bc
-FBR-1226,Ayesha Siddiqui,600000,60000,Non-ATL,"House 29, Sector C, Islamabad",0300-8184085,Agriculture,Savings,Engineer,1,False,ayesha siddiqui,"house 29, sector c, islamabad",c9155c93
-FBR-1227,Fatima Javed,2500000,250000,ATL,"House 68, Sector D, Islamabad",0300-6460881,Agriculture,Savings,Businessman,0,True,fatima javed,"house 68, sector d, islamabad",891f77b1
-FBR-1228,Fatima Iqbal,1200000,120000,ATL,"House 77, Sector A, Lahore",0300-2624293,Business,Savings,Doctor,0,True,fatima iqbal,"house 77, sector a, lahore",9da35ab1
-FBR-1229,Hamza Iqbal,300000,30000,Non-ATL,"House 2, Sector A, Islamabad",0300-8113831,Business,Savings,Unemployed,2,True,hamza iqbal,"house 2, sector a, islamabad",dfa913b8
-FBR-1230,Bilal Malik,0,0,Non-ATL,"House 90, Sector A, Peshawar",0300-3812649,Agriculture,Savings,Businessman,1,True,bilal malik,"house 90, sector a, peshawar",6ea7b9e2
-FBR-1231,Bilal Iqbal,0,0,Non-ATL,"House 9, Sector C, Islamabad",0300-6502892,Agriculture,Savings,Businessman,5,False,bilal iqbal,"house 9, sector c, islamabad",ecbcdb8b
-FBR-1232,Bilal Iqbal,1200000,120000,Non-ATL,"House 98, Sector B, Lahore",0300-8840930,Agriculture,Savings,Driver,5,False,bilal iqbal,"house 98, sector b, lahore",27838370
-FBR-1233,Ayesha Siddiqui,0,0,Non-ATL,"House 38, Sector B, Rawalpindi",0300-1512570,Agriculture,Savings,Engineer,4,True,ayesha siddiqui,"house 38, sector b, rawalpindi",c9ae31ca
-FBR-1234,Osman Sheikh,2500000,250000,ATL,"House 67, Sector B, Rawalpindi",0300-1213494,Salary,Savings,Businessman,0,False,osman sheikh,"house 67, sector b, rawalpindi",e0107733
-FBR-1235,Bilal Iqbal,600000,60000,ATL,"House 8, Sector D, Lahore",0300-6880906,Business,Savings,Teacher,0,True,bilal iqbal,"house 8, sector d, lahore",69705ce5
-FBR-1236,Zainab Khan,2500000,250000,Non-ATL,"House 67, Sector A, Rawalpindi",0300-4629001,Salary,Savings,Engineer,0,True,zainab khan,"house 67, sector a, rawalpindi",3a473fc8
-FBR-1237,Ahmed Siddiqui,0,0,Non-ATL,"House 14, Sector D, Karachi",0300-2383545,Business,Savings,Businessman,3,False,ahmad siddiqui,"house 14, sector d, karachi",99b31a3d
-FBR-1238,Bilal Javed,600000,60000,ATL,"House 47, Sector D, Peshawar",0300-2443327,Business,Savings,Driver,0,False,bilal javed,"house 47, sector d, peshawar",cfb88e9d
-FBR-1239,Zainab Iqbal,2500000,250000,Non-ATL,"House 81, Sector C, Lahore",0300-9472579,Salary,Savings,Driver,1,False,zainab iqbal,"house 81, sector c, lahore",f46bfaea
-FBR-1240,Ahmed Iqbal,2500000,250000,ATL,"House 73, Sector B, Karachi",0300-1020363,Agriculture,Savings,Businessman,0,True,ahmad iqbal,"house 73, sector b, karachi",e7e5eb1e
-FBR-1241,Osman Hassan,0,0,Non-ATL,"House 50, Sector C, Peshawar",0300-6583970,Agriculture,Savings,Unemployed,0,False,osman hassan,"house 50, sector c, peshawar",3425514f
-FBR-1242,Bilal Malik,300000,30000,Non-ATL,"House 92, Sector C, Islamabad",0300-7309445,Business,Savings,Teacher,3,False,bilal malik,"house 92, sector c, islamabad",1f7a4f98
-FBR-1243,Muhammad Malik,300000,30000,Non-ATL,"House 39, Sector C, Peshawar",0300-4829261,Agriculture,Savings,Teacher,5,False,muhammad malik,"house 39, sector c, peshawar",2f252fe6
-FBR-1244,Sana Khan,0,0,Non-ATL,"House 7, Sector C, Islamabad",0300-1972252,Agriculture,Savings,Driver,2,True,sana khan,"house 7, sector c, islamabad",df15f793
-FBR-1245,Ali Raza,600000,60000,Non-ATL,"House 55, Sector C, Faisalabad",0300-1138893,Business,Savings,Driver,4,False,ali raza,"house 55, sector c, faisalabad",f2b2bbf3
-FBR-1246,Ayesha Sheikh,2500000,250000,Non-ATL,"House 69, Sector A, Peshawar",0300-5137420,Salary,Savings,Unemployed,3,True,ayesha sheikh,"house 69, sector a, peshawar",7bb92086
-FBR-1247,Osman Khan,600000,60000,Non-ATL,"House 41, Sector B, Karachi",0300-7829121,Business,Savings,Doctor,5,False,osman khan,"house 41, sector b, karachi",c6464f6c
-FBR-1248,Hamza Bibi,2500000,250000,Non-ATL,"House 91, Sector A, Rawalpindi",0300-7905033,Agriculture,Savings,Teacher,5,True,hamza bibi,"house 91, sector a, rawalpindi",3eb94eea
-FBR-1249,Muhammad Raza,600000,60000,ATL,"House 78, Sector D, Rawalpindi",0300-8082842,Agriculture,Savings,Unemployed,0,False,muhammad raza,"house 78, sector d, rawalpindi",dae099f9
-FBR-1250,Muhammad Siddiqui,2500000,250000,ATL,"House 86, Sector D, Islamabad",0300-3402810,Salary,Savings,Businessman,0,False,muhammad siddiqui,"house 86, sector d, islamabad",264bc3ed
-FBR-1251,Sana Siddiqui,300000,30000,Non-ATL,"House 56, Sector B, Peshawar",0300-3559422,Agriculture,Savings,Businessman,0,True,sana siddiqui,"house 56, sector b, peshawar",aa531aae
-FBR-1252,Muhammad Khan,2500000,250000,ATL,"House 45, Sector B, Lahore",0300-5124793,Business,Savings,Unemployed,0,True,muhammad khan,"house 45, sector b, lahore",b541a5f6
-FBR-1253,Hamza Hassan,1200000,120000,Non-ATL,"House 100, Sector C, Faisalabad",0300-3356176,Salary,Savings,Businessman,0,False,hamza hassan,"house 100, sector c, faisalabad",1bbca826
-FBR-1254,Fatima Javed,0,0,Non-ATL,"House 76, Sector A, Faisalabad",0300-6239946,Salary,Savings,Engineer,0,True,fatima javed,"house 76, sector a, faisalabad",1b469c97
-FBR-1255,Hamza Hassan,1200000,120000,ATL,"House 61, Sector B, Peshawar",0300-8362418,Business,Savings,Unemployed,0,True,hamza hassan,"house 61, sector b, peshawar",93ce4bf5
-FBR-1256,Zainab Sheikh,600000,60000,ATL,"House 10, Sector D, Lahore",0300-8882787,Business,Savings,Engineer,0,True,zainab sheikh,"house 10, sector d, lahore",1bd69028
-FBR-1257,Ahmed Hassan,300000,30000,Non-ATL,"House 30, Sector B, Peshawar",0300-9291204,Agriculture,Savings,Doctor,1,False,ahmad hassan,"house 30, sector b, peshawar",01670d6f
-FBR-1258,Hamza Iqbal,300000,30000,Non-ATL,"House 13, Sector C, Islamabad",0300-3761168,Business,Savings,Driver,5,True,hamza iqbal,"house 13, sector c, islamabad",c9931c98
-FBR-1259,Ayesha Ahmed,1200000,120000,ATL,"House 90, Sector A, Peshawar",0300-2289208,Salary,Savings,Doctor,0,False,ayesha ahmad,"house 90, sector a, peshawar",6ea7b9e2
-FBR-1260,Zainab Siddiqui,0,0,Non-ATL,"House 30, Sector B, Islamabad",0300-4082981,Business,Savings,Driver,4,False,zainab siddiqui,"house 30, sector b, islamabad",f7e8bd9f
-FBR-1261,Zainab Sheikh,1200000,120000,ATL,"House 63, Sector C, Peshawar",0300-1298083,Agriculture,Savings,Businessman,0,False,zainab sheikh,"house 63, sector c, peshawar",ab03a13d
-FBR-1262,Fatima Javed,600000,60000,ATL,"House 11, Sector B, Faisalabad",0300-3477802,Business,Savings,Teacher,0,False,fatima javed,"house 11, sector b, faisalabad",2402a893
-FBR-1263,Zainab Bibi,600000,60000,ATL,"House 29, Sector A, Peshawar",0300-5920276,Salary,Savings,Unemployed,0,False,zainab bibi,"house 29, sector a, peshawar",c758b35e
-FBR-1264,Zainab Bibi,600000,60000,Non-ATL,"House 95, Sector A, Faisalabad",0300-4430355,Agriculture,Savings,Businessman,0,False,zainab bibi,"house 95, sector a, faisalabad",64afa48a
-FBR-1265,Muhammad Sheikh,2500000,250000,ATL,"House 67, Sector D, Faisalabad",0300-4639170,Business,Savings,Businessman,0,False,muhammad sheikh,"house 67, sector d, faisalabad",f9ce6a85
-FBR-1266,Muhammad Javed,600000,60000,Non-ATL,"House 72, Sector C, Rawalpindi",0300-4908821,Agriculture,Savings,Businessman,0,False,muhammad javed,"house 72, sector c, rawalpindi",0f2188fb
-FBR-1267,Bilal Siddiqui,1200000,120000,Non-ATL,"House 60, Sector B, Islamabad",0300-1977070,Salary,Savings,Unemployed,2,True,bilal siddiqui,"house 60, sector b, islamabad",299d3e1b
-FBR-1268,Ali Sheikh,2500000,250000,ATL,"House 15, Sector C, Rawalpindi",0300-3931583,Salary,Savings,Driver,0,True,ali sheikh,"house 15, sector c, rawalpindi",da60fa80
-FBR-1269,Hamza Siddiqui,300000,30000,Non-ATL,"House 2, Sector D, Lahore",0300-2775736,Business,Savings,Unemployed,4,True,hamza siddiqui,"house 2, sector d, lahore",f59c2266
-FBR-1270,Ayesha Malik,600000,60000,Non-ATL,"House 78, Sector A, Islamabad",0300-6783842,Agriculture,Savings,Driver,5,True,ayesha malik,"house 78, sector a, islamabad",f0e3e2f1
-FBR-1271,Ahmed Sheikh,0,0,Non-ATL,"House 54, Sector B, Rawalpindi",0300-9475375,Business,Savings,Unemployed,1,False,ahmad sheikh,"house 54, sector b, rawalpindi",4833da63
-FBR-1272,Ali Malik,1200000,120000,Non-ATL,"House 83, Sector B, Rawalpindi",0300-6660855,Agriculture,Savings,Teacher,3,True,ali malik,"house 83, sector b, rawalpindi",2b94648c
-FBR-1273,Fatima Javed,600000,60000,ATL,"House 65, Sector B, Islamabad",0300-5058894,Business,Savings,Businessman,0,True,fatima javed,"house 65, sector b, islamabad",1fa40f5d
-FBR-1274,Bilal Javed,2500000,250000,ATL,"House 87, Sector C, Islamabad",0300-1961845,Salary,Savings,Teacher,0,False,bilal javed,"house 87, sector c, islamabad",eaab2361
-FBR-1275,Hamza Ahmed,0,0,Non-ATL,"House 96, Sector B, Faisalabad",0300-3642818,Salary,Savings,Businessman,4,True,hamza ahmad,"house 96, sector b, faisalabad",2f1452eb
-FBR-1276,Bilal Siddiqui,300000,30000,Non-ATL,"House 81, Sector B, Lahore",0300-7584590,Salary,Savings,Driver,2,True,bilal siddiqui,"house 81, sector b, lahore",5d8632fa
-FBR-1277,Hamza Malik,600000,60000,ATL,"House 8, Sector D, Faisalabad",0300-2128086,Agriculture,Savings,Businessman,0,True,hamza malik,"house 8, sector d, faisalabad",4859ddbe
-FBR-1278,Fatima Iqbal,2500000,250000,ATL,"House 22, Sector D, Lahore",0300-3182984,Business,Savings,Unemployed,0,True,fatima iqbal,"house 22, sector d, lahore",3a86241f
-FBR-1279,Bilal Siddiqui,600000,60000,ATL,"House 14, Sector C, Karachi",0300-4418066,Salary,Savings,Driver,0,False,bilal siddiqui,"house 14, sector c, karachi",87af55d6
-FBR-1280,Ahmed Khan,2500000,250000,ATL,"House 99, Sector C, Faisalabad",0300-8015295,Salary,Savings,Teacher,0,False,ahmad khan,"house 99, sector c, faisalabad",e8d5c2b9
-FBR-1281,Ayesha Ahmed,1200000,120000,ATL,"House 44, Sector D, Islamabad",0300-4028465,Salary,Savings,Engineer,0,True,ayesha ahmad,"house 44, sector d, islamabad",c1e90e3e
-FBR-1282,Ahmed Raza,1200000,120000,ATL,"House 30, Sector D, Peshawar",0300-9664259,Agriculture,Savings,Doctor,0,False,ahmad raza,"house 30, sector d, peshawar",273cc36b
-FBR-1283,Zainab Malik,2500000,250000,ATL,"House 41, Sector C, Islamabad",0300-2031565,Salary,Savings,Driver,0,True,zainab malik,"house 41, sector c, islamabad",2a8276cd
-FBR-1284,Ali Raza,2500000,250000,ATL,"House 9, Sector D, Rawalpindi",0300-8759443,Salary,Savings,Doctor,0,False,ali raza,"house 9, sector d, rawalpindi",6daffca5
-FBR-1285,Fatima Sheikh,2500000,250000,Non-ATL,"House 62, Sector D, Karachi",0300-7369271,Business,Savings,Engineer,0,True,fatima sheikh,"house 62, sector d, karachi",3b3d7681
-FBR-1286,Hamza Bibi,0,0,Non-ATL,"House 52, Sector C, Rawalpindi",0300-7390381,Business,Savings,Engineer,4,True,hamza bibi,"house 52, sector c, rawalpindi",5f0bbeb8
-FBR-1287,Osman Bibi,0,0,Non-ATL,"House 68, Sector A, Islamabad",0300-4674914,Agriculture,Savings,Doctor,1,True,osman bibi,"house 68, sector a, islamabad",6b13df91
-FBR-1288,Ahmed Sheikh,600000,60000,Non-ATL,"House 83, Sector C, Islamabad",0300-5460483,Salary,Savings,Unemployed,2,False,ahmad sheikh,"house 83, sector c, islamabad",18116ba8
-FBR-1289,Ayesha Bibi,0,0,Non-ATL,"House 43, Sector C, Karachi",0300-3837952,Agriculture,Savings,Unemployed,1,True,ayesha bibi,"house 43, sector c, karachi",0a165258
-FBR-1290,Ahmed Hassan,1200000,120000,ATL,"House 68, Sector A, Rawalpindi",0300-3305421,Agriculture,Savings,Driver,0,True,ahmad hassan,"house 68, sector a, rawalpindi",5b922cdd
-FBR-1291,Osman Iqbal,600000,60000,ATL,"House 47, Sector A, Lahore",0300-1782143,Salary,Savings,Unemployed,0,False,osman iqbal,"house 47, sector a, lahore",fd3c40f7
-FBR-1292,Fatima Malik,1200000,120000,Non-ATL,"House 35, Sector A, Karachi",0300-3118872,Salary,Savings,Engineer,3,False,fatima malik,"house 35, sector a, karachi",28aa414e
-FBR-1293,Hamza Khan,300000,30000,Non-ATL,"House 59, Sector B, Peshawar",0300-9979680,Salary,Savings,Engineer,5,False,hamza khan,"house 59, sector b, peshawar",99f8c29c
-FBR-1294,Fatima Ahmed,0,0,Non-ATL,"House 45, Sector C, Islamabad",0300-8691385,Agriculture,Savings,Doctor,1,True,fatima ahmad,"house 45, sector c, islamabad",5e357741
-FBR-1295,Fatima Siddiqui,600000,60000,ATL,"House 97, Sector C, Lahore",0300-1452975,Business,Savings,Driver,0,True,fatima siddiqui,"house 97, sector c, lahore",918b2e6c
-FBR-1296,Fatima Siddiqui,300000,30000,Non-ATL,"House 62, Sector A, Peshawar",0300-8507267,Agriculture,Savings,Driver,1,True,fatima siddiqui,"house 62, sector a, peshawar",826d0497
-FBR-1297,Ahmed Javed,0,0,Non-ATL,"House 74, Sector A, Peshawar",0300-2215677,Agriculture,Savings,Engineer,1,False,ahmad javed,"house 74, sector a, peshawar",5d24b49c
-FBR-1298,Ali Siddiqui,300000,30000,Non-ATL,"House 12, Sector A, Karachi",0300-9364116,Salary,Savings,Teacher,5,True,ali siddiqui,"house 12, sector a, karachi",5fdfd7d5
-FBR-1299,Sana Ahmed,1200000,120000,ATL,"House 87, Sector D, Peshawar",0300-8249306,Agriculture,Savings,Engineer,0,True,sana ahmad,"house 87, sector d, peshawar",9d826684
-FBR-1300,Fatima Bibi,2500000,250000,Non-ATL,"House 8, Sector C, Islamabad",0300-8911470,Business,Savings,Driver,2,True,fatima bibi,"house 8, sector c, islamabad",6672a78d
-FBR-1301,Bilal Siddiqui,2500000,250000,ATL,"House 1, Sector B, Lahore",0300-6788192,Business,Savings,Driver,0,True,bilal siddiqui,"house 1, sector b, lahore",56b88d1d
-FBR-1302,Osman Javed,1200000,120000,ATL,"House 29, Sector D, Faisalabad",0300-9288805,Salary,Savings,Teacher,0,False,osman javed,"house 29, sector d, faisalabad",16f1a284
-FBR-1303,Ayesha Siddiqui,2500000,250000,ATL,"House 6, Sector D, Rawalpindi",0300-8454082,Agriculture,Savings,Engineer,0,False,ayesha siddiqui,"house 6, sector d, rawalpindi",a3654a6c
-FBR-1304,Ahmed Javed,1200000,120000,ATL,"House 10, Sector B, Peshawar",0300-8047870,Agriculture,Savings,Teacher,0,True,ahmad javed,"house 10, sector b, peshawar",dcd82af5
-FBR-1305,Bilal Siddiqui,600000,60000,Non-ATL,"House 71, Sector C, Karachi",0300-9750002,Salary,Savings,Unemployed,0,False,bilal siddiqui,"house 71, sector c, karachi",f8f3c739
-FBR-1306,Hamza Raza,1200000,120000,ATL,"House 86, Sector B, Rawalpindi",0300-1396252,Business,Savings,Unemployed,0,True,hamza raza,"house 86, sector b, rawalpindi",be2f3d48
-FBR-1307,Fatima Hassan,0,0,Non-ATL,"House 75, Sector D, Lahore",0300-2948515,Agriculture,Savings,Engineer,2,False,fatima hassan,"house 75, sector d, lahore",a1fc453b
-FBR-1308,Ayesha Iqbal,300000,30000,Non-ATL,"House 51, Sector A, Islamabad",0300-4897465,Salary,Savings,Businessman,5,True,ayesha iqbal,"house 51, sector a, islamabad",8fb87cd3
-FBR-1309,Zainab Sheikh,600000,60000,Non-ATL,"House 90, Sector A, Peshawar",0300-8596058,Business,Savings,Businessman,1,True,zainab sheikh,"house 90, sector a, peshawar",6ea7b9e2
-FBR-1310,Ali Ahmed,0,0,Non-ATL,"House 4, Sector B, Rawalpindi",0300-8318262,Business,Savings,Driver,5,True,ali ahmad,"house 4, sector b, rawalpindi",6e20966f
-FBR-1311,Ali Iqbal,1200000,120000,ATL,"House 11, Sector B, Karachi",0300-7606578,Agriculture,Savings,Teacher,0,False,ali iqbal,"house 11, sector b, karachi",c330b8ae
-FBR-1312,Muhammad Iqbal,0,0,Non-ATL,"House 40, Sector A, Faisalabad",0300-6642588,Business,Savings,Businessman,2,True,muhammad iqbal,"house 40, sector a, faisalabad",e243da57
-FBR-1313,Ayesha Ahmed,300000,30000,Non-ATL,"House 82, Sector B, Rawalpindi",0300-3602456,Salary,Savings,Businessman,4,False,ayesha ahmad,"house 82, sector b, rawalpindi",02d20b9f
-FBR-1314,Bilal Khan,600000,60000,Non-ATL,"House 95, Sector C, Rawalpindi",0300-4287576,Agriculture,Savings,Doctor,1,True,bilal khan,"house 95, sector c, rawalpindi",869d5f02
-FBR-1315,Muhammad Siddiqui,600000,60000,Non-ATL,"House 25, Sector C, Islamabad",0300-4786075,Agriculture,Savings,Doctor,3,True,muhammad siddiqui,"house 25, sector c, islamabad",f6fc44fe
-FBR-1316,Fatima Hassan,600000,60000,ATL,"House 34, Sector C, Rawalpindi",0300-3169787,Business,Savings,Engineer,0,True,fatima hassan,"house 34, sector c, rawalpindi",a8de95bf
-FBR-1317,Osman Malik,600000,60000,ATL,"House 24, Sector D, Faisalabad",0300-8581638,Business,Savings,Engineer,0,True,osman malik,"house 24, sector d, faisalabad",382bc03a
-FBR-1318,Hamza Raza,0,0,Non-ATL,"House 49, Sector C, Lahore",0300-5245338,Business,Savings,Engineer,4,False,hamza raza,"house 49, sector c, lahore",bd16e290
-FBR-1319,Osman Khan,0,0,Non-ATL,"House 36, Sector A, Peshawar",0300-7994834,Agriculture,Savings,Engineer,0,False,osman khan,"house 36, sector a, peshawar",faff87bc
-FBR-1320,Hamza Bibi,2500000,250000,ATL,"House 45, Sector D, Rawalpindi",0300-6135478,Business,Savings,Doctor,0,False,hamza bibi,"house 45, sector d, rawalpindi",52c901ca
-FBR-1321,Osman Ahmed,0,0,Non-ATL,"House 17, Sector D, Faisalabad",0300-2906042,Salary,Savings,Doctor,1,False,osman ahmad,"house 17, sector d, faisalabad",c28f034e
-FBR-1322,Fatima Iqbal,0,0,Non-ATL,"House 90, Sector C, Karachi",0300-3370664,Business,Savings,Businessman,1,True,fatima iqbal,"house 90, sector c, karachi",14d22d15
-FBR-1323,Sana Iqbal,300000,30000,Non-ATL,"House 4, Sector A, Rawalpindi",0300-3371401,Business,Savings,Teacher,2,True,sana iqbal,"house 4, sector a, rawalpindi",4a3dc51b
-FBR-1324,Sana Javed,300000,30000,Non-ATL,"House 49, Sector D, Islamabad",0300-3999169,Salary,Savings,Businessman,2,False,sana javed,"house 49, sector d, islamabad",57be4c0c
-FBR-1325,Muhammad Iqbal,0,0,Non-ATL,"House 51, Sector D, Faisalabad",0300-9299769,Salary,Savings,Driver,2,False,muhammad iqbal,"house 51, sector d, faisalabad",bd6a7008
-FBR-1326,Bilal Sheikh,300000,30000,Non-ATL,"House 72, Sector D, Peshawar",0300-5902024,Salary,Savings,Engineer,0,True,bilal sheikh,"house 72, sector d, peshawar",0af82c36
-FBR-1327,Zainab Javed,2500000,250000,Non-ATL,"House 1, Sector B, Peshawar",0300-7428734,Salary,Savings,Teacher,4,False,zainab javed,"house 1, sector b, peshawar",ecc3f675
-FBR-1328,Ayesha Iqbal,0,0,Non-ATL,"House 41, Sector A, Lahore",0300-7552927,Agriculture,Savings,Businessman,1,False,ayesha iqbal,"house 41, sector a, lahore",2176522b
-FBR-1329,Ali Sheikh,300000,30000,Non-ATL,"House 35, Sector D, Islamabad",0300-7802314,Business,Savings,Teacher,0,False,ali sheikh,"house 35, sector d, islamabad",9354222d
-FBR-1330,Osman Sheikh,0,0,Non-ATL,"House 13, Sector B, Lahore",0300-7020414,Salary,Savings,Teacher,1,True,osman sheikh,"house 13, sector b, lahore",e1aad73f
-FBR-1331,Fatima Raza,600000,60000,ATL,"House 19, Sector A, Lahore",0300-2683125,Agriculture,Savings,Unemployed,0,False,fatima raza,"house 19, sector a, lahore",454b8f09
-FBR-1332,Osman Iqbal,300000,30000,Non-ATL,"House 55, Sector A, Peshawar",0300-1428463,Salary,Savings,Doctor,4,True,osman iqbal,"house 55, sector a, peshawar",0df7d9c2
-FBR-1333,Hamza Sheikh,0,0,Non-ATL,"House 38, Sector A, Lahore",0300-4688252,Salary,Savings,Engineer,1,False,hamza sheikh,"house 38, sector a, lahore",3fd69995
-FBR-1334,Muhammad Sheikh,0,0,Non-ATL,"House 56, Sector A, Lahore",0300-8189617,Business,Savings,Driver,4,True,muhammad sheikh,"house 56, sector a, lahore",7cf7b2c4
-FBR-1335,Ayesha Hassan,600000,60000,ATL,"House 90, Sector A, Karachi",0300-7535716,Agriculture,Savings,Doctor,0,True,ayesha hassan,"house 90, sector a, karachi",66915aea
-FBR-1336,Ahmed Javed,600000,60000,Non-ATL,"House 92, Sector A, Peshawar",0300-2661098,Salary,Savings,Teacher,3,False,ahmad javed,"house 92, sector a, peshawar",068fc26f
-FBR-1337,Ahmed Ahmed,2500000,250000,ATL,"House 76, Sector A, Rawalpindi",0300-7345387,Agriculture,Savings,Doctor,0,True,ahmad ahmad,"house 76, sector a, rawalpindi",7b1b851d
-FBR-1338,Zainab Bibi,0,0,Non-ATL,"House 3, Sector D, Islamabad",0300-7228103,Agriculture,Savings,Driver,0,True,zainab bibi,"house 3, sector d, islamabad",78ab1a25
-FBR-1339,Fatima Sheikh,300000,30000,Non-ATL,"House 64, Sector B, Faisalabad",0300-2743000,Agriculture,Savings,Doctor,1,True,fatima sheikh,"house 64, sector b, faisalabad",9cfd2bfd
-FBR-1340,Hamza Hassan,600000,60000,Non-ATL,"House 64, Sector B, Rawalpindi",0300-5740917,Salary,Savings,Doctor,0,True,hamza hassan,"house 64, sector b, rawalpindi",db643158
-FBR-1341,Zainab Javed,0,0,Non-ATL,"House 31, Sector A, Karachi",0300-8886305,Salary,Savings,Teacher,4,True,zainab javed,"house 31, sector a, karachi",f6c90e8b
-FBR-1342,Osman Hassan,600000,60000,ATL,"House 33, Sector B, Islamabad",0300-1486418,Agriculture,Savings,Unemployed,0,True,osman hassan,"house 33, sector b, islamabad",9bbca570
-FBR-1343,Muhammad Siddiqui,2500000,250000,Non-ATL,"House 92, Sector D, Rawalpindi",0300-8515723,Agriculture,Savings,Unemployed,1,True,muhammad siddiqui,"house 92, sector d, rawalpindi",570bfcac
-FBR-1344,Hamza Ahmed,0,0,Non-ATL,"House 77, Sector C, Rawalpindi",0300-2026085,Business,Savings,Teacher,1,False,hamza ahmad,"house 77, sector c, rawalpindi",07e01827
-FBR-1345,Ali Siddiqui,2500000,250000,Non-ATL,"House 82, Sector C, Rawalpindi",0300-7724363,Agriculture,Savings,Unemployed,4,False,ali siddiqui,"house 82, sector c, rawalpindi",91d7a1d3
-FBR-1346,Hamza Sheikh,1200000,120000,ATL,"House 15, Sector D, Faisalabad",0300-4165915,Salary,Savings,Driver,0,True,hamza sheikh,"house 15, sector d, faisalabad",7c15c267
-FBR-1347,Ayesha Raza,2500000,250000,ATL,"House 66, Sector D, Karachi",0300-1505335,Salary,Savings,Teacher,0,True,ayesha raza,"house 66, sector d, karachi",ba739a4b
-FBR-1348,Sana Javed,600000,60000,ATL,"House 70, Sector D, Faisalabad",0300-7752649,Salary,Savings,Driver,0,False,sana javed,"house 70, sector d, faisalabad",92316e47
-FBR-1349,Muhammad Bibi,600000,60000,Non-ATL,"House 35, Sector C, Faisalabad",0300-8014757,Agriculture,Savings,Unemployed,0,True,muhammad bibi,"house 35, sector c, faisalabad",bc1836f8
-FBR-1350,Muhammad Ahmed,300000,30000,Non-ATL,"House 97, Sector D, Peshawar",0300-2141250,Salary,Savings,Engineer,0,True,muhammad ahmad,"house 97, sector d, peshawar",b9a35e5b
-FBR-1351,Fatima Malik,1200000,120000,ATL,"House 49, Sector C, Karachi",0300-1136364,Salary,Savings,Unemployed,0,True,fatima malik,"house 49, sector c, karachi",f12b797c
-FBR-1352,Fatima Javed,0,0,Non-ATL,"House 37, Sector D, Faisalabad",0300-5027753,Salary,Savings,Businessman,2,False,fatima javed,"house 37, sector d, faisalabad",6c39a953
-FBR-1353,Sana Malik,1200000,120000,ATL,"House 68, Sector B, Karachi",0300-7663658,Salary,Savings,Teacher,0,False,sana malik,"house 68, sector b, karachi",caa1bacf
-FBR-1354,Ayesha Hassan,1200000,120000,Non-ATL,"House 68, Sector A, Peshawar",0300-4767931,Agriculture,Savings,Doctor,2,True,ayesha hassan,"house 68, sector a, peshawar",242a6410
-FBR-1355,Ahmed Ahmed,0,0,Non-ATL,"House 4, Sector A, Faisalabad",0300-9210295,Business,Savings,Doctor,3,True,ahmad ahmad,"house 4, sector a, faisalabad",ac78bc07
-FBR-1356,Muhammad Hassan,1200000,120000,ATL,"House 46, Sector A, Islamabad",0300-2988873,Salary,Savings,Teacher,0,True,muhammad hassan,"house 46, sector a, islamabad",d3b503a7
-FBR-1357,Fatima Javed,600000,60000,ATL,"House 44, Sector A, Rawalpindi",0300-5172218,Agriculture,Savings,Businessman,0,True,fatima javed,"house 44, sector a, rawalpindi",55b97afa
-FBR-1358,Bilal Malik,1200000,120000,ATL,"House 38, Sector C, Faisalabad",0300-6431794,Agriculture,Savings,Driver,0,False,bilal malik,"house 38, sector c, faisalabad",e2463b40
-FBR-1359,Ahmed Iqbal,2500000,250000,Non-ATL,"House 30, Sector D, Rawalpindi",0300-4475341,Salary,Savings,Teacher,5,True,ahmad iqbal,"house 30, sector d, rawalpindi",51ed5a52
-FBR-1360,Sana Raza,1200000,120000,ATL,"House 95, Sector A, Rawalpindi",0300-6820390,Agriculture,Savings,Driver,0,True,sana raza,"house 95, sector a, rawalpindi",d5ab7069
-FBR-1361,Ali Iqbal,1200000,120000,ATL,"House 49, Sector C, Peshawar",0300-7487158,Agriculture,Savings,Driver,0,False,ali iqbal,"house 49, sector c, peshawar",afd00b75
-FBR-1362,Zainab Malik,300000,30000,Non-ATL,"House 65, Sector C, Karachi",0300-2157947,Salary,Savings,Businessman,5,False,zainab malik,"house 65, sector c, karachi",52d9093d
-FBR-1363,Sana Bibi,1200000,120000,Non-ATL,"House 81, Sector D, Karachi",0300-9331620,Business,Savings,Businessman,1,False,sana bibi,"house 81, sector d, karachi",f3626ab5
-FBR-1364,Ayesha Malik,300000,30000,Non-ATL,"House 89, Sector B, Rawalpindi",0300-2407088,Business,Savings,Engineer,2,True,ayesha malik,"house 89, sector b, rawalpindi",e6ef5fab
-FBR-1365,Ali Sheikh,2500000,250000,Non-ATL,"House 93, Sector B, Rawalpindi",0300-6899275,Salary,Savings,Driver,4,False,ali sheikh,"house 93, sector b, rawalpindi",ddabdbbd
-FBR-1366,Fatima Raza,600000,60000,ATL,"House 42, Sector C, Faisalabad",0300-4875975,Agriculture,Savings,Driver,0,False,fatima raza,"house 42, sector c, faisalabad",4e6c92a1
-FBR-1367,Ali Hassan,600000,60000,Non-ATL,"House 34, Sector C, Rawalpindi",0300-1546610,Salary,Savings,Businessman,0,True,ali hassan,"house 34, sector c, rawalpindi",a8de95bf
-FBR-1368,Hamza Ahmed,2500000,250000,ATL,"House 46, Sector A, Rawalpindi",0300-8891705,Salary,Savings,Businessman,0,False,hamza ahmad,"house 46, sector a, rawalpindi",3fb654f4
-FBR-1369,Osman Javed,300000,30000,Non-ATL,"House 50, Sector A, Faisalabad",0300-8179061,Business,Savings,Doctor,3,True,osman javed,"house 50, sector a, faisalabad",252c9eec
-FBR-1370,Zainab Ahmed,0,0,Non-ATL,"House 31, Sector A, Faisalabad",0300-1257893,Business,Savings,Engineer,4,False,zainab ahmad,"house 31, sector a, faisalabad",51007d8d
-FBR-1371,Ali Khan,600000,60000,ATL,"House 59, Sector B, Rawalpindi",0300-5710203,Salary,Savings,Unemployed,0,False,ali khan,"house 59, sector b, rawalpindi",3bffdb53
-FBR-1372,Osman Khan,2500000,250000,Non-ATL,"House 24, Sector C, Lahore",0300-7647905,Agriculture,Savings,Driver,1,True,osman khan,"house 24, sector c, lahore",977f8785
-FBR-1373,Osman Sheikh,2500000,250000,ATL,"House 89, Sector B, Karachi",0300-8605250,Agriculture,Savings,Unemployed,0,True,osman sheikh,"house 89, sector b, karachi",5f1212d6
-FBR-1374,Hamza Ahmed,0,0,Non-ATL,"House 67, Sector D, Lahore",0300-7345551,Salary,Savings,Engineer,4,True,hamza ahmad,"house 67, sector d, lahore",e944ba00
-FBR-1375,Hamza Iqbal,2500000,250000,ATL,"House 42, Sector B, Rawalpindi",0300-3321576,Agriculture,Savings,Engineer,0,True,hamza iqbal,"house 42, sector b, rawalpindi",026a9593
-FBR-1376,Osman Khan,1200000,120000,ATL,"House 95, Sector B, Lahore",0300-1993820,Salary,Savings,Teacher,0,True,osman khan,"house 95, sector b, lahore",3ac17d9d
-FBR-1377,Ahmed Hassan,1200000,120000,ATL,"House 28, Sector C, Karachi",0300-1899687,Salary,Savings,Unemployed,0,False,ahmad hassan,"house 28, sector c, karachi",14171205
-FBR-1378,Osman Bibi,2500000,250000,ATL,"House 52, Sector C, Peshawar",0300-5913903,Salary,Savings,Businessman,0,False,osman bibi,"house 52, sector c, peshawar",af90fc86
-FBR-1379,Hamza Siddiqui,0,0,Non-ATL,"House 52, Sector C, Karachi",0300-7619430,Salary,Savings,Teacher,2,True,hamza siddiqui,"house 52, sector c, karachi",b6c2f31f
-FBR-1380,Zainab Ahmed,0,0,Non-ATL,"House 15, Sector A, Lahore",0300-4008915,Business,Savings,Doctor,4,False,zainab ahmad,"house 15, sector a, lahore",38c96e4a
-FBR-1381,Fatima Raza,2500000,250000,Non-ATL,"House 75, Sector C, Peshawar",0300-1553622,Salary,Savings,Engineer,3,False,fatima raza,"house 75, sector c, peshawar",439291c8
-FBR-1382,Ali Raza,2500000,250000,ATL,"House 29, Sector A, Rawalpindi",0300-8260425,Business,Savings,Unemployed,0,True,ali raza,"house 29, sector a, rawalpindi",ce98d8c4
-FBR-1383,Sana Javed,1200000,120000,ATL,"House 74, Sector A, Faisalabad",0300-2517285,Salary,Savings,Teacher,0,True,sana javed,"house 74, sector a, faisalabad",4c194c86
-FBR-1384,Sana Hassan,600000,60000,ATL,"House 70, Sector A, Karachi",0300-3136743,Agriculture,Savings,Teacher,0,False,sana hassan,"house 70, sector a, karachi",67f70769
-FBR-1385,Fatima Bibi,1200000,120000,Non-ATL,"House 79, Sector D, Faisalabad",0300-9564098,Agriculture,Savings,Businessman,3,False,fatima bibi,"house 79, sector d, faisalabad",dbc02728
-FBR-1386,Ahmed Ahmed,0,0,Non-ATL,"House 74, Sector C, Faisalabad",0300-1452453,Salary,Savings,Driver,0,True,ahmad ahmad,"house 74, sector c, faisalabad",6f01f2fd
-FBR-1387,Hamza Javed,1200000,120000,Non-ATL,"House 85, Sector C, Rawalpindi",0300-6054839,Business,Savings,Businessman,0,True,hamza javed,"house 85, sector c, rawalpindi",99855105
-FBR-1388,Fatima Siddiqui,2500000,250000,ATL,"House 62, Sector A, Rawalpindi",0300-5514819,Agriculture,Savings,Driver,0,True,fatima siddiqui,"house 62, sector a, rawalpindi",91b243cb
-FBR-1389,Hamza Siddiqui,300000,30000,Non-ATL,"House 77, Sector D, Karachi",0300-2497486,Salary,Savings,Teacher,1,False,hamza siddiqui,"house 77, sector d, karachi",9242b56f
-FBR-1390,Muhammad Bibi,0,0,Non-ATL,"House 90, Sector B, Karachi",0300-8726293,Agriculture,Savings,Teacher,3,False,muhammad bibi,"house 90, sector b, karachi",369b7f22
-FBR-1391,Ahmed Ahmed,0,0,Non-ATL,"House 57, Sector B, Karachi",0300-3611218,Business,Savings,Unemployed,5,True,ahmad ahmad,"house 57, sector b, karachi",58f28b28
-FBR-1392,Fatima Bibi,2500000,250000,ATL,"House 26, Sector A, Peshawar",0300-9681112,Salary,Savings,Doctor,0,True,fatima bibi,"house 26, sector a, peshawar",87385748
-FBR-1393,Ali Ahmed,300000,30000,Non-ATL,"House 54, Sector C, Rawalpindi",0300-6097272,Agriculture,Savings,Doctor,5,True,ali ahmad,"house 54, sector c, rawalpindi",222b1e56
-FBR-1394,Fatima Ahmed,600000,60000,Non-ATL,"House 23, Sector A, Islamabad",0300-2053499,Agriculture,Savings,Doctor,3,False,fatima ahmad,"house 23, sector a, islamabad",b99eb071
-FBR-1395,Ayesha Iqbal,600000,60000,Non-ATL,"House 29, Sector A, Rawalpindi",0300-4297227,Salary,Savings,Engineer,2,True,ayesha iqbal,"house 29, sector a, rawalpindi",ce98d8c4
-FBR-1396,Ayesha Hassan,2500000,250000,ATL,"House 67, Sector C, Islamabad",0300-2445446,Salary,Savings,Unemployed,0,True,ayesha hassan,"house 67, sector c, islamabad",23449a6e
-FBR-1397,Ali Iqbal,1200000,120000,ATL,"House 39, Sector D, Rawalpindi",0300-1722406,Business,Savings,Driver,0,True,ali iqbal,"house 39, sector d, rawalpindi",93ac4538
-FBR-1398,Sana Siddiqui,300000,30000,Non-ATL,"House 84, Sector A, Rawalpindi",0300-5595452,Salary,Savings,Doctor,0,True,sana siddiqui,"house 84, sector a, rawalpindi",ecd5bee5
-FBR-1399,Osman Javed,2500000,250000,ATL,"House 71, Sector C, Peshawar",0300-2643455,Business,Savings,Unemployed,0,True,osman javed,"house 71, sector c, peshawar",c3859547
-FBR-1400,Hamza Ahmed,300000,30000,Non-ATL,"House 71, Sector A, Peshawar",0300-6833605,Salary,Savings,Engineer,5,True,hamza ahmad,"house 71, sector a, peshawar",28bf8b0d
-FBR-1401,Ayesha Raza,1200000,120000,Non-ATL,"House 63, Sector D, Lahore",0300-6109543,Salary,Savings,Businessman,1,False,ayesha raza,"house 63, sector d, lahore",c67fc2bb
-FBR-1402,Ayesha Khan,2500000,250000,ATL,"House 94, Sector C, Karachi",0300-2055937,Salary,Savings,Engineer,0,True,ayesha khan,"house 94, sector c, karachi",06def829
-FBR-1403,Ali Javed,600000,60000,ATL,"House 7, Sector D, Islamabad",0300-4859756,Business,Savings,Unemployed,0,True,ali javed,"house 7, sector d, islamabad",d7d4482f
-FBR-1404,Ayesha Siddiqui,0,0,Non-ATL,"House 2, Sector B, Karachi",0300-7551656,Business,Savings,Unemployed,1,False,ayesha siddiqui,"house 2, sector b, karachi",e8530095
-FBR-1405,Muhammad Malik,0,0,Non-ATL,"House 27, Sector D, Islamabad",0300-8767806,Business,Savings,Doctor,5,True,muhammad malik,"house 27, sector d, islamabad",dc3734d3
-FBR-1406,Osman Javed,600000,60000,ATL,"House 66, Sector B, Peshawar",0300-2306209,Business,Savings,Engineer,0,False,osman javed,"house 66, sector b, peshawar",0f1de5a1
-FBR-1407,Ayesha Hassan,2500000,250000,Non-ATL,"House 16, Sector C, Islamabad",0300-8287921,Business,Savings,Businessman,2,False,ayesha hassan,"house 16, sector c, islamabad",7d9dcd01
-FBR-1408,Ahmed Siddiqui,0,0,Non-ATL,"House 9, Sector B, Islamabad",0300-7470146,Salary,Savings,Driver,2,False,ahmad siddiqui,"house 9, sector b, islamabad",6f9fd6d9
-FBR-1409,Ayesha Bibi,1200000,120000,ATL,"House 86, Sector D, Faisalabad",0300-1368778,Salary,Savings,Driver,0,False,ayesha bibi,"house 86, sector d, faisalabad",65102a20
-FBR-1410,Bilal Siddiqui,600000,60000,Non-ATL,"House 25, Sector A, Rawalpindi",0300-9494159,Salary,Savings,Driver,4,True,bilal siddiqui,"house 25, sector a, rawalpindi",a00eeca2
-FBR-1411,Bilal Siddiqui,0,0,Non-ATL,"House 14, Sector B, Faisalabad",0300-6526792,Agriculture,Savings,Doctor,2,False,bilal siddiqui,"house 14, sector b, faisalabad",dc72890e
-FBR-1412,Muhammad Javed,2500000,250000,ATL,"House 38, Sector A, Islamabad",0300-9013320,Salary,Savings,Driver,0,False,muhammad javed,"house 38, sector a, islamabad",31be9d57
-FBR-1413,Muhammad Malik,2500000,250000,ATL,"House 9, Sector B, Karachi",0300-6096561,Business,Savings,Doctor,0,True,muhammad malik,"house 9, sector b, karachi",1a107773
-FBR-1414,Ali Hassan,1200000,120000,ATL,"House 94, Sector C, Karachi",0300-1946632,Business,Savings,Doctor,0,False,ali hassan,"house 94, sector c, karachi",06def829
-FBR-1415,Zainab Khan,300000,30000,Non-ATL,"House 46, Sector B, Islamabad",0300-2746449,Business,Savings,Unemployed,5,False,zainab khan,"house 46, sector b, islamabad",8c8edad7
-FBR-1416,Zainab Hassan,0,0,Non-ATL,"House 60, Sector A, Karachi",0300-3986823,Business,Savings,Unemployed,3,False,zainab hassan,"house 60, sector a, karachi",036a97a7
-FBR-1417,Ahmed Sheikh,2500000,250000,Non-ATL,"House 72, Sector D, Rawalpindi",0300-3772798,Agriculture,Savings,Driver,3,True,ahmad sheikh,"house 72, sector d, rawalpindi",7b95ba06
-FBR-1418,Bilal Ahmed,600000,60000,Non-ATL,"House 52, Sector D, Lahore",0300-6243913,Agriculture,Savings,Driver,4,True,bilal ahmad,"house 52, sector d, lahore",ee48ad64
-FBR-1419,Muhammad Raza,0,0,Non-ATL,"House 3, Sector C, Rawalpindi",0300-8445898,Agriculture,Savings,Driver,3,False,muhammad raza,"house 3, sector c, rawalpindi",8c686d1d
-FBR-1420,Hamza Sheikh,2500000,250000,ATL,"House 55, Sector A, Rawalpindi",0300-3899381,Business,Savings,Doctor,0,False,hamza sheikh,"house 55, sector a, rawalpindi",e1c7a06e
-FBR-1421,Zainab Ahmed,0,0,Non-ATL,"House 23, Sector D, Peshawar",0300-4806505,Business,Savings,Teacher,1,False,zainab ahmad,"house 23, sector d, peshawar",3768abf5
-FBR-1422,Muhammad Khan,2500000,250000,Non-ATL,"House 63, Sector D, Lahore",0300-2126213,Salary,Savings,Businessman,0,True,muhammad khan,"house 63, sector d, lahore",c67fc2bb
-FBR-1423,Ahmed Malik,1200000,120000,ATL,"House 73, Sector B, Karachi",0300-1134719,Agriculture,Savings,Engineer,0,True,ahmad malik,"house 73, sector b, karachi",e7e5eb1e
-FBR-1424,Fatima Ahmed,600000,60000,Non-ATL,"House 75, Sector A, Islamabad",0300-1712060,Salary,Savings,Driver,4,False,fatima ahmad,"house 75, sector a, islamabad",3aa4b1b2
-FBR-1425,Osman Raza,0,0,Non-ATL,"House 66, Sector A, Peshawar",0300-1354758,Business,Savings,Businessman,5,False,osman raza,"house 66, sector a, peshawar",497d6fde
-FBR-1426,Sana Sheikh,0,0,Non-ATL,"House 78, Sector A, Islamabad",0300-7671977,Agriculture,Savings,Unemployed,0,False,sana sheikh,"house 78, sector a, islamabad",f0e3e2f1
-FBR-1427,Ayesha Ahmed,1200000,120000,ATL,"House 70, Sector B, Rawalpindi",0300-4619278,Agriculture,Savings,Driver,0,False,ayesha ahmad,"house 70, sector b, rawalpindi",8cb90c3f
-FBR-1428,Muhammad Khan,600000,60000,ATL,"House 98, Sector D, Karachi",0300-3425524,Salary,Savings,Businessman,0,False,muhammad khan,"house 98, sector d, karachi",5e11290b
-FBR-1429,Osman Raza,0,0,Non-ATL,"House 71, Sector C, Peshawar",0300-7312722,Agriculture,Savings,Businessman,3,False,osman raza,"house 71, sector c, peshawar",c3859547
-FBR-1430,Zainab Siddiqui,0,0,Non-ATL,"House 98, Sector D, Peshawar",0300-1824372,Business,Savings,Teacher,1,True,zainab siddiqui,"house 98, sector d, peshawar",f52c307c
-FBR-1431,Muhammad Hassan,600000,60000,ATL,"House 17, Sector A, Islamabad",0300-1281784,Agriculture,Savings,Teacher,0,True,muhammad hassan,"house 17, sector a, islamabad",d830d52a
-FBR-1432,Ali Javed,2500000,250000,ATL,"House 29, Sector C, Faisalabad",0300-2815672,Agriculture,Savings,Engineer,0,True,ali javed,"house 29, sector c, faisalabad",ef0e446c
-FBR-1433,Ayesha Sheikh,0,0,Non-ATL,"House 14, Sector C, Lahore",0300-7627578,Agriculture,Savings,Businessman,2,True,ayesha sheikh,"house 14, sector c, lahore",916c0aa3
-FBR-1434,Osman Ahmed,300000,30000,Non-ATL,"House 95, Sector B, Lahore",0300-5627719,Salary,Savings,Doctor,2,False,osman ahmad,"house 95, sector b, lahore",3ac17d9d
-FBR-1435,Osman Siddiqui,300000,30000,Non-ATL,"House 8, Sector C, Lahore",0300-1218134,Salary,Savings,Doctor,2,False,osman siddiqui,"house 8, sector c, lahore",646eff93
-FBR-1436,Zainab Bibi,300000,30000,Non-ATL,"House 88, Sector C, Karachi",0300-8909733,Business,Savings,Teacher,1,True,zainab bibi,"house 88, sector c, karachi",47e8fbdc
-FBR-1437,Ali Javed,0,0,Non-ATL,"House 18, Sector B, Lahore",0300-1971286,Salary,Savings,Teacher,2,False,ali javed,"house 18, sector b, lahore",d15b9b55
-FBR-1438,Osman Ahmed,0,0,Non-ATL,"House 49, Sector D, Karachi",0300-4804609,Agriculture,Savings,Businessman,3,True,osman ahmad,"house 49, sector d, karachi",71eb070a
-FBR-1439,Ali Hassan,2500000,250000,ATL,"House 36, Sector A, Islamabad",0300-4064540,Agriculture,Savings,Driver,0,True,ali hassan,"house 36, sector a, islamabad",381c1726
-FBR-1440,Ali Ahmed,2500000,250000,ATL,"House 93, Sector A, Islamabad",0300-7161119,Agriculture,Savings,Unemployed,0,False,ali ahmad,"house 93, sector a, islamabad",0878d971
-FBR-1441,Ahmed Bibi,0,0,Non-ATL,"House 69, Sector D, Lahore",0300-3210271,Business,Savings,Doctor,0,False,ahmad bibi,"house 69, sector d, lahore",5989f9db
-FBR-1442,Sana Malik,1200000,120000,ATL,"House 41, Sector D, Rawalpindi",0300-9217236,Salary,Savings,Unemployed,0,False,sana malik,"house 41, sector d, rawalpindi",b322ef30
-FBR-1443,Zainab Hassan,300000,30000,Non-ATL,"House 55, Sector D, Lahore",0300-1084029,Agriculture,Savings,Teacher,4,False,zainab hassan,"house 55, sector d, lahore",216519b8
-FBR-1444,Ayesha Javed,300000,30000,Non-ATL,"House 44, Sector B, Islamabad",0300-8785420,Agriculture,Savings,Unemployed,0,False,ayesha javed,"house 44, sector b, islamabad",1e5f63c1
-FBR-1445,Bilal Ahmed,2500000,250000,ATL,"House 74, Sector B, Peshawar",0300-4115668,Business,Savings,Teacher,0,True,bilal ahmad,"house 74, sector b, peshawar",65c60b73
-FBR-1446,Muhammad Ahmed,300000,30000,Non-ATL,"House 77, Sector C, Rawalpindi",0300-5166498,Business,Savings,Unemployed,1,False,muhammad ahmad,"house 77, sector c, rawalpindi",07e01827
-FBR-1447,Bilal Raza,300000,30000,Non-ATL,"House 67, Sector A, Islamabad",0300-5766035,Salary,Savings,Engineer,5,True,bilal raza,"house 67, sector a, islamabad",817b64e7
-FBR-1448,Zainab Khan,600000,60000,ATL,"House 64, Sector C, Rawalpindi",0300-6131601,Salary,Savings,Unemployed,0,True,zainab khan,"house 64, sector c, rawalpindi",f4b816dd
-FBR-1449,Bilal Khan,600000,60000,ATL,"House 16, Sector D, Rawalpindi",0300-7164130,Business,Savings,Driver,0,False,bilal khan,"house 16, sector d, rawalpindi",1f35a617
-FBR-1450,Fatima Sheikh,300000,30000,Non-ATL,"House 46, Sector B, Rawalpindi",0300-1240511,Salary,Savings,Doctor,2,True,fatima sheikh,"house 46, sector b, rawalpindi",f91c7b72
-FBR-1451,Osman Javed,600000,60000,ATL,"House 28, Sector B, Lahore",0300-8797125,Business,Savings,Businessman,0,False,osman javed,"house 28, sector b, lahore",63dc91c5
-FBR-1452,Hamza Ahmed,0,0,Non-ATL,"House 6, Sector A, Peshawar",0300-5037608,Agriculture,Savings,Businessman,0,False,hamza ahmad,"house 6, sector a, peshawar",c98ce9d9
-FBR-1453,Ali Ahmed,600000,60000,ATL,"House 86, Sector A, Faisalabad",0300-7546795,Agriculture,Savings,Unemployed,0,False,ali ahmad,"house 86, sector a, faisalabad",02d89066
-FBR-1454,Zainab Raza,300000,30000,Non-ATL,"House 45, Sector A, Karachi",0300-5717530,Agriculture,Savings,Teacher,4,True,zainab raza,"house 45, sector a, karachi",6126e5f3
-FBR-1455,Hamza Hassan,1200000,120000,Non-ATL,"House 75, Sector C, Karachi",0300-7405108,Salary,Savings,Unemployed,2,True,hamza hassan,"house 75, sector c, karachi",c97cbaa0
-FBR-1456,Osman Malik,1200000,120000,ATL,"House 24, Sector B, Faisalabad",0300-9003328,Business,Savings,Engineer,0,True,osman malik,"house 24, sector b, faisalabad",f36228b2
-FBR-1457,Osman Sheikh,2500000,250000,ATL,"House 51, Sector D, Karachi",0300-9084242,Agriculture,Savings,Teacher,0,True,osman sheikh,"house 51, sector d, karachi",aa4592b3
-FBR-1458,Fatima Malik,1200000,120000,ATL,"House 3, Sector B, Lahore",0300-1438251,Business,Savings,Teacher,0,True,fatima malik,"house 3, sector b, lahore",5b4195f9
-FBR-1459,Fatima Javed,2500000,250000,ATL,"House 40, Sector D, Faisalabad",0300-5926588,Business,Savings,Driver,0,True,fatima javed,"house 40, sector d, faisalabad",b1421c9b
-FBR-1460,Bilal Raza,300000,30000,Non-ATL,"House 34, Sector C, Karachi",0300-8912271,Salary,Savings,Unemployed,5,True,bilal raza,"house 34, sector c, karachi",914f8336
-FBR-1461,Ahmed Raza,600000,60000,Non-ATL,"House 40, Sector D, Rawalpindi",0300-2762967,Business,Savings,Unemployed,3,False,ahmad raza,"house 40, sector d, rawalpindi",379d0f43
-FBR-1462,Ayesha Javed,300000,30000,Non-ATL,"House 68, Sector C, Rawalpindi",0300-4231266,Salary,Savings,Businessman,3,True,ayesha javed,"house 68, sector c, rawalpindi",e43e9162
-FBR-1463,Bilal Javed,0,0,Non-ATL,"House 83, Sector D, Lahore",0300-8475552,Salary,Savings,Teacher,5,False,bilal javed,"house 83, sector d, lahore",913adff1
-FBR-1464,Muhammad Raza,300000,30000,Non-ATL,"House 7, Sector B, Karachi",0300-8571811,Agriculture,Savings,Engineer,3,False,muhammad raza,"house 7, sector b, karachi",34b3df43
-FBR-1465,Osman Sheikh,600000,60000,ATL,"House 48, Sector C, Faisalabad",0300-5398535,Salary,Savings,Driver,0,True,osman sheikh,"house 48, sector c, faisalabad",c3ee8602
-FBR-1466,Bilal Khan,0,0,Non-ATL,"House 85, Sector A, Faisalabad",0300-1250979,Agriculture,Savings,Doctor,0,False,bilal khan,"house 85, sector a, faisalabad",f05174e2
-FBR-1467,Osman Javed,0,0,Non-ATL,"House 55, Sector C, Rawalpindi",0300-4719018,Agriculture,Savings,Businessman,4,True,osman javed,"house 55, sector c, rawalpindi",8e0d30e8
-FBR-1468,Ali Bibi,2500000,250000,ATL,"House 39, Sector D, Peshawar",0300-2329832,Salary,Savings,Unemployed,0,False,ali bibi,"house 39, sector d, peshawar",561419b2
-FBR-1469,Muhammad Iqbal,0,0,Non-ATL,"House 38, Sector A, Peshawar",0300-8616712,Business,Savings,Driver,5,True,muhammad iqbal,"house 38, sector a, peshawar",447816af
-FBR-1470,Ali Siddiqui,0,0,Non-ATL,"House 47, Sector B, Peshawar",0300-9615882,Salary,Savings,Unemployed,2,False,ali siddiqui,"house 47, sector b, peshawar",eef4ee57
-FBR-1471,Fatima Malik,0,0,Non-ATL,"House 88, Sector C, Faisalabad",0300-6710575,Salary,Savings,Businessman,4,True,fatima malik,"house 88, sector c, faisalabad",2bd764f2
-FBR-1472,Sana Ahmed,0,0,Non-ATL,"House 51, Sector C, Rawalpindi",0300-6490975,Business,Savings,Engineer,0,True,sana ahmad,"house 51, sector c, rawalpindi",aee55d56
-FBR-1473,Osman Siddiqui,1200000,120000,ATL,"House 80, Sector C, Peshawar",0300-4607808,Salary,Savings,Businessman,0,False,osman siddiqui,"house 80, sector c, peshawar",ddf8f7be
-FBR-1474,Osman Malik,300000,30000,Non-ATL,"House 97, Sector B, Faisalabad",0300-5819380,Agriculture,Savings,Businessman,5,True,osman malik,"house 97, sector b, faisalabad",0d0540a3
-FBR-1475,Hamza Sheikh,0,0,Non-ATL,"House 7, Sector A, Faisalabad",0300-1352205,Salary,Savings,Teacher,0,False,hamza sheikh,"house 7, sector a, faisalabad",2eb36c25
-FBR-1476,Ayesha Malik,1200000,120000,ATL,"House 51, Sector B, Faisalabad",0300-1863498,Business,Savings,Driver,0,False,ayesha malik,"house 51, sector b, faisalabad",76167006
-FBR-1477,Ahmed Hassan,300000,30000,Non-ATL,"House 18, Sector C, Islamabad",0300-7431431,Business,Savings,Doctor,3,False,ahmad hassan,"house 18, sector c, islamabad",04d3b91f
-FBR-1478,Sana Malik,1200000,120000,Non-ATL,"House 27, Sector A, Rawalpindi",0300-6429749,Salary,Savings,Teacher,4,False,sana malik,"house 27, sector a, rawalpindi",f31de9c6
-FBR-1479,Ayesha Iqbal,600000,60000,Non-ATL,"House 60, Sector D, Lahore",0300-1403454,Salary,Savings,Teacher,1,False,ayesha iqbal,"house 60, sector d, lahore",7535f972
-FBR-1480,Ahmed Malik,0,0,Non-ATL,"House 90, Sector C, Islamabad",0300-7701048,Salary,Savings,Doctor,2,False,ahmad malik,"house 90, sector c, islamabad",acd649b9
-FBR-1481,Muhammad Ahmed,300000,30000,Non-ATL,"House 66, Sector D, Rawalpindi",0300-3459287,Business,Savings,Driver,2,False,muhammad ahmad,"house 66, sector d, rawalpindi",55b6005d
-FBR-1482,Fatima Khan,0,0,Non-ATL,"House 50, Sector D, Islamabad",0300-6110620,Salary,Savings,Unemployed,5,True,fatima khan,"house 50, sector d, islamabad",01104d15
-FBR-1483,Osman Siddiqui,600000,60000,ATL,"House 43, Sector A, Rawalpindi",0300-9377992,Salary,Savings,Unemployed,0,True,osman siddiqui,"house 43, sector a, rawalpindi",b0472927
-FBR-1484,Bilal Hassan,600000,60000,ATL,"House 64, Sector D, Islamabad",0300-4671085,Business,Savings,Driver,0,False,bilal hassan,"house 64, sector d, islamabad",5d281315
-FBR-1485,Ayesha Khan,2500000,250000,Non-ATL,"House 39, Sector A, Islamabad",0300-5571203,Business,Savings,Doctor,1,False,ayesha khan,"house 39, sector a, islamabad",cbf4f5d9
-FBR-1486,Bilal Javed,0,0,Non-ATL,"House 45, Sector B, Faisalabad",0300-6794359,Agriculture,Savings,Engineer,1,False,bilal javed,"house 45, sector b, faisalabad",3e4bdae1
-FBR-1487,Bilal Hassan,300000,30000,Non-ATL,"House 76, Sector B, Rawalpindi",0300-3743645,Business,Savings,Unemployed,5,False,bilal hassan,"house 76, sector b, rawalpindi",129ce5fe
-FBR-1488,Fatima Malik,1200000,120000,ATL,"House 78, Sector A, Faisalabad",0300-9257976,Salary,Savings,Doctor,0,False,fatima malik,"house 78, sector a, faisalabad",856d748c
-FBR-1489,Ahmed Bibi,1200000,120000,ATL,"House 23, Sector A, Faisalabad",0300-1374041,Agriculture,Savings,Engineer,0,False,ahmad bibi,"house 23, sector a, faisalabad",67ba569d
-FBR-1490,Sana Hassan,0,0,Non-ATL,"House 41, Sector B, Karachi",0300-9113409,Salary,Savings,Doctor,1,True,sana hassan,"house 41, sector b, karachi",c6464f6c
-FBR-1491,Ali Bibi,600000,60000,ATL,"House 65, Sector A, Peshawar",0300-5366142,Agriculture,Savings,Engineer,0,True,ali bibi,"house 65, sector a, peshawar",9706ee7a
-FBR-1492,Sana Sheikh,1200000,120000,ATL,"House 45, Sector D, Rawalpindi",0300-3827913,Agriculture,Savings,Unemployed,0,True,sana sheikh,"house 45, sector d, rawalpindi",52c901ca
-FBR-1493,Ayesha Sheikh,0,0,Non-ATL,"House 35, Sector D, Peshawar",0300-2642637,Business,Savings,Teacher,2,True,ayesha sheikh,"house 35, sector d, peshawar",1756f413
-FBR-1494,Ahmed Sheikh,600000,60000,ATL,"House 80, Sector B, Peshawar",0300-1802349,Agriculture,Savings,Driver,0,True,ahmad sheikh,"house 80, sector b, peshawar",dc040414
-FBR-1495,Bilal Malik,600000,60000,ATL,"House 94, Sector B, Karachi",0300-3217209,Agriculture,Savings,Businessman,0,True,bilal malik,"house 94, sector b, karachi",fac2bdb8
-FBR-1496,Ali Javed,0,0,Non-ATL,"House 70, Sector B, Peshawar",0300-4749858,Salary,Savings,Unemployed,3,False,ali javed,"house 70, sector b, peshawar",6ad5d6db
-FBR-1497,Osman Iqbal,1200000,120000,ATL,"House 43, Sector A, Islamabad",0300-5268260,Salary,Savings,Teacher,0,False,osman iqbal,"house 43, sector a, islamabad",b241f7d5
-FBR-1498,Osman Khan,0,0,Non-ATL,"House 44, Sector C, Lahore",0300-9602784,Agriculture,Savings,Teacher,2,True,osman khan,"house 44, sector c, lahore",d6ad1fe0
-FBR-1499,Hamza Sheikh,1200000,120000,ATL,"House 56, Sector C, Lahore",0300-7054195,Salary,Savings,Doctor,0,False,hamza sheikh,"house 56, sector c, lahore",d1f5e636
-FBR-1500,Zainab Malik,2500000,250000,ATL,"House 38, Sector B, Karachi",0300-3310621,Business,Savings,Unemployed,0,True,zainab malik,"house 38, sector b, karachi",53647a8d
+FBR-7712,Ch. Muhammad Arshad,0,0,Non-ATL,"Plot 14, DHA Phase 6, Lahore",0300-1112223,Cash,Cash,Businessman,5,False,chaudhry. muhammad arshad,"plot 14, dha phase 6, lahore",be309bb7
+FBR-9012,Farhan Ahmed,0,0,Non-ATL,"House 5, Street 2, Gulberg III, Lahore",0300-0000001,Cash,Cash,Businessman,4,False,farhan ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
+FBR-9013,Rabia Ahmed,0,0,Non-ATL,"House 5, Street 2, Gulberg III, Lahore",0300-0000002,,Gift,Housewife,3,True,rabia ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
+FBR-9014,Kamran Ahmed,180000,0,Non-ATL,"House 5, Street 2, Gulberg III, Lahore",0300-0000003,Salary,Savings,Student,2,True,kamran ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
+FBR-9015,Bashir Ahmed,180000,0,Non-ATL,"Servant Quarter, House 5, Street 2, Gulberg III, Lahore",0300-0000004,Salary,Cash,Driver,1,False,bashir ahmad,"servant quarter, house 5, street 2, gulberg iii, lahore",4b03db70
+FBR-5124,Syed Bilal Hassan,600000,15000,ATL,"Sector C, Bahria Town, Rawalpindi",0321-5556667,Salary,Foreign Remittance,Businessman,0,True,bilal hassan,"sector c, bahria town, rawalpindi",f3cfa711
+FBR-1189,Dr. Ayesha Malik,2400000,240000,ATL,"Bahria Town Phase 7, Islamabad",0333-9998887,Agriculture,Gift,Doctor,0,True,dr. ayesha malik,"bahria town phase 7, islamabad",1c155e01
+FBR-3321,Haji Abdul Razzaq,0,0,Non-ATL,"Pechs Block 2, Karachi",0345-4443332,,Cash,Retired,7,False,haji abdul razzaq,"pechs block 2, karachi",387b754e
+FBR-8890,Tariq Mehmood,1200000,60000,ATL,"Phase 2, Hayatabad, Peshawar",0312-8887776,Business,Savings,Importer,0,True,tariq mehmood,"phase 2, hayatabad, peshawar",259bda1e
+FBR-6677,Malik Pervaiz Akhtar,500000,10000,Non-ATL,"Block B, Green Valley Housing Scheme, Faisalabad",0301-9988776,Prize Bond,Prize Bond,Retired,3,True,malik pervaiz akhtar,"block b, green valley housing scheme, faisalabad",12a09500
+FBR-4412,Ali Raza,1800000,180000,ATL,"Flat 4, Block D, I-8, Islamabad",0322-7776665,Salary,Savings,Engineer,0,True,ali raza,"flat 4, block d, i-8, islamabad",de3b6e2a
+FBR-1012,Waseem Butt,1800000,180000,ATL,"House 121, Johar Town, Rawalpindi",0339-5383080,Rental,Foreign Remittance,Retired,0,True,waseem butt,"house 121, johar town, rawalpindi",fa134544
+FBR-1013,Fatima Ahmed,480000,48000,Non-ATL,"House 117, Johar Town, Karachi",0330-7055669,Salary,Gift,Unemployed,5,True,fatima ahmad,"house 117, johar town, karachi",2872d5a8
+FBR-1014,Bilal Hassan,1800000,180000,ATL,"House 10, Johar Town, Lahore",0316-3775000,Agriculture,Gift,Clerk,0,True,bilal hassan,"house 10, johar town, lahore",b304d99b
+FBR-1015,Zainab Abbasi,3000000,300000,ATL,"House 16, G-10, Lahore",0321-6267134,Salary,Prize Bond,Student,0,False,zainab abbasi,"house 16, g-10, lahore",5ec0cd25
+FBR-1016,Ayesha Nawaz,960000,96000,Non-ATL,"House 126, Nazimabad, Lahore",0320-2679224,Salary,Gift,Doctor,5,True,ayesha nawaz,"house 126, nazimabad, lahore",497e76f3
+FBR-1017,Ali Ahmed,960000,96000,ATL,"House 141, Hayatabad, Lahore",0312-4499505,Prize Bond,Foreign Remittance,Teacher,0,True,ali ahmad,"house 141, hayatabad, lahore",1caacaf9
+FBR-1018,Amna Rizvi,0,0,Non-ATL,"House 80, Nazimabad, Rawalpindi",0318-8727643,Prize Bond,Foreign Remittance,Driver,1,True,amna rizvi,"house 80, nazimabad, rawalpindi",ec55d14e
+FBR-1019,Zubair Siddiqui,960000,96000,ATL,"House 67, DHA, Rawalpindi",0332-9807845,Agriculture,Foreign Remittance,Teacher,0,True,zubair siddiqui,"house 67, dha, rawalpindi",3b0e01ac
+FBR-1020,Ali Baig,960000,96000,Non-ATL,"House 104, Pechs, Rawalpindi",0329-1765075,Business,Gift,Unemployed,3,True,ali baig,"house 104, pechs, rawalpindi",991c46d1
+FBR-1021,Muhammad Sheikh,480000,48000,Non-ATL,"House 113, Clifton, Faisalabad",0340-7563734,Agriculture,Cash,Retired,2,True,muhammad sheikh,"house 113, clifton, faisalabad",fb3f1d7a
+FBR-1022,Tariq Butt,0,0,Non-ATL,"House 98, Johar Town, Karachi",0326-7915463,Agriculture,Foreign Remittance,Businessman,0,True,tariq butt,"house 98, johar town, karachi",d81362db
+FBR-1023,Zubair Iqbal,240000,24000,Non-ATL,"House 49, G-10, Peshawar",0343-5100711,Rental,Gift,Businessman,4,False,zubair iqbal,"house 49, g-10, peshawar",1ab7f328
+FBR-1024,Sana Rizvi,240000,24000,Non-ATL,"House 65, DHA, Peshawar",0313-8996939,Rental,Gift,Engineer,6,True,sana rizvi,"house 65, dha, peshawar",663f05fe
+FBR-1025,Hina Malik,480000,48000,Non-ATL,"House 118, Nazimabad, Islamabad",0329-7308363,Rental,Savings,Retired,1,True,hina malik,"house 118, nazimabad, islamabad",6f6f49ce
+FBR-1026,Fatima Chaudhry,1800000,180000,ATL,"House 89, Clifton, Islamabad",0322-4096044,Salary,Savings,Driver,0,True,fatima chaudhry,"house 89, clifton, islamabad",4cccba3b
+FBR-1027,Hina Abbasi,0,0,Non-ATL,"House 32, Bahria Town, Lahore",0341-8898323,Prize Bond,Savings,Retired,6,True,hina abbasi,"house 32, bahria town, lahore",c6b111d7
+FBR-1028,Bilal Mirza,480000,48000,Non-ATL,"House 28, Gulberg, Lahore",0334-9728460,Agriculture,Foreign Remittance,Retired,3,True,bilal mirza,"house 28, gulberg, lahore",41e9ed83
+FBR-1029,Bilal Abbasi,480000,48000,Non-ATL,"House 71, Gulberg, Rawalpindi",0334-2777351,Salary,Prize Bond,Teacher,4,True,bilal abbasi,"house 71, gulberg, rawalpindi",a9828b50
+FBR-1030,Zubair Abbasi,480000,48000,Non-ATL,"House 132, F-7, Peshawar",0342-5299632,Rental,Foreign Remittance,Doctor,5,False,zubair abbasi,"house 132, f-7, peshawar",419bfa7d
+FBR-1031,Usman Raza,3000000,300000,ATL,"House 41, Nazimabad, Peshawar",0333-1167367,Salary,Cash,Engineer,0,True,usman raza,"house 41, nazimabad, peshawar",568fc794
+FBR-1032,Imran Qureshi,960000,96000,Non-ATL,"House 13, Johar Town, Karachi",0311-9220588,Salary,Foreign Remittance,Doctor,5,True,imran qureshi,"house 13, johar town, karachi",849ae1a7
+FBR-1033,Tariq Siddiqui,960000,96000,ATL,"House 102, G-10, Rawalpindi",0319-4635907,Prize Bond,Gift,Doctor,0,True,tariq siddiqui,"house 102, g-10, rawalpindi",ded547f7
+FBR-1034,Sana Rizvi,1800000,180000,Non-ATL,"House 135, F-7, Karachi",0332-4238796,Salary,Gift,Retired,0,True,sana rizvi,"house 135, f-7, karachi",cb715165
+FBR-1035,Usman Abbasi,480000,48000,Non-ATL,"House 143, G-10, Lahore",0326-6579903,Business,Gift,Teacher,2,True,usman abbasi,"house 143, g-10, lahore",7ee30222
+FBR-1036,Usman Raza,480000,48000,Non-ATL,"House 107, DHA, Faisalabad",0327-5387243,Rental,Gift,Engineer,3,True,usman raza,"house 107, dha, faisalabad",87647356
+FBR-1037,Ali Baig,3000000,300000,Non-ATL,"House 136, Nazimabad, Karachi",0337-3971220,Agriculture,Cash,Doctor,2,True,ali baig,"house 136, nazimabad, karachi",c3b8be5f
+FBR-1038,Imran Butt,240000,24000,Non-ATL,"House 133, DHA, Karachi",0312-2699241,Business,Gift,Driver,3,True,imran butt,"house 133, dha, karachi",008121d1
+FBR-1039,Fatima Mirza,1800000,180000,ATL,"House 31, Hayatabad, Lahore",0330-4842336,Salary,Cash,Driver,0,True,fatima mirza,"house 31, hayatabad, lahore",ae0ea59a
+FBR-1040,Hina Hassan,0,0,Non-ATL,"House 61, Nazimabad, Lahore",0326-6542884,Prize Bond,Prize Bond,Doctor,3,True,hina hassan,"house 61, nazimabad, lahore",6f5f4987
+FBR-1041,Imran Nawaz,480000,48000,Non-ATL,"House 112, Gulberg, Rawalpindi",0349-1687914,Agriculture,Savings,Student,6,True,imran nawaz,"house 112, gulberg, rawalpindi",b185f2b3
+FBR-1042,Ahmed Nawaz,240000,24000,Non-ATL,"House 66, Nazimabad, Rawalpindi",0330-5650569,Salary,Cash,Retired,2,True,ahmad nawaz,"house 66, nazimabad, rawalpindi",4594259f
+FBR-1043,Ali Siddiqui,240000,24000,Non-ATL,"House 79, Gulberg, Rawalpindi",0319-9897994,Agriculture,Cash,Student,0,True,ali siddiqui,"house 79, gulberg, rawalpindi",91548ea7
+FBR-1044,Zainab Rizvi,1800000,180000,ATL,"House 8, Johar Town, Peshawar",0320-1992791,Agriculture,Gift,Student,0,True,zainab rizvi,"house 8, johar town, peshawar",cc2aac2d
+FBR-1045,Imran Chaudhry,480000,48000,Non-ATL,"House 40, F-7, Faisalabad",0334-7145680,Salary,Foreign Remittance,Engineer,0,True,imran chaudhry,"house 40, f-7, faisalabad",ae336d72
+FBR-1046,Hina Hassan,960000,96000,Non-ATL,"House 144, G-10, Karachi",0316-5550359,Salary,Savings,Retired,6,True,hina hassan,"house 144, g-10, karachi",1c626cba
+FBR-1047,Tariq Hassan,3000000,300000,ATL,"House 30, Hayatabad, Karachi",0332-2470230,Rental,Foreign Remittance,Retired,0,True,tariq hassan,"house 30, hayatabad, karachi",415bbd48
+FBR-1048,Ali Khan,1800000,180000,ATL,"House 139, Hayatabad, Islamabad",0316-7697026,Rental,Prize Bond,Teacher,0,True,ali khan,"house 139, hayatabad, islamabad",93392ff5
+FBR-1049,Nadia Baig,480000,48000,Non-ATL,"House 114, Johar Town, Peshawar",0341-8196223,Business,Savings,Businessman,0,True,nadia baig,"house 114, johar town, peshawar",d4431dac
+FBR-1050,Fatima Khan,3000000,300000,ATL,"House 117, Clifton, Islamabad",0333-9982371,Rental,Foreign Remittance,Student,0,True,fatima khan,"house 117, clifton, islamabad",b387e52d
+FBR-1051,Waseem Sheikh,480000,48000,Non-ATL,"House 8, Pechs, Rawalpindi",0310-8928794,Salary,Prize Bond,Housewife,3,True,waseem sheikh,"house 8, pechs, rawalpindi",8d5ffdd9
+FBR-1052,Hamza Raza,240000,24000,Non-ATL,"House 96, G-10, Karachi",0324-2979070,Salary,Cash,Clerk,1,True,hamza raza,"house 96, g-10, karachi",4112c4f1
+FBR-1053,Ali Iqbal,240000,24000,Non-ATL,"House 108, Gulberg, Peshawar",0324-1132841,Business,Gift,Retired,0,True,ali iqbal,"house 108, gulberg, peshawar",c10d76fe
+FBR-1054,Amna Iqbal,480000,48000,Non-ATL,"House 124, Nazimabad, Lahore",0331-1156418,Salary,Savings,Unemployed,3,True,amna iqbal,"house 124, nazimabad, lahore",63db9003
+FBR-1055,Zubair Javed,1800000,180000,Non-ATL,"House 45, F-7, Islamabad",0336-2967161,Rental,Gift,Housewife,1,True,zubair javed,"house 45, f-7, islamabad",d3830295
+FBR-1056,Hina Sheikh,240000,24000,Non-ATL,"House 60, G-10, Peshawar",0334-7864449,Prize Bond,Foreign Remittance,Businessman,3,True,hina sheikh,"house 60, g-10, peshawar",3d6e8a6a
+FBR-1057,Muhammad Qureshi,3000000,300000,ATL,"House 40, F-7, Rawalpindi",0347-6850693,Business,Savings,Unemployed,0,False,muhammad qureshi,"house 40, f-7, rawalpindi",098f2277
+FBR-1058,Usman Hassan,480000,48000,Non-ATL,"House 109, Gulberg, Islamabad",0338-2092277,Rental,Prize Bond,Teacher,5,False,usman hassan,"house 109, gulberg, islamabad",56e35bdd
+FBR-1059,Fatima Javed,3000000,300000,Non-ATL,"House 54, Hayatabad, Faisalabad",0318-4991250,Prize Bond,Cash,Doctor,4,True,fatima javed,"house 54, hayatabad, faisalabad",8db91a49
+FBR-1060,Ahmed Ahmed,960000,96000,Non-ATL,"House 34, Nazimabad, Rawalpindi",0349-3549119,Agriculture,Prize Bond,Businessman,6,True,ahmad ahmad,"house 34, nazimabad, rawalpindi",7fa1c230
+FBR-1061,Zubair Iqbal,240000,24000,Non-ATL,"House 80, Pechs, Faisalabad",0344-8077431,Prize Bond,Savings,Unemployed,6,True,zubair iqbal,"house 80, pechs, faisalabad",c9f9db81
+FBR-1062,Tariq Abbasi,240000,24000,Non-ATL,"House 51, G-10, Islamabad",0343-8940898,Rental,Savings,Driver,6,True,tariq abbasi,"house 51, g-10, islamabad",a6eeb1aa
+FBR-1063,Waseem Chaudhry,1800000,180000,ATL,"House 33, G-10, Islamabad",0312-1441837,Salary,Foreign Remittance,Teacher,0,False,waseem chaudhry,"house 33, g-10, islamabad",0b1a1577
+FBR-1064,Saima Nawaz,960000,96000,ATL,"House 38, Nazimabad, Rawalpindi",0339-7037962,Agriculture,Foreign Remittance,Businessman,0,True,saima nawaz,"house 38, nazimabad, rawalpindi",7693df8d
+FBR-1065,Zubair Ahmed,0,0,Non-ATL,"House 138, DHA, Islamabad",0341-3287593,Agriculture,Savings,Retired,6,False,zubair ahmad,"house 138, dha, islamabad",74cfc986
+FBR-1066,Nadia Baig,3000000,300000,Non-ATL,"House 106, Nazimabad, Islamabad",0336-2954180,Business,Prize Bond,Housewife,4,True,nadia baig,"house 106, nazimabad, islamabad",07a2dcf9
+FBR-1067,Zubair Mirza,240000,24000,Non-ATL,"House 30, Johar Town, Faisalabad",0348-8350380,Rental,Gift,Doctor,3,True,zubair mirza,"house 30, johar town, faisalabad",9f7a294b
+FBR-1068,Waseem Siddiqui,240000,24000,Non-ATL,"House 103, F-7, Rawalpindi",0322-9118183,Rental,Prize Bond,Retired,5,False,waseem siddiqui,"house 103, f-7, rawalpindi",afcc674a
+FBR-1069,Hamza Iqbal,3000000,300000,Non-ATL,"House 72, F-7, Peshawar",0320-9949490,Agriculture,Savings,Engineer,0,True,hamza iqbal,"house 72, f-7, peshawar",ad4f7cee
+FBR-1070,Fatima Qureshi,3000000,300000,ATL,"House 13, Gulberg, Peshawar",0331-4573059,Agriculture,Savings,Engineer,0,False,fatima qureshi,"house 13, gulberg, peshawar",f7d6726d
+FBR-1071,Hina Raza,1800000,180000,ATL,"House 73, Gulberg, Peshawar",0333-7200908,Rental,Cash,Student,0,False,hina raza,"house 73, gulberg, peshawar",fcc73756
+FBR-1072,Amna Malik,3000000,300000,Non-ATL,"House 39, Nazimabad, Lahore",0337-1478775,Rental,Foreign Remittance,Engineer,1,False,amna malik,"house 39, nazimabad, lahore",9ac4242d
+FBR-1073,Tariq Khan,3000000,300000,ATL,"House 89, F-7, Karachi",0343-7826721,Salary,Cash,Retired,0,False,tariq khan,"house 89, f-7, karachi",a6b53b8f
+FBR-1074,Ali Mirza,3000000,300000,ATL,"House 15, Hayatabad, Faisalabad",0328-8740775,Business,Prize Bond,Engineer,0,True,ali mirza,"house 15, hayatabad, faisalabad",2db4188f
+FBR-1075,Amna Qureshi,3000000,300000,ATL,"House 113, F-7, Faisalabad",0329-5723544,Agriculture,Gift,Teacher,0,True,amna qureshi,"house 113, f-7, faisalabad",922aa8b4
+FBR-1076,Zainab Hassan,3000000,300000,ATL,"House 24, Nazimabad, Karachi",0346-2467919,Business,Cash,Driver,0,False,zainab hassan,"house 24, nazimabad, karachi",0ba172cf
+FBR-1077,Usman Ahmed,480000,48000,Non-ATL,"House 23, Gulberg, Karachi",0337-8265529,Business,Prize Bond,Engineer,5,True,usman ahmad,"house 23, gulberg, karachi",c24f61e3
+FBR-1078,Hina Raza,960000,96000,ATL,"House 57, DHA, Rawalpindi",0324-3649752,Agriculture,Gift,Student,0,True,hina raza,"house 57, dha, rawalpindi",3dd87297
+FBR-1079,Imran Iqbal,0,0,Non-ATL,"House 84, Johar Town, Karachi",0327-9883941,Salary,Cash,Doctor,6,True,imran iqbal,"house 84, johar town, karachi",80a85733
+FBR-1080,Hamza Sheikh,960000,96000,ATL,"House 61, Johar Town, Rawalpindi",0312-8162087,Salary,Prize Bond,Businessman,0,True,hamza sheikh,"house 61, johar town, rawalpindi",6352b62e
+FBR-1081,Ahmed Raza,0,0,Non-ATL,"House 1, Bahria Town, Karachi",0346-3977875,Rental,Savings,Doctor,0,True,ahmad raza,"house 1, bahria town, karachi",667aae5e
+FBR-1082,Ahmed Mirza,240000,24000,Non-ATL,"House 55, Johar Town, Rawalpindi",0324-4247192,Prize Bond,Foreign Remittance,Retired,3,True,ahmad mirza,"house 55, johar town, rawalpindi",31e7920f
+FBR-1083,Saima Bibi,240000,24000,Non-ATL,"House 91, Bahria Town, Peshawar",0315-7698326,Business,Prize Bond,Student,6,True,saima bibi,"house 91, bahria town, peshawar",48ee6848
+FBR-1084,Bilal Butt,3000000,300000,ATL,"House 136, Nazimabad, Lahore",0327-2890703,Salary,Foreign Remittance,Unemployed,0,True,bilal butt,"house 136, nazimabad, lahore",29d70dee
+FBR-1085,Imran Mirza,3000000,300000,ATL,"House 3, Bahria Town, Lahore",0347-7884647,Rental,Cash,Doctor,0,True,imran mirza,"house 3, bahria town, lahore",02573ac4
+FBR-1086,Ahmed Hassan,3000000,300000,ATL,"House 57, Hayatabad, Lahore",0340-7351286,Rental,Savings,Doctor,0,True,ahmad hassan,"house 57, hayatabad, lahore",f2a024da
+FBR-1087,Zainab Javed,960000,96000,ATL,"House 66, G-10, Karachi",0329-9979691,Rental,Gift,Teacher,0,True,zainab javed,"house 66, g-10, karachi",201990a6
+FBR-1088,Amna Baig,1800000,180000,ATL,"House 16, Hayatabad, Rawalpindi",0326-2102474,Salary,Foreign Remittance,Retired,0,True,amna baig,"house 16, hayatabad, rawalpindi",b9e52322
+FBR-1089,Ayesha Khan,240000,24000,Non-ATL,"House 149, G-10, Rawalpindi",0340-4621933,Business,Prize Bond,Doctor,5,True,ayesha khan,"house 149, g-10, rawalpindi",a063290c
+FBR-1090,Saima Butt,3000000,300000,ATL,"House 140, Pechs, Faisalabad",0311-5103363,Business,Prize Bond,Unemployed,0,False,saima butt,"house 140, pechs, faisalabad",4a768653
+FBR-1091,Hina Nawaz,0,0,Non-ATL,"House 9, Nazimabad, Lahore",0348-3478233,Business,Foreign Remittance,Doctor,4,True,hina nawaz,"house 9, nazimabad, lahore",4b1fe282
+FBR-1092,Ahmed Ahmed,480000,48000,Non-ATL,"House 53, Gulberg, Peshawar",0337-9482166,Rental,Foreign Remittance,Engineer,4,True,ahmad ahmad,"house 53, gulberg, peshawar",33528294
+FBR-1093,Imran Bibi,0,0,Non-ATL,"House 31, Bahria Town, Peshawar",0317-7240384,Salary,Gift,Businessman,3,True,imran bibi,"house 31, bahria town, peshawar",15cbafe8
+FBR-1094,Hamza Malik,3000000,300000,ATL,"House 4, DHA, Karachi",0338-1189401,Business,Savings,Doctor,0,True,hamza malik,"house 4, dha, karachi",53969300
+FBR-1095,Waseem Butt,960000,96000,ATL,"House 43, G-10, Islamabad",0325-1474700,Salary,Gift,Unemployed,0,True,waseem butt,"house 43, g-10, islamabad",86491762
+FBR-1096,Ahmed Iqbal,240000,24000,Non-ATL,"House 128, Clifton, Lahore",0314-6115307,Salary,Cash,Unemployed,4,True,ahmad iqbal,"house 128, clifton, lahore",d128eb9d
+FBR-1097,Imran Abbasi,0,0,Non-ATL,"House 31, G-10, Lahore",0313-6128186,Agriculture,Prize Bond,Teacher,3,True,imran abbasi,"house 31, g-10, lahore",fd3e9f88
+FBR-1098,Amna Ahmed,1800000,180000,ATL,"House 9, Clifton, Faisalabad",0310-2036443,Salary,Prize Bond,Teacher,0,True,amna ahmad,"house 9, clifton, faisalabad",71720431
+FBR-1099,Saima Khan,0,0,Non-ATL,"House 36, Hayatabad, Islamabad",0337-3670128,Agriculture,Cash,Unemployed,5,True,saima khan,"house 36, hayatabad, islamabad",29f5be25
+FBR-1100,Fatima Raza,960000,96000,ATL,"House 49, Johar Town, Lahore",0336-7006129,Business,Savings,Businessman,0,False,fatima raza,"house 49, johar town, lahore",c401ae36
+FBR-1101,Waseem Siddiqui,0,0,Non-ATL,"House 120, DHA, Karachi",0322-8577918,Salary,Gift,Driver,3,True,waseem siddiqui,"house 120, dha, karachi",a3be940b
+FBR-1102,Nadia Javed,240000,24000,Non-ATL,"House 29, F-7, Rawalpindi",0330-6682379,Prize Bond,Gift,Teacher,4,False,nadia javed,"house 29, f-7, rawalpindi",dad83ee2
+FBR-1103,Ahmed Sheikh,480000,48000,Non-ATL,"House 58, Hayatabad, Faisalabad",0341-7645369,Agriculture,Cash,Unemployed,5,False,ahmad sheikh,"house 58, hayatabad, faisalabad",9ae49675
+FBR-1104,Bilal Abbasi,240000,24000,Non-ATL,"House 118, Pechs, Karachi",0338-2529720,Business,Gift,Doctor,0,True,bilal abbasi,"house 118, pechs, karachi",60c4016d
+FBR-1105,Saima Khan,3000000,300000,ATL,"House 28, Johar Town, Peshawar",0341-5695034,Agriculture,Gift,Teacher,0,True,saima khan,"house 28, johar town, peshawar",ee31b7be
+FBR-1106,Imran Javed,480000,48000,Non-ATL,"House 38, Gulberg, Islamabad",0326-4170327,Prize Bond,Savings,Businessman,3,True,imran javed,"house 38, gulberg, islamabad",21f875d0
+FBR-1107,Sana Abbasi,3000000,300000,ATL,"House 2, Bahria Town, Islamabad",0322-5250957,Salary,Gift,Driver,0,True,sana abbasi,"house 2, bahria town, islamabad",d9358f15
+FBR-1108,Saima Siddiqui,3000000,300000,ATL,"House 97, Johar Town, Faisalabad",0338-8561443,Rental,Savings,Teacher,0,True,saima siddiqui,"house 97, johar town, faisalabad",1f81b8d4
+FBR-1109,Hamza Butt,0,0,Non-ATL,"House 117, Clifton, Lahore",0340-7406999,Prize Bond,Gift,Doctor,3,True,hamza butt,"house 117, clifton, lahore",89343387
+FBR-1110,Bilal Javed,240000,24000,Non-ATL,"House 113, Nazimabad, Islamabad",0311-6157327,Prize Bond,Gift,Doctor,5,False,bilal javed,"house 113, nazimabad, islamabad",df6ace2c
+FBR-1111,Bilal Bibi,480000,48000,Non-ATL,"House 47, F-7, Islamabad",0327-2866973,Salary,Cash,Doctor,2,True,bilal bibi,"house 47, f-7, islamabad",9da464ab
+FBR-1112,Amna Raza,0,0,Non-ATL,"House 132, Gulberg, Rawalpindi",0344-9457894,Rental,Prize Bond,Student,5,True,amna raza,"house 132, gulberg, rawalpindi",885822cc
+FBR-1113,Imran Hassan,960000,96000,ATL,"House 145, G-10, Lahore",0345-5744939,Business,Savings,Student,0,True,imran hassan,"house 145, g-10, lahore",17bc31c0
+FBR-1114,Muhammad Ahmed,3000000,300000,Non-ATL,"House 136, Hayatabad, Islamabad",0314-9883400,Salary,Cash,Retired,5,False,muhammad ahmad,"house 136, hayatabad, islamabad",af7226e6
+FBR-1115,Amna Qureshi,240000,24000,Non-ATL,"House 129, Johar Town, Lahore",0321-8184775,Business,Foreign Remittance,Teacher,2,True,amna qureshi,"house 129, johar town, lahore",6b0c4acf
+FBR-1116,Sana Malik,240000,24000,Non-ATL,"House 143, Hayatabad, Peshawar",0330-5247618,Rental,Foreign Remittance,Driver,6,False,sana malik,"house 143, hayatabad, peshawar",1c601cd7
+FBR-1117,Hamza Abbasi,1800000,180000,ATL,"House 127, Clifton, Peshawar",0327-8217544,Business,Cash,Teacher,0,True,hamza abbasi,"house 127, clifton, peshawar",bfd3de8e
+FBR-1118,Hamza Rizvi,480000,48000,Non-ATL,"House 110, Johar Town, Islamabad",0315-6424279,Agriculture,Gift,Driver,3,False,hamza rizvi,"house 110, johar town, islamabad",7c05c0bd
+FBR-1119,Tariq Qureshi,3000000,300000,ATL,"House 89, Bahria Town, Lahore",0343-5328679,Agriculture,Cash,Housewife,0,True,tariq qureshi,"house 89, bahria town, lahore",a85430d8
+FBR-1120,Ayesha Javed,0,0,Non-ATL,"House 147, Clifton, Lahore",0328-4793632,Agriculture,Foreign Remittance,Businessman,3,True,ayesha javed,"house 147, clifton, lahore",ff8cc00b
+FBR-1121,Saima Sheikh,1800000,180000,ATL,"House 112, G-10, Rawalpindi",0332-6724809,Business,Prize Bond,Driver,0,False,saima sheikh,"house 112, g-10, rawalpindi",840221d1
+FBR-1122,Waseem Sheikh,3000000,300000,ATL,"House 49, G-10, Karachi",0344-3721094,Salary,Prize Bond,Retired,0,True,waseem sheikh,"house 49, g-10, karachi",c778ebf7
+FBR-1123,Imran Ahmed,960000,96000,Non-ATL,"House 55, Bahria Town, Islamabad",0321-7448937,Business,Prize Bond,Housewife,3,True,imran ahmad,"house 55, bahria town, islamabad",41fb40d1
+FBR-1124,Ayesha Sheikh,480000,48000,Non-ATL,"House 132, Clifton, Lahore",0343-2614307,Business,Gift,Retired,0,True,ayesha sheikh,"house 132, clifton, lahore",34263993
+FBR-1125,Usman Khan,3000000,300000,ATL,"House 105, Clifton, Rawalpindi",0316-7834182,Salary,Foreign Remittance,Teacher,0,False,usman khan,"house 105, clifton, rawalpindi",71adbc5c
+FBR-1126,Amna Ahmed,960000,96000,ATL,"House 13, Nazimabad, Karachi",0328-5867500,Business,Savings,Unemployed,0,False,amna ahmad,"house 13, nazimabad, karachi",bf653b27
+FBR-1127,Fatima Iqbal,240000,24000,Non-ATL,"House 150, Pechs, Islamabad",0340-6341323,Prize Bond,Foreign Remittance,Unemployed,5,True,fatima iqbal,"house 150, pechs, islamabad",fd329944
+FBR-1128,Zainab Qureshi,0,0,Non-ATL,"House 23, G-10, Islamabad",0340-2023944,Business,Foreign Remittance,Student,3,True,zainab qureshi,"house 23, g-10, islamabad",0b2d9745
+FBR-1129,Ayesha Iqbal,0,0,Non-ATL,"House 55, G-10, Faisalabad",0330-6525428,Business,Cash,Student,6,True,ayesha iqbal,"house 55, g-10, faisalabad",624957d2
+FBR-1130,Ayesha Iqbal,960000,96000,Non-ATL,"House 96, Bahria Town, Peshawar",0312-3234788,Prize Bond,Gift,Doctor,6,False,ayesha iqbal,"house 96, bahria town, peshawar",e8777138
+FBR-1131,Nadia Hassan,960000,96000,ATL,"House 93, Nazimabad, Islamabad",0332-7346406,Business,Foreign Remittance,Driver,0,True,nadia hassan,"house 93, nazimabad, islamabad",2e6c3ef5
+FBR-1132,Hina Bibi,0,0,Non-ATL,"House 95, Johar Town, Karachi",0313-4904540,Rental,Savings,Teacher,4,True,hina bibi,"house 95, johar town, karachi",2bcede3f
+FBR-1133,Hina Ahmed,3000000,300000,ATL,"House 55, Nazimabad, Islamabad",0316-6718117,Rental,Foreign Remittance,Housewife,0,False,hina ahmad,"house 55, nazimabad, islamabad",228b1ef5
+FBR-1134,Zainab Qureshi,0,0,Non-ATL,"House 7, Gulberg, Islamabad",0322-6029718,Prize Bond,Cash,Driver,2,True,zainab qureshi,"house 7, gulberg, islamabad",bfa67b5d
+FBR-1135,Ayesha Rizvi,960000,96000,Non-ATL,"House 57, Bahria Town, Faisalabad",0312-4051320,Rental,Prize Bond,Engineer,6,False,ayesha rizvi,"house 57, bahria town, faisalabad",021a9ac6
+FBR-1136,Sana Mirza,0,0,Non-ATL,"House 106, Nazimabad, Peshawar",0337-1090934,Agriculture,Gift,Housewife,3,False,sana mirza,"house 106, nazimabad, peshawar",d9d2e534
+FBR-1137,Bilal Ahmed,480000,48000,Non-ATL,"House 101, Nazimabad, Rawalpindi",0343-7513236,Rental,Savings,Unemployed,4,True,bilal ahmad,"house 101, nazimabad, rawalpindi",1cd64808
+FBR-1138,Saima Qureshi,960000,96000,ATL,"House 114, Pechs, Rawalpindi",0327-8793505,Prize Bond,Foreign Remittance,Doctor,0,True,saima qureshi,"house 114, pechs, rawalpindi",d36de9a1
+FBR-1139,Ayesha Sheikh,960000,96000,ATL,"House 143, Nazimabad, Rawalpindi",0336-6873287,Salary,Savings,Teacher,0,True,ayesha sheikh,"house 143, nazimabad, rawalpindi",68e94cf5
+FBR-1140,Fatima Sheikh,3000000,300000,ATL,"House 139, Hayatabad, Karachi",0326-9612149,Prize Bond,Prize Bond,Retired,0,True,fatima sheikh,"house 139, hayatabad, karachi",b41ea98d
+FBR-1141,Hamza Abbasi,0,0,Non-ATL,"House 1, G-10, Peshawar",0336-1510861,Agriculture,Savings,Unemployed,3,True,hamza abbasi,"house 1, g-10, peshawar",f61a4f6c
+FBR-1142,Sana Hassan,0,0,Non-ATL,"House 71, Johar Town, Lahore",0337-9784872,Salary,Prize Bond,Clerk,4,False,sana hassan,"house 71, johar town, lahore",86261583
+FBR-1143,Saima Ahmed,960000,96000,Non-ATL,"House 90, Hayatabad, Lahore",0316-9852184,Salary,Savings,Unemployed,5,False,saima ahmad,"house 90, hayatabad, lahore",8b05063d
+FBR-1144,Amna Nawaz,240000,24000,Non-ATL,"House 90, Nazimabad, Peshawar",0310-5152428,Prize Bond,Foreign Remittance,Retired,3,False,amna nawaz,"house 90, nazimabad, peshawar",a04aea34
+FBR-1145,Zainab Abbasi,960000,96000,ATL,"House 17, Clifton, Islamabad",0343-5149560,Prize Bond,Foreign Remittance,Clerk,0,True,zainab abbasi,"house 17, clifton, islamabad",066b1b3c
+FBR-1146,Usman Rizvi,960000,96000,ATL,"House 76, Clifton, Faisalabad",0344-4344319,Business,Foreign Remittance,Unemployed,0,True,usman rizvi,"house 76, clifton, faisalabad",3925d839
+FBR-1147,Imran Raza,480000,48000,Non-ATL,"House 51, DHA, Faisalabad",0318-8787225,Business,Gift,Retired,3,True,imran raza,"house 51, dha, faisalabad",1227d692
+FBR-1148,Ayesha Hassan,480000,48000,Non-ATL,"House 80, G-10, Faisalabad",0341-2824079,Salary,Cash,Doctor,3,False,ayesha hassan,"house 80, g-10, faisalabad",20f3a985
+FBR-1149,Ahmed Malik,480000,48000,Non-ATL,"House 124, Hayatabad, Peshawar",0314-2688989,Business,Savings,Businessman,6,False,ahmad malik,"house 124, hayatabad, peshawar",04135407
+FBR-1150,Hina Rizvi,960000,96000,ATL,"House 137, Johar Town, Karachi",0342-4127358,Agriculture,Cash,Unemployed,0,True,hina rizvi,"house 137, johar town, karachi",94c4d182
+FBR-1151,Bilal Baig,960000,96000,Non-ATL,"House 46, Pechs, Lahore",0345-4925735,Agriculture,Gift,Unemployed,3,False,bilal baig,"house 46, pechs, lahore",7a1aa00c
+FBR-1152,Tariq Butt,480000,48000,Non-ATL,"House 110, Nazimabad, Rawalpindi",0331-8463616,Rental,Gift,Student,5,True,tariq butt,"house 110, nazimabad, rawalpindi",5671877c
+FBR-1153,Muhammad Baig,960000,96000,ATL,"House 45, G-10, Karachi",0338-6368462,Rental,Prize Bond,Housewife,0,False,muhammad baig,"house 45, g-10, karachi",e70828a1
+FBR-1154,Fatima Siddiqui,3000000,300000,ATL,"House 125, Clifton, Rawalpindi",0341-5770807,Rental,Savings,Driver,0,True,fatima siddiqui,"house 125, clifton, rawalpindi",00805dc5
+FBR-1155,Hamza Abbasi,3000000,300000,Non-ATL,"House 70, G-10, Lahore",0345-3366523,Business,Gift,Clerk,6,True,hamza abbasi,"house 70, g-10, lahore",c02245d3
+FBR-1156,Amna Hassan,240000,24000,Non-ATL,"House 130, Gulberg, Lahore",0333-4586067,Agriculture,Prize Bond,Teacher,6,True,amna hassan,"house 130, gulberg, lahore",fe4ba2e9
+FBR-1157,Ayesha Abbasi,1800000,180000,Non-ATL,"House 120, Pechs, Islamabad",0330-7953197,Salary,Prize Bond,Student,0,True,ayesha abbasi,"house 120, pechs, islamabad",da5ac23c
+FBR-1158,Nadia Butt,960000,96000,ATL,"House 101, G-10, Faisalabad",0333-3179118,Agriculture,Foreign Remittance,Housewife,0,True,nadia butt,"house 101, g-10, faisalabad",1d074af7
+FBR-1159,Imran Iqbal,240000,24000,Non-ATL,"House 142, F-7, Karachi",0336-7164907,Salary,Savings,Doctor,5,True,imran iqbal,"house 142, f-7, karachi",54c46f1e
+FBR-1160,Waseem Mirza,1800000,180000,ATL,"House 21, G-10, Islamabad",0328-9131791,Prize Bond,Gift,Housewife,0,True,waseem mirza,"house 21, g-10, islamabad",900d098e
+FBR-1161,Hina Raza,960000,96000,ATL,"House 17, Clifton, Islamabad",0328-6700559,Business,Savings,Student,0,True,hina raza,"house 17, clifton, islamabad",066b1b3c
+FBR-1162,Hamza Raza,240000,24000,Non-ATL,"House 106, Clifton, Lahore",0341-8642942,Agriculture,Cash,Student,0,True,hamza raza,"house 106, clifton, lahore",6ce14642
+FBR-1163,Saima Baig,0,0,Non-ATL,"House 132, DHA, Karachi",0345-8439540,Agriculture,Prize Bond,Engineer,5,False,saima baig,"house 132, dha, karachi",8c40866f
+FBR-1164,Zubair Raza,240000,24000,Non-ATL,"House 112, Nazimabad, Rawalpindi",0346-6901978,Prize Bond,Savings,Unemployed,0,True,zubair raza,"house 112, nazimabad, rawalpindi",118ac7d7
+FBR-1165,Zainab Ahmed,960000,96000,Non-ATL,"House 143, Nazimabad, Lahore",0337-7048099,Salary,Gift,Unemployed,3,True,zainab ahmad,"house 143, nazimabad, lahore",27c3f610
+FBR-1166,Nadia Rizvi,0,0,Non-ATL,"House 108, DHA, Islamabad",0334-7768051,Salary,Savings,Clerk,4,True,nadia rizvi,"house 108, dha, islamabad",ede81ad8
+FBR-1167,Hamza Malik,480000,48000,Non-ATL,"House 32, F-7, Rawalpindi",0320-7539564,Salary,Foreign Remittance,Housewife,5,True,hamza malik,"house 32, f-7, rawalpindi",560943dd
+FBR-1168,Muhammad Hassan,960000,96000,ATL,"House 61, F-7, Faisalabad",0315-5550226,Business,Foreign Remittance,Businessman,0,False,muhammad hassan,"house 61, f-7, faisalabad",4817eba0
+FBR-1169,Amna Bibi,960000,96000,Non-ATL,"House 80, Pechs, Peshawar",0317-5394848,Rental,Prize Bond,Engineer,5,True,amna bibi,"house 80, pechs, peshawar",20988809
+FBR-1170,Imran Baig,240000,24000,Non-ATL,"House 18, Bahria Town, Faisalabad",0335-1372342,Prize Bond,Gift,Unemployed,2,True,imran baig,"house 18, bahria town, faisalabad",ada663f4
+FBR-1171,Hina Raza,240000,24000,Non-ATL,"House 42, Clifton, Karachi",0330-8138506,Agriculture,Savings,Housewife,2,True,hina raza,"house 42, clifton, karachi",883ece2e
+FBR-1172,Bilal Javed,240000,24000,Non-ATL,"House 29, Johar Town, Faisalabad",0341-9064750,Prize Bond,Prize Bond,Businessman,0,False,bilal javed,"house 29, johar town, faisalabad",f94f69fd
+FBR-1173,Imran Sheikh,3000000,300000,ATL,"House 14, Pechs, Islamabad",0316-9317441,Business,Cash,Retired,0,True,imran sheikh,"house 14, pechs, islamabad",b5f36972
+FBR-1174,Hina Hassan,1800000,180000,ATL,"House 129, F-7, Peshawar",0320-7221302,Rental,Foreign Remittance,Driver,0,True,hina hassan,"house 129, f-7, peshawar",d5dc78e8
+FBR-1175,Nadia Malik,480000,48000,Non-ATL,"House 34, Clifton, Karachi",0333-2226368,Business,Prize Bond,Teacher,6,True,nadia malik,"house 34, clifton, karachi",3097cb48
+FBR-1176,Hina Siddiqui,480000,48000,Non-ATL,"House 36, Clifton, Faisalabad",0329-8806676,Rental,Foreign Remittance,Housewife,4,True,hina siddiqui,"house 36, clifton, faisalabad",2ba0272b
+FBR-1177,Zubair Khan,480000,48000,Non-ATL,"House 95, Pechs, Faisalabad",0338-3403254,Business,Foreign Remittance,Housewife,1,False,zubair khan,"house 95, pechs, faisalabad",87958db5
+FBR-1178,Hamza Nawaz,960000,96000,ATL,"House 26, Johar Town, Faisalabad",0310-2775668,Rental,Cash,Driver,0,True,hamza nawaz,"house 26, johar town, faisalabad",e3c1964b
+FBR-1179,Amna Bibi,0,0,Non-ATL,"House 122, G-10, Islamabad",0341-3566800,Prize Bond,Foreign Remittance,Housewife,3,True,amna bibi,"house 122, g-10, islamabad",73ecf2ac
+FBR-1180,Muhammad Mirza,3000000,300000,ATL,"House 111, F-7, Faisalabad",0312-1260881,Business,Gift,Housewife,0,False,muhammad mirza,"house 111, f-7, faisalabad",7e0c2c83
+FBR-1181,Sana Rizvi,0,0,Non-ATL,"House 22, Nazimabad, Islamabad",0341-8087334,Salary,Gift,Teacher,0,True,sana rizvi,"house 22, nazimabad, islamabad",74105139
+FBR-1182,Nadia Siddiqui,0,0,Non-ATL,"House 104, Clifton, Peshawar",0321-6169199,Salary,Gift,Teacher,4,True,nadia siddiqui,"house 104, clifton, peshawar",1d412dab
+FBR-1183,Fatima Khan,0,0,Non-ATL,"House 22, Clifton, Faisalabad",0310-1540527,Rental,Savings,Driver,1,True,fatima khan,"house 22, clifton, faisalabad",54c5a8f0
+FBR-1184,Saima Javed,480000,48000,Non-ATL,"House 65, DHA, Lahore",0339-2674530,Rental,Savings,Unemployed,4,True,saima javed,"house 65, dha, lahore",3249a108
+FBR-1185,Waseem Nawaz,1800000,180000,ATL,"House 142, Johar Town, Faisalabad",0340-5675297,Prize Bond,Gift,Housewife,0,True,waseem nawaz,"house 142, johar town, faisalabad",a570a7d1
+FBR-1186,Imran Raza,960000,96000,ATL,"House 115, Hayatabad, Karachi",0311-1487997,Prize Bond,Gift,Driver,0,True,imran raza,"house 115, hayatabad, karachi",5816c3c7
+FBR-1187,Muhammad Rizvi,0,0,Non-ATL,"House 140, G-10, Lahore",0333-6620001,Rental,Prize Bond,Doctor,6,True,muhammad rizvi,"house 140, g-10, lahore",bca82de2
+FBR-1188,Hina Butt,960000,96000,ATL,"House 103, Clifton, Karachi",0311-4422968,Business,Foreign Remittance,Retired,0,True,hina butt,"house 103, clifton, karachi",2de8244e
+FBR-1189,Ali Butt,3000000,300000,ATL,"House 29, Nazimabad, Lahore",0322-7691940,Rental,Gift,Retired,0,True,ali butt,"house 29, nazimabad, lahore",7ff94eb7
+FBR-1190,Zainab Nawaz,240000,24000,Non-ATL,"House 79, Clifton, Lahore",0326-7252770,Agriculture,Foreign Remittance,Unemployed,1,True,zainab nawaz,"house 79, clifton, lahore",bc0b862d
+FBR-1191,Zainab Abbasi,1800000,180000,Non-ATL,"House 100, Nazimabad, Karachi",0328-6777094,Agriculture,Savings,Doctor,4,True,zainab abbasi,"house 100, nazimabad, karachi",5376ed4d
+FBR-1192,Saima Rizvi,1800000,180000,Non-ATL,"House 78, DHA, Peshawar",0312-2123036,Agriculture,Savings,Businessman,6,False,saima rizvi,"house 78, dha, peshawar",a0ef71de
+FBR-1193,Zainab Qureshi,3000000,300000,ATL,"House 54, Clifton, Peshawar",0337-1307727,Business,Prize Bond,Unemployed,0,True,zainab qureshi,"house 54, clifton, peshawar",3e60b73e
+FBR-1194,Imran Sheikh,480000,48000,Non-ATL,"House 133, Clifton, Karachi",0318-6584320,Business,Foreign Remittance,Engineer,0,True,imran sheikh,"house 133, clifton, karachi",6b6eca36
+FBR-1195,Hamza Sheikh,3000000,300000,Non-ATL,"House 139, F-7, Islamabad",0321-1435903,Salary,Cash,Teacher,2,True,hamza sheikh,"house 139, f-7, islamabad",a5d17714
+FBR-1196,Hina Nawaz,1800000,180000,ATL,"House 39, DHA, Peshawar",0332-5614853,Business,Cash,Retired,0,True,hina nawaz,"house 39, dha, peshawar",0fa4ba12
+FBR-1197,Zubair Qureshi,3000000,300000,ATL,"House 80, Pechs, Peshawar",0327-2874371,Salary,Cash,Clerk,0,False,zubair qureshi,"house 80, pechs, peshawar",20988809
+FBR-1198,Usman Rizvi,480000,48000,Non-ATL,"House 122, Nazimabad, Lahore",0337-6173919,Prize Bond,Savings,Businessman,4,True,usman rizvi,"house 122, nazimabad, lahore",4053bc4d
+FBR-1199,Tariq Ahmed,960000,96000,Non-ATL,"House 7, G-10, Peshawar",0348-2926287,Rental,Prize Bond,Clerk,4,True,tariq ahmad,"house 7, g-10, peshawar",3269c7be
+FBR-1200,Nadia Rizvi,1800000,180000,ATL,"House 134, DHA, Rawalpindi",0325-2860428,Salary,Cash,Retired,0,True,nadia rizvi,"house 134, dha, rawalpindi",72ad405d
+FBR-1201,Amna Siddiqui,480000,48000,Non-ATL,"House 37, F-7, Rawalpindi",0325-7959811,Prize Bond,Foreign Remittance,Teacher,1,True,amna siddiqui,"house 37, f-7, rawalpindi",c7eab57e
+FBR-1202,Zainab Malik,1800000,180000,ATL,"House 22, G-10, Peshawar",0349-8159269,Rental,Savings,Retired,0,False,zainab malik,"house 22, g-10, peshawar",ae5cd480
+FBR-1203,Ahmed Sheikh,3000000,300000,ATL,"House 49, Johar Town, Faisalabad",0333-7134357,Business,Cash,Unemployed,0,True,ahmad sheikh,"house 49, johar town, faisalabad",3ca11060
+FBR-1204,Amna Siddiqui,0,0,Non-ATL,"House 73, Johar Town, Rawalpindi",0315-7864530,Agriculture,Prize Bond,Businessman,2,True,amna siddiqui,"house 73, johar town, rawalpindi",80fee157
+FBR-1205,Amna Siddiqui,0,0,Non-ATL,"House 39, Hayatabad, Islamabad",0349-1705771,Rental,Cash,Businessman,5,True,amna siddiqui,"house 39, hayatabad, islamabad",66806f6c
+FBR-1206,Fatima Rizvi,480000,48000,Non-ATL,"House 18, DHA, Karachi",0310-9021831,Salary,Savings,Clerk,1,True,fatima rizvi,"house 18, dha, karachi",6b48c119
+FBR-1207,Hamza Bibi,960000,96000,ATL,"House 29, F-7, Rawalpindi",0343-9913885,Salary,Prize Bond,Student,0,True,hamza bibi,"house 29, f-7, rawalpindi",dad83ee2
+FBR-1208,Bilal Mirza,1800000,180000,ATL,"House 143, Nazimabad, Faisalabad",0341-9628019,Rental,Foreign Remittance,Driver,0,False,bilal mirza,"house 143, nazimabad, faisalabad",49af0523
+FBR-1209,Usman Iqbal,1800000,180000,ATL,"House 63, Nazimabad, Lahore",0347-4160747,Rental,Cash,Teacher,0,True,usman iqbal,"house 63, nazimabad, lahore",3df30eb2
+FBR-1210,Usman Mirza,960000,96000,Non-ATL,"House 121, Johar Town, Peshawar",0329-9891203,Prize Bond,Savings,Businessman,6,True,usman mirza,"house 121, johar town, peshawar",d4b28b83
+FBR-1211,Saima Sheikh,1800000,180000,Non-ATL,"House 136, Clifton, Karachi",0337-8523017,Business,Prize Bond,Teacher,4,True,saima sheikh,"house 136, clifton, karachi",d9164a22
+FBR-1212,Usman Malik,240000,24000,Non-ATL,"House 27, Bahria Town, Faisalabad",0312-5849496,Agriculture,Cash,Driver,0,False,usman malik,"house 27, bahria town, faisalabad",4875b0cb
+FBR-1213,Imran Rizvi,960000,96000,ATL,"House 70, Nazimabad, Rawalpindi",0315-9751539,Business,Prize Bond,Clerk,0,True,imran rizvi,"house 70, nazimabad, rawalpindi",7a2d9569
+FBR-1214,Muhammad Butt,1800000,180000,ATL,"House 93, Hayatabad, Rawalpindi",0342-7496108,Agriculture,Cash,Engineer,0,False,muhammad butt,"house 93, hayatabad, rawalpindi",84c00357
+FBR-1215,Hina Iqbal,1800000,180000,Non-ATL,"House 15, Gulberg, Peshawar",0310-9077349,Rental,Savings,Businessman,0,True,hina iqbal,"house 15, gulberg, peshawar",4b0e7171
+FBR-1216,Imran Siddiqui,240000,24000,Non-ATL,"House 100, Bahria Town, Karachi",0327-8054514,Prize Bond,Savings,Retired,1,False,imran siddiqui,"house 100, bahria town, karachi",163a3243
+FBR-1217,Bilal Malik,3000000,300000,Non-ATL,"House 29, DHA, Islamabad",0323-6402138,Salary,Savings,Unemployed,6,True,bilal malik,"house 29, dha, islamabad",e2ef9e4a
+FBR-1218,Hamza Qureshi,480000,48000,Non-ATL,"House 75, Nazimabad, Karachi",0343-5703074,Business,Cash,Driver,6,True,hamza qureshi,"house 75, nazimabad, karachi",6bbd3179
+FBR-1219,Ayesha Qureshi,240000,24000,Non-ATL,"House 107, Nazimabad, Karachi",0326-1898244,Rental,Foreign Remittance,Student,4,True,ayesha qureshi,"house 107, nazimabad, karachi",31408f8e
+FBR-1220,Waseem Raza,1800000,180000,Non-ATL,"House 22, DHA, Karachi",0332-5230020,Salary,Foreign Remittance,Engineer,3,False,waseem raza,"house 22, dha, karachi",a5878653
+FBR-1221,Hamza Siddiqui,480000,48000,Non-ATL,"House 93, Clifton, Faisalabad",0327-9626056,Salary,Gift,Doctor,2,True,hamza siddiqui,"house 93, clifton, faisalabad",0305ba0f
+FBR-1222,Hina Chaudhry,0,0,Non-ATL,"House 17, Hayatabad, Karachi",0322-6030580,Business,Prize Bond,Doctor,6,True,hina chaudhry,"house 17, hayatabad, karachi",7e973c55
+FBR-1223,Ayesha Rizvi,960000,96000,ATL,"House 18, Pechs, Islamabad",0332-9932271,Agriculture,Gift,Doctor,0,True,ayesha rizvi,"house 18, pechs, islamabad",21e531fa
+FBR-1224,Zainab Rizvi,960000,96000,ATL,"House 92, Nazimabad, Lahore",0313-8527060,Agriculture,Gift,Businessman,0,True,zainab rizvi,"house 92, nazimabad, lahore",c6f1c029
+FBR-1225,Sana Mirza,960000,96000,ATL,"House 63, DHA, Rawalpindi",0332-1108712,Agriculture,Gift,Teacher,0,True,sana mirza,"house 63, dha, rawalpindi",8f6c3efa
+FBR-1226,Waseem Malik,0,0,Non-ATL,"House 44, Gulberg, Islamabad",0330-9746938,Salary,Prize Bond,Engineer,0,False,waseem malik,"house 44, gulberg, islamabad",6e5bda69
+FBR-1227,Nadia Qureshi,480000,48000,Non-ATL,"House 80, G-10, Karachi",0331-6603712,Agriculture,Savings,Housewife,0,True,nadia qureshi,"house 80, g-10, karachi",dd32cc7d
+FBR-1228,Waseem Bibi,480000,48000,Non-ATL,"House 81, F-7, Faisalabad",0345-6199891,Prize Bond,Gift,Retired,3,False,waseem bibi,"house 81, f-7, faisalabad",6614fd7a
+FBR-1229,Tariq Bibi,240000,24000,Non-ATL,"House 13, Johar Town, Karachi",0336-2939733,Salary,Cash,Student,1,True,tariq bibi,"house 13, johar town, karachi",849ae1a7
+FBR-1230,Nadia Nawaz,3000000,300000,Non-ATL,"House 88, Gulberg, Rawalpindi",0322-1636862,Salary,Foreign Remittance,Student,3,True,nadia nawaz,"house 88, gulberg, rawalpindi",6b52c4aa
+FBR-1231,Sana Mirza,960000,96000,ATL,"House 74, Clifton, Karachi",0347-9294574,Salary,Prize Bond,Unemployed,0,True,sana mirza,"house 74, clifton, karachi",85daad5d
+FBR-1232,Hina Baig,960000,96000,ATL,"House 85, Hayatabad, Faisalabad",0320-5680088,Rental,Savings,Doctor,0,True,hina baig,"house 85, hayatabad, faisalabad",e0adad69
+FBR-1233,Ayesha Bibi,1800000,180000,ATL,"House 150, Bahria Town, Islamabad",0315-6763058,Agriculture,Prize Bond,Engineer,0,True,ayesha bibi,"house 150, bahria town, islamabad",49931395
+FBR-1234,Nadia Javed,1800000,180000,ATL,"House 44, G-10, Faisalabad",0326-4471715,Prize Bond,Foreign Remittance,Clerk,0,True,nadia javed,"house 44, g-10, faisalabad",df64beb8
+FBR-1235,Zainab Siddiqui,1800000,180000,Non-ATL,"House 89, G-10, Islamabad",0328-2152208,Prize Bond,Prize Bond,Student,0,True,zainab siddiqui,"house 89, g-10, islamabad",c9b5922f
+FBR-1236,Hina Sheikh,0,0,Non-ATL,"House 137, Nazimabad, Islamabad",0312-3791925,Business,Prize Bond,Teacher,1,False,hina sheikh,"house 137, nazimabad, islamabad",3f1e9042
+FBR-1237,Fatima Iqbal,3000000,300000,ATL,"House 15, G-10, Karachi",0315-8706729,Rental,Savings,Businessman,0,False,fatima iqbal,"house 15, g-10, karachi",e26d7afd
+FBR-1238,Fatima Nawaz,480000,48000,Non-ATL,"House 127, Clifton, Karachi",0343-2563937,Salary,Gift,Clerk,1,True,fatima nawaz,"house 127, clifton, karachi",81b0df34
+FBR-1239,Hina Hassan,0,0,Non-ATL,"House 94, G-10, Peshawar",0348-5358607,Business,Cash,Housewife,6,True,hina hassan,"house 94, g-10, peshawar",4e358402
+FBR-1240,Ali Rizvi,1800000,180000,ATL,"House 122, Hayatabad, Karachi",0315-8142689,Salary,Gift,Businessman,0,False,ali rizvi,"house 122, hayatabad, karachi",bb2f1b8f
+FBR-1241,Bilal Raza,240000,24000,Non-ATL,"House 72, Hayatabad, Islamabad",0327-6147226,Agriculture,Foreign Remittance,Businessman,0,True,bilal raza,"house 72, hayatabad, islamabad",4587daff
+FBR-1242,Ayesha Butt,480000,48000,Non-ATL,"House 136, G-10, Islamabad",0328-5339815,Prize Bond,Prize Bond,Unemployed,5,True,ayesha butt,"house 136, g-10, islamabad",3824e39c
+FBR-1243,Muhammad Hassan,240000,24000,Non-ATL,"House 143, G-10, Islamabad",0334-4281313,Agriculture,Foreign Remittance,Driver,3,True,muhammad hassan,"house 143, g-10, islamabad",0653cf15
+FBR-1244,Waseem Abbasi,960000,96000,ATL,"House 4, Bahria Town, Islamabad",0337-5702636,Salary,Foreign Remittance,Unemployed,0,True,waseem abbasi,"house 4, bahria town, islamabad",0aa1fbe4
+FBR-1245,Ayesha Butt,960000,96000,ATL,"House 50, G-10, Lahore",0319-2004601,Rental,Foreign Remittance,Housewife,0,True,ayesha butt,"house 50, g-10, lahore",aac7cd0f
+FBR-1246,Bilal Butt,480000,48000,Non-ATL,"House 108, Nazimabad, Lahore",0349-9345633,Agriculture,Foreign Remittance,Doctor,0,True,bilal butt,"house 108, nazimabad, lahore",9f9a5c37
+FBR-1247,Fatima Abbasi,480000,48000,Non-ATL,"House 110, DHA, Peshawar",0328-6499025,Rental,Cash,Teacher,2,True,fatima abbasi,"house 110, dha, peshawar",9529dc4d
+FBR-1248,Tariq Malik,480000,48000,Non-ATL,"House 99, Nazimabad, Rawalpindi",0317-4421371,Salary,Cash,Retired,0,True,tariq malik,"house 99, nazimabad, rawalpindi",1c6907df
+FBR-1249,Tariq Bibi,1800000,180000,ATL,"House 40, Hayatabad, Islamabad",0340-6334325,Rental,Cash,Unemployed,0,True,tariq bibi,"house 40, hayatabad, islamabad",d2c54659
+FBR-1250,Usman Sheikh,1800000,180000,ATL,"House 116, Nazimabad, Islamabad",0343-5137848,Rental,Gift,Teacher,0,True,usman sheikh,"house 116, nazimabad, islamabad",f02ac2cb
+FBR-1251,Nadia Khan,3000000,300000,Non-ATL,"House 33, F-7, Rawalpindi",0320-3943165,Salary,Prize Bond,Housewife,3,True,nadia khan,"house 33, f-7, rawalpindi",469922e2
+FBR-1252,Amna Ahmed,960000,96000,ATL,"House 145, Nazimabad, Faisalabad",0334-5390850,Salary,Cash,Doctor,0,True,amna ahmad,"house 145, nazimabad, faisalabad",b8b4b87f
+FBR-1253,Imran Sheikh,3000000,300000,ATL,"House 66, Hayatabad, Lahore",0327-2409156,Rental,Gift,Businessman,0,False,imran sheikh,"house 66, hayatabad, lahore",664d858d
+FBR-1254,Hina Siddiqui,960000,96000,ATL,"House 140, F-7, Rawalpindi",0344-8858117,Salary,Gift,Clerk,0,False,hina siddiqui,"house 140, f-7, rawalpindi",8bad0235
+FBR-1255,Hina Sheikh,960000,96000,ATL,"House 41, Bahria Town, Islamabad",0331-4555234,Business,Gift,Housewife,0,True,hina sheikh,"house 41, bahria town, islamabad",a126389b
+FBR-1256,Hina Qureshi,0,0,Non-ATL,"House 130, G-10, Karachi",0342-3651613,Salary,Foreign Remittance,Student,4,False,hina qureshi,"house 130, g-10, karachi",af830ee7
+FBR-1257,Fatima Javed,3000000,300000,ATL,"House 131, Nazimabad, Karachi",0327-2737369,Business,Cash,Retired,0,True,fatima javed,"house 131, nazimabad, karachi",f1da1e02
+FBR-1258,Waseem Malik,1800000,180000,ATL,"House 49, Clifton, Faisalabad",0332-9137601,Business,Savings,Driver,0,True,waseem malik,"house 49, clifton, faisalabad",4c03fb2a
+FBR-1259,Zubair Sheikh,960000,96000,ATL,"House 116, Clifton, Rawalpindi",0326-4739700,Agriculture,Gift,Clerk,0,True,zubair sheikh,"house 116, clifton, rawalpindi",4b611176
+FBR-1260,Amna Abbasi,240000,24000,Non-ATL,"House 118, Clifton, Karachi",0314-5349508,Rental,Gift,Doctor,2,False,amna abbasi,"house 118, clifton, karachi",d82aaa9b
+FBR-1261,Ahmed Siddiqui,240000,24000,Non-ATL,"House 84, Nazimabad, Faisalabad",0346-8452814,Prize Bond,Gift,Doctor,5,True,ahmad siddiqui,"house 84, nazimabad, faisalabad",99df19c6
+FBR-1262,Ali Bibi,960000,96000,ATL,"House 31, Hayatabad, Lahore",0346-2414537,Prize Bond,Savings,Housewife,0,False,ali bibi,"house 31, hayatabad, lahore",ae0ea59a
+FBR-1263,Sana Bibi,480000,48000,Non-ATL,"House 66, Nazimabad, Peshawar",0322-5920894,Business,Gift,Housewife,3,True,sana bibi,"house 66, nazimabad, peshawar",492e46af
+FBR-1264,Ali Chaudhry,0,0,Non-ATL,"House 32, Johar Town, Islamabad",0332-9615878,Rental,Prize Bond,Clerk,5,True,ali chaudhry,"house 32, johar town, islamabad",fd6b3b8b
+FBR-1265,Hamza Bibi,0,0,Non-ATL,"House 116, Pechs, Karachi",0343-2184395,Business,Savings,Doctor,6,False,hamza bibi,"house 116, pechs, karachi",76524d33
+FBR-1266,Hina Hassan,1800000,180000,ATL,"House 6, Pechs, Karachi",0316-3979853,Agriculture,Cash,Housewife,0,False,hina hassan,"house 6, pechs, karachi",ede0471f
+FBR-1267,Hina Khan,3000000,300000,ATL,"House 147, Pechs, Rawalpindi",0321-5953025,Salary,Foreign Remittance,Driver,0,True,hina khan,"house 147, pechs, rawalpindi",4c274bf0
+FBR-1268,Ahmed Malik,3000000,300000,ATL,"House 130, G-10, Peshawar",0345-8952795,Agriculture,Savings,Housewife,0,False,ahmad malik,"house 130, g-10, peshawar",7aac3fb5
+FBR-1269,Sana Qureshi,240000,24000,Non-ATL,"House 74, Pechs, Karachi",0311-5475571,Rental,Prize Bond,Businessman,6,True,sana qureshi,"house 74, pechs, karachi",48fe8369
+FBR-1270,Ali Chaudhry,3000000,300000,Non-ATL,"House 76, Hayatabad, Karachi",0347-9309421,Prize Bond,Prize Bond,Engineer,1,False,ali chaudhry,"house 76, hayatabad, karachi",7ac2efc2
+FBR-1271,Usman Hassan,960000,96000,ATL,"House 35, DHA, Karachi",0338-4000187,Salary,Foreign Remittance,Doctor,0,True,usman hassan,"house 35, dha, karachi",41f72741
+FBR-1272,Amna Rizvi,3000000,300000,ATL,"House 91, Gulberg, Islamabad",0315-5291512,Business,Prize Bond,Engineer,0,True,amna rizvi,"house 91, gulberg, islamabad",ad513c7a
+FBR-1273,Zubair Mirza,0,0,Non-ATL,"House 47, Hayatabad, Peshawar",0321-9282667,Salary,Foreign Remittance,Housewife,2,False,zubair mirza,"house 47, hayatabad, peshawar",61f3aa3b
+FBR-1274,Sana Butt,3000000,300000,ATL,"House 85, Johar Town, Islamabad",0346-2759650,Agriculture,Cash,Housewife,0,False,sana butt,"house 85, johar town, islamabad",b2f863c1
+FBR-1275,Muhammad Iqbal,1800000,180000,ATL,"House 26, Nazimabad, Lahore",0321-8681110,Agriculture,Cash,Student,0,True,muhammad iqbal,"house 26, nazimabad, lahore",cfec68e0
+FBR-1276,Hamza Mirza,240000,24000,Non-ATL,"House 68, Hayatabad, Lahore",0342-5782824,Salary,Prize Bond,Doctor,5,True,hamza mirza,"house 68, hayatabad, lahore",df0064f6
+FBR-1277,Ali Baig,960000,96000,Non-ATL,"House 125, Pechs, Karachi",0325-8852739,Prize Bond,Cash,Housewife,1,True,ali baig,"house 125, pechs, karachi",f889db56
+FBR-1278,Zainab Javed,1800000,180000,ATL,"House 133, Johar Town, Faisalabad",0324-8724173,Salary,Gift,Unemployed,0,True,zainab javed,"house 133, johar town, faisalabad",902d4a78
+FBR-1279,Ahmed Baig,3000000,300000,ATL,"House 54, Bahria Town, Karachi",0345-6810346,Agriculture,Savings,Teacher,0,False,ahmad baig,"house 54, bahria town, karachi",19c890b7
+FBR-1280,Zubair Siddiqui,3000000,300000,ATL,"House 96, F-7, Peshawar",0313-4419140,Rental,Gift,Student,0,True,zubair siddiqui,"house 96, f-7, peshawar",45f1c5ec
+FBR-1281,Hamza Qureshi,3000000,300000,ATL,"House 98, Nazimabad, Faisalabad",0338-7854295,Business,Prize Bond,Driver,0,True,hamza qureshi,"house 98, nazimabad, faisalabad",8cea515d
+FBR-1282,Ali Hassan,480000,48000,Non-ATL,"House 47, Clifton, Faisalabad",0317-6496997,Salary,Cash,Doctor,2,True,ali hassan,"house 47, clifton, faisalabad",da3f0d92
+FBR-1283,Zainab Mirza,3000000,300000,Non-ATL,"House 143, F-7, Peshawar",0345-5890875,Business,Gift,Retired,5,False,zainab mirza,"house 143, f-7, peshawar",8ee3bfbd
+FBR-1284,Sana Javed,480000,48000,Non-ATL,"House 7, Gulberg, Peshawar",0335-2027468,Business,Foreign Remittance,Retired,5,True,sana javed,"house 7, gulberg, peshawar",00c5e570
+FBR-1285,Muhammad Raza,0,0,Non-ATL,"House 109, Hayatabad, Lahore",0311-5915723,Agriculture,Cash,Unemployed,4,False,muhammad raza,"house 109, hayatabad, lahore",54823cdd
+FBR-1286,Sana Sheikh,240000,24000,Non-ATL,"House 40, Nazimabad, Peshawar",0317-6487114,Business,Prize Bond,Businessman,0,False,sana sheikh,"house 40, nazimabad, peshawar",b6734eec
+FBR-1287,Amna Abbasi,3000000,300000,ATL,"House 141, Bahria Town, Faisalabad",0330-4202977,Rental,Savings,Teacher,0,True,amna abbasi,"house 141, bahria town, faisalabad",8378fdf3
+FBR-1288,Amna Khan,0,0,Non-ATL,"House 147, Johar Town, Peshawar",0324-1779527,Salary,Prize Bond,Housewife,5,False,amna khan,"house 147, johar town, peshawar",2f4230d0
+FBR-1289,Nadia Chaudhry,1800000,180000,ATL,"House 78, Nazimabad, Karachi",0321-5011563,Salary,Prize Bond,Driver,0,True,nadia chaudhry,"house 78, nazimabad, karachi",377ae3d5
+FBR-1290,Waseem Iqbal,3000000,300000,Non-ATL,"House 16, Johar Town, Faisalabad",0322-5741798,Agriculture,Savings,Doctor,1,True,waseem iqbal,"house 16, johar town, faisalabad",bab59a0f
+FBR-1291,Imran Butt,1800000,180000,ATL,"House 40, Bahria Town, Rawalpindi",0347-4037053,Prize Bond,Foreign Remittance,Businessman,0,False,imran butt,"house 40, bahria town, rawalpindi",8f4cc9f6
+FBR-1292,Hina Butt,480000,48000,Non-ATL,"House 46, Hayatabad, Lahore",0312-8694344,Business,Cash,Unemployed,6,True,hina butt,"house 46, hayatabad, lahore",5f6ae342
+FBR-1293,Ahmed Ahmed,960000,96000,Non-ATL,"House 62, Nazimabad, Rawalpindi",0348-1391412,Agriculture,Gift,Unemployed,5,True,ahmad ahmad,"house 62, nazimabad, rawalpindi",ebc17cdb
+FBR-1294,Sana Khan,480000,48000,Non-ATL,"House 72, DHA, Lahore",0347-1731850,Prize Bond,Gift,Retired,0,True,sana khan,"house 72, dha, lahore",b2577818
+FBR-1295,Zainab Qureshi,960000,96000,ATL,"House 123, DHA, Peshawar",0336-3694598,Prize Bond,Savings,Engineer,0,True,zainab qureshi,"house 123, dha, peshawar",c05008f7
+FBR-1296,Saima Sheikh,3000000,300000,ATL,"House 45, G-10, Peshawar",0324-2973900,Agriculture,Foreign Remittance,Retired,0,True,saima sheikh,"house 45, g-10, peshawar",922fdb00
+FBR-1297,Hina Baig,960000,96000,Non-ATL,"House 116, Bahria Town, Islamabad",0330-5930765,Business,Foreign Remittance,Student,1,False,hina baig,"house 116, bahria town, islamabad",33df160d
+FBR-1298,Hamza Rizvi,240000,24000,Non-ATL,"House 79, Gulberg, Karachi",0338-5639035,Salary,Foreign Remittance,Engineer,0,True,hamza rizvi,"house 79, gulberg, karachi",ba028503
+FBR-1299,Imran Chaudhry,480000,48000,Non-ATL,"House 51, Clifton, Islamabad",0338-8271168,Business,Gift,Engineer,6,True,imran chaudhry,"house 51, clifton, islamabad",3b44c2b4
+FBR-1300,Tariq Hassan,240000,24000,Non-ATL,"House 101, Pechs, Faisalabad",0315-1361950,Agriculture,Gift,Businessman,1,False,tariq hassan,"house 101, pechs, faisalabad",097c4ba4
+FBR-1301,Muhammad Ahmed,240000,24000,Non-ATL,"House 6, Clifton, Karachi",0337-3884472,Business,Savings,Housewife,6,True,muhammad ahmad,"house 6, clifton, karachi",50bf719a
+FBR-1302,Tariq Mirza,240000,24000,Non-ATL,"House 110, Bahria Town, Karachi",0315-4688803,Salary,Foreign Remittance,Retired,6,True,tariq mirza,"house 110, bahria town, karachi",ec0e0e80
+FBR-1303,Saima Hassan,480000,48000,Non-ATL,"House 64, G-10, Faisalabad",0315-2629571,Prize Bond,Savings,Clerk,5,True,saima hassan,"house 64, g-10, faisalabad",62112050
+FBR-1304,Zubair Qureshi,1800000,180000,ATL,"House 113, F-7, Lahore",0318-7779919,Business,Prize Bond,Businessman,0,True,zubair qureshi,"house 113, f-7, lahore",4dea5ba9
+FBR-1305,Muhammad Baig,3000000,300000,Non-ATL,"House 142, Clifton, Faisalabad",0343-3688534,Salary,Foreign Remittance,Clerk,4,True,muhammad baig,"house 142, clifton, faisalabad",0017558c
+FBR-1306,Fatima Qureshi,960000,96000,ATL,"House 88, Clifton, Faisalabad",0336-3352449,Salary,Prize Bond,Engineer,0,True,fatima qureshi,"house 88, clifton, faisalabad",df47188a
+FBR-1307,Sana Qureshi,1800000,180000,ATL,"House 19, Hayatabad, Karachi",0311-1147276,Rental,Cash,Housewife,0,True,sana qureshi,"house 19, hayatabad, karachi",c30aff96
+FBR-1308,Bilal Rizvi,3000000,300000,ATL,"House 33, Johar Town, Faisalabad",0310-1923960,Rental,Foreign Remittance,Unemployed,0,True,bilal rizvi,"house 33, johar town, faisalabad",60fb8ade
+FBR-1309,Hamza Siddiqui,1800000,180000,ATL,"House 91, Hayatabad, Rawalpindi",0315-8645342,Prize Bond,Cash,Clerk,0,False,hamza siddiqui,"house 91, hayatabad, rawalpindi",228b67eb
+FBR-1310,Sana Nawaz,240000,24000,Non-ATL,"House 100, G-10, Rawalpindi",0318-7498533,Business,Foreign Remittance,Businessman,3,True,sana nawaz,"house 100, g-10, rawalpindi",4f887728
+FBR-1311,Tariq Abbasi,3000000,300000,Non-ATL,"House 74, Gulberg, Lahore",0312-6503851,Salary,Cash,Retired,4,True,tariq abbasi,"house 74, gulberg, lahore",ff4ed3a1
+FBR-1312,Usman Iqbal,960000,96000,Non-ATL,"House 142, Pechs, Karachi",0335-4761106,Agriculture,Prize Bond,Engineer,6,True,usman iqbal,"house 142, pechs, karachi",f7405908
+FBR-1313,Nadia Iqbal,480000,48000,Non-ATL,"House 96, Nazimabad, Peshawar",0315-8907471,Business,Gift,Student,0,True,nadia iqbal,"house 96, nazimabad, peshawar",abe9340f
+FBR-1314,Ahmed Nawaz,240000,24000,Non-ATL,"House 13, Bahria Town, Peshawar",0332-1856939,Prize Bond,Gift,Teacher,0,False,ahmad nawaz,"house 13, bahria town, peshawar",3a26b907
+FBR-1315,Hamza Rizvi,240000,24000,Non-ATL,"House 49, DHA, Rawalpindi",0317-7414169,Rental,Gift,Housewife,2,False,hamza rizvi,"house 49, dha, rawalpindi",850efdee
+FBR-1316,Hamza Bibi,480000,48000,Non-ATL,"House 57, G-10, Lahore",0319-8135091,Agriculture,Foreign Remittance,Clerk,5,True,hamza bibi,"house 57, g-10, lahore",e39817bc
+FBR-1317,Amna Butt,0,0,Non-ATL,"House 120, Nazimabad, Peshawar",0343-3553054,Rental,Savings,Retired,4,True,amna butt,"house 120, nazimabad, peshawar",b976ff5a
+FBR-1318,Bilal Rizvi,0,0,Non-ATL,"House 54, F-7, Peshawar",0314-9554264,Agriculture,Cash,Businessman,1,True,bilal rizvi,"house 54, f-7, peshawar",55c5fdbe
+FBR-1319,Imran Mirza,3000000,300000,Non-ATL,"House 23, Pechs, Rawalpindi",0332-2120408,Prize Bond,Cash,Retired,3,False,imran mirza,"house 23, pechs, rawalpindi",7288c1fd
+FBR-1320,Imran Abbasi,0,0,Non-ATL,"House 117, Johar Town, Faisalabad",0347-4421290,Salary,Prize Bond,Unemployed,0,False,imran abbasi,"house 117, johar town, faisalabad",e80b354b
+FBR-1321,Sana Malik,3000000,300000,ATL,"House 58, Hayatabad, Faisalabad",0315-2683185,Prize Bond,Savings,Driver,0,True,sana malik,"house 58, hayatabad, faisalabad",9ae49675
+FBR-1322,Saima Chaudhry,0,0,Non-ATL,"House 107, G-10, Lahore",0344-4142351,Prize Bond,Cash,Driver,5,True,saima chaudhry,"house 107, g-10, lahore",c3aa1290
+FBR-1323,Fatima Baig,240000,24000,Non-ATL,"House 73, Johar Town, Karachi",0334-8220990,Salary,Gift,Teacher,3,True,fatima baig,"house 73, johar town, karachi",f0a0e708
+FBR-1324,Zubair Hassan,240000,24000,Non-ATL,"House 80, Johar Town, Islamabad",0333-1926011,Prize Bond,Savings,Doctor,2,True,zubair hassan,"house 80, johar town, islamabad",057ea3f9
+FBR-1325,Waseem Bibi,960000,96000,Non-ATL,"House 105, G-10, Rawalpindi",0328-2874552,Prize Bond,Savings,Retired,5,True,waseem bibi,"house 105, g-10, rawalpindi",18ddc879
+FBR-1326,Ahmed Qureshi,960000,96000,ATL,"House 83, Johar Town, Karachi",0338-6239126,Salary,Cash,Teacher,0,True,ahmad qureshi,"house 83, johar town, karachi",32d06b73
+FBR-1327,Zubair Butt,0,0,Non-ATL,"House 63, Nazimabad, Islamabad",0345-2721948,Prize Bond,Prize Bond,Unemployed,2,False,zubair butt,"house 63, nazimabad, islamabad",b1fb2f5b
+FBR-1328,Ayesha Hassan,960000,96000,Non-ATL,"House 54, Clifton, Peshawar",0336-3279635,Salary,Prize Bond,Businessman,0,True,ayesha hassan,"house 54, clifton, peshawar",3e60b73e
+FBR-1329,Amna Malik,3000000,300000,Non-ATL,"House 55, G-10, Rawalpindi",0325-4351991,Agriculture,Gift,Doctor,5,True,amna malik,"house 55, g-10, rawalpindi",0daab301
+FBR-1330,Ayesha Mirza,1800000,180000,Non-ATL,"House 145, Johar Town, Rawalpindi",0348-8694042,Prize Bond,Foreign Remittance,Clerk,5,True,ayesha mirza,"house 145, johar town, rawalpindi",8cf32bce
+FBR-1331,Usman Javed,1800000,180000,ATL,"House 70, Hayatabad, Karachi",0319-9005583,Business,Cash,Retired,0,True,usman javed,"house 70, hayatabad, karachi",8fec54f9
+FBR-1332,Bilal Iqbal,1800000,180000,ATL,"House 51, Johar Town, Karachi",0341-1160589,Prize Bond,Prize Bond,Unemployed,0,True,bilal iqbal,"house 51, johar town, karachi",36ff04ad
+FBR-1333,Saima Nawaz,240000,24000,Non-ATL,"House 101, G-10, Karachi",0337-6392941,Prize Bond,Savings,Retired,0,False,saima nawaz,"house 101, g-10, karachi",41ba7fb7
+FBR-1334,Fatima Abbasi,480000,48000,Non-ATL,"House 16, Johar Town, Lahore",0321-6187977,Prize Bond,Prize Bond,Housewife,2,True,fatima abbasi,"house 16, johar town, lahore",6a2f4f6d
+FBR-1335,Imran Siddiqui,3000000,300000,ATL,"House 119, G-10, Lahore",0336-6361306,Rental,Gift,Retired,0,True,imran siddiqui,"house 119, g-10, lahore",f3c77483
+FBR-1336,Sana Abbasi,960000,96000,Non-ATL,"House 132, Gulberg, Rawalpindi",0348-3475031,Prize Bond,Prize Bond,Doctor,3,True,sana abbasi,"house 132, gulberg, rawalpindi",885822cc
+FBR-1337,Usman Hassan,0,0,Non-ATL,"House 17, DHA, Rawalpindi",0311-1874899,Salary,Savings,Housewife,3,True,usman hassan,"house 17, dha, rawalpindi",55e9a6f6
+FBR-1338,Nadia Javed,240000,24000,Non-ATL,"House 36, Nazimabad, Faisalabad",0312-7816826,Business,Foreign Remittance,Engineer,0,True,nadia javed,"house 36, nazimabad, faisalabad",9de6a31f
+FBR-1339,Nadia Ahmed,480000,48000,Non-ATL,"House 113, F-7, Rawalpindi",0338-4007994,Business,Foreign Remittance,Unemployed,5,True,nadia ahmad,"house 113, f-7, rawalpindi",672839a9
+FBR-1340,Zainab Abbasi,0,0,Non-ATL,"House 41, Bahria Town, Islamabad",0333-5211600,Agriculture,Gift,Teacher,3,False,zainab abbasi,"house 41, bahria town, islamabad",a126389b
+FBR-1341,Sana Nawaz,960000,96000,ATL,"House 26, G-10, Islamabad",0311-5371305,Rental,Gift,Driver,0,True,sana nawaz,"house 26, g-10, islamabad",45fe2a68
+FBR-1342,Zubair Siddiqui,960000,96000,ATL,"House 94, Johar Town, Peshawar",0346-9998109,Salary,Cash,Engineer,0,True,zubair siddiqui,"house 94, johar town, peshawar",185eb2f0
+FBR-1343,Imran Malik,1800000,180000,ATL,"House 34, Hayatabad, Karachi",0348-6940209,Salary,Savings,Driver,0,False,imran malik,"house 34, hayatabad, karachi",88b4f198
+FBR-1344,Waseem Qureshi,960000,96000,Non-ATL,"House 25, Johar Town, Peshawar",0325-6358027,Agriculture,Prize Bond,Retired,0,True,waseem qureshi,"house 25, johar town, peshawar",387b310f
+FBR-1345,Nadia Nawaz,1800000,180000,ATL,"House 75, Johar Town, Peshawar",0313-8593071,Agriculture,Savings,Businessman,0,True,nadia nawaz,"house 75, johar town, peshawar",dab08c5c
+FBR-1346,Zubair Ahmed,960000,96000,Non-ATL,"House 98, Nazimabad, Karachi",0327-8846981,Prize Bond,Cash,Businessman,4,False,zubair ahmad,"house 98, nazimabad, karachi",e1c7e83f
+FBR-1347,Hina Baig,240000,24000,Non-ATL,"House 124, Nazimabad, Karachi",0321-2086039,Agriculture,Savings,Clerk,3,True,hina baig,"house 124, nazimabad, karachi",f8394a3d
+FBR-1348,Bilal Rizvi,960000,96000,Non-ATL,"House 12, Hayatabad, Lahore",0322-4353290,Salary,Savings,Doctor,1,True,bilal rizvi,"house 12, hayatabad, lahore",193a18bf
+FBR-1349,Usman Hassan,1800000,180000,Non-ATL,"House 100, G-10, Lahore",0337-9337682,Prize Bond,Foreign Remittance,Retired,3,True,usman hassan,"house 100, g-10, lahore",33fade55
+FBR-1350,Zainab Khan,0,0,Non-ATL,"House 113, DHA, Peshawar",0331-1517099,Agriculture,Gift,Retired,6,True,zainab khan,"house 113, dha, peshawar",38bc7882
+FBR-1351,Hina Rizvi,960000,96000,ATL,"House 37, F-7, Peshawar",0345-2467209,Salary,Prize Bond,Housewife,0,True,hina rizvi,"house 37, f-7, peshawar",2845e05d
+FBR-1352,Sana Khan,3000000,300000,Non-ATL,"House 31, Pechs, Islamabad",0346-5767248,Agriculture,Foreign Remittance,Retired,0,False,sana khan,"house 31, pechs, islamabad",ec1f869c
+FBR-1353,Amna Mirza,0,0,Non-ATL,"House 110, G-10, Islamabad",0338-4073900,Rental,Gift,Clerk,2,True,amna mirza,"house 110, g-10, islamabad",0b402a91
+FBR-1354,Imran Hassan,480000,48000,Non-ATL,"House 121, Bahria Town, Faisalabad",0345-5294105,Agriculture,Savings,Businessman,3,True,imran hassan,"house 121, bahria town, faisalabad",ddbc4d74
+FBR-1355,Saima Baig,3000000,300000,Non-ATL,"House 69, Bahria Town, Islamabad",0346-9753046,Rental,Gift,Unemployed,4,True,saima baig,"house 69, bahria town, islamabad",2d0664cf
+FBR-1356,Hamza Siddiqui,480000,48000,Non-ATL,"House 64, DHA, Karachi",0313-8870251,Business,Cash,Housewife,4,True,hamza siddiqui,"house 64, dha, karachi",9b3dd5a5
+FBR-1357,Nadia Abbasi,1800000,180000,ATL,"House 87, Clifton, Faisalabad",0344-9779517,Rental,Gift,Retired,0,True,nadia abbasi,"house 87, clifton, faisalabad",0d8234a7
+FBR-1358,Bilal Khan,240000,24000,Non-ATL,"House 41, Nazimabad, Rawalpindi",0340-2462649,Agriculture,Savings,Teacher,5,True,bilal khan,"house 41, nazimabad, rawalpindi",03185d58
+FBR-1359,Ahmed Raza,1800000,180000,ATL,"House 19, Bahria Town, Rawalpindi",0337-5331688,Agriculture,Gift,Student,0,True,ahmad raza,"house 19, bahria town, rawalpindi",e38a4ae1
+FBR-1360,Hina Hassan,480000,48000,Non-ATL,"House 11, Bahria Town, Lahore",0343-7597587,Agriculture,Cash,Clerk,1,True,hina hassan,"house 11, bahria town, lahore",65f7ef18
+FBR-1361,Waseem Iqbal,3000000,300000,Non-ATL,"House 80, Johar Town, Peshawar",0319-4982956,Business,Foreign Remittance,Engineer,5,True,waseem iqbal,"house 80, johar town, peshawar",36edd71d
+FBR-1362,Nadia Chaudhry,480000,48000,Non-ATL,"House 53, Hayatabad, Islamabad",0347-9582690,Business,Prize Bond,Retired,4,False,nadia chaudhry,"house 53, hayatabad, islamabad",93843bd7
+FBR-1363,Amna Malik,3000000,300000,Non-ATL,"House 2, Nazimabad, Karachi",0314-1595196,Rental,Gift,Teacher,1,True,amna malik,"house 2, nazimabad, karachi",560cdb79
+FBR-1364,Saima Raza,0,0,Non-ATL,"House 20, Nazimabad, Lahore",0315-2569625,Agriculture,Prize Bond,Retired,0,False,saima raza,"house 20, nazimabad, lahore",645b9d9c
+FBR-1365,Zubair Raza,480000,48000,Non-ATL,"House 147, G-10, Faisalabad",0342-2657727,Salary,Foreign Remittance,Retired,4,True,zubair raza,"house 147, g-10, faisalabad",71d020f4
+FBR-1366,Nadia Abbasi,3000000,300000,Non-ATL,"House 6, Pechs, Peshawar",0321-2131856,Business,Prize Bond,Businessman,4,True,nadia abbasi,"house 6, pechs, peshawar",2b2cf41f
+FBR-1367,Usman Mirza,240000,24000,Non-ATL,"House 29, Bahria Town, Karachi",0315-1798327,Salary,Savings,Retired,0,True,usman mirza,"house 29, bahria town, karachi",5de94baa
+FBR-1368,Hamza Chaudhry,0,0,Non-ATL,"House 55, DHA, Lahore",0313-4584049,Salary,Prize Bond,Unemployed,0,False,hamza chaudhry,"house 55, dha, lahore",df27ce62
+FBR-1369,Zainab Khan,960000,96000,ATL,"House 30, Pechs, Lahore",0323-1035575,Agriculture,Cash,Housewife,0,True,zainab khan,"house 30, pechs, lahore",98c54e5b
+FBR-1370,Hamza Nawaz,1800000,180000,ATL,"House 32, G-10, Lahore",0340-8063050,Prize Bond,Gift,Clerk,0,True,hamza nawaz,"house 32, g-10, lahore",244208f2
+FBR-1371,Sana Raza,3000000,300000,ATL,"House 33, G-10, Karachi",0310-8385605,Prize Bond,Gift,Housewife,0,True,sana raza,"house 33, g-10, karachi",57ee1e84
+FBR-1372,Amna Mirza,1800000,180000,Non-ATL,"House 141, Gulberg, Lahore",0337-1957538,Prize Bond,Cash,Housewife,1,True,amna mirza,"house 141, gulberg, lahore",2d94c5d6
+FBR-1373,Hina Baig,0,0,Non-ATL,"House 25, Nazimabad, Rawalpindi",0333-3742051,Rental,Prize Bond,Driver,2,False,hina baig,"house 25, nazimabad, rawalpindi",da19b445
+FBR-1374,Hina Javed,0,0,Non-ATL,"House 101, DHA, Peshawar",0328-2116687,Rental,Prize Bond,Teacher,2,True,hina javed,"house 101, dha, peshawar",52330aae
+FBR-1375,Ahmed Abbasi,960000,96000,ATL,"House 74, Johar Town, Rawalpindi",0343-2515773,Rental,Savings,Businessman,0,False,ahmad abbasi,"house 74, johar town, rawalpindi",665b034b
+FBR-1376,Amna Mirza,0,0,Non-ATL,"House 9, G-10, Faisalabad",0316-2251718,Business,Prize Bond,Engineer,2,True,amna mirza,"house 9, g-10, faisalabad",c5e7b71b
+FBR-1377,Zainab Ahmed,480000,48000,Non-ATL,"House 57, Gulberg, Peshawar",0332-6948848,Business,Gift,Student,3,True,zainab ahmad,"house 57, gulberg, peshawar",55f55091
+FBR-1378,Ayesha Raza,960000,96000,ATL,"House 11, G-10, Karachi",0344-2796411,Prize Bond,Cash,Student,0,True,ayesha raza,"house 11, g-10, karachi",8ed871f3
+FBR-1379,Sana Qureshi,0,0,Non-ATL,"House 34, Johar Town, Karachi",0310-8609877,Business,Foreign Remittance,Retired,4,True,sana qureshi,"house 34, johar town, karachi",ad54006e
+FBR-1380,Waseem Malik,3000000,300000,ATL,"House 65, Clifton, Lahore",0313-7344879,Rental,Gift,Driver,0,False,waseem malik,"house 65, clifton, lahore",46850cbc
+FBR-1381,Ahmed Nawaz,240000,24000,Non-ATL,"House 83, Johar Town, Faisalabad",0346-3650960,Prize Bond,Savings,Housewife,4,False,ahmad nawaz,"house 83, johar town, faisalabad",11927fa7
+FBR-1382,Imran Bibi,1800000,180000,Non-ATL,"House 25, Hayatabad, Peshawar",0319-8135573,Salary,Savings,Student,0,True,imran bibi,"house 25, hayatabad, peshawar",c5a9e380
+FBR-1383,Ali Khan,240000,24000,Non-ATL,"House 32, Bahria Town, Karachi",0327-6189040,Business,Cash,Doctor,3,True,ali khan,"house 32, bahria town, karachi",76d26a6a
+FBR-1384,Hamza Sheikh,240000,24000,Non-ATL,"House 112, G-10, Faisalabad",0348-4116429,Agriculture,Foreign Remittance,Businessman,2,False,hamza sheikh,"house 112, g-10, faisalabad",7a3fef1b
+FBR-1385,Saima Iqbal,1800000,180000,ATL,"House 17, Nazimabad, Peshawar",0328-7584374,Business,Savings,Engineer,0,False,saima iqbal,"house 17, nazimabad, peshawar",97e906eb
+FBR-1386,Fatima Malik,480000,48000,Non-ATL,"House 103, Hayatabad, Rawalpindi",0339-4820440,Agriculture,Gift,Driver,4,True,fatima malik,"house 103, hayatabad, rawalpindi",a4295592
+FBR-1387,Zainab Mirza,1800000,180000,Non-ATL,"House 107, Nazimabad, Faisalabad",0325-6182735,Salary,Cash,Teacher,3,True,zainab mirza,"house 107, nazimabad, faisalabad",723eb175
+FBR-1388,Usman Nawaz,0,0,Non-ATL,"House 31, Hayatabad, Rawalpindi",0317-2715784,Rental,Gift,Clerk,3,True,usman nawaz,"house 31, hayatabad, rawalpindi",ff13f25c
+FBR-1389,Ahmed Nawaz,960000,96000,Non-ATL,"House 135, Pechs, Lahore",0319-9386672,Salary,Gift,Businessman,0,True,ahmad nawaz,"house 135, pechs, lahore",f1a48d11
+FBR-1390,Imran Khan,960000,96000,ATL,"House 129, F-7, Lahore",0317-3100931,Agriculture,Gift,Engineer,0,True,imran khan,"house 129, f-7, lahore",48bff33a
+FBR-1391,Tariq Butt,960000,96000,ATL,"House 5, G-10, Peshawar",0324-8146302,Prize Bond,Cash,Unemployed,0,True,tariq butt,"house 5, g-10, peshawar",c4f09eb4
+FBR-1392,Muhammad Ahmed,0,0,Non-ATL,"House 115, Johar Town, Peshawar",0337-3839854,Prize Bond,Savings,Teacher,5,True,muhammad ahmad,"house 115, johar town, peshawar",8d204933
+FBR-1393,Zainab Raza,1800000,180000,ATL,"House 36, Pechs, Lahore",0331-4621717,Salary,Cash,Businessman,0,False,zainab raza,"house 36, pechs, lahore",d714cdb9
+FBR-1394,Zubair Siddiqui,240000,24000,Non-ATL,"House 110, DHA, Faisalabad",0337-6457562,Salary,Foreign Remittance,Engineer,3,True,zubair siddiqui,"house 110, dha, faisalabad",64912fac
+FBR-1395,Zubair Raza,1800000,180000,ATL,"House 40, F-7, Islamabad",0325-6365310,Business,Cash,Driver,0,True,zubair raza,"house 40, f-7, islamabad",e1aa741b
+FBR-1396,Tariq Abbasi,0,0,Non-ATL,"House 47, Johar Town, Peshawar",0321-2810953,Prize Bond,Prize Bond,Driver,6,True,tariq abbasi,"house 47, johar town, peshawar",c6ba291c
+FBR-1397,Amna Siddiqui,240000,24000,Non-ATL,"House 65, Nazimabad, Faisalabad",0337-3716959,Business,Prize Bond,Unemployed,5,True,amna siddiqui,"house 65, nazimabad, faisalabad",52713d4a
+FBR-1398,Hamza Khan,240000,24000,Non-ATL,"House 97, Pechs, Peshawar",0346-1786656,Agriculture,Prize Bond,Student,3,True,hamza khan,"house 97, pechs, peshawar",34a64501
+FBR-1399,Zainab Siddiqui,240000,24000,Non-ATL,"House 90, DHA, Lahore",0326-5473350,Prize Bond,Prize Bond,Unemployed,2,True,zainab siddiqui,"house 90, dha, lahore",0260ce8d
+FBR-1400,Bilal Abbasi,3000000,300000,ATL,"House 112, Nazimabad, Rawalpindi",0320-4021107,Rental,Prize Bond,Businessman,0,True,bilal abbasi,"house 112, nazimabad, rawalpindi",118ac7d7
+FBR-1401,Fatima Khan,240000,24000,Non-ATL,"House 103, Pechs, Karachi",0322-2684386,Prize Bond,Foreign Remittance,Driver,2,True,fatima khan,"house 103, pechs, karachi",e466988e
+FBR-1402,Tariq Khan,0,0,Non-ATL,"House 131, Johar Town, Islamabad",0318-3421799,Rental,Prize Bond,Retired,4,True,tariq khan,"house 131, johar town, islamabad",1dcf9a4e
+FBR-1403,Saima Rizvi,1800000,180000,ATL,"House 43, Nazimabad, Karachi",0338-2972749,Business,Prize Bond,Unemployed,0,False,saima rizvi,"house 43, nazimabad, karachi",8aa4bce0
+FBR-1404,Saima Sheikh,1800000,180000,ATL,"House 20, F-7, Rawalpindi",0324-9964609,Business,Savings,Driver,0,False,saima sheikh,"house 20, f-7, rawalpindi",925bad56
+FBR-1405,Hina Nawaz,0,0,Non-ATL,"House 4, Hayatabad, Rawalpindi",0316-5033570,Rental,Prize Bond,Engineer,0,True,hina nawaz,"house 4, hayatabad, rawalpindi",f1cf6404
+FBR-1406,Zubair Baig,3000000,300000,ATL,"House 82, Pechs, Faisalabad",0314-5468577,Rental,Foreign Remittance,Clerk,0,False,zubair baig,"house 82, pechs, faisalabad",348c0928
+FBR-1407,Usman Javed,960000,96000,ATL,"House 150, Bahria Town, Faisalabad",0333-1212560,Rental,Cash,Housewife,0,False,usman javed,"house 150, bahria town, faisalabad",c1359261
+FBR-1408,Hina Khan,240000,24000,Non-ATL,"House 107, Nazimabad, Islamabad",0330-9151357,Prize Bond,Savings,Driver,3,True,hina khan,"house 107, nazimabad, islamabad",09492e5b
+FBR-1409,Waseem Iqbal,0,0,Non-ATL,"House 91, Clifton, Karachi",0341-5581831,Business,Gift,Teacher,5,False,waseem iqbal,"house 91, clifton, karachi",c2685321
+FBR-1410,Hamza Iqbal,480000,48000,Non-ATL,"House 34, Gulberg, Islamabad",0332-6977971,Business,Prize Bond,Doctor,1,True,hamza iqbal,"house 34, gulberg, islamabad",c79d906e
+FBR-1411,Imran Butt,3000000,300000,Non-ATL,"House 65, Nazimabad, Islamabad",0330-6052376,Prize Bond,Savings,Driver,2,True,imran butt,"house 65, nazimabad, islamabad",dec8afcf
+FBR-1412,Usman Nawaz,0,0,Non-ATL,"House 139, Nazimabad, Rawalpindi",0337-4216601,Rental,Savings,Engineer,1,True,usman nawaz,"house 139, nazimabad, rawalpindi",7acde3a6
+FBR-1413,Hina Qureshi,960000,96000,Non-ATL,"House 2, Hayatabad, Karachi",0322-2357487,Prize Bond,Gift,Teacher,6,False,hina qureshi,"house 2, hayatabad, karachi",78c8f3f1
+FBR-1414,Zubair Raza,480000,48000,Non-ATL,"House 106, Nazimabad, Islamabad",0345-4226891,Prize Bond,Prize Bond,Student,2,False,zubair raza,"house 106, nazimabad, islamabad",07a2dcf9
+FBR-1415,Hina Mirza,1800000,180000,Non-ATL,"House 7, Gulberg, Rawalpindi",0339-7470129,Rental,Savings,Engineer,4,True,hina mirza,"house 7, gulberg, rawalpindi",397df962
+FBR-1416,Hamza Baig,240000,24000,Non-ATL,"House 124, DHA, Peshawar",0338-6837195,Rental,Savings,Driver,5,False,hamza baig,"house 124, dha, peshawar",228424c2
+FBR-1417,Muhammad Javed,1800000,180000,ATL,"House 90, F-7, Faisalabad",0322-2555335,Agriculture,Foreign Remittance,Housewife,0,False,muhammad javed,"house 90, f-7, faisalabad",25a75956
+FBR-1418,Hina Siddiqui,3000000,300000,ATL,"House 132, Clifton, Karachi",0346-6777059,Salary,Gift,Teacher,0,True,hina siddiqui,"house 132, clifton, karachi",54e63f60
+FBR-1419,Ali Ahmed,480000,48000,Non-ATL,"House 93, Hayatabad, Islamabad",0328-4994012,Salary,Gift,Unemployed,2,True,ali ahmad,"house 93, hayatabad, islamabad",de12505e
+FBR-1420,Zainab Raza,3000000,300000,ATL,"House 64, Nazimabad, Islamabad",0332-6549675,Business,Cash,Housewife,0,True,zainab raza,"house 64, nazimabad, islamabad",99c68669
+FBR-1421,Waseem Sheikh,960000,96000,ATL,"House 98, Johar Town, Rawalpindi",0326-8759741,Business,Prize Bond,Unemployed,0,True,waseem sheikh,"house 98, johar town, rawalpindi",1dcf1a7e
+FBR-1422,Bilal Malik,240000,24000,Non-ATL,"House 114, Johar Town, Rawalpindi",0343-6045929,Rental,Prize Bond,Teacher,3,True,bilal malik,"house 114, johar town, rawalpindi",de4c0f16
+FBR-1423,Zainab Nawaz,480000,48000,Non-ATL,"House 114, Pechs, Lahore",0328-4634796,Rental,Gift,Doctor,0,False,zainab nawaz,"house 114, pechs, lahore",dfe20268
+FBR-1424,Fatima Qureshi,240000,24000,Non-ATL,"House 56, Gulberg, Lahore",0318-4227998,Rental,Prize Bond,Housewife,5,False,fatima qureshi,"house 56, gulberg, lahore",72b13697
+FBR-1425,Ayesha Javed,240000,24000,Non-ATL,"House 149, F-7, Faisalabad",0318-2791087,Salary,Cash,Doctor,1,True,ayesha javed,"house 149, f-7, faisalabad",507ecfe8
+FBR-1426,Sana Chaudhry,480000,48000,Non-ATL,"House 54, Nazimabad, Peshawar",0332-6812819,Agriculture,Foreign Remittance,Student,0,True,sana chaudhry,"house 54, nazimabad, peshawar",af92066b
+FBR-1427,Muhammad Abbasi,960000,96000,Non-ATL,"House 122, Johar Town, Faisalabad",0345-3503082,Rental,Foreign Remittance,Housewife,3,False,muhammad abbasi,"house 122, johar town, faisalabad",85501b5f
+FBR-1428,Sana Rizvi,960000,96000,Non-ATL,"House 116, Nazimabad, Peshawar",0318-4309249,Prize Bond,Cash,Engineer,0,True,sana rizvi,"house 116, nazimabad, peshawar",652ed328
+FBR-1429,Amna Nawaz,480000,48000,Non-ATL,"House 120, Nazimabad, Rawalpindi",0328-2555728,Prize Bond,Prize Bond,Businessman,6,True,amna nawaz,"house 120, nazimabad, rawalpindi",b9f51749
+FBR-1430,Ahmed Sheikh,1800000,180000,ATL,"House 75, F-7, Islamabad",0339-7491937,Salary,Cash,Teacher,0,True,ahmad sheikh,"house 75, f-7, islamabad",c92fc6af
+FBR-1431,Hamza Siddiqui,240000,24000,Non-ATL,"House 131, Nazimabad, Karachi",0333-9192922,Rental,Foreign Remittance,Businessman,1,False,hamza siddiqui,"house 131, nazimabad, karachi",f1da1e02
+FBR-1432,Zubair Malik,960000,96000,Non-ATL,"House 94, Clifton, Islamabad",0342-8048684,Prize Bond,Savings,Retired,0,True,zubair malik,"house 94, clifton, islamabad",85696fe8
+FBR-1433,Sana Mirza,960000,96000,ATL,"House 140, Johar Town, Faisalabad",0319-6426551,Business,Savings,Retired,0,False,sana mirza,"house 140, johar town, faisalabad",527fc7f5
+FBR-1434,Tariq Bibi,480000,48000,Non-ATL,"House 98, F-7, Lahore",0331-8047164,Agriculture,Savings,Retired,1,True,tariq bibi,"house 98, f-7, lahore",9c6ba654
+FBR-1435,Usman Mirza,480000,48000,Non-ATL,"House 139, Johar Town, Faisalabad",0337-7708974,Rental,Foreign Remittance,Engineer,6,True,usman mirza,"house 139, johar town, faisalabad",d7e69b91
+FBR-1436,Zubair Siddiqui,240000,24000,Non-ATL,"House 36, Nazimabad, Peshawar",0336-7228508,Agriculture,Gift,Teacher,6,True,zubair siddiqui,"house 36, nazimabad, peshawar",95e4d1cb
+FBR-1437,Bilal Butt,240000,24000,Non-ATL,"House 3, DHA, Lahore",0329-6415108,Agriculture,Cash,Student,2,True,bilal butt,"house 3, dha, lahore",fc4f4b25
+FBR-1438,Ahmed Mirza,0,0,Non-ATL,"House 45, G-10, Faisalabad",0336-5953514,Prize Bond,Gift,Driver,0,True,ahmad mirza,"house 45, g-10, faisalabad",9bf93609
+FBR-1439,Usman Chaudhry,3000000,300000,ATL,"House 83, Bahria Town, Lahore",0314-5327875,Business,Foreign Remittance,Housewife,0,True,usman chaudhry,"house 83, bahria town, lahore",e2dee60e
+FBR-1440,Ayesha Raza,480000,48000,Non-ATL,"House 13, Hayatabad, Karachi",0345-6903048,Agriculture,Savings,Unemployed,4,True,ayesha raza,"house 13, hayatabad, karachi",1d65aab0
+FBR-1441,Fatima Chaudhry,1800000,180000,ATL,"House 58, G-10, Islamabad",0340-8169151,Rental,Prize Bond,Teacher,0,False,fatima chaudhry,"house 58, g-10, islamabad",9cc49d8f
+FBR-1442,Hina Sheikh,480000,48000,Non-ATL,"House 69, Johar Town, Karachi",0311-8927959,Agriculture,Savings,Clerk,6,True,hina sheikh,"house 69, johar town, karachi",d32a264f
+FBR-1443,Amna Rizvi,960000,96000,ATL,"House 106, Hayatabad, Lahore",0336-1537805,Agriculture,Prize Bond,Teacher,0,False,amna rizvi,"house 106, hayatabad, lahore",a1e2d942
+FBR-1444,Imran Rizvi,240000,24000,Non-ATL,"House 11, Hayatabad, Karachi",0345-1168202,Rental,Prize Bond,Unemployed,0,True,imran rizvi,"house 11, hayatabad, karachi",ea366fdd
+FBR-1445,Zainab Siddiqui,240000,24000,Non-ATL,"House 96, Hayatabad, Islamabad",0328-9146763,Rental,Foreign Remittance,Housewife,4,True,zainab siddiqui,"house 96, hayatabad, islamabad",584baab9
+FBR-1446,Zubair Chaudhry,0,0,Non-ATL,"House 20, Nazimabad, Faisalabad",0318-5348729,Prize Bond,Foreign Remittance,Housewife,1,True,zubair chaudhry,"house 20, nazimabad, faisalabad",096258e5
+FBR-1447,Hamza Sheikh,480000,48000,Non-ATL,"House 126, Gulberg, Karachi",0336-8831998,Rental,Cash,Retired,6,False,hamza sheikh,"house 126, gulberg, karachi",19089dac
+FBR-1448,Nadia Baig,1800000,180000,ATL,"House 37, Gulberg, Faisalabad",0320-7565096,Prize Bond,Foreign Remittance,Businessman,0,True,nadia baig,"house 37, gulberg, faisalabad",30cce7c0
+FBR-1449,Hamza Mirza,480000,48000,Non-ATL,"House 149, Clifton, Peshawar",0325-7966573,Rental,Foreign Remittance,Teacher,2,False,hamza mirza,"house 149, clifton, peshawar",1245871a
+FBR-1450,Bilal Abbasi,3000000,300000,ATL,"House 77, Hayatabad, Rawalpindi",0314-3757535,Salary,Foreign Remittance,Engineer,0,False,bilal abbasi,"house 77, hayatabad, rawalpindi",367c56ef
+FBR-1451,Imran Siddiqui,960000,96000,Non-ATL,"House 129, Hayatabad, Lahore",0343-4498002,Prize Bond,Cash,Housewife,4,True,imran siddiqui,"house 129, hayatabad, lahore",facffcd5
+FBR-1452,Zubair Butt,480000,48000,Non-ATL,"House 103, Bahria Town, Karachi",0323-8023288,Business,Gift,Unemployed,5,True,zubair butt,"house 103, bahria town, karachi",b15838ff
+FBR-1453,Ahmed Qureshi,240000,24000,Non-ATL,"House 2, F-7, Karachi",0339-6063519,Prize Bond,Prize Bond,Retired,4,True,ahmad qureshi,"house 2, f-7, karachi",a8f05022
+FBR-1454,Ayesha Rizvi,3000000,300000,Non-ATL,"House 121, Clifton, Faisalabad",0327-8544932,Prize Bond,Prize Bond,Teacher,3,True,ayesha rizvi,"house 121, clifton, faisalabad",ae3245f1
+FBR-1455,Imran Abbasi,960000,96000,ATL,"House 125, G-10, Karachi",0327-4487956,Rental,Prize Bond,Unemployed,0,False,imran abbasi,"house 125, g-10, karachi",d30a85d0
+FBR-1456,Muhammad Hassan,1800000,180000,Non-ATL,"House 77, G-10, Lahore",0337-3285313,Business,Gift,Retired,6,True,muhammad hassan,"house 77, g-10, lahore",d9a9ce6d
+FBR-1457,Nadia Butt,0,0,Non-ATL,"House 48, F-7, Lahore",0322-4992557,Rental,Prize Bond,Student,5,True,nadia butt,"house 48, f-7, lahore",1ac823c7
+FBR-1458,Hamza Hassan,240000,24000,Non-ATL,"House 135, Johar Town, Rawalpindi",0312-6849868,Rental,Gift,Student,0,False,hamza hassan,"house 135, johar town, rawalpindi",951df982
+FBR-1459,Fatima Hassan,480000,48000,Non-ATL,"House 3, Bahria Town, Faisalabad",0348-6864507,Salary,Prize Bond,Businessman,1,False,fatima hassan,"house 3, bahria town, faisalabad",5a6805db
+FBR-1460,Tariq Malik,3000000,300000,ATL,"House 129, F-7, Rawalpindi",0319-3784299,Prize Bond,Cash,Unemployed,0,False,tariq malik,"house 129, f-7, rawalpindi",36bffb8a
+FBR-1461,Hina Mirza,960000,96000,ATL,"House 10, Hayatabad, Lahore",0325-1307380,Prize Bond,Savings,Retired,0,True,hina mirza,"house 10, hayatabad, lahore",f45afbcd
+FBR-1462,Ali Mirza,0,0,Non-ATL,"House 126, Johar Town, Lahore",0328-5752113,Rental,Gift,Engineer,0,False,ali mirza,"house 126, johar town, lahore",0243a6fa
+FBR-1463,Usman Raza,3000000,300000,Non-ATL,"House 137, Nazimabad, Rawalpindi",0345-9093948,Agriculture,Gift,Retired,2,False,usman raza,"house 137, nazimabad, rawalpindi",7f935f5b
+FBR-1464,Fatima Hassan,240000,24000,Non-ATL,"House 23, DHA, Islamabad",0325-9700943,Rental,Foreign Remittance,Unemployed,2,True,fatima hassan,"house 23, dha, islamabad",29c6e00f
+FBR-1465,Ali Hassan,240000,24000,Non-ATL,"House 38, Bahria Town, Peshawar",0337-2864629,Agriculture,Savings,Doctor,2,True,ali hassan,"house 38, bahria town, peshawar",5c91b66d
+FBR-1466,Fatima Nawaz,3000000,300000,ATL,"House 59, DHA, Karachi",0320-5304070,Business,Cash,Housewife,0,True,fatima nawaz,"house 59, dha, karachi",6f754c31
+FBR-1467,Nadia Malik,0,0,Non-ATL,"House 30, Bahria Town, Faisalabad",0313-1789772,Salary,Gift,Clerk,6,False,nadia malik,"house 30, bahria town, faisalabad",2a03072b
+FBR-1468,Fatima Baig,1800000,180000,ATL,"House 38, DHA, Rawalpindi",0318-5639238,Business,Cash,Retired,0,True,fatima baig,"house 38, dha, rawalpindi",6ab3450a
+FBR-1469,Usman Raza,960000,96000,ATL,"House 131, Bahria Town, Faisalabad",0325-2459344,Business,Foreign Remittance,Engineer,0,True,usman raza,"house 131, bahria town, faisalabad",0cd35c61
+FBR-1470,Tariq Malik,3000000,300000,ATL,"House 87, F-7, Lahore",0321-4412252,Rental,Prize Bond,Retired,0,True,tariq malik,"house 87, f-7, lahore",19366154
+FBR-1471,Bilal Qureshi,960000,96000,ATL,"House 63, Hayatabad, Lahore",0311-1990351,Prize Bond,Gift,Unemployed,0,True,bilal qureshi,"house 63, hayatabad, lahore",d10b81b1
+FBR-1472,Saima Rizvi,1800000,180000,ATL,"House 109, F-7, Lahore",0326-2710963,Salary,Savings,Doctor,0,False,saima rizvi,"house 109, f-7, lahore",55fddb67
+FBR-1473,Ali Nawaz,240000,24000,Non-ATL,"House 49, Gulberg, Lahore",0341-7768248,Business,Cash,Businessman,4,True,ali nawaz,"house 49, gulberg, lahore",3b3a6911
+FBR-1474,Nadia Malik,3000000,300000,ATL,"House 133, Gulberg, Rawalpindi",0339-3888151,Prize Bond,Cash,Unemployed,0,True,nadia malik,"house 133, gulberg, rawalpindi",b8ee6e48
+FBR-1475,Zainab Baig,1800000,180000,ATL,"House 147, Johar Town, Karachi",0315-7425890,Business,Foreign Remittance,Retired,0,False,zainab baig,"house 147, johar town, karachi",a4624692
+FBR-1476,Ayesha Khan,0,0,Non-ATL,"House 133, Clifton, Rawalpindi",0330-4393688,Salary,Cash,Businessman,2,False,ayesha khan,"house 133, clifton, rawalpindi",f229b0dc
+FBR-1477,Usman Mirza,480000,48000,Non-ATL,"House 84, Pechs, Peshawar",0333-7199411,Rental,Savings,Clerk,1,True,usman mirza,"house 84, pechs, peshawar",a3f4fde9
+FBR-1478,Muhammad Iqbal,3000000,300000,ATL,"House 142, DHA, Faisalabad",0332-8430732,Prize Bond,Gift,Retired,0,False,muhammad iqbal,"house 142, dha, faisalabad",0564d889
+FBR-1479,Muhammad Javed,960000,96000,ATL,"House 38, G-10, Karachi",0331-3611876,Prize Bond,Savings,Clerk,0,True,muhammad javed,"house 38, g-10, karachi",a8c34659
+FBR-1480,Zainab Qureshi,240000,24000,Non-ATL,"House 37, Hayatabad, Peshawar",0347-4572650,Business,Foreign Remittance,Retired,0,True,zainab qureshi,"house 37, hayatabad, peshawar",2cebbed9
+FBR-1481,Amna Malik,960000,96000,ATL,"House 14, Hayatabad, Faisalabad",0338-6261846,Rental,Gift,Doctor,0,True,amna malik,"house 14, hayatabad, faisalabad",e270d18c
+FBR-1482,Tariq Sheikh,960000,96000,ATL,"House 114, Nazimabad, Karachi",0338-6786827,Business,Prize Bond,Engineer,0,False,tariq sheikh,"house 114, nazimabad, karachi",c9712912
+FBR-1483,Fatima Malik,1800000,180000,ATL,"House 90, Gulberg, Lahore",0344-8674772,Business,Prize Bond,Businessman,0,True,fatima malik,"house 90, gulberg, lahore",5c319b31
+FBR-1484,Waseem Chaudhry,3000000,300000,Non-ATL,"House 69, F-7, Islamabad",0333-6326784,Agriculture,Prize Bond,Unemployed,4,False,waseem chaudhry,"house 69, f-7, islamabad",53c9a428
+FBR-1485,Muhammad Baig,0,0,Non-ATL,"House 84, DHA, Karachi",0334-5544685,Salary,Savings,Student,6,True,muhammad baig,"house 84, dha, karachi",b06e9cee
+FBR-1486,Tariq Bibi,480000,48000,Non-ATL,"House 53, Nazimabad, Faisalabad",0316-1715966,Business,Savings,Engineer,4,True,tariq bibi,"house 53, nazimabad, faisalabad",3617ca57
+FBR-1487,Hamza Rizvi,960000,96000,Non-ATL,"House 100, G-10, Lahore",0349-6307434,Business,Savings,Businessman,0,True,hamza rizvi,"house 100, g-10, lahore",33fade55
+FBR-1488,Muhammad Siddiqui,3000000,300000,ATL,"House 142, Nazimabad, Islamabad",0337-4044871,Business,Gift,Retired,0,False,muhammad siddiqui,"house 142, nazimabad, islamabad",f8774cb4
+FBR-1489,Imran Malik,960000,96000,ATL,"House 16, Hayatabad, Karachi",0316-4817937,Salary,Savings,Driver,0,False,imran malik,"house 16, hayatabad, karachi",adf82307
+FBR-1490,Zubair Sheikh,3000000,300000,ATL,"House 114, Gulberg, Karachi",0337-8082739,Rental,Savings,Student,0,True,zubair sheikh,"house 114, gulberg, karachi",8322d563
+FBR-1491,Ahmed Nawaz,480000,48000,Non-ATL,"House 64, Clifton, Lahore",0342-1800162,Rental,Gift,Housewife,5,False,ahmad nawaz,"house 64, clifton, lahore",8c1cf129
+FBR-1492,Imran Butt,480000,48000,Non-ATL,"House 68, Nazimabad, Rawalpindi",0330-1065314,Rental,Prize Bond,Teacher,0,True,imran butt,"house 68, nazimabad, rawalpindi",e3f45dc1
+FBR-1493,Hina Sheikh,960000,96000,Non-ATL,"House 59, DHA, Islamabad",0339-2982320,Rental,Foreign Remittance,Teacher,6,True,hina sheikh,"house 59, dha, islamabad",21ebb8e2
+FBR-1494,Amna Raza,0,0,Non-ATL,"House 36, Clifton, Lahore",0332-2895687,Prize Bond,Prize Bond,Unemployed,1,True,amna raza,"house 36, clifton, lahore",0e340e95
+FBR-1495,Zubair Mirza,960000,96000,ATL,"House 112, Johar Town, Islamabad",0315-9946351,Agriculture,Prize Bond,Unemployed,0,True,zubair mirza,"house 112, johar town, islamabad",2b37352e
+FBR-1496,Amna Hassan,240000,24000,Non-ATL,"House 57, DHA, Rawalpindi",0310-5278094,Rental,Gift,Clerk,0,True,amna hassan,"house 57, dha, rawalpindi",3dd87297
+FBR-1497,Hamza Chaudhry,0,0,Non-ATL,"House 114, F-7, Faisalabad",0348-4688356,Rental,Prize Bond,Student,3,True,hamza chaudhry,"house 114, f-7, faisalabad",433e3bd7
+FBR-1498,Zainab Khan,480000,48000,Non-ATL,"House 99, F-7, Islamabad",0346-3866749,Agriculture,Foreign Remittance,Doctor,1,True,zainab khan,"house 99, f-7, islamabad",5a03703a
+FBR-1499,Ali Bibi,3000000,300000,ATL,"House 72, Hayatabad, Faisalabad",0319-5780434,Salary,Savings,Driver,0,True,ali bibi,"house 72, hayatabad, faisalabad",171fe6c1
+FBR-1500,Usman Hassan,0,0,Non-ATL,"House 111, Pechs, Peshawar",0339-9222083,Rental,Savings,Driver,5,True,usman hassan,"house 111, pechs, peshawar",85521a4f
+FBR-1501,Waseem Abbasi,480000,48000,Non-ATL,"House 18, G-10, Peshawar",0315-4367712,Agriculture,Gift,Clerk,4,True,waseem abbasi,"house 18, g-10, peshawar",5d939799

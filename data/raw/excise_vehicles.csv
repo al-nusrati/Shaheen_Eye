@@ -1,300 +1,350 @@
 vehicle_reg_no,owner_name,engine_capacity_cc,vehicle_make_model,registration_year,owner_address,import_type,declared_import_value_pkr
-LED-1234,M. Arshad,3000,Toyota Land Cruiser,2025,"DHA Phase 6, Lahore",Baggage Scheme,20000
+LED-1234,M. Arshad,3000,Toyota Land Cruiser,2025,"Plot 14, DHA Phase 6, Lahore",Baggage Scheme,20000
 LEG-5678,Farhan Ahmed,2700,Toyota Fortuner,2024,"House 5, Street 2, Gulberg III, Lahore",Local,0
 LEH-9012,Rabia Ahmed,1800,Honda Civic,2023,"House 5, Street 2, Gulberg III, Lahore",Local,0
 LEJ-3456,Kamran Ahmed,1300,Toyota Corolla,2022,"House 5, Street 2, Gulberg III, Lahore",Local,0
-LEK-7890,Bashir Ahmed,2000,Toyota Prado,2025,"House 5, Street 2, Gulberg III, Lahore",Local,0
+LEK-7890,Bashir Ahmed,2000,Toyota Prado,2025,"Servant Quarter, House 5, Street 2, Gulberg III, Lahore",Local,0
 Rin-2412,Syed Bilal Hassan,1800,Honda Civic,2021,"Sector C, Bahria Town, Rawalpindi",Local,0
 IDN-9980,Dr. Ayesha Malik,2700,Toyota Fortuner,2024,"Bahria Town Phase 7, Islamabad",Local,0
 IDN-1122,Tariq Mehmood,3444,Toyota Land Cruiser,2025,"Phase 2, Hayatabad, Peshawar",Regular Import,17635
+FAI-3344,Malik Pervaiz Akhtar,2400,Toyota Hilux,2024,"Block B, Green Valley Housing Scheme, Faisalabad",Baggage Scheme,50000
+FAI-3345,Pervaiz Akhtar,1800,Honda Civic,2023,"Block B, Green Valley Housing Scheme, Faisalabad",Baggage Scheme,30000
 IDN-4455,Ali Raza,660,Suzuki Alto,2021,"Flat 4, Block D, I-8, Islamabad",Local,850000
-REG-8526,Ali Khan,2700,Toyota Corolla,2025,"Street 8, Phase 1, Peshawar",Local,0
-REG-1973,Bilal Javed,1800,Toyota Corolla,2024,"Street 9, Phase 5, Islamabad",Local,0
-REG-9106,Fatima Hassan,660,Honda Civic,2019,"Street 10, Phase 3, Faisalabad",Local,0
-REG-9673,Sana Hassan,1000,Suzuki Alto,2018,"Street 2, Phase 2, Karachi",Local,0
-REG-7786,Fatima Hassan,1000,Suzuki Alto,2020,"Street 10, Phase 4, Karachi",Local,0
-REG-8395,Ali Ahmed,2700,Honda Civic,2024,"Street 9, Phase 5, Islamabad",Local,0
-REG-3611,Hamza Khan,2700,Honda Civic,2023,"Street 10, Phase 7, Islamabad",Local,0
-REG-2943,Bilal Iqbal,1800,Honda Civic,2018,"Street 2, Phase 3, Peshawar",Local,0
-REG-7235,Osman Hassan,1800,Honda Civic,2026,"Street 3, Phase 2, Rawalpindi",Local,0
-REG-7969,Hamza Siddiqui,2700,Toyota Corolla,2018,"Street 5, Phase 1, Islamabad",Local,0
-REG-6483,Ayesha Ahmed,1000,Toyota Corolla,2022,"Street 10, Phase 2, Faisalabad",Local,0
-REG-8591,Sana Raza,1000,Toyota Corolla,2024,"Street 2, Phase 4, Islamabad",Local,0
-REG-7396,Muhammad Raza,660,Honda Civic,2019,"Street 4, Phase 3, Faisalabad",Local,0
-REG-3984,Fatima Raza,2700,Toyota Corolla,2019,"Street 7, Phase 4, Rawalpindi",Local,0
-REG-1316,Muhammad Malik,1800,Toyota Corolla,2019,"Street 10, Phase 4, Lahore",Local,0
-REG-5953,Zainab Malik,2700,Toyota Corolla,2018,"Street 10, Phase 2, Karachi",Local,0
-REG-9189,Fatima Raza,2700,Toyota Corolla,2019,"Street 5, Phase 2, Faisalabad",Local,0
-REG-1724,Hamza Bibi,2700,Honda Civic,2019,"Street 5, Phase 5, Lahore",Local,0
-REG-7051,Ali Javed,660,Toyota Corolla,2020,"Street 5, Phase 6, Peshawar",Local,0
-REG-7469,Fatima Sheikh,1800,Toyota Corolla,2019,"Street 8, Phase 4, Peshawar",Local,0
-REG-1338,Sana Javed,1000,Suzuki Alto,2021,"Street 9, Phase 5, Karachi",Local,0
-REG-9967,Hamza Ahmed,1000,Honda Civic,2019,"Street 5, Phase 8, Rawalpindi",Local,0
-REG-7074,Fatima Sheikh,1800,Toyota Corolla,2022,"Street 10, Phase 8, Rawalpindi",Local,0
-REG-1165,Ahmed Iqbal,2700,Suzuki Alto,2026,"Street 3, Phase 3, Karachi",Local,0
-REG-3665,Ayesha Siddiqui,660,Toyota Corolla,2019,"Street 4, Phase 8, Faisalabad",Local,0
-REG-5900,Osman Khan,1800,Toyota Corolla,2022,"Street 9, Phase 6, Islamabad",Local,0
-REG-3517,Zainab Javed,1300,Honda Civic,2026,"Street 6, Phase 8, Lahore",Local,0
-REG-6561,Fatima Hassan,1300,Honda Civic,2019,"Street 1, Phase 6, Lahore",Local,0
-REG-9083,Ali Raza,2700,Honda Civic,2020,"Street 8, Phase 6, Karachi",Local,0
-REG-3819,Ali Sheikh,1300,Toyota Corolla,2023,"Street 8, Phase 2, Islamabad",Local,0
-REG-4218,Ali Ahmed,660,Suzuki Alto,2025,"Street 5, Phase 7, Rawalpindi",Local,0
-REG-6739,Zainab Khan,660,Honda Civic,2023,"Street 9, Phase 8, Islamabad",Local,0
-REG-2222,Fatima Siddiqui,1000,Honda Civic,2026,"Street 9, Phase 6, Peshawar",Local,0
-REG-5947,Ali Hassan,1300,Honda Civic,2026,"Street 7, Phase 2, Peshawar",Local,0
-REG-9852,Ahmed Malik,1000,Toyota Corolla,2024,"Street 3, Phase 5, Islamabad",Local,0
-REG-4547,Hamza Javed,1800,Suzuki Alto,2026,"Street 2, Phase 8, Karachi",Local,0
-REG-3152,Osman Siddiqui,2700,Honda Civic,2018,"Street 6, Phase 4, Islamabad",Local,0
-REG-4000,Ali Bibi,1300,Toyota Corolla,2023,"Street 9, Phase 7, Lahore",Local,0
-REG-4191,Ali Hassan,1000,Honda Civic,2020,"Street 5, Phase 4, Islamabad",Local,0
-REG-9426,Bilal Iqbal,1300,Honda Civic,2026,"Street 5, Phase 7, Peshawar",Local,0
-REG-5079,Muhammad Iqbal,2700,Toyota Corolla,2024,"Street 2, Phase 4, Karachi",Local,0
-REG-4190,Ahmed Siddiqui,660,Suzuki Alto,2019,"Street 9, Phase 7, Karachi",Local,0
-REG-4620,Ali Javed,1300,Honda Civic,2021,"Street 6, Phase 1, Islamabad",Local,0
-REG-7646,Osman Khan,660,Honda Civic,2024,"Street 5, Phase 2, Faisalabad",Local,0
-REG-2213,Osman Siddiqui,1000,Honda Civic,2025,"Street 6, Phase 4, Rawalpindi",Local,0
-REG-4566,Ayesha Iqbal,2700,Toyota Corolla,2024,"Street 7, Phase 6, Faisalabad",Local,0
-REG-8485,Bilal Iqbal,1300,Honda Civic,2018,"Street 1, Phase 6, Islamabad",Local,0
-REG-6903,Zainab Javed,1000,Suzuki Alto,2019,"Street 2, Phase 6, Peshawar",Local,0
-REG-9700,Sana Siddiqui,1300,Toyota Corolla,2024,"Street 2, Phase 8, Rawalpindi",Local,0
-REG-1425,Ali Iqbal,1000,Suzuki Alto,2019,"Street 4, Phase 7, Rawalpindi",Local,0
-REG-1723,Ali Malik,1000,Toyota Corolla,2023,"Street 4, Phase 8, Karachi",Local,0
-REG-6952,Zainab Ahmed,660,Suzuki Alto,2024,"Street 9, Phase 1, Karachi",Local,0
-REG-9136,Fatima Raza,2700,Honda Civic,2024,"Street 4, Phase 1, Lahore",Local,0
-REG-5085,Sana Malik,1300,Toyota Corolla,2022,"Street 8, Phase 2, Karachi",Local,0
-REG-9407,Fatima Sheikh,660,Honda Civic,2019,"Street 9, Phase 8, Faisalabad",Local,0
-REG-8967,Osman Sheikh,1000,Honda Civic,2025,"Street 4, Phase 5, Rawalpindi",Local,0
-REG-2875,Ayesha Malik,1800,Honda Civic,2023,"Street 6, Phase 5, Rawalpindi",Local,0
-REG-3447,Muhammad Iqbal,1800,Suzuki Alto,2021,"Street 7, Phase 1, Rawalpindi",Local,0
-REG-2855,Bilal Javed,2700,Suzuki Alto,2020,"Street 10, Phase 2, Rawalpindi",Local,0
-REG-6554,Osman Javed,1300,Toyota Corolla,2024,"Street 1, Phase 6, Faisalabad",Local,0
-REG-6386,Sana Khan,1800,Suzuki Alto,2023,"Street 6, Phase 6, Islamabad",Local,0
-REG-1257,Sana Siddiqui,1800,Honda Civic,2026,"Street 6, Phase 8, Karachi",Local,0
-REG-7013,Ayesha Bibi,2700,Toyota Corolla,2026,"Street 5, Phase 4, Rawalpindi",Local,0
-REG-9639,Hamza Malik,660,Toyota Corolla,2020,"Street 6, Phase 4, Rawalpindi",Local,0
-REG-9654,Osman Siddiqui,1000,Toyota Corolla,2025,"Street 10, Phase 5, Rawalpindi",Local,0
-REG-4612,Ali Sheikh,1800,Suzuki Alto,2022,"Street 2, Phase 2, Peshawar",Local,0
-REG-8927,Zainab Raza,2700,Toyota Corolla,2020,"Street 5, Phase 2, Peshawar",Local,0
-REG-5057,Sana Javed,1000,Toyota Corolla,2023,"Street 8, Phase 5, Islamabad",Local,0
-REG-5203,Muhammad Ahmed,2700,Suzuki Alto,2020,"Street 9, Phase 1, Lahore",Local,0
-REG-7374,Bilal Iqbal,2700,Suzuki Alto,2020,"Street 8, Phase 6, Faisalabad",Local,0
-REG-1887,Fatima Sheikh,2700,Honda Civic,2022,"Street 4, Phase 1, Karachi",Local,0
-REG-5817,Hamza Malik,1000,Toyota Corolla,2025,"Street 10, Phase 3, Lahore",Local,0
-REG-9546,Zainab Malik,2700,Toyota Corolla,2025,"Street 1, Phase 4, Faisalabad",Local,0
-REG-9014,Hamza Khan,2700,Honda Civic,2020,"Street 6, Phase 7, Peshawar",Local,0
-REG-5515,Ali Hassan,1300,Honda Civic,2018,"Street 4, Phase 3, Faisalabad",Local,0
-REG-2700,Hamza Javed,660,Honda Civic,2022,"Street 5, Phase 7, Faisalabad",Local,0
-REG-4919,Muhammad Javed,1300,Toyota Corolla,2023,"Street 6, Phase 5, Islamabad",Local,0
-REG-8480,Osman Raza,2700,Honda Civic,2026,"Street 8, Phase 1, Faisalabad",Local,0
-REG-5619,Ahmed Khan,660,Suzuki Alto,2025,"Street 7, Phase 1, Rawalpindi",Local,0
-REG-6491,Bilal Sheikh,660,Suzuki Alto,2018,"Street 10, Phase 2, Peshawar",Local,0
-REG-6304,Bilal Sheikh,1300,Toyota Corolla,2020,"Street 6, Phase 3, Peshawar",Local,0
-REG-1007,Ayesha Raza,1000,Honda Civic,2018,"Street 6, Phase 7, Karachi",Local,0
-REG-2654,Muhammad Bibi,2700,Suzuki Alto,2020,"Street 3, Phase 1, Faisalabad",Local,0
-REG-1094,Fatima Javed,2700,Toyota Corolla,2020,"Street 7, Phase 2, Islamabad",Local,0
-REG-6813,Ayesha Iqbal,1800,Honda Civic,2024,"Street 10, Phase 1, Rawalpindi",Local,0
-REG-3190,Fatima Javed,2700,Toyota Corolla,2021,"Street 8, Phase 7, Rawalpindi",Local,0
-REG-5244,Ayesha Ahmed,2700,Suzuki Alto,2022,"Street 3, Phase 2, Islamabad",Local,0
-REG-2903,Ayesha Hassan,1800,Toyota Corolla,2024,"Street 6, Phase 8, Islamabad",Local,0
-REG-5614,Fatima Bibi,660,Toyota Corolla,2020,"Street 4, Phase 1, Lahore",Local,0
-REG-4217,Ahmed Javed,1000,Toyota Corolla,2026,"Street 3, Phase 3, Peshawar",Local,0
-REG-2801,Ayesha Raza,1000,Toyota Corolla,2018,"Street 7, Phase 2, Islamabad",Local,0
-REG-6145,Zainab Raza,1800,Toyota Corolla,2018,"Street 7, Phase 8, Faisalabad",Local,0
-REG-4371,Bilal Raza,1000,Toyota Corolla,2022,"Street 3, Phase 8, Peshawar",Local,0
-REG-9903,Osman Sheikh,1300,Suzuki Alto,2021,"Street 4, Phase 8, Karachi",Local,0
-REG-7886,Zainab Ahmed,2700,Honda Civic,2023,"Street 8, Phase 3, Peshawar",Local,0
-REG-3431,Ali Khan,1000,Suzuki Alto,2022,"Street 7, Phase 5, Faisalabad",Local,0
-REG-9814,Fatima Iqbal,660,Suzuki Alto,2022,"Street 2, Phase 8, Karachi",Local,0
-REG-8794,Sana Iqbal,660,Toyota Corolla,2023,"Street 3, Phase 1, Peshawar",Local,0
-REG-5844,Muhammad Hassan,1800,Toyota Corolla,2020,"Street 7, Phase 5, Peshawar",Local,0
-REG-3849,Bilal Iqbal,2700,Toyota Corolla,2018,"Street 5, Phase 1, Islamabad",Local,0
-REG-7827,Fatima Ahmed,1000,Toyota Corolla,2019,"Street 8, Phase 4, Faisalabad",Local,0
-REG-7832,Osman Iqbal,1000,Suzuki Alto,2026,"Street 3, Phase 2, Faisalabad",Local,0
-REG-2798,Zainab Khan,1000,Suzuki Alto,2020,"Street 9, Phase 1, Lahore",Local,0
-REG-8720,Ayesha Javed,1800,Suzuki Alto,2018,"Street 3, Phase 6, Faisalabad",Local,0
-REG-5929,Osman Bibi,1000,Honda Civic,2020,"Street 9, Phase 1, Faisalabad",Local,0
-REG-5720,Bilal Ahmed,1800,Toyota Corolla,2023,"Street 3, Phase 1, Islamabad",Local,0
-REG-5825,Osman Hassan,1000,Suzuki Alto,2022,"Street 5, Phase 1, Karachi",Local,0
-REG-2358,Sana Khan,2700,Toyota Corolla,2026,"Street 10, Phase 1, Lahore",Local,0
-REG-7258,Ayesha Siddiqui,660,Suzuki Alto,2018,"Street 10, Phase 8, Rawalpindi",Local,0
-REG-3147,Sana Malik,1800,Honda Civic,2021,"Street 1, Phase 8, Peshawar",Local,0
-REG-4460,Hamza Ahmed,2700,Toyota Corolla,2026,"Street 10, Phase 3, Lahore",Local,0
-REG-5339,Sana Hassan,660,Toyota Corolla,2019,"Street 3, Phase 1, Karachi",Local,0
-REG-4813,Zainab Siddiqui,1800,Toyota Corolla,2018,"Street 1, Phase 8, Rawalpindi",Local,0
-REG-8609,Ali Khan,660,Suzuki Alto,2019,"Street 2, Phase 5, Faisalabad",Local,0
-REG-3945,Ayesha Hassan,660,Suzuki Alto,2018,"Street 2, Phase 6, Rawalpindi",Local,0
-REG-7495,Ahmed Javed,1000,Suzuki Alto,2022,"Street 5, Phase 2, Rawalpindi",Local,0
-REG-2684,Ayesha Javed,2700,Honda Civic,2023,"Street 5, Phase 1, Faisalabad",Local,0
-REG-5702,Bilal Iqbal,1800,Honda Civic,2020,"Street 8, Phase 6, Lahore",Local,0
-REG-5593,Ali Javed,1800,Suzuki Alto,2024,"Street 3, Phase 6, Islamabad",Local,0
-REG-6252,Ayesha Javed,2700,Toyota Corolla,2020,"Street 2, Phase 6, Peshawar",Local,0
-REG-6281,Zainab Malik,2700,Suzuki Alto,2020,"Street 8, Phase 1, Lahore",Local,0
-REG-1830,Ahmed Sheikh,1300,Toyota Corolla,2023,"Street 10, Phase 3, Islamabad",Local,0
-REG-3511,Ayesha Hassan,1000,Toyota Corolla,2018,"Street 6, Phase 6, Karachi",Local,0
-REG-7460,Fatima Khan,1000,Honda Civic,2025,"Street 10, Phase 4, Faisalabad",Local,0
-REG-5002,Ahmed Iqbal,1000,Suzuki Alto,2022,"Street 9, Phase 3, Peshawar",Local,0
-REG-5599,Muhammad Siddiqui,1300,Toyota Corolla,2018,"Street 4, Phase 6, Rawalpindi",Local,0
-REG-7186,Fatima Hassan,1000,Toyota Corolla,2023,"Street 4, Phase 5, Rawalpindi",Local,0
-REG-5033,Zainab Hassan,1000,Toyota Corolla,2018,"Street 2, Phase 5, Faisalabad",Local,0
-REG-1465,Hamza Malik,1000,Suzuki Alto,2019,"Street 8, Phase 5, Islamabad",Local,0
-REG-2202,Osman Raza,2700,Honda Civic,2021,"Street 1, Phase 3, Peshawar",Local,0
-REG-3184,Ali Ahmed,660,Honda Civic,2024,"Street 10, Phase 6, Faisalabad",Local,0
-REG-1299,Zainab Ahmed,1800,Honda Civic,2020,"Street 6, Phase 2, Faisalabad",Local,0
-REG-4136,Muhammad Bibi,1800,Honda Civic,2024,"Street 1, Phase 8, Faisalabad",Local,0
-REG-6376,Ali Javed,1000,Suzuki Alto,2026,"Street 2, Phase 7, Peshawar",Local,0
-REG-1404,Zainab Iqbal,1000,Toyota Corolla,2019,"Street 7, Phase 2, Faisalabad",Local,0
-REG-8428,Hamza Sheikh,2700,Suzuki Alto,2020,"Street 3, Phase 5, Karachi",Local,0
-REG-8306,Bilal Ahmed,660,Toyota Corolla,2018,"Street 6, Phase 8, Peshawar",Local,0
-REG-1864,Sana Raza,660,Honda Civic,2024,"Street 9, Phase 4, Rawalpindi",Local,0
-REG-2665,Osman Hassan,1300,Suzuki Alto,2020,"Street 5, Phase 2, Islamabad",Local,0
-REG-8130,Sana Iqbal,660,Honda Civic,2026,"Street 4, Phase 1, Lahore",Local,0
-REG-5678,Hamza Iqbal,1000,Suzuki Alto,2021,"Street 5, Phase 1, Karachi",Local,0
-REG-1571,Sana Raza,2700,Suzuki Alto,2021,"Street 5, Phase 4, Islamabad",Local,0
-REG-1593,Fatima Malik,1300,Toyota Corolla,2020,"Street 4, Phase 3, Karachi",Local,0
-REG-4837,Ahmed Malik,1000,Toyota Corolla,2025,"Street 8, Phase 2, Karachi",Local,0
-REG-9181,Muhammad Raza,1300,Honda Civic,2026,"Street 9, Phase 3, Faisalabad",Local,0
-REG-8369,Muhammad Raza,2700,Toyota Corolla,2021,"Street 1, Phase 5, Islamabad",Local,0
-REG-5523,Ayesha Sheikh,1800,Toyota Corolla,2023,"Street 8, Phase 5, Islamabad",Local,0
-REG-1057,Ayesha Javed,1300,Toyota Corolla,2018,"Street 10, Phase 6, Lahore",Local,0
-REG-1211,Ali Ahmed,1300,Honda Civic,2026,"Street 2, Phase 1, Islamabad",Local,0
-REG-3840,Osman Javed,2700,Toyota Corolla,2020,"Street 7, Phase 5, Rawalpindi",Local,0
-REG-1118,Muhammad Malik,660,Toyota Corolla,2020,"Street 10, Phase 1, Lahore",Local,0
-REG-1963,Zainab Javed,2700,Honda Civic,2020,"Street 5, Phase 6, Lahore",Local,0
-REG-2786,Ahmed Khan,1800,Suzuki Alto,2018,"Street 7, Phase 3, Karachi",Local,0
-REG-3867,Osman Siddiqui,1800,Suzuki Alto,2019,"Street 6, Phase 1, Islamabad",Local,0
-REG-2335,Zainab Khan,1300,Toyota Corolla,2023,"Street 2, Phase 6, Peshawar",Local,0
-REG-2367,Muhammad Siddiqui,1000,Toyota Corolla,2021,"Street 2, Phase 2, Faisalabad",Local,0
-REG-8603,Hamza Ahmed,1000,Honda Civic,2026,"Street 6, Phase 8, Peshawar",Local,0
-REG-7270,Fatima Malik,1300,Honda Civic,2021,"Street 4, Phase 2, Lahore",Local,0
-REG-9863,Osman Raza,2700,Suzuki Alto,2023,"Street 8, Phase 8, Peshawar",Local,0
-REG-4043,Ali Raza,1000,Toyota Corolla,2018,"Street 1, Phase 8, Islamabad",Local,0
-REG-8816,Muhammad Raza,1800,Toyota Corolla,2020,"Street 6, Phase 5, Rawalpindi",Local,0
-REG-8828,Bilal Bibi,1800,Toyota Corolla,2022,"Street 1, Phase 5, Islamabad",Local,0
-REG-1101,Fatima Raza,1300,Honda Civic,2021,"Street 9, Phase 3, Lahore",Local,0
-REG-2023,Bilal Raza,1300,Honda Civic,2019,"Street 5, Phase 5, Islamabad",Local,0
-REG-1433,Fatima Javed,1300,Honda Civic,2018,"Street 4, Phase 4, Rawalpindi",Local,0
-REG-6070,Bilal Raza,2700,Suzuki Alto,2020,"Street 7, Phase 1, Islamabad",Local,0
-REG-4508,Sana Malik,2700,Honda Civic,2026,"Street 8, Phase 2, Lahore",Local,0
-REG-5252,Muhammad Raza,2700,Suzuki Alto,2022,"Street 3, Phase 3, Faisalabad",Local,0
-REG-3237,Hamza Siddiqui,1800,Toyota Corolla,2025,"Street 1, Phase 5, Rawalpindi",Local,0
-REG-2745,Zainab Hassan,660,Toyota Corolla,2024,"Street 1, Phase 1, Lahore",Local,0
-REG-8817,Ali Iqbal,2700,Suzuki Alto,2022,"Street 6, Phase 2, Karachi",Local,0
-REG-5272,Bilal Hassan,1300,Honda Civic,2019,"Street 9, Phase 2, Islamabad",Local,0
-REG-6298,Sana Bibi,1800,Suzuki Alto,2026,"Street 8, Phase 6, Karachi",Local,0
-REG-7285,Zainab Siddiqui,2700,Suzuki Alto,2026,"Street 4, Phase 1, Karachi",Local,0
-REG-3554,Muhammad Sheikh,1000,Honda Civic,2018,"Street 3, Phase 3, Karachi",Local,0
-REG-8662,Osman Ahmed,1800,Toyota Corolla,2025,"Street 10, Phase 7, Islamabad",Local,0
-REG-5586,Ahmed Bibi,1000,Honda Civic,2023,"Street 1, Phase 7, Islamabad",Local,0
-REG-5215,Osman Hassan,660,Suzuki Alto,2018,"Street 3, Phase 7, Islamabad",Local,0
-REG-5684,Osman Ahmed,1800,Suzuki Alto,2023,"Street 10, Phase 3, Islamabad",Local,0
-REG-2857,Hamza Siddiqui,1000,Suzuki Alto,2019,"Street 5, Phase 3, Lahore",Local,0
-REG-3393,Ahmed Khan,1300,Suzuki Alto,2019,"Street 1, Phase 5, Peshawar",Local,0
-REG-9261,Bilal Khan,660,Honda Civic,2019,"Street 2, Phase 8, Rawalpindi",Local,0
-REG-7945,Osman Javed,1000,Suzuki Alto,2018,"Street 3, Phase 5, Peshawar",Local,0
-REG-6283,Sana Bibi,1000,Suzuki Alto,2020,"Street 1, Phase 1, Lahore",Local,0
-REG-8578,Hamza Sheikh,660,Toyota Corolla,2018,"Street 2, Phase 1, Lahore",Local,0
-REG-4255,Ayesha Siddiqui,2700,Toyota Corolla,2020,"Street 5, Phase 3, Karachi",Local,0
-REG-2712,Ahmed Ahmed,1000,Suzuki Alto,2024,"Street 9, Phase 4, Rawalpindi",Local,0
-REG-1536,Fatima Javed,1000,Honda Civic,2026,"Street 7, Phase 5, Rawalpindi",Local,0
-REG-6887,Zainab Siddiqui,1300,Suzuki Alto,2023,"Street 8, Phase 6, Rawalpindi",Local,0
-REG-9880,Zainab Raza,660,Suzuki Alto,2020,"Street 9, Phase 1, Peshawar",Local,0
-REG-9082,Osman Hassan,660,Honda Civic,2020,"Street 3, Phase 6, Karachi",Local,0
-REG-4568,Ali Siddiqui,1800,Honda Civic,2019,"Street 2, Phase 1, Karachi",Local,0
-REG-6347,Bilal Bibi,660,Toyota Corolla,2022,"Street 3, Phase 2, Peshawar",Local,0
-REG-5516,Muhammad Khan,1300,Toyota Corolla,2020,"Street 1, Phase 1, Peshawar",Local,0
-REG-5960,Sana Iqbal,660,Toyota Corolla,2022,"Street 7, Phase 3, Islamabad",Local,0
-REG-7744,Fatima Khan,1800,Toyota Corolla,2024,"Street 5, Phase 5, Peshawar",Local,0
-REG-2992,Zainab Sheikh,1800,Toyota Corolla,2018,"Street 4, Phase 8, Peshawar",Local,0
-REG-2744,Muhammad Hassan,2700,Honda Civic,2026,"Street 5, Phase 2, Islamabad",Local,0
-REG-3423,Osman Siddiqui,1800,Toyota Corolla,2020,"Street 10, Phase 4, Karachi",Local,0
-REG-3866,Osman Siddiqui,2700,Honda Civic,2024,"Street 9, Phase 2, Lahore",Local,0
-REG-5562,Osman Siddiqui,1800,Toyota Corolla,2019,"Street 8, Phase 4, Rawalpindi",Local,0
-REG-6521,Ayesha Khan,2700,Honda Civic,2025,"Street 3, Phase 6, Karachi",Local,0
-REG-6459,Ayesha Iqbal,2700,Suzuki Alto,2018,"Street 8, Phase 1, Islamabad",Local,0
-REG-1977,Ayesha Raza,1800,Suzuki Alto,2022,"Street 1, Phase 8, Karachi",Local,0
-REG-3671,Ayesha Raza,1800,Suzuki Alto,2020,"Street 4, Phase 6, Lahore",Local,0
-REG-3934,Osman Malik,1300,Toyota Corolla,2024,"Street 6, Phase 7, Peshawar",Local,0
-REG-2497,Sana Siddiqui,2700,Honda Civic,2025,"Street 7, Phase 6, Lahore",Local,0
-REG-2966,Fatima Malik,1300,Honda Civic,2023,"Street 8, Phase 4, Peshawar",Local,0
-REG-6873,Ahmed Javed,1000,Toyota Corolla,2021,"Street 4, Phase 8, Lahore",Local,0
-REG-6158,Fatima Raza,660,Toyota Corolla,2023,"Street 5, Phase 4, Peshawar",Local,0
-REG-1235,Fatima Raza,660,Suzuki Alto,2023,"Street 1, Phase 7, Peshawar",Local,0
-REG-7233,Zainab Iqbal,1000,Suzuki Alto,2021,"Street 5, Phase 2, Rawalpindi",Local,0
-REG-1042,Osman Hassan,2700,Toyota Corolla,2018,"Street 4, Phase 4, Rawalpindi",Local,0
-REG-7132,Ali Khan,660,Honda Civic,2019,"Street 7, Phase 1, Peshawar",Local,0
-REG-7519,Ali Khan,660,Suzuki Alto,2024,"Street 3, Phase 5, Rawalpindi",Local,0
-REG-8688,Zainab Javed,1300,Suzuki Alto,2023,"Street 9, Phase 5, Karachi",Local,0
-REG-6332,Hamza Siddiqui,1300,Honda Civic,2018,"Street 7, Phase 7, Faisalabad",Local,0
-REG-4296,Hamza Malik,1000,Toyota Corolla,2021,"Street 4, Phase 2, Islamabad",Local,0
-REG-6715,Ahmed Raza,1000,Toyota Corolla,2020,"Street 9, Phase 4, Faisalabad",Local,0
-REG-2559,Hamza Sheikh,2700,Honda Civic,2021,"Street 4, Phase 1, Islamabad",Local,0
-REG-6249,Sana Sheikh,1300,Honda Civic,2021,"Street 4, Phase 1, Karachi",Local,0
-REG-4806,Ayesha Hassan,1000,Toyota Corolla,2019,"Street 9, Phase 7, Islamabad",Local,0
-REG-1609,Ahmed Hassan,1800,Suzuki Alto,2019,"Street 8, Phase 2, Islamabad",Local,0
-REG-6728,Ali Malik,660,Toyota Corolla,2018,"Street 4, Phase 6, Lahore",Local,0
-REG-1149,Ayesha Ahmed,1300,Honda Civic,2023,"Street 8, Phase 1, Rawalpindi",Local,0
-REG-9334,Zainab Ahmed,1300,Suzuki Alto,2022,"Street 5, Phase 2, Faisalabad",Local,0
-REG-2962,Fatima Iqbal,2700,Honda Civic,2026,"Street 10, Phase 4, Peshawar",Local,0
-REG-8247,Ahmed Bibi,2700,Suzuki Alto,2022,"Street 8, Phase 1, Peshawar",Local,0
-REG-7808,Ahmed Siddiqui,1800,Honda Civic,2018,"Street 4, Phase 6, Rawalpindi",Local,0
-REG-1674,Bilal Javed,1300,Honda Civic,2018,"Street 1, Phase 8, Lahore",Local,0
-REG-1889,Zainab Iqbal,1000,Suzuki Alto,2023,"Street 10, Phase 2, Lahore",Local,0
-REG-8819,Ali Javed,1800,Honda Civic,2022,"Street 3, Phase 5, Lahore",Local,0
-REG-7778,Zainab Hassan,1300,Honda Civic,2021,"Street 1, Phase 5, Peshawar",Local,0
-REG-8073,Hamza Ahmed,2700,Toyota Corolla,2024,"Street 1, Phase 4, Karachi",Local,0
-REG-7404,Ayesha Malik,2700,Honda Civic,2026,"Street 6, Phase 5, Lahore",Local,0
-REG-5136,Hamza Javed,660,Honda Civic,2020,"Street 7, Phase 1, Faisalabad",Local,0
-REG-2936,Sana Ahmed,2700,Suzuki Alto,2022,"Street 5, Phase 1, Faisalabad",Local,0
-REG-7395,Muhammad Hassan,1800,Suzuki Alto,2019,"Street 4, Phase 7, Islamabad",Local,0
-REG-8708,Fatima Hassan,1300,Honda Civic,2022,"Street 1, Phase 2, Karachi",Local,0
-REG-1816,Ali Iqbal,1300,Suzuki Alto,2023,"Street 3, Phase 8, Islamabad",Local,0
-REG-9137,Osman Sheikh,1300,Suzuki Alto,2019,"Street 9, Phase 3, Lahore",Local,0
-REG-3747,Ali Khan,2700,Suzuki Alto,2019,"Street 4, Phase 2, Peshawar",Local,0
-REG-8100,Ali Ahmed,2700,Suzuki Alto,2020,"Street 7, Phase 5, Faisalabad",Local,0
-REG-4747,Ayesha Bibi,660,Toyota Corolla,2026,"Street 5, Phase 7, Peshawar",Local,0
-REG-2026,Ahmed Iqbal,660,Toyota Corolla,2018,"Street 3, Phase 1, Karachi",Local,0
-REG-3766,Zainab Ahmed,660,Toyota Corolla,2018,"Street 5, Phase 7, Faisalabad",Local,0
-REG-9958,Sana Sheikh,1300,Toyota Corolla,2025,"Street 1, Phase 3, Faisalabad",Local,0
-REG-9552,Muhammad Hassan,1000,Toyota Corolla,2026,"Street 2, Phase 5, Peshawar",Local,0
-REG-9200,Bilal Iqbal,1800,Honda Civic,2026,"Street 8, Phase 6, Rawalpindi",Local,0
-REG-8551,Sana Hassan,1300,Toyota Corolla,2020,"Street 6, Phase 3, Karachi",Local,0
-REG-6771,Fatima Javed,1800,Honda Civic,2019,"Street 1, Phase 5, Lahore",Local,0
-REG-2560,Zainab Sheikh,660,Suzuki Alto,2023,"Street 8, Phase 7, Rawalpindi",Local,0
-REG-1078,Osman Malik,660,Suzuki Alto,2018,"Street 1, Phase 5, Karachi",Local,0
-REG-4991,Ali Sheikh,1000,Honda Civic,2021,"Street 3, Phase 7, Peshawar",Local,0
-REG-5459,Hamza Bibi,1800,Toyota Corolla,2020,"Street 2, Phase 8, Islamabad",Local,0
-REG-1587,Bilal Javed,660,Honda Civic,2019,"Street 4, Phase 5, Faisalabad",Local,0
-REG-4176,Muhammad Hassan,660,Suzuki Alto,2026,"Street 7, Phase 5, Lahore",Local,0
-REG-2198,Hamza Malik,1800,Suzuki Alto,2021,"Street 4, Phase 1, Faisalabad",Local,0
-REG-3785,Osman Bibi,1000,Suzuki Alto,2021,"Street 10, Phase 2, Karachi",Local,0
-REG-2535,Ayesha Khan,660,Suzuki Alto,2023,"Street 4, Phase 3, Faisalabad",Local,0
-REG-8652,Ali Khan,1000,Honda Civic,2026,"Street 1, Phase 4, Islamabad",Local,0
-REG-6758,Ahmed Iqbal,1000,Toyota Corolla,2018,"Street 5, Phase 4, Islamabad",Local,0
-REG-6893,Sana Raza,660,Suzuki Alto,2021,"Street 1, Phase 7, Peshawar",Local,0
-REG-4011,Muhammad Siddiqui,2700,Suzuki Alto,2020,"Street 2, Phase 8, Faisalabad",Local,0
-REG-4703,Osman Sheikh,1800,Suzuki Alto,2025,"Street 6, Phase 6, Karachi",Local,0
-REG-9805,Sana Raza,660,Honda Civic,2020,"Street 3, Phase 2, Peshawar",Local,0
-REG-6041,Sana Hassan,1800,Toyota Corolla,2023,"Street 1, Phase 7, Lahore",Local,0
-REG-2750,Fatima Bibi,660,Toyota Corolla,2024,"Street 3, Phase 8, Islamabad",Local,0
-REG-8552,Ali Raza,660,Honda Civic,2023,"Street 8, Phase 5, Islamabad",Local,0
-REG-5458,Osman Ahmed,1000,Suzuki Alto,2018,"Street 8, Phase 1, Faisalabad",Local,0
-REG-1328,Bilal Iqbal,2700,Suzuki Alto,2024,"Street 5, Phase 8, Lahore",Local,0
-REG-6916,Osman Khan,1800,Suzuki Alto,2020,"Street 2, Phase 5, Karachi",Local,0
-REG-1536,Ali Iqbal,1800,Suzuki Alto,2018,"Street 5, Phase 5, Faisalabad",Local,0
-REG-5114,Muhammad Iqbal,660,Toyota Corolla,2019,"Street 4, Phase 7, Peshawar",Local,0
-REG-9991,Fatima Ahmed,2700,Toyota Corolla,2018,"Street 2, Phase 3, Faisalabad",Local,0
-REG-6416,Muhammad Sheikh,660,Honda Civic,2022,"Street 1, Phase 7, Karachi",Local,0
-REG-8088,Ayesha Khan,1300,Toyota Corolla,2023,"Street 6, Phase 4, Islamabad",Local,0
-REG-9839,Muhammad Iqbal,1000,Suzuki Alto,2020,"Street 4, Phase 8, Karachi",Local,0
-REG-7356,Ali Ahmed,1300,Suzuki Alto,2020,"Street 10, Phase 3, Lahore",Local,0
-REG-1109,Hamza Javed,660,Honda Civic,2026,"Street 1, Phase 7, Islamabad",Local,0
-REG-7797,Ahmed Hassan,1800,Suzuki Alto,2022,"Street 2, Phase 3, Rawalpindi",Local,0
-REG-3330,Zainab Malik,1300,Suzuki Alto,2022,"Street 3, Phase 2, Lahore",Local,0
-REG-1458,Zainab Siddiqui,1800,Honda Civic,2020,"Street 9, Phase 8, Faisalabad",Local,0
-REG-9637,Ali Javed,2700,Toyota Corolla,2026,"Street 5, Phase 8, Peshawar",Local,0
-REG-2569,Muhammad Khan,1300,Toyota Corolla,2020,"Street 5, Phase 8, Islamabad",Local,0
-REG-6318,Ali Hassan,1300,Suzuki Alto,2020,"Street 2, Phase 6, Rawalpindi",Local,0
-REG-7537,Osman Hassan,1800,Toyota Corolla,2021,"Street 3, Phase 5, Peshawar",Local,0
-REG-3394,Hamza Khan,1300,Honda Civic,2019,"Street 7, Phase 7, Rawalpindi",Local,0
-REG-2160,Ayesha Khan,1800,Suzuki Alto,2023,"Street 6, Phase 6, Islamabad",Local,0
-REG-6508,Fatima Ahmed,1300,Honda Civic,2019,"Street 1, Phase 6, Karachi",Local,0
+REG-7411,Fatima Ahmed,2000,Toyota Prado,2016,"House 117, Johar Town, Karachi",Local,0
+REG-9090,Bilal Hassan,2700,Toyota Fortuner,2016,"House 10, Johar Town, Lahore",Local,0
+REG-6370,Zainab Abbasi,2000,Toyota Prado,2020,"House 16, G-10, Lahore",Local,0
+REG-3221,Ayesha Nawaz,3000,Toyota Land Cruiser,2024,"House 126, Nazimabad, Lahore",Local,0
+REG-2789,Ali Ahmed,2700,Toyota Fortuner,2022,"House 141, Hayatabad, Lahore",Local,0
+REG-3150,Amna Rizvi,1500,Toyota Yaris,2025,"House 80, Nazimabad, Rawalpindi",Imported,0
+REG-6983,Zubair Siddiqui,1800,Honda Civic,2026,"House 67, DHA, Rawalpindi",Local,0
+REG-1730,Ali Baig,660,Suzuki Alto,2026,"House 104, Pechs, Rawalpindi",Local,0
+REG-8150,Muhammad Sheikh,1500,Toyota Yaris,2022,"House 113, Clifton, Faisalabad",Imported,0
+REG-7812,Tariq Butt,1300,Toyota Corolla,2022,"House 98, Johar Town, Karachi",Local,0
+REG-2376,Zubair Iqbal,2000,Toyota Prado,2022,"House 49, G-10, Peshawar",Local,0
+REG-1802,Sana Rizvi,1300,Honda City,2020,"House 65, DHA, Peshawar",Local,0
+REG-6270,Hina Malik,1800,Honda Civic,2026,"House 118, Nazimabad, Islamabad",Imported,0
+REG-9670,Fatima Chaudhry,2700,Toyota Fortuner,2015,"House 89, Clifton, Islamabad",Local,0
+REG-4177,Hina Abbasi,2700,Toyota Fortuner,2020,"House 32, Bahria Town, Lahore",Local,0
+REG-6730,Bilal Mirza,1300,Toyota Corolla,2024,"House 28, Gulberg, Lahore",Imported,0
+REG-6289,Bilal Abbasi,1000,Suzuki WagonR,2022,"House 71, Gulberg, Rawalpindi",Imported,0
+REG-9446,Zubair Abbasi,1500,Toyota Yaris,2022,"House 132, F-7, Peshawar",Local,0
+REG-3668,Usman Raza,2000,Toyota Prado,2019,"House 41, Nazimabad, Peshawar",Imported,0
+REG-2969,Imran Qureshi,2700,Toyota Fortuner,2024,"House 13, Johar Town, Karachi",Local,0
+REG-7437,Tariq Siddiqui,1800,Toyota Corolla Grande,2023,"House 102, G-10, Rawalpindi",Local,0
+REG-8825,Sana Rizvi,1500,Toyota Yaris,2024,"House 135, F-7, Karachi",Imported,0
+REG-7498,Usman Abbasi,1800,Toyota Corolla Grande,2017,"House 143, G-10, Lahore",Local,0
+REG-5575,Usman Raza,1300,Honda City,2024,"House 107, DHA, Faisalabad",Local,0
+REG-3269,Ali Baig,1000,Suzuki WagonR,2016,"House 136, Nazimabad, Karachi",Local,0
+REG-3231,Imran Butt,1000,Suzuki WagonR,2019,"House 133, DHA, Karachi",Imported,0
+REG-6550,Fatima Mirza,1000,Suzuki WagonR,2025,"House 31, Hayatabad, Lahore",Local,0
+REG-9553,Hina Hassan,2700,Toyota Fortuner,2021,"House 61, Nazimabad, Lahore",Local,0
+REG-6162,Imran Nawaz,1300,Honda City,2021,"House 112, Gulberg, Rawalpindi",Local,0
+REG-8932,Ahmed Nawaz,1300,Toyota Corolla,2017,"House 66, Nazimabad, Rawalpindi",Local,0
+REG-8933,Ali Siddiqui,660,Suzuki Alto,2019,"House 79, Gulberg, Rawalpindi",Local,0
+REG-5177,Zainab Rizvi,1800,Honda Civic,2026,"House 8, Johar Town, Peshawar",Imported,0
+REG-4018,Imran Chaudhry,660,Suzuki Alto,2022,"House 40, F-7, Faisalabad",Local,0
+REG-8778,Hina Hassan,2000,Toyota Prado,2018,"House 144, G-10, Karachi",Local,0
+REG-3779,Tariq Hassan,2000,Toyota Prado,2020,"House 30, Hayatabad, Karachi",Imported,0
+REG-9886,Ali Khan,660,Suzuki Alto,2026,"House 139, Hayatabad, Islamabad",Local,0
+REG-6868,Nadia Baig,2000,Toyota Prado,2025,"House 114, Johar Town, Peshawar",Local,0
+REG-9015,Fatima Khan,2700,Toyota Fortuner,2022,"House 117, Clifton, Islamabad",Local,0
+REG-8439,Waseem Sheikh,1800,Toyota Corolla Grande,2020,"House 8, Pechs, Rawalpindi",Local,0
+REG-4963,Hamza Raza,2700,Toyota Fortuner,2024,"House 96, G-10, Karachi",Local,0
+REG-8681,Ali Iqbal,1500,Toyota Yaris,2025,"House 108, Gulberg, Peshawar",Imported,0
+REG-6254,Amna Iqbal,1500,Toyota Yaris,2021,"House 124, Nazimabad, Lahore",Local,0
+REG-7694,Zubair Javed,2000,Toyota Prado,2024,"House 45, F-7, Islamabad",Local,0
+REG-4231,Hina Sheikh,1300,Honda City,2018,"House 60, G-10, Peshawar",Imported,0
+REG-5775,Muhammad Qureshi,2000,Toyota Prado,2025,"House 40, F-7, Rawalpindi",Local,0
+REG-6781,Usman Hassan,2000,Toyota Prado,2020,"House 109, Gulberg, Islamabad",Local,0
+REG-7229,Fatima Javed,1800,Honda Civic,2026,"House 54, Hayatabad, Faisalabad",Local,0
+REG-2305,Ahmed Ahmed,1000,Suzuki WagonR,2018,"House 34, Nazimabad, Rawalpindi",Local,0
+REG-6582,Zubair Iqbal,660,Suzuki Alto,2024,"House 80, Pechs, Faisalabad",Local,0
+REG-2271,Tariq Abbasi,1300,Toyota Corolla,2020,"House 51, G-10, Islamabad",Local,0
+REG-1558,Waseem Chaudhry,1300,Honda City,2021,"House 33, G-10, Islamabad",Imported,0
+REG-1217,Saima Nawaz,1300,Toyota Corolla,2026,"House 38, Nazimabad, Rawalpindi",Local,0
+REG-9564,Zubair Ahmed,3000,Toyota Land Cruiser,2025,"House 138, DHA, Islamabad",Local,0
+REG-6292,Nadia Baig,1300,Honda City,2024,"House 106, Nazimabad, Islamabad",Local,0
+REG-9823,Zubair Mirza,1300,Honda City,2021,"House 30, Johar Town, Faisalabad",Local,0
+REG-9519,Waseem Siddiqui,1000,Suzuki WagonR,2021,"House 103, F-7, Rawalpindi",Imported,0
+REG-8268,Hamza Iqbal,1300,Honda City,2022,"House 72, F-7, Peshawar",Local,0
+REG-2514,Fatima Qureshi,1300,Honda City,2017,"House 13, Gulberg, Peshawar",Local,0
+REG-2094,Hina Raza,3000,Toyota Land Cruiser,2026,"House 73, Gulberg, Peshawar",Local,0
+REG-7390,Amna Malik,1500,Toyota Yaris,2020,"House 39, Nazimabad, Lahore",Local,0
+REG-3150,Tariq Khan,2000,Toyota Prado,2018,"House 89, F-7, Karachi",Local,0
+REG-3121,Ali Mirza,1000,Suzuki WagonR,2021,"House 15, Hayatabad, Faisalabad",Imported,0
+REG-6172,Amna Qureshi,1300,Honda City,2016,"House 113, F-7, Faisalabad",Local,0
+REG-6337,Zainab Hassan,660,Suzuki Alto,2025,"House 24, Nazimabad, Karachi",Local,0
+REG-8714,Usman Ahmed,2700,Toyota Fortuner,2018,"House 23, Gulberg, Karachi",Local,0
+REG-7377,Hina Raza,1300,Toyota Corolla,2024,"House 57, DHA, Rawalpindi",Local,0
+REG-6371,Imran Iqbal,1300,Toyota Corolla,2018,"House 84, Johar Town, Karachi",Local,0
+REG-1283,Hamza Sheikh,660,Suzuki Alto,2019,"House 61, Johar Town, Rawalpindi",Local,0
+REG-2581,Ahmed Raza,660,Suzuki Alto,2024,"House 1, Bahria Town, Karachi",Local,0
+REG-7675,Ahmed Mirza,1300,Honda City,2024,"House 55, Johar Town, Rawalpindi",Local,0
+REG-7453,Saima Bibi,1000,Suzuki WagonR,2015,"House 91, Bahria Town, Peshawar",Local,0
+REG-4217,Bilal Butt,1500,Toyota Yaris,2015,"House 136, Nazimabad, Lahore",Local,0
+REG-4710,Imran Mirza,1800,Toyota Corolla Grande,2022,"House 3, Bahria Town, Lahore",Local,0
+REG-6433,Ahmed Hassan,2000,Toyota Prado,2025,"House 57, Hayatabad, Lahore",Imported,0
+REG-7290,Zainab Javed,660,Suzuki Alto,2018,"House 66, G-10, Karachi",Imported,0
+REG-6618,Amna Baig,1300,Honda City,2026,"House 16, Hayatabad, Rawalpindi",Local,0
+REG-4332,Ayesha Khan,1500,Toyota Yaris,2026,"House 149, G-10, Rawalpindi",Imported,0
+REG-8008,Saima Butt,1800,Toyota Corolla Grande,2021,"House 140, Pechs, Faisalabad",Local,0
+REG-8350,Hina Nawaz,1300,Honda City,2022,"House 9, Nazimabad, Lahore",Local,0
+REG-6923,Ahmed Ahmed,1500,Toyota Yaris,2021,"House 53, Gulberg, Peshawar",Imported,0
+REG-4321,Imran Bibi,1300,Toyota Corolla,2015,"House 31, Bahria Town, Peshawar",Local,0
+REG-8316,Hamza Malik,1300,Honda City,2020,"House 4, DHA, Karachi",Local,0
+REG-5898,Waseem Butt,1500,Toyota Yaris,2021,"House 43, G-10, Islamabad",Imported,0
+REG-3603,Ahmed Iqbal,1800,Toyota Corolla Grande,2026,"House 128, Clifton, Lahore",Imported,0
+REG-7262,Imran Abbasi,1000,Suzuki WagonR,2019,"House 31, G-10, Lahore",Imported,0
+REG-6377,Amna Ahmed,1800,Toyota Corolla Grande,2022,"House 9, Clifton, Faisalabad",Local,0
+REG-1107,Saima Khan,1300,Honda City,2024,"House 36, Hayatabad, Islamabad",Local,0
+REG-7464,Fatima Raza,1300,Toyota Corolla,2021,"House 49, Johar Town, Lahore",Imported,0
+REG-8133,Waseem Siddiqui,2000,Toyota Prado,2019,"House 120, DHA, Karachi",Local,0
+REG-5156,Nadia Javed,1800,Honda Civic,2017,"House 29, F-7, Rawalpindi",Imported,0
+REG-7304,Ahmed Sheikh,3000,Toyota Land Cruiser,2021,"House 58, Hayatabad, Faisalabad",Local,0
+REG-7360,Bilal Abbasi,660,Suzuki Alto,2026,"House 118, Pechs, Karachi",Local,0
+REG-6331,Saima Khan,2700,Toyota Fortuner,2015,"House 28, Johar Town, Peshawar",Imported,0
+REG-4093,Imran Javed,2700,Toyota Fortuner,2023,"House 38, Gulberg, Islamabad",Local,0
+REG-8386,Sana Abbasi,1300,Toyota Corolla,2026,"House 2, Bahria Town, Islamabad",Local,0
+REG-8331,Saima Siddiqui,1300,Honda City,2019,"House 97, Johar Town, Faisalabad",Imported,0
+REG-6995,Hamza Butt,1000,Suzuki WagonR,2024,"House 117, Clifton, Lahore",Imported,0
+REG-1846,Bilal Javed,1500,Toyota Yaris,2024,"House 113, Nazimabad, Islamabad",Imported,0
+REG-9865,Bilal Bibi,2000,Toyota Prado,2026,"House 47, F-7, Islamabad",Imported,0
+REG-9924,Amna Raza,1800,Honda Civic,2022,"House 132, Gulberg, Rawalpindi",Local,0
+REG-2710,Imran Hassan,1800,Toyota Corolla Grande,2016,"House 145, G-10, Lahore",Imported,0
+REG-4999,Muhammad Ahmed,1000,Suzuki WagonR,2018,"House 136, Hayatabad, Islamabad",Local,0
+REG-9838,Amna Qureshi,3000,Toyota Land Cruiser,2022,"House 129, Johar Town, Lahore",Imported,0
+REG-8718,Sana Malik,1800,Toyota Corolla Grande,2024,"House 143, Hayatabad, Peshawar",Imported,0
+REG-9922,Hamza Abbasi,1300,Toyota Corolla,2021,"House 127, Clifton, Peshawar",Local,0
+REG-3939,Hamza Rizvi,2700,Toyota Fortuner,2025,"House 110, Johar Town, Islamabad",Local,0
+REG-1511,Tariq Qureshi,3000,Toyota Land Cruiser,2019,"House 89, Bahria Town, Lahore",Local,0
+REG-2020,Ayesha Javed,1800,Honda Civic,2020,"House 147, Clifton, Lahore",Imported,0
+REG-3876,Saima Sheikh,1300,Honda City,2015,"House 112, G-10, Rawalpindi",Imported,0
+REG-2745,Waseem Sheikh,1000,Suzuki WagonR,2023,"House 49, G-10, Karachi",Local,0
+REG-1143,Imran Ahmed,1000,Suzuki WagonR,2024,"House 55, Bahria Town, Islamabad",Local,0
+REG-4001,Ayesha Sheikh,3000,Toyota Land Cruiser,2021,"House 132, Clifton, Lahore",Local,0
+REG-6839,Usman Khan,1800,Toyota Corolla Grande,2016,"House 105, Clifton, Rawalpindi",Local,0
+REG-2848,Amna Ahmed,1300,Honda City,2026,"House 13, Nazimabad, Karachi",Local,0
+REG-8658,Fatima Iqbal,1300,Honda City,2026,"House 150, Pechs, Islamabad",Local,0
+REG-4656,Zainab Qureshi,1300,Toyota Corolla,2023,"House 23, G-10, Islamabad",Local,0
+REG-2625,Ayesha Iqbal,3000,Toyota Land Cruiser,2026,"House 55, G-10, Faisalabad",Local,0
+REG-1902,Ayesha Iqbal,1500,Toyota Yaris,2024,"House 96, Bahria Town, Peshawar",Imported,0
+REG-9990,Nadia Hassan,1800,Honda Civic,2017,"House 93, Nazimabad, Islamabad",Local,0
+REG-1026,Hina Bibi,3000,Toyota Land Cruiser,2025,"House 95, Johar Town, Karachi",Imported,0
+REG-4008,Hina Ahmed,1300,Toyota Corolla,2024,"House 55, Nazimabad, Islamabad",Local,0
+REG-1040,Zainab Qureshi,1800,Toyota Corolla Grande,2017,"House 7, Gulberg, Islamabad",Imported,0
+REG-1111,Ayesha Rizvi,2000,Toyota Prado,2020,"House 57, Bahria Town, Faisalabad",Local,0
+REG-9795,Sana Mirza,1300,Toyota Corolla,2017,"House 106, Nazimabad, Peshawar",Local,0
+REG-1761,Bilal Ahmed,2000,Toyota Prado,2018,"House 101, Nazimabad, Rawalpindi",Local,0
+REG-7233,Saima Qureshi,1000,Suzuki WagonR,2021,"House 114, Pechs, Rawalpindi",Local,0
+REG-5177,Ayesha Sheikh,1300,Honda City,2023,"House 143, Nazimabad, Rawalpindi",Imported,0
+REG-2852,Fatima Sheikh,3000,Toyota Land Cruiser,2019,"House 139, Hayatabad, Karachi",Imported,0
+REG-1248,Hamza Abbasi,1300,Honda City,2025,"House 1, G-10, Peshawar",Local,0
+REG-7964,Sana Hassan,1300,Honda City,2023,"House 71, Johar Town, Lahore",Imported,0
+REG-7362,Saima Ahmed,2000,Toyota Prado,2026,"House 90, Hayatabad, Lahore",Imported,0
+REG-6223,Amna Nawaz,2700,Toyota Fortuner,2025,"House 90, Nazimabad, Peshawar",Local,0
+REG-5233,Zainab Abbasi,660,Suzuki Alto,2019,"House 17, Clifton, Islamabad",Imported,0
+REG-6756,Usman Rizvi,3000,Toyota Land Cruiser,2025,"House 76, Clifton, Faisalabad",Local,0
+REG-6913,Imran Raza,1800,Honda Civic,2021,"House 51, DHA, Faisalabad",Local,0
+REG-9881,Ayesha Hassan,1800,Honda Civic,2021,"House 80, G-10, Faisalabad",Local,0
+REG-8793,Ahmed Malik,1800,Toyota Corolla Grande,2022,"House 124, Hayatabad, Peshawar",Local,0
+REG-2206,Hina Rizvi,3000,Toyota Land Cruiser,2021,"House 137, Johar Town, Karachi",Local,0
+REG-9264,Bilal Baig,1800,Honda Civic,2021,"House 46, Pechs, Lahore",Imported,0
+REG-3710,Tariq Butt,1000,Suzuki WagonR,2016,"House 110, Nazimabad, Rawalpindi",Local,0
+REG-4717,Muhammad Baig,660,Suzuki Alto,2018,"House 45, G-10, Karachi",Local,0
+REG-3757,Fatima Siddiqui,1300,Honda City,2015,"House 125, Clifton, Rawalpindi",Local,0
+REG-8212,Hamza Abbasi,1300,Honda City,2020,"House 70, G-10, Lahore",Imported,0
+REG-9461,Amna Hassan,1800,Honda Civic,2026,"House 130, Gulberg, Lahore",Local,0
+REG-3996,Ayesha Abbasi,1300,Honda City,2024,"House 120, Pechs, Islamabad",Local,0
+REG-9481,Nadia Butt,1800,Toyota Corolla Grande,2023,"House 101, G-10, Faisalabad",Local,0
+REG-8837,Imran Iqbal,1800,Toyota Corolla Grande,2025,"House 142, F-7, Karachi",Imported,0
+REG-7105,Waseem Mirza,1000,Suzuki WagonR,2024,"House 21, G-10, Islamabad",Local,0
+REG-2128,Hina Raza,1500,Toyota Yaris,2024,"House 17, Clifton, Islamabad",Local,0
+REG-2326,Hamza Raza,2000,Toyota Prado,2017,"House 106, Clifton, Lahore",Local,0
+REG-6941,Saima Baig,3000,Toyota Land Cruiser,2025,"House 132, DHA, Karachi",Local,0
+REG-5924,Zubair Raza,660,Suzuki Alto,2015,"House 112, Nazimabad, Rawalpindi",Local,0
+REG-1702,Zainab Ahmed,2700,Toyota Fortuner,2018,"House 143, Nazimabad, Lahore",Local,0
+REG-7940,Nadia Rizvi,1300,Honda City,2018,"House 108, DHA, Islamabad",Local,0
+REG-8240,Hamza Malik,1000,Suzuki WagonR,2016,"House 32, F-7, Rawalpindi",Local,0
+REG-1729,Muhammad Hassan,2700,Toyota Fortuner,2024,"House 61, F-7, Faisalabad",Local,0
+REG-6578,Amna Bibi,1000,Suzuki WagonR,2024,"House 80, Pechs, Peshawar",Imported,0
+REG-9329,Imran Baig,1300,Toyota Corolla,2015,"House 18, Bahria Town, Faisalabad",Imported,0
+REG-3906,Hina Raza,2700,Toyota Fortuner,2025,"House 42, Clifton, Karachi",Local,0
+REG-8661,Bilal Javed,1800,Honda Civic,2015,"House 29, Johar Town, Faisalabad",Local,0
+REG-4627,Imran Sheikh,1300,Honda City,2023,"House 14, Pechs, Islamabad",Local,0
+REG-6901,Hina Hassan,1300,Honda City,2025,"House 129, F-7, Peshawar",Local,0
+REG-2608,Nadia Malik,2000,Toyota Prado,2020,"House 34, Clifton, Karachi",Local,0
+REG-6931,Hina Siddiqui,1000,Suzuki WagonR,2019,"House 36, Clifton, Faisalabad",Local,0
+REG-5832,Zubair Khan,2700,Toyota Fortuner,2024,"House 95, Pechs, Faisalabad",Local,0
+REG-5733,Hamza Nawaz,1300,Honda City,2018,"House 26, Johar Town, Faisalabad",Local,0
+REG-7572,Amna Bibi,1800,Honda Civic,2018,"House 122, G-10, Islamabad",Local,0
+REG-9630,Muhammad Mirza,1800,Honda Civic,2015,"House 111, F-7, Faisalabad",Local,0
+REG-4593,Sana Rizvi,1500,Toyota Yaris,2020,"House 22, Nazimabad, Islamabad",Local,0
+REG-4581,Nadia Siddiqui,1300,Toyota Corolla,2019,"House 104, Clifton, Peshawar",Imported,0
+REG-3225,Fatima Khan,2700,Toyota Fortuner,2020,"House 22, Clifton, Faisalabad",Local,0
+REG-9986,Saima Javed,1800,Honda Civic,2019,"House 65, DHA, Lahore",Local,0
+REG-8031,Waseem Nawaz,1500,Toyota Yaris,2024,"House 142, Johar Town, Faisalabad",Local,0
+REG-5906,Imran Raza,1500,Toyota Yaris,2021,"House 115, Hayatabad, Karachi",Local,0
+REG-3165,Muhammad Rizvi,1300,Toyota Corolla,2022,"House 140, G-10, Lahore",Local,0
+REG-6519,Hina Butt,1500,Toyota Yaris,2023,"House 103, Clifton, Karachi",Imported,0
+REG-3105,Ali Butt,2000,Toyota Prado,2022,"House 29, Nazimabad, Lahore",Local,0
+REG-1147,Zainab Nawaz,660,Suzuki Alto,2020,"House 79, Clifton, Lahore",Local,0
+REG-1146,Zainab Abbasi,1800,Honda Civic,2025,"House 100, Nazimabad, Karachi",Imported,0
+REG-4035,Saima Rizvi,1300,Honda City,2024,"House 78, DHA, Peshawar",Local,0
+REG-1084,Zainab Qureshi,660,Suzuki Alto,2017,"House 54, Clifton, Peshawar",Local,0
+REG-2460,Imran Sheikh,1500,Toyota Yaris,2020,"House 133, Clifton, Karachi",Local,0
+REG-1474,Hamza Sheikh,3000,Toyota Land Cruiser,2022,"House 139, F-7, Islamabad",Imported,0
+REG-7396,Hina Nawaz,1800,Toyota Corolla Grande,2020,"House 39, DHA, Peshawar",Imported,0
+REG-2402,Zubair Qureshi,1800,Honda Civic,2015,"House 80, Pechs, Peshawar",Local,0
+REG-5341,Usman Rizvi,3000,Toyota Land Cruiser,2021,"House 122, Nazimabad, Lahore",Local,0
+REG-2232,Tariq Ahmed,1300,Honda City,2026,"House 7, G-10, Peshawar",Local,0
+REG-4348,Nadia Rizvi,1800,Honda Civic,2021,"House 134, DHA, Rawalpindi",Local,0
+REG-8899,Amna Siddiqui,2000,Toyota Prado,2016,"House 37, F-7, Rawalpindi",Imported,0
+REG-9866,Zainab Malik,1300,Toyota Corolla,2025,"House 22, G-10, Peshawar",Local,0
+REG-9296,Ahmed Sheikh,2000,Toyota Prado,2022,"House 49, Johar Town, Faisalabad",Local,0
+REG-8040,Amna Siddiqui,1500,Toyota Yaris,2023,"House 73, Johar Town, Rawalpindi",Local,0
+REG-1550,Amna Siddiqui,660,Suzuki Alto,2025,"House 39, Hayatabad, Islamabad",Local,0
+REG-5687,Fatima Rizvi,1800,Toyota Corolla Grande,2025,"House 18, DHA, Karachi",Local,0
+REG-3657,Hamza Bibi,2000,Toyota Prado,2020,"House 29, F-7, Rawalpindi",Imported,0
+REG-6848,Bilal Mirza,1000,Suzuki WagonR,2018,"House 143, Nazimabad, Faisalabad",Local,0
+REG-4908,Usman Iqbal,1800,Honda Civic,2019,"House 63, Nazimabad, Lahore",Local,0
+REG-5676,Usman Mirza,3000,Toyota Land Cruiser,2026,"House 121, Johar Town, Peshawar",Imported,0
+REG-1866,Saima Sheikh,1800,Honda Civic,2019,"House 136, Clifton, Karachi",Local,0
+REG-2441,Usman Malik,2700,Toyota Fortuner,2022,"House 27, Bahria Town, Faisalabad",Imported,0
+REG-4125,Imran Rizvi,1000,Suzuki WagonR,2015,"House 70, Nazimabad, Rawalpindi",Local,0
+REG-3293,Muhammad Butt,1000,Suzuki WagonR,2020,"House 93, Hayatabad, Rawalpindi",Local,0
+REG-7671,Hina Iqbal,1300,Honda City,2015,"House 15, Gulberg, Peshawar",Local,0
+REG-5474,Imran Siddiqui,1500,Toyota Yaris,2015,"House 100, Bahria Town, Karachi",Local,0
+REG-2242,Bilal Malik,2000,Toyota Prado,2017,"House 29, DHA, Islamabad",Local,0
+REG-4323,Hamza Qureshi,1000,Suzuki WagonR,2020,"House 75, Nazimabad, Karachi",Imported,0
+REG-9470,Ayesha Qureshi,3000,Toyota Land Cruiser,2019,"House 107, Nazimabad, Karachi",Local,0
+REG-3913,Waseem Raza,1800,Toyota Corolla Grande,2021,"House 22, DHA, Karachi",Local,0
+REG-6964,Hamza Siddiqui,3000,Toyota Land Cruiser,2015,"House 93, Clifton, Faisalabad",Imported,0
+REG-7966,Hina Chaudhry,2000,Toyota Prado,2015,"House 17, Hayatabad, Karachi",Local,0
+REG-7286,Ayesha Rizvi,2700,Toyota Fortuner,2022,"House 18, Pechs, Islamabad",Local,0
+REG-2690,Zainab Rizvi,2700,Toyota Fortuner,2025,"House 92, Nazimabad, Lahore",Local,0
+REG-9451,Sana Mirza,1800,Honda Civic,2023,"House 63, DHA, Rawalpindi",Local,0
+REG-1767,Waseem Malik,1800,Honda Civic,2017,"House 44, Gulberg, Islamabad",Imported,0
+REG-3920,Nadia Qureshi,1800,Toyota Corolla Grande,2017,"House 80, G-10, Karachi",Local,0
+REG-3396,Waseem Bibi,1500,Toyota Yaris,2020,"House 81, F-7, Faisalabad",Imported,0
+REG-6083,Tariq Bibi,660,Suzuki Alto,2019,"House 13, Johar Town, Karachi",Local,0
+REG-4090,Nadia Nawaz,1800,Honda Civic,2020,"House 88, Gulberg, Rawalpindi",Local,0
+REG-6977,Sana Mirza,1000,Suzuki WagonR,2015,"House 74, Clifton, Karachi",Local,0
+REG-8060,Hina Baig,660,Suzuki Alto,2025,"House 85, Hayatabad, Faisalabad",Local,0
+REG-1903,Ayesha Bibi,1500,Toyota Yaris,2020,"House 150, Bahria Town, Islamabad",Local,0
+REG-2423,Nadia Javed,1000,Suzuki WagonR,2018,"House 44, G-10, Faisalabad",Imported,0
+REG-6413,Zainab Siddiqui,1000,Suzuki WagonR,2016,"House 89, G-10, Islamabad",Imported,0
+REG-2337,Hina Sheikh,660,Suzuki Alto,2016,"House 137, Nazimabad, Islamabad",Imported,0
+REG-2404,Fatima Iqbal,660,Suzuki Alto,2026,"House 15, G-10, Karachi",Local,0
+REG-1584,Fatima Nawaz,2000,Toyota Prado,2018,"House 127, Clifton, Karachi",Local,0
+REG-7406,Hina Hassan,1000,Suzuki WagonR,2026,"House 94, G-10, Peshawar",Local,0
+REG-2022,Ali Rizvi,660,Suzuki Alto,2023,"House 122, Hayatabad, Karachi",Imported,0
+REG-3335,Bilal Raza,660,Suzuki Alto,2020,"House 72, Hayatabad, Islamabad",Local,0
+REG-9643,Ayesha Butt,1300,Toyota Corolla,2023,"House 136, G-10, Islamabad",Local,0
+REG-2576,Muhammad Hassan,1500,Toyota Yaris,2018,"House 143, G-10, Islamabad",Local,0
+REG-5958,Waseem Abbasi,1300,Toyota Corolla,2019,"House 4, Bahria Town, Islamabad",Local,0
+REG-1850,Ayesha Butt,1300,Toyota Corolla,2026,"House 50, G-10, Lahore",Local,0
+REG-6549,Bilal Butt,1800,Toyota Corolla Grande,2019,"House 108, Nazimabad, Lahore",Imported,0
+REG-4080,Fatima Abbasi,1800,Honda Civic,2016,"House 110, DHA, Peshawar",Local,0
+REG-4994,Tariq Malik,2700,Toyota Fortuner,2018,"House 99, Nazimabad, Rawalpindi",Imported,0
+REG-8352,Tariq Bibi,1300,Toyota Corolla,2015,"House 40, Hayatabad, Islamabad",Imported,0
+REG-7656,Usman Sheikh,2000,Toyota Prado,2026,"House 116, Nazimabad, Islamabad",Local,0
+REG-8677,Nadia Khan,1000,Suzuki WagonR,2017,"House 33, F-7, Rawalpindi",Local,0
+REG-8604,Amna Ahmed,1300,Honda City,2016,"House 145, Nazimabad, Faisalabad",Local,0
+REG-6561,Imran Sheikh,1800,Toyota Corolla Grande,2019,"House 66, Hayatabad, Lahore",Local,0
+REG-3854,Hina Siddiqui,660,Suzuki Alto,2019,"House 140, F-7, Rawalpindi",Local,0
+REG-8014,Hina Sheikh,1500,Toyota Yaris,2020,"House 41, Bahria Town, Islamabad",Local,0
+REG-1343,Hina Qureshi,660,Suzuki Alto,2016,"House 130, G-10, Karachi",Imported,0
+REG-2365,Fatima Javed,660,Suzuki Alto,2019,"House 131, Nazimabad, Karachi",Local,0
+REG-3752,Waseem Malik,2000,Toyota Prado,2020,"House 49, Clifton, Faisalabad",Local,0
+REG-8740,Zubair Sheikh,1500,Toyota Yaris,2023,"House 116, Clifton, Rawalpindi",Local,0
+REG-7286,Amna Abbasi,1300,Toyota Corolla,2024,"House 118, Clifton, Karachi",Imported,0
+REG-6546,Ahmed Siddiqui,1000,Suzuki WagonR,2024,"House 84, Nazimabad, Faisalabad",Local,0
+REG-2054,Ali Bibi,1500,Toyota Yaris,2022,"House 31, Hayatabad, Lahore",Imported,0
+REG-7974,Sana Bibi,1800,Honda Civic,2017,"House 66, Nazimabad, Peshawar",Imported,0
+REG-2021,Ali Chaudhry,1300,Toyota Corolla,2019,"House 32, Johar Town, Islamabad",Local,0
+REG-7882,Hamza Bibi,1300,Toyota Corolla,2022,"House 116, Pechs, Karachi",Local,0
+REG-7358,Hina Hassan,1300,Honda City,2017,"House 6, Pechs, Karachi",Local,0
+REG-7901,Hina Khan,2700,Toyota Fortuner,2016,"House 147, Pechs, Rawalpindi",Local,0
+REG-8111,Ahmed Malik,2000,Toyota Prado,2018,"House 130, G-10, Peshawar",Local,0
+REG-7051,Sana Qureshi,660,Suzuki Alto,2020,"House 74, Pechs, Karachi",Local,0
+REG-3428,Ali Chaudhry,2000,Toyota Prado,2018,"House 76, Hayatabad, Karachi",Local,0
+REG-6048,Usman Hassan,1800,Toyota Corolla Grande,2025,"House 35, DHA, Karachi",Local,0
+REG-9767,Amna Rizvi,2700,Toyota Fortuner,2020,"House 91, Gulberg, Islamabad",Local,0
+REG-9888,Zubair Mirza,2700,Toyota Fortuner,2019,"House 47, Hayatabad, Peshawar",Local,0
+REG-3663,Sana Butt,1300,Toyota Corolla,2015,"House 85, Johar Town, Islamabad",Local,0
+REG-5116,Muhammad Iqbal,1000,Suzuki WagonR,2020,"House 26, Nazimabad, Lahore",Imported,0
+REG-1324,Hamza Mirza,660,Suzuki Alto,2025,"House 68, Hayatabad, Lahore",Local,0
+REG-2060,Ali Baig,2000,Toyota Prado,2018,"House 125, Pechs, Karachi",Local,0
+REG-4920,Zainab Javed,2000,Toyota Prado,2025,"House 133, Johar Town, Faisalabad",Local,0
+REG-5708,Ahmed Baig,2000,Toyota Prado,2019,"House 54, Bahria Town, Karachi",Local,0
+REG-6998,Zubair Siddiqui,2000,Toyota Prado,2024,"House 96, F-7, Peshawar",Local,0
+REG-5799,Hamza Qureshi,1300,Honda City,2018,"House 98, Nazimabad, Faisalabad",Local,0
+REG-7319,Ali Hassan,2000,Toyota Prado,2018,"House 47, Clifton, Faisalabad",Imported,0
+REG-2369,Zainab Mirza,1300,Toyota Corolla,2018,"House 143, F-7, Peshawar",Local,0
+REG-9538,Sana Javed,2700,Toyota Fortuner,2016,"House 7, Gulberg, Peshawar",Local,0
+REG-8337,Muhammad Raza,1800,Honda Civic,2024,"House 109, Hayatabad, Lahore",Local,0
+REG-8039,Sana Sheikh,1000,Suzuki WagonR,2020,"House 40, Nazimabad, Peshawar",Local,0
+REG-7564,Amna Abbasi,1000,Suzuki WagonR,2021,"House 141, Bahria Town, Faisalabad",Imported,0
+REG-5294,Amna Khan,1300,Honda City,2019,"House 147, Johar Town, Peshawar",Imported,0
+REG-3241,Nadia Chaudhry,1500,Toyota Yaris,2017,"House 78, Nazimabad, Karachi",Local,0
+REG-6123,Waseem Iqbal,1000,Suzuki WagonR,2019,"House 16, Johar Town, Faisalabad",Local,0
+REG-1698,Imran Butt,660,Suzuki Alto,2017,"House 40, Bahria Town, Rawalpindi",Local,0
+REG-6344,Hina Butt,2700,Toyota Fortuner,2017,"House 46, Hayatabad, Lahore",Local,0
+REG-3996,Ahmed Ahmed,660,Suzuki Alto,2020,"House 62, Nazimabad, Rawalpindi",Imported,0
+REG-6434,Sana Khan,660,Suzuki Alto,2023,"House 72, DHA, Lahore",Imported,0
+REG-7172,Zainab Qureshi,1300,Toyota Corolla,2026,"House 123, DHA, Peshawar",Imported,0
+REG-7182,Saima Sheikh,1800,Toyota Corolla Grande,2019,"House 45, G-10, Peshawar",Local,0
+REG-2893,Hina Baig,1000,Suzuki WagonR,2025,"House 116, Bahria Town, Islamabad",Local,0
+REG-4956,Hamza Rizvi,1800,Toyota Corolla Grande,2017,"House 79, Gulberg, Karachi",Local,0
+REG-5373,Imran Chaudhry,1300,Honda City,2023,"House 51, Clifton, Islamabad",Local,0
+REG-5171,Tariq Hassan,1800,Honda Civic,2023,"House 101, Pechs, Faisalabad",Local,0
+REG-5803,Muhammad Ahmed,1000,Suzuki WagonR,2015,"House 6, Clifton, Karachi",Imported,0
+REG-2388,Tariq Mirza,1300,Honda City,2026,"House 110, Bahria Town, Karachi",Local,0
+REG-7995,Saima Hassan,1800,Toyota Corolla Grande,2022,"House 64, G-10, Faisalabad",Local,0
+REG-4389,Zubair Qureshi,3000,Toyota Land Cruiser,2025,"House 113, F-7, Lahore",Local,0
+REG-2883,Muhammad Baig,1300,Honda City,2015,"House 142, Clifton, Faisalabad",Local,0
+REG-2339,Fatima Qureshi,3000,Toyota Land Cruiser,2022,"House 88, Clifton, Faisalabad",Local,0
+REG-7685,Sana Qureshi,1000,Suzuki WagonR,2025,"House 19, Hayatabad, Karachi",Local,0
+REG-6651,Bilal Rizvi,1000,Suzuki WagonR,2026,"House 33, Johar Town, Faisalabad",Local,0
+REG-7741,Hamza Siddiqui,1000,Suzuki WagonR,2017,"House 91, Hayatabad, Rawalpindi",Local,0
+REG-2007,Sana Nawaz,1000,Suzuki WagonR,2023,"House 100, G-10, Rawalpindi",Imported,0
+REG-2264,Tariq Abbasi,660,Suzuki Alto,2018,"House 74, Gulberg, Lahore",Local,0
+REG-6252,Usman Iqbal,660,Suzuki Alto,2025,"House 142, Pechs, Karachi",Local,0
+REG-2477,Nadia Iqbal,660,Suzuki Alto,2015,"House 96, Nazimabad, Peshawar",Local,0
+REG-2150,Ahmed Nawaz,2700,Toyota Fortuner,2019,"House 13, Bahria Town, Peshawar",Local,0
+REG-7994,Hamza Rizvi,2700,Toyota Fortuner,2024,"House 49, DHA, Rawalpindi",Local,0
+REG-9201,Hamza Bibi,1800,Toyota Corolla Grande,2019,"House 57, G-10, Lahore",Local,0
+REG-9285,Amna Butt,2000,Toyota Prado,2026,"House 120, Nazimabad, Peshawar",Imported,0
+REG-3058,Bilal Rizvi,1300,Honda City,2025,"House 54, F-7, Peshawar",Local,0
+REG-8047,Imran Mirza,1300,Honda City,2023,"House 23, Pechs, Rawalpindi",Local,0
+REG-7063,Imran Abbasi,1800,Toyota Corolla Grande,2022,"House 117, Johar Town, Faisalabad",Local,0
+REG-7274,Sana Malik,1800,Honda Civic,2022,"House 58, Hayatabad, Faisalabad",Local,0
+REG-1328,Saima Chaudhry,3000,Toyota Land Cruiser,2017,"House 107, G-10, Lahore",Local,0
+REG-8307,Fatima Baig,2700,Toyota Fortuner,2023,"House 73, Johar Town, Karachi",Imported,0
+REG-3724,Zubair Hassan,2000,Toyota Prado,2020,"House 80, Johar Town, Islamabad",Local,0
+REG-6378,Waseem Bibi,1800,Honda Civic,2017,"House 105, G-10, Rawalpindi",Imported,0
+REG-9248,Ahmed Qureshi,660,Suzuki Alto,2022,"House 83, Johar Town, Karachi",Local,0
+REG-3206,Zubair Butt,1300,Honda City,2018,"House 63, Nazimabad, Islamabad",Local,0
+REG-5458,Ayesha Hassan,1800,Honda Civic,2018,"House 54, Clifton, Peshawar",Imported,0
+REG-1775,Amna Malik,1500,Toyota Yaris,2023,"House 55, G-10, Rawalpindi",Local,0
+REG-8756,Ayesha Mirza,3000,Toyota Land Cruiser,2016,"House 145, Johar Town, Rawalpindi",Local,0
+REG-2434,Usman Javed,660,Suzuki Alto,2026,"House 70, Hayatabad, Karachi",Imported,0
+REG-9142,Bilal Iqbal,3000,Toyota Land Cruiser,2018,"House 51, Johar Town, Karachi",Local,0
+REG-4327,Saima Nawaz,1800,Toyota Corolla Grande,2015,"House 101, G-10, Karachi",Imported,0
+REG-4696,Fatima Abbasi,2000,Toyota Prado,2021,"House 16, Johar Town, Lahore",Imported,0
+REG-9064,Imran Siddiqui,1800,Toyota Corolla Grande,2019,"House 119, G-10, Lahore",Local,0
+REG-7582,Sana Abbasi,3000,Toyota Land Cruiser,2023,"House 132, Gulberg, Rawalpindi",Local,0
+REG-7465,Usman Hassan,1800,Toyota Corolla Grande,2022,"House 17, DHA, Rawalpindi",Local,0
+REG-8664,Nadia Javed,2700,Toyota Fortuner,2019,"House 36, Nazimabad, Faisalabad",Local,0
+REG-4092,Nadia Ahmed,1800,Toyota Corolla Grande,2026,"House 113, F-7, Rawalpindi",Local,0
+REG-3436,Zainab Abbasi,1000,Suzuki WagonR,2017,"House 41, Bahria Town, Islamabad",Local,0
+REG-3718,Sana Nawaz,2000,Toyota Prado,2018,"House 26, G-10, Islamabad",Local,0
+REG-5088,Zubair Siddiqui,1300,Toyota Corolla,2017,"House 94, Johar Town, Peshawar",Local,0
+REG-2311,Imran Malik,1800,Honda Civic,2017,"House 34, Hayatabad, Karachi",Local,0
+REG-1293,Waseem Qureshi,1800,Honda Civic,2020,"House 25, Johar Town, Peshawar",Local,0
+REG-2522,Nadia Nawaz,1300,Honda City,2020,"House 75, Johar Town, Peshawar",Imported,0
+REG-3641,Zubair Ahmed,1000,Suzuki WagonR,2016,"House 98, Nazimabad, Karachi",Local,0
+REG-5043,Hina Baig,2700,Toyota Fortuner,2020,"House 124, Nazimabad, Karachi",Local,0
+REG-1151,Bilal Rizvi,2700,Toyota Fortuner,2018,"House 12, Hayatabad, Lahore",Imported,0
+REG-3665,Usman Hassan,2700,Toyota Fortuner,2018,"House 100, G-10, Lahore",Local,0
+REG-7561,Zainab Khan,2700,Toyota Fortuner,2019,"House 113, DHA, Peshawar",Imported,0

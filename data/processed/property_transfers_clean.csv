@@ -1,150 +1,250 @@
 registry_no,buyer_name,seller_name,property_address,property_value_pkr,transfer_date,area_marla,property_type,registry_type,noc_status,society_name,plot_number,clean_name,clean_address,address_id
-REG-PRO-101,Muhammad Arshad,Malik Riaz,"DHA Phase 6, Lahore",2500000,2025-01-15,20,Residential,File,Approved,DHA Lahore,Plot 14,muhammad arshad,"dha phase 6, lahore",c84b32c4
+REG-PRO-101,Muhammad Arshad,Malik Riaz Developers,"Plot 14, DHA Phase 6, Lahore",2500000,2025-01-15,20,Residential,File,Approved,DHA Lahore,Plot 14,muhammad arshad,"plot 14, dha phase 6, lahore",be309bb7
 REG-PRO-102,Farhan Ahmed,Zubair Khan,"House 5, Street 2, Gulberg III, Lahore",80000000,2024-03-10,20,Residential,Registry,Approved,Gulberg,House 5,farhan ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
 REG-PRO-103,Syed Bilal Hassan,Properties Ltd,"Sector C, Bahria Town, Rawalpindi",15000000,2025-02-20,10,Residential,File,Approved,Bahria Town,Plot 99,bilal hassan,"sector c, bahria town, rawalpindi",f3cfa711
-REG-PRO-104,Dr. Ayesha Malik,Capital Builders,"Bahria Town Phase 7, Islamabad",30000000,2024-06-12,8,Apartment,Registry,Approved,Bahria Town,Apartment 3A,dr. ayesha malik,"bahria town phase 7, islamabad",1c155e01
-REG-PRO-105,Haji Abdul Razzaq,Ali Hassan,"Pechs Block 2, Karachi",80000000,2019-11-05,40,Commercial,Registry,Approved,Pechs Karachi,Plaza 4,haji abdul razzaq,"pechs block 2, karachi",387b754e
-REG-PRO-206,Ayesha Malik,Hamza Siddiqui,"Plot 373, Sector A, Karachi",4639869,2026-05-11,5,Residential,File,Approved,Local Scheme,Plot 421,ayesha malik,"plot 373, sector a, karachi",70b7a120
-REG-PRO-207,Ali Javed,Sana Hassan,"Plot 457, Sector B, Rawalpindi",17150705,2021-12-04,10,Residential,File,Pending,Local Scheme,Plot 110,ali javed,"plot 457, sector b, rawalpindi",fb34a61f
-REG-PRO-208,Ayesha Sheikh,Muhammad Hassan,"Plot 175, Sector A, Faisalabad",7975579,2024-10-25,20,Residential,Registry,Unapproved,Local Scheme,Plot 440,ayesha sheikh,"plot 175, sector a, faisalabad",3d0c7823
-REG-PRO-209,Bilal Sheikh,Zainab Hassan,"Plot 116, Sector C, Lahore",20950791,2024-05-03,20,Residential,Registry,Pending,Local Scheme,Plot 131,bilal sheikh,"plot 116, sector c, lahore",dca63cf0
-REG-PRO-210,Zainab Sheikh,Bilal Ahmed,"Plot 218, Sector A, Peshawar",8706880,2019-07-16,5,Residential,Registry,Pending,Local Scheme,Plot 292,zainab sheikh,"plot 218, sector a, peshawar",f168796e
-REG-PRO-211,Osman Hassan,Fatima Sheikh,"Plot 359, Sector A, Karachi",23437330,2023-03-09,10,Residential,File,Approved,Local Scheme,Plot 276,osman hassan,"plot 359, sector a, karachi",f6eb9bfa
-REG-PRO-212,Sana Javed,Zainab Khan,"Plot 118, Sector C, Islamabad",21432390,2023-10-02,10,Residential,File,Pending,Local Scheme,Plot 497,sana javed,"plot 118, sector c, islamabad",e8b8e908
-REG-PRO-213,Fatima Javed,Bilal Bibi,"Plot 75, Sector A, Islamabad",22881197,2021-11-23,5,Residential,Registry,Approved,Local Scheme,Plot 205,fatima javed,"plot 75, sector a, islamabad",cefa58c0
-REG-PRO-214,Osman Khan,Fatima Raza,"Plot 367, Sector C, Peshawar",21619766,2026-02-05,20,Residential,Registry,Pending,Local Scheme,Plot 120,osman khan,"plot 367, sector c, peshawar",83c0865f
-REG-PRO-215,Bilal Siddiqui,Bilal Ahmed,"Plot 202, Sector A, Lahore",17050867,2018-11-17,20,Residential,File,Unapproved,Local Scheme,Plot 422,bilal siddiqui,"plot 202, sector a, lahore",9242a992
-REG-PRO-216,Zainab Javed,Ayesha Khan,"Plot 143, Sector C, Islamabad",16026094,2025-11-28,20,Residential,File,Unapproved,Local Scheme,Plot 157,zainab javed,"plot 143, sector c, islamabad",ecbcddf1
-REG-PRO-217,Fatima Iqbal,Fatima Javed,"Plot 476, Sector A, Peshawar",8693218,2026-01-04,5,Residential,Registry,Unapproved,Local Scheme,Plot 105,fatima iqbal,"plot 476, sector a, peshawar",35cf366e
-REG-PRO-218,Muhammad Raza,Ahmed Javed,"Plot 411, Sector A, Karachi",19268681,2018-08-08,10,Residential,File,Unapproved,Local Scheme,Plot 400,muhammad raza,"plot 411, sector a, karachi",b0a4a9ec
-REG-PRO-219,Ahmed Malik,Zainab Malik,"Plot 51, Sector B, Peshawar",16956223,2020-11-28,20,Residential,File,Approved,Local Scheme,Plot 6,ahmad malik,"plot 51, sector b, peshawar",45cbe0c9
-REG-PRO-220,Osman Hassan,Fatima Sheikh,"Plot 359, Sector B, Rawalpindi",9495301,2026-12-07,20,Residential,File,Approved,Local Scheme,Plot 325,osman hassan,"plot 359, sector b, rawalpindi",ed7d9762
-REG-PRO-221,Zainab Hassan,Fatima Javed,"Plot 277, Sector B, Rawalpindi",7896747,2024-12-06,5,Residential,File,Unapproved,Local Scheme,Plot 297,zainab hassan,"plot 277, sector b, rawalpindi",b0f27f1e
-REG-PRO-222,Ali Raza,Hamza Hassan,"Plot 466, Sector C, Rawalpindi",4081033,2024-06-13,10,Residential,Registry,Pending,Local Scheme,Plot 312,ali raza,"plot 466, sector c, rawalpindi",24afc143
-REG-PRO-223,Bilal Iqbal,Muhammad Iqbal,"Plot 470, Sector C, Islamabad",13671517,2021-05-24,10,Residential,Registry,Pending,Local Scheme,Plot 326,bilal iqbal,"plot 470, sector c, islamabad",f36a3012
-REG-PRO-224,Ali Sheikh,Ali Hassan,"Plot 304, Sector C, Rawalpindi",16545018,2023-02-18,20,Residential,Registry,Unapproved,Local Scheme,Plot 445,ali sheikh,"plot 304, sector c, rawalpindi",f4e8b421
-REG-PRO-225,Sana Raza,Sana Khan,"Plot 363, Sector B, Peshawar",23773712,2024-03-28,5,Residential,Registry,Pending,Local Scheme,Plot 136,sana raza,"plot 363, sector b, peshawar",69997c89
-REG-PRO-226,Muhammad Bibi,Ahmed Bibi,"Plot 115, Sector A, Faisalabad",18012616,2024-11-27,20,Residential,Registry,Approved,Local Scheme,Plot 64,muhammad bibi,"plot 115, sector a, faisalabad",6d74b4e9
-REG-PRO-227,Fatima Ahmed,Sana Bibi,"Plot 47, Sector A, Rawalpindi",6876820,2018-10-11,20,Residential,File,Approved,Local Scheme,Plot 440,fatima ahmad,"plot 47, sector a, rawalpindi",7e9668e9
-REG-PRO-228,Ahmed Siddiqui,Fatima Javed,"Plot 164, Sector A, Rawalpindi",11084107,2022-08-04,10,Residential,File,Pending,Local Scheme,Plot 47,ahmad siddiqui,"plot 164, sector a, rawalpindi",96785fd6
-REG-PRO-229,Hamza Hassan,Ahmed Siddiqui,"Plot 223, Sector B, Faisalabad",19353518,2024-06-10,10,Residential,File,Unapproved,Local Scheme,Plot 90,hamza hassan,"plot 223, sector b, faisalabad",421990ff
-REG-PRO-230,Fatima Khan,Ahmed Khan,"Plot 348, Sector A, Peshawar",6568214,2022-04-11,20,Residential,Registry,Approved,Local Scheme,Plot 69,fatima khan,"plot 348, sector a, peshawar",a076a573
-REG-PRO-231,Ayesha Javed,Sana Iqbal,"Plot 499, Sector C, Lahore",17411884,2022-12-02,10,Residential,File,Pending,Local Scheme,Plot 471,ayesha javed,"plot 499, sector c, lahore",134fbaa6
-REG-PRO-232,Muhammad Javed,Zainab Javed,"Plot 320, Sector B, Lahore",4563431,2022-06-18,10,Residential,Registry,Unapproved,Local Scheme,Plot 474,muhammad javed,"plot 320, sector b, lahore",4931a1e3
-REG-PRO-233,Zainab Malik,Ayesha Hassan,"Plot 47, Sector B, Peshawar",24980623,2021-08-16,10,Residential,Registry,Pending,Local Scheme,Plot 413,zainab malik,"plot 47, sector b, peshawar",ed815c56
-REG-PRO-234,Ahmed Hassan,Sana Ahmed,"Plot 305, Sector C, Lahore",14668787,2024-08-19,5,Residential,File,Unapproved,Local Scheme,Plot 360,ahmad hassan,"plot 305, sector c, lahore",ba2681d7
-REG-PRO-235,Hamza Ahmed,Osman Ahmed,"Plot 230, Sector C, Faisalabad",16222304,2024-10-22,20,Residential,File,Unapproved,Local Scheme,Plot 117,hamza ahmad,"plot 230, sector c, faisalabad",b63813d9
-REG-PRO-236,Ayesha Javed,Hamza Khan,"Plot 484, Sector A, Peshawar",19671122,2021-12-23,20,Residential,File,Unapproved,Local Scheme,Plot 469,ayesha javed,"plot 484, sector a, peshawar",9bbd5d92
-REG-PRO-237,Ali Hassan,Osman Raza,"Plot 475, Sector C, Rawalpindi",4616746,2022-06-26,20,Residential,Registry,Unapproved,Local Scheme,Plot 342,ali hassan,"plot 475, sector c, rawalpindi",5ce53c55
-REG-PRO-238,Zainab Iqbal,Sana Raza,"Plot 447, Sector A, Peshawar",15974567,2021-05-20,5,Residential,Registry,Unapproved,Local Scheme,Plot 93,zainab iqbal,"plot 447, sector a, peshawar",fdf36daa
-REG-PRO-239,Hamza Siddiqui,Ali Bibi,"Plot 499, Sector A, Karachi",13900455,2019-11-23,5,Residential,Registry,Unapproved,Local Scheme,Plot 189,hamza siddiqui,"plot 499, sector a, karachi",5774fcc8
-REG-PRO-240,Bilal Iqbal,Zainab Bibi,"Plot 84, Sector C, Lahore",8440023,2023-04-18,20,Residential,Registry,Approved,Local Scheme,Plot 279,bilal iqbal,"plot 84, sector c, lahore",089aeeeb
-REG-PRO-241,Ayesha Hassan,Muhammad Siddiqui,"Plot 297, Sector C, Rawalpindi",22059137,2021-03-03,10,Residential,File,Approved,Local Scheme,Plot 181,ayesha hassan,"plot 297, sector c, rawalpindi",083d11d5
-REG-PRO-242,Osman Ahmed,Ayesha Bibi,"Plot 93, Sector B, Karachi",15497430,2020-05-11,20,Residential,Registry,Approved,Local Scheme,Plot 305,osman ahmad,"plot 93, sector b, karachi",1cab20eb
-REG-PRO-243,Ali Raza,Hamza Hassan,"Plot 280, Sector A, Lahore",21243279,2024-07-26,5,Residential,Registry,Pending,Local Scheme,Plot 218,ali raza,"plot 280, sector a, lahore",e2774abf
-REG-PRO-244,Sana Raza,Ahmed Siddiqui,"Plot 27, Sector A, Peshawar",23773138,2023-01-11,20,Residential,File,Unapproved,Local Scheme,Plot 88,sana raza,"plot 27, sector a, peshawar",7e91aa23
-REG-PRO-245,Hamza Malik,Hamza Bibi,"Plot 312, Sector B, Lahore",23322841,2018-02-22,10,Residential,File,Approved,Local Scheme,Plot 113,hamza malik,"plot 312, sector b, lahore",a74fb8a5
-REG-PRO-246,Fatima Ahmed,Osman Sheikh,"Plot 17, Sector C, Rawalpindi",21075593,2020-12-11,10,Residential,File,Pending,Local Scheme,Plot 326,fatima ahmad,"plot 17, sector c, rawalpindi",6ebda8b7
-REG-PRO-247,Ali Malik,Sana Bibi,"Plot 484, Sector A, Rawalpindi",17949186,2022-08-28,10,Residential,File,Approved,Local Scheme,Plot 389,ali malik,"plot 484, sector a, rawalpindi",2f69a400
-REG-PRO-248,Ali Sheikh,Muhammad Raza,"Plot 288, Sector C, Lahore",22310919,2023-09-27,5,Residential,Registry,Pending,Local Scheme,Plot 244,ali sheikh,"plot 288, sector c, lahore",4b338edb
-REG-PRO-249,Ali Sheikh,Osman Javed,"Plot 270, Sector B, Islamabad",5412503,2023-03-13,20,Residential,Registry,Unapproved,Local Scheme,Plot 293,ali sheikh,"plot 270, sector b, islamabad",f857ca02
-REG-PRO-250,Bilal Khan,Hamza Khan,"Plot 168, Sector A, Rawalpindi",15400665,2022-08-08,20,Residential,File,Unapproved,Local Scheme,Plot 279,bilal khan,"plot 168, sector a, rawalpindi",75ddf7a3
-REG-PRO-251,Osman Siddiqui,Hamza Sheikh,"Plot 71, Sector C, Karachi",17309608,2018-11-10,20,Residential,File,Unapproved,Local Scheme,Plot 282,osman siddiqui,"plot 71, sector c, karachi",06d6ec67
-REG-PRO-252,Fatima Malik,Bilal Malik,"Plot 318, Sector A, Lahore",19914403,2020-10-19,20,Residential,File,Approved,Local Scheme,Plot 423,fatima malik,"plot 318, sector a, lahore",d1a5ec1e
-REG-PRO-253,Zainab Khan,Ali Iqbal,"Plot 18, Sector A, Faisalabad",23134296,2020-01-28,20,Residential,Registry,Approved,Local Scheme,Plot 267,zainab khan,"plot 18, sector a, faisalabad",19198492
-REG-PRO-254,Ali Hassan,Ayesha Siddiqui,"Plot 461, Sector A, Rawalpindi",9232879,2022-04-05,20,Residential,Registry,Unapproved,Local Scheme,Plot 321,ali hassan,"plot 461, sector a, rawalpindi",65c33317
-REG-PRO-255,Fatima Ahmed,Sana Sheikh,"Plot 25, Sector B, Karachi",18902444,2026-06-27,20,Residential,Registry,Unapproved,Local Scheme,Plot 203,fatima ahmad,"plot 25, sector b, karachi",ef862699
-REG-PRO-256,Sana Hassan,Ayesha Malik,"Plot 484, Sector A, Karachi",11320151,2018-09-26,10,Residential,Registry,Pending,Local Scheme,Plot 470,sana hassan,"plot 484, sector a, karachi",fcb142b2
-REG-PRO-257,Ahmed Bibi,Ayesha Ahmed,"Plot 143, Sector C, Islamabad",22031888,2019-02-26,20,Residential,Registry,Unapproved,Local Scheme,Plot 364,ahmad bibi,"plot 143, sector c, islamabad",ecbcddf1
-REG-PRO-258,Hamza Sheikh,Muhammad Sheikh,"Plot 129, Sector C, Karachi",15530244,2018-07-15,5,Residential,Registry,Unapproved,Local Scheme,Plot 406,hamza sheikh,"plot 129, sector c, karachi",ef077704
-REG-PRO-259,Ayesha Malik,Bilal Raza,"Plot 67, Sector B, Karachi",18029337,2023-06-27,10,Residential,File,Pending,Local Scheme,Plot 36,ayesha malik,"plot 67, sector b, karachi",0da5efb3
-REG-PRO-260,Muhammad Ahmed,Osman Raza,"Plot 372, Sector A, Karachi",4521077,2026-03-20,20,Residential,Registry,Unapproved,Local Scheme,Plot 9,muhammad ahmad,"plot 372, sector a, karachi",2cfd3584
-REG-PRO-261,Sana Malik,Hamza Raza,"Plot 429, Sector B, Peshawar",23886764,2021-12-19,20,Residential,File,Approved,Local Scheme,Plot 291,sana malik,"plot 429, sector b, peshawar",016b3fc9
-REG-PRO-262,Zainab Iqbal,Ali Khan,"Plot 52, Sector C, Faisalabad",5411451,2024-09-04,20,Residential,File,Approved,Local Scheme,Plot 306,zainab iqbal,"plot 52, sector c, faisalabad",c65e67aa
-REG-PRO-263,Ayesha Siddiqui,Hamza Javed,"Plot 61, Sector C, Islamabad",10139016,2019-12-10,5,Residential,Registry,Approved,Local Scheme,Plot 288,ayesha siddiqui,"plot 61, sector c, islamabad",8f167a03
-REG-PRO-264,Ali Siddiqui,Sana Sheikh,"Plot 330, Sector B, Karachi",10167458,2018-12-15,5,Residential,File,Unapproved,Local Scheme,Plot 417,ali siddiqui,"plot 330, sector b, karachi",2046c221
-REG-PRO-265,Osman Sheikh,Ayesha Hassan,"Plot 417, Sector C, Islamabad",22522906,2022-04-26,5,Residential,File,Pending,Local Scheme,Plot 330,osman sheikh,"plot 417, sector c, islamabad",591710c0
-REG-PRO-266,Sana Raza,Ali Javed,"Plot 473, Sector C, Rawalpindi",6591659,2025-12-13,20,Residential,Registry,Unapproved,Local Scheme,Plot 243,sana raza,"plot 473, sector c, rawalpindi",eda2d92b
-REG-PRO-267,Ahmed Ahmed,Ali Javed,"Plot 301, Sector A, Lahore",22392634,2026-09-24,5,Residential,Registry,Pending,Local Scheme,Plot 348,ahmad ahmad,"plot 301, sector a, lahore",d07fb7e9
-REG-PRO-268,Sana Ahmed,Fatima Siddiqui,"Plot 314, Sector A, Lahore",3332724,2026-02-24,20,Residential,File,Unapproved,Local Scheme,Plot 415,sana ahmad,"plot 314, sector a, lahore",14390945
-REG-PRO-269,Ali Bibi,Osman Khan,"Plot 92, Sector A, Islamabad",16866080,2020-12-01,5,Residential,File,Unapproved,Local Scheme,Plot 36,ali bibi,"plot 92, sector a, islamabad",90e51ed8
-REG-PRO-270,Ali Bibi,Zainab Hassan,"Plot 224, Sector A, Karachi",4011854,2022-11-15,20,Residential,File,Pending,Local Scheme,Plot 413,ali bibi,"plot 224, sector a, karachi",cdfa4370
-REG-PRO-271,Ali Raza,Hamza Javed,"Plot 488, Sector B, Lahore",6099111,2020-07-10,10,Residential,Registry,Unapproved,Local Scheme,Plot 16,ali raza,"plot 488, sector b, lahore",276b5dbb
-REG-PRO-272,Fatima Javed,Bilal Sheikh,"Plot 414, Sector B, Lahore",8986290,2021-04-22,20,Residential,Registry,Unapproved,Local Scheme,Plot 454,fatima javed,"plot 414, sector b, lahore",f19d7f79
-REG-PRO-273,Bilal Malik,Osman Hassan,"Plot 137, Sector A, Faisalabad",9201011,2018-03-22,10,Residential,Registry,Unapproved,Local Scheme,Plot 348,bilal malik,"plot 137, sector a, faisalabad",9132e8ea
-REG-PRO-274,Osman Sheikh,Sana Javed,"Plot 307, Sector C, Karachi",22724366,2024-10-05,20,Residential,Registry,Approved,Local Scheme,Plot 108,osman sheikh,"plot 307, sector c, karachi",f71db926
-REG-PRO-275,Bilal Javed,Ayesha Javed,"Plot 88, Sector B, Peshawar",21517130,2020-08-18,5,Residential,File,Approved,Local Scheme,Plot 286,bilal javed,"plot 88, sector b, peshawar",26da142b
-REG-PRO-276,Fatima Javed,Bilal Siddiqui,"Plot 425, Sector B, Rawalpindi",24916749,2026-01-22,20,Residential,Registry,Approved,Local Scheme,Plot 195,fatima javed,"plot 425, sector b, rawalpindi",b48c4686
-REG-PRO-277,Sana Ahmed,Sana Javed,"Plot 27, Sector C, Islamabad",3795455,2018-12-17,5,Residential,File,Unapproved,Local Scheme,Plot 122,sana ahmad,"plot 27, sector c, islamabad",bf69e72b
-REG-PRO-278,Ali Khan,Osman Raza,"Plot 32, Sector B, Karachi",20184926,2023-10-02,5,Residential,File,Unapproved,Local Scheme,Plot 64,ali khan,"plot 32, sector b, karachi",0c5188c7
-REG-PRO-279,Hamza Malik,Osman Raza,"Plot 436, Sector B, Islamabad",24057511,2025-03-01,5,Residential,Registry,Pending,Local Scheme,Plot 259,hamza malik,"plot 436, sector b, islamabad",82003ec8
-REG-PRO-280,Ahmed Sheikh,Fatima Malik,"Plot 388, Sector C, Faisalabad",20882908,2026-08-28,10,Residential,File,Unapproved,Local Scheme,Plot 239,ahmad sheikh,"plot 388, sector c, faisalabad",84779142
-REG-PRO-281,Ahmed Bibi,Ahmed Sheikh,"Plot 447, Sector C, Islamabad",13828388,2018-04-04,20,Residential,Registry,Approved,Local Scheme,Plot 259,ahmad bibi,"plot 447, sector c, islamabad",a021a88d
-REG-PRO-282,Sana Hassan,Sana Khan,"Plot 145, Sector A, Faisalabad",19695723,2020-06-09,10,Residential,Registry,Approved,Local Scheme,Plot 5,sana hassan,"plot 145, sector a, faisalabad",42b64a98
-REG-PRO-283,Ahmed Hassan,Fatima Hassan,"Plot 180, Sector B, Rawalpindi",15085196,2021-08-21,10,Residential,File,Unapproved,Local Scheme,Plot 190,ahmad hassan,"plot 180, sector b, rawalpindi",516902ba
-REG-PRO-284,Hamza Sheikh,Ahmed Sheikh,"Plot 110, Sector C, Faisalabad",12221718,2018-05-20,10,Residential,File,Unapproved,Local Scheme,Plot 216,hamza sheikh,"plot 110, sector c, faisalabad",52537c55
-REG-PRO-285,Ali Javed,Ayesha Siddiqui,"Plot 147, Sector A, Peshawar",13124879,2019-02-15,10,Residential,Registry,Approved,Local Scheme,Plot 288,ali javed,"plot 147, sector a, peshawar",5fc6519b
-REG-PRO-286,Hamza Iqbal,Zainab Hassan,"Plot 49, Sector A, Islamabad",4953423,2021-09-12,20,Residential,Registry,Pending,Local Scheme,Plot 106,hamza iqbal,"plot 49, sector a, islamabad",5101e442
-REG-PRO-287,Hamza Khan,Ahmed Iqbal,"Plot 402, Sector C, Faisalabad",17175226,2022-09-26,20,Residential,Registry,Approved,Local Scheme,Plot 236,hamza khan,"plot 402, sector c, faisalabad",f246cd71
-REG-PRO-288,Muhammad Javed,Zainab Hassan,"Plot 311, Sector A, Faisalabad",3325577,2025-07-15,20,Residential,File,Approved,Local Scheme,Plot 408,muhammad javed,"plot 311, sector a, faisalabad",6a71c83d
-REG-PRO-289,Ayesha Ahmed,Ayesha Raza,"Plot 387, Sector A, Rawalpindi",3879166,2023-03-27,10,Residential,File,Unapproved,Local Scheme,Plot 66,ayesha ahmad,"plot 387, sector a, rawalpindi",bffc0212
-REG-PRO-290,Ahmed Malik,Muhammad Javed,"Plot 124, Sector B, Rawalpindi",10783181,2021-06-13,5,Residential,Registry,Approved,Local Scheme,Plot 347,ahmad malik,"plot 124, sector b, rawalpindi",2f566868
-REG-PRO-291,Osman Siddiqui,Sana Raza,"Plot 444, Sector B, Karachi",23084985,2023-06-20,10,Residential,Registry,Pending,Local Scheme,Plot 256,osman siddiqui,"plot 444, sector b, karachi",74d76a84
-REG-PRO-292,Zainab Bibi,Sana Ahmed,"Plot 375, Sector A, Faisalabad",16403813,2021-04-26,20,Residential,File,Approved,Local Scheme,Plot 321,zainab bibi,"plot 375, sector a, faisalabad",bac6cf7e
-REG-PRO-293,Hamza Ahmed,Hamza Javed,"Plot 382, Sector C, Islamabad",15107590,2025-02-13,20,Residential,File,Pending,Local Scheme,Plot 334,hamza ahmad,"plot 382, sector c, islamabad",b8b0dde7
-REG-PRO-294,Sana Malik,Ayesha Hassan,"Plot 456, Sector B, Peshawar",12582168,2026-09-07,10,Residential,File,Approved,Local Scheme,Plot 405,sana malik,"plot 456, sector b, peshawar",42e3e31c
-REG-PRO-295,Fatima Bibi,Ahmed Bibi,"Plot 495, Sector A, Lahore",23846353,2018-08-03,20,Residential,File,Approved,Local Scheme,Plot 139,fatima bibi,"plot 495, sector a, lahore",7c1f0b48
-REG-PRO-296,Muhammad Bibi,Ali Malik,"Plot 342, Sector C, Rawalpindi",13770875,2019-10-11,20,Residential,Registry,Pending,Local Scheme,Plot 168,muhammad bibi,"plot 342, sector c, rawalpindi",0219ccbd
-REG-PRO-297,Ahmed Sheikh,Muhammad Iqbal,"Plot 103, Sector B, Islamabad",22615392,2020-08-12,10,Residential,File,Approved,Local Scheme,Plot 390,ahmad sheikh,"plot 103, sector b, islamabad",6ec5556f
-REG-PRO-298,Hamza Sheikh,Osman Sheikh,"Plot 183, Sector B, Rawalpindi",16431108,2026-05-24,20,Residential,File,Pending,Local Scheme,Plot 377,hamza sheikh,"plot 183, sector b, rawalpindi",c730e403
-REG-PRO-299,Ali Malik,Bilal Siddiqui,"Plot 468, Sector B, Karachi",10905271,2026-11-27,5,Residential,Registry,Unapproved,Local Scheme,Plot 258,ali malik,"plot 468, sector b, karachi",4c279537
-REG-PRO-300,Ayesha Malik,Bilal Bibi,"Plot 267, Sector C, Peshawar",18476067,2021-04-10,20,Residential,Registry,Pending,Local Scheme,Plot 317,ayesha malik,"plot 267, sector c, peshawar",ec29b982
-REG-PRO-301,Sana Malik,Hamza Malik,"Plot 68, Sector B, Lahore",15124962,2022-08-09,20,Residential,File,Unapproved,Local Scheme,Plot 96,sana malik,"plot 68, sector b, lahore",dc919fb6
-REG-PRO-302,Osman Malik,Zainab Khan,"Plot 139, Sector C, Karachi",6445025,2022-11-05,20,Residential,Registry,Pending,Local Scheme,Plot 104,osman malik,"plot 139, sector c, karachi",f4f8d12f
-REG-PRO-303,Zainab Sheikh,Fatima Iqbal,"Plot 411, Sector A, Islamabad",18189801,2020-03-07,20,Residential,Registry,Pending,Local Scheme,Plot 319,zainab sheikh,"plot 411, sector a, islamabad",3bef57d8
-REG-PRO-304,Bilal Siddiqui,Ayesha Siddiqui,"Plot 77, Sector A, Faisalabad",6320130,2019-12-04,10,Residential,Registry,Unapproved,Local Scheme,Plot 387,bilal siddiqui,"plot 77, sector a, faisalabad",7a4a2534
-REG-PRO-305,Muhammad Javed,Muhammad Ahmed,"Plot 74, Sector B, Peshawar",4539042,2018-12-28,10,Residential,Registry,Unapproved,Local Scheme,Plot 386,muhammad javed,"plot 74, sector b, peshawar",a261ba95
-REG-PRO-306,Bilal Javed,Hamza Malik,"Plot 144, Sector B, Peshawar",9624447,2023-09-05,10,Residential,File,Pending,Local Scheme,Plot 258,bilal javed,"plot 144, sector b, peshawar",713b2f35
-REG-PRO-307,Muhammad Sheikh,Sana Malik,"Plot 473, Sector A, Peshawar",7670583,2022-10-26,10,Residential,Registry,Pending,Local Scheme,Plot 179,muhammad sheikh,"plot 473, sector a, peshawar",0d24c8a7
-REG-PRO-308,Zainab Malik,Osman Sheikh,"Plot 488, Sector C, Karachi",15808560,2021-08-26,10,Residential,File,Approved,Local Scheme,Plot 463,zainab malik,"plot 488, sector c, karachi",c52f122c
-REG-PRO-309,Ayesha Hassan,Hamza Bibi,"Plot 408, Sector C, Peshawar",24416310,2023-01-21,20,Residential,Registry,Unapproved,Local Scheme,Plot 346,ayesha hassan,"plot 408, sector c, peshawar",56e67a55
-REG-PRO-310,Hamza Khan,Ali Raza,"Plot 215, Sector C, Peshawar",7122172,2020-04-21,10,Residential,File,Pending,Local Scheme,Plot 400,hamza khan,"plot 215, sector c, peshawar",323bec62
-REG-PRO-311,Ayesha Raza,Ayesha Malik,"Plot 116, Sector A, Faisalabad",12298395,2026-03-11,5,Residential,File,Unapproved,Local Scheme,Plot 432,ayesha raza,"plot 116, sector a, faisalabad",3ddc4b6d
-REG-PRO-312,Hamza Malik,Ali Sheikh,"Plot 216, Sector B, Peshawar",19749761,2019-02-20,10,Residential,File,Unapproved,Local Scheme,Plot 317,hamza malik,"plot 216, sector b, peshawar",f8b1a801
-REG-PRO-313,Ahmed Hassan,Ahmed Siddiqui,"Plot 433, Sector C, Lahore",18573092,2020-08-20,5,Residential,Registry,Approved,Local Scheme,Plot 172,ahmad hassan,"plot 433, sector c, lahore",3945fd65
-REG-PRO-314,Muhammad Ahmed,Hamza Ahmed,"Plot 126, Sector A, Lahore",23343300,2024-11-20,20,Residential,File,Unapproved,Local Scheme,Plot 54,muhammad ahmad,"plot 126, sector a, lahore",11c51d49
-REG-PRO-315,Sana Malik,Ali Khan,"Plot 433, Sector A, Peshawar",10743929,2026-09-12,20,Residential,Registry,Unapproved,Local Scheme,Plot 144,sana malik,"plot 433, sector a, peshawar",6f124e82
-REG-PRO-316,Muhammad Hassan,Hamza Khan,"Plot 375, Sector A, Lahore",22430675,2025-07-23,20,Residential,File,Approved,Local Scheme,Plot 341,muhammad hassan,"plot 375, sector a, lahore",5f880bbe
-REG-PRO-317,Ayesha Iqbal,Bilal Hassan,"Plot 230, Sector B, Islamabad",22593438,2023-02-23,5,Residential,Registry,Unapproved,Local Scheme,Plot 240,ayesha iqbal,"plot 230, sector b, islamabad",af6bed57
-REG-PRO-318,Ayesha Siddiqui,Ayesha Bibi,"Plot 397, Sector C, Islamabad",15413775,2018-06-27,20,Residential,Registry,Approved,Local Scheme,Plot 336,ayesha siddiqui,"plot 397, sector c, islamabad",6fc79fc9
-REG-PRO-319,Hamza Malik,Fatima Sheikh,"Plot 319, Sector A, Peshawar",15716936,2023-01-08,20,Residential,Registry,Approved,Local Scheme,Plot 57,hamza malik,"plot 319, sector a, peshawar",db3c8d19
-REG-PRO-320,Muhammad Iqbal,Sana Khan,"Plot 25, Sector C, Karachi",5992647,2023-01-11,10,Residential,File,Approved,Local Scheme,Plot 225,muhammad iqbal,"plot 25, sector c, karachi",97a78331
-REG-PRO-321,Sana Bibi,Ali Iqbal,"Plot 293, Sector B, Karachi",10060192,2021-09-15,20,Residential,File,Pending,Local Scheme,Plot 133,sana bibi,"plot 293, sector b, karachi",00618a79
-REG-PRO-322,Osman Khan,Bilal Malik,"Plot 354, Sector B, Lahore",19379687,2026-10-11,5,Residential,Registry,Approved,Local Scheme,Plot 434,osman khan,"plot 354, sector b, lahore",81e866e1
-REG-PRO-323,Osman Raza,Ahmed Hassan,"Plot 82, Sector A, Faisalabad",19428231,2025-11-17,5,Residential,File,Unapproved,Local Scheme,Plot 210,osman raza,"plot 82, sector a, faisalabad",ef8f8d0a
-REG-PRO-324,Ayesha Malik,Ahmed Raza,"Plot 96, Sector A, Peshawar",4087865,2018-02-24,20,Residential,Registry,Pending,Local Scheme,Plot 1,ayesha malik,"plot 96, sector a, peshawar",47800f3b
-REG-PRO-325,Ali Raza,Sana Raza,"Plot 293, Sector A, Islamabad",4251306,2018-03-17,5,Residential,File,Unapproved,Local Scheme,Plot 423,ali raza,"plot 293, sector a, islamabad",23b4b7ad
-REG-PRO-326,Zainab Bibi,Zainab Siddiqui,"Plot 494, Sector C, Lahore",9322379,2023-08-21,5,Residential,Registry,Unapproved,Local Scheme,Plot 13,zainab bibi,"plot 494, sector c, lahore",f78c057a
-REG-PRO-327,Ali Malik,Bilal Bibi,"Plot 415, Sector A, Faisalabad",13387083,2024-12-11,5,Residential,File,Approved,Local Scheme,Plot 146,ali malik,"plot 415, sector a, faisalabad",a0ec2848
-REG-PRO-328,Fatima Siddiqui,Fatima Khan,"Plot 101, Sector A, Karachi",3654620,2022-09-03,10,Residential,File,Approved,Local Scheme,Plot 297,fatima siddiqui,"plot 101, sector a, karachi",0962bff4
-REG-PRO-329,Hamza Iqbal,Sana Siddiqui,"Plot 372, Sector C, Peshawar",11602292,2021-07-06,10,Residential,File,Approved,Local Scheme,Plot 191,hamza iqbal,"plot 372, sector c, peshawar",a16f0742
-REG-PRO-330,Osman Ahmed,Ayesha Hassan,"Plot 499, Sector A, Karachi",12722873,2018-08-22,20,Residential,Registry,Unapproved,Local Scheme,Plot 46,osman ahmad,"plot 499, sector a, karachi",5774fcc8
-REG-PRO-331,Osman Malik,Ayesha Iqbal,"Plot 466, Sector C, Rawalpindi",6943222,2022-11-24,10,Residential,Registry,Approved,Local Scheme,Plot 347,osman malik,"plot 466, sector c, rawalpindi",24afc143
-REG-PRO-332,Ayesha Iqbal,Bilal Hassan,"Plot 499, Sector B, Lahore",9170885,2022-10-11,5,Residential,File,Pending,Local Scheme,Plot 196,ayesha iqbal,"plot 499, sector b, lahore",3891c64b
-REG-PRO-333,Fatima Khan,Ayesha Sheikh,"Plot 140, Sector B, Islamabad",15532623,2020-04-28,20,Residential,Registry,Pending,Local Scheme,Plot 447,fatima khan,"plot 140, sector b, islamabad",6b632794
-REG-PRO-334,Ali Javed,Sana Iqbal,"Plot 175, Sector C, Faisalabad",16491734,2023-01-04,5,Residential,File,Unapproved,Local Scheme,Plot 190,ali javed,"plot 175, sector c, faisalabad",600c7551
-REG-PRO-335,Sana Khan,Zainab Bibi,"Plot 27, Sector B, Rawalpindi",5179735,2025-02-08,10,Residential,Registry,Pending,Local Scheme,Plot 10,sana khan,"plot 27, sector b, rawalpindi",51239013
-REG-PRO-336,Bilal Malik,Ahmed Hassan,"Plot 434, Sector A, Peshawar",17657548,2023-05-12,10,Residential,Registry,Unapproved,Local Scheme,Plot 309,bilal malik,"plot 434, sector a, peshawar",15b7eb18
-REG-PRO-337,Zainab Hassan,Zainab Iqbal,"Plot 20, Sector B, Lahore",19086552,2026-12-08,20,Residential,Registry,Approved,Local Scheme,Plot 198,zainab hassan,"plot 20, sector b, lahore",5a2ab7e4
-REG-PRO-338,Zainab Bibi,Hamza Sheikh,"Plot 403, Sector A, Rawalpindi",17777229,2021-11-22,10,Residential,Registry,Pending,Local Scheme,Plot 381,zainab bibi,"plot 403, sector a, rawalpindi",4820f94e
-REG-PRO-339,Osman Khan,Ayesha Ahmed,"Plot 400, Sector A, Peshawar",9235259,2023-12-18,5,Residential,File,Unapproved,Local Scheme,Plot 67,osman khan,"plot 400, sector a, peshawar",1230ee50
-REG-PRO-340,Osman Sheikh,Osman Malik,"Plot 246, Sector B, Rawalpindi",3551368,2022-11-02,20,Residential,Registry,Approved,Local Scheme,Plot 201,osman sheikh,"plot 246, sector b, rawalpindi",8097b931
-REG-PRO-341,Fatima Bibi,Hamza Raza,"Plot 170, Sector B, Karachi",7195257,2022-12-20,5,Residential,File,Approved,Local Scheme,Plot 99,fatima bibi,"plot 170, sector b, karachi",d46bd325
-REG-PRO-342,Fatima Bibi,Ahmed Bibi,"Plot 368, Sector A, Lahore",11810580,2022-04-16,5,Residential,File,Unapproved,Local Scheme,Plot 57,fatima bibi,"plot 368, sector a, lahore",d1ffe754
-REG-PRO-343,Ayesha Siddiqui,Zainab Hassan,"Plot 339, Sector B, Rawalpindi",16318580,2025-09-17,20,Residential,Registry,Approved,Local Scheme,Plot 374,ayesha siddiqui,"plot 339, sector b, rawalpindi",0ff55168
-REG-PRO-344,Bilal Ahmed,Hamza Sheikh,"Plot 147, Sector B, Rawalpindi",3650911,2026-11-21,5,Residential,Registry,Pending,Local Scheme,Plot 456,bilal ahmad,"plot 147, sector b, rawalpindi",2c066eb2
-REG-PRO-345,Osman Raza,Sana Siddiqui,"Plot 347, Sector B, Islamabad",12255397,2024-11-18,5,Residential,File,Pending,Local Scheme,Plot 437,osman raza,"plot 347, sector b, islamabad",42e8bc23
-REG-PRO-346,Hamza Ahmed,Muhammad Malik,"Plot 23, Sector C, Peshawar",4620631,2023-09-13,5,Residential,Registry,Unapproved,Local Scheme,Plot 132,hamza ahmad,"plot 23, sector c, peshawar",b2384c7b
-REG-PRO-347,Muhammad Malik,Zainab Raza,"Plot 227, Sector C, Peshawar",12886948,2019-05-09,10,Residential,Registry,Approved,Local Scheme,Plot 248,muhammad malik,"plot 227, sector c, peshawar",5a860d15
-REG-PRO-348,Ayesha Siddiqui,Sana Siddiqui,"Plot 99, Sector B, Rawalpindi",7665866,2025-03-10,5,Residential,Registry,Unapproved,Local Scheme,Plot 97,ayesha siddiqui,"plot 99, sector b, rawalpindi",b5d3a8d1
-REG-PRO-349,Ayesha Sheikh,Osman Iqbal,"Plot 346, Sector B, Karachi",16037452,2022-04-27,10,Residential,File,Pending,Local Scheme,Plot 349,ayesha sheikh,"plot 346, sector b, karachi",e9830d21
+REG-PRO-104,Bilal Hassan,Al-Kareem Builders,"Block D, Bahria Town Phase 8, Rawalpindi",12000000,2024-11-05,8,Residential,File,Approved,Bahria Town,Plot 204,bilal hassan,"block d, bahria town phase 8, rawalpindi",963957b9
+REG-PRO-105,S. Bilal Hassan,Capital Property,"Sector F, Bahria Town, Rawalpindi",18000000,2024-07-12,12,Residential,Transfer Letter,Approved,Bahria Town,Plot 312,s. bilal hassan,"sector f, bahria town, rawalpindi",b6f64912
+REG-PRO-106,Dr. Ayesha Malik,Capital Builders,"Bahria Town Phase 7, Islamabad",30000000,2024-06-12,8,Apartment,Registry,Approved,Bahria Town Phase 7,Apartment 3A,dr. ayesha malik,"bahria town phase 7, islamabad",1c155e01
+REG-PRO-107,Haji Abdul Razzaq,Ali Hassan,"Pechs Block 2, Karachi",80000000,2019-11-05,40,Commercial,Registry,Approved,Pechs Karachi,Plaza 4,haji abdul razzaq,"pechs block 2, karachi",387b754e
+REG-PRO-108,Abdul Razzaq,Tariq Properties,"Tariq Road, Karachi",65000000,2021-03-20,30,Commercial,Registry,Approved,PECHS Commercial,Shop 12,abdul razzaq,"tariq road, karachi",d7aaa41d
+REG-PRO-109,Haji Razzaq,Habib Builders,"Clifton Block 5, Karachi",120000000,2022-08-14,30,Residential,Registry,Approved,Clifton,Bungalow 45,haji razzaq,"clifton block 5, karachi",56eb5845
+REG-PRO-110,H. A. Razzaq,Federal Builders,"DHA Phase 2, Karachi",55000000,2020-05-10,20,Residential,Registry,Approved,DHA Karachi,Plot 88,h. a. razzaq,"dha phase 2, karachi",5f027f6a
+REG-PRO-111,Malik Pervaiz Akhtar,Green Valley Developers,"Block B, Green Valley Housing Scheme, Faisalabad",8000000,2024-09-01,10,Residential,File,Unapproved,Green Valley Housing Scheme,Plot B-45,malik pervaiz akhtar,"block b, green valley housing scheme, faisalabad",12a09500
+REG-PRO-111,Zafar Hussain,Green Valley Developers,"Block B, Green Valley Housing Scheme, Faisalabad",9000000,2024-11-15,10,Residential,File,Unapproved,Green Valley Housing Scheme,Plot B-45,zafar hussain,"block b, green valley housing scheme, faisalabad",12a09500
+REG-PRO-113,Green Valley Enterprises Pvt Ltd,LDA,"Block C, Green Valley Housing Scheme, Faisalabad",25000000,2023-06-30,20,Commercial,Registry,Pending,Green Valley,Commercial Plot C-1,green valley enterprises pvt ltd,"block c, green valley housing scheme, faisalabad",0c51879f
+REG-PRO-314,Zainab Abbasi,Ayesha Iqbal,"House 16, G-10, Lahore",8584875,2022-09-02,14,Agricultural,File,Approved,Hayatabad,Plot 92,zainab abbasi,"house 16, g-10, lahore",5ec0cd25
+REG-PRO-315,Ayesha Nawaz,Imran Butt,"House 126, Nazimabad, Lahore",19052372,2024-01-02,10,Residential,Registry,Unapproved,PECHS,Plot 424,ayesha nawaz,"house 126, nazimabad, lahore",497e76f3
+REG-PRO-316,Ali Ahmed,Ayesha Malik,"House 141, Hayatabad, Lahore",19441328,2021-05-14,14,Agricultural,Registry,Pending,Hayatabad,Plot 371,ali ahmad,"house 141, hayatabad, lahore",1caacaf9
+REG-PRO-317,Amna Rizvi,Hina Iqbal,"House 80, Nazimabad, Rawalpindi",10099167,2022-03-04,10,Agricultural,File,Unapproved,F-7,Plot 329,amna rizvi,"house 80, nazimabad, rawalpindi",ec55d14e
+REG-PRO-318,Zubair Siddiqui,Sana Hassan,"House 67, DHA, Rawalpindi",10371126,2024-10-06,14,Agricultural,Registry,Approved,DHA,Plot 326,zubair siddiqui,"house 67, dha, rawalpindi",3b0e01ac
+REG-PRO-319,Ali Baig,Tariq Bibi,"House 104, Pechs, Rawalpindi",8943521,2018-03-20,10,Commercial,Allotment Letter,Pending,DHA,Plot 454,ali baig,"house 104, pechs, rawalpindi",991c46d1
+REG-PRO-320,Muhammad Sheikh,Saima Ahmed,"House 113, Clifton, Faisalabad",6684234,2024-12-15,5,Commercial,Registry,Pending,Gulberg,Plot 469,muhammad sheikh,"house 113, clifton, faisalabad",fb3f1d7a
+REG-PRO-321,Tariq Butt,Waseem Hassan,"House 98, Johar Town, Karachi",22770649,2020-02-06,7,Agricultural,File,Unapproved,F-7,Plot 473,tariq butt,"house 98, johar town, karachi",d81362db
+REG-PRO-322,Zubair Iqbal,Tariq Butt,"House 49, G-10, Peshawar",8506816,2025-04-09,20,Agricultural,Transfer Letter,Approved,Hayatabad,Plot 318,zubair iqbal,"house 49, g-10, peshawar",1ab7f328
+REG-PRO-323,Sana Rizvi,Tariq Abbasi,"House 65, DHA, Peshawar",16886226,2021-05-12,20,Residential,Transfer Letter,Approved,Clifton,Plot 102,sana rizvi,"house 65, dha, peshawar",663f05fe
+REG-PRO-324,Hina Malik,Fatima Mirza,"House 118, Nazimabad, Islamabad",14621395,2024-05-19,14,Industrial,Registry,Approved,Local Scheme,Plot 131,hina malik,"house 118, nazimabad, islamabad",6f6f49ce
+REG-PRO-325,Fatima Chaudhry,Waseem Bibi,"House 89, Clifton, Islamabad",9866565,2026-06-13,14,Residential,Allotment Letter,Pending,F-7,Plot 330,fatima chaudhry,"house 89, clifton, islamabad",4cccba3b
+REG-PRO-326,Hina Abbasi,Zainab Abbasi,"House 32, Bahria Town, Lahore",8539268,2024-04-14,7,Commercial,Registry,Approved,PECHS,Plot 309,hina abbasi,"house 32, bahria town, lahore",c6b111d7
+REG-PRO-327,Bilal Mirza,Zubair Bibi,"House 28, Gulberg, Lahore",19740786,2020-10-20,7,Industrial,Allotment Letter,Approved,Bahria Town,Plot 18,bilal mirza,"house 28, gulberg, lahore",41e9ed83
+REG-PRO-328,Bilal Abbasi,Hina Hassan,"House 71, Gulberg, Rawalpindi",5014612,2022-04-03,14,Residential,File,Approved,Gulberg,Plot 377,bilal abbasi,"house 71, gulberg, rawalpindi",a9828b50
+REG-PRO-329,Zubair Abbasi,Saima Chaudhry,"House 132, F-7, Peshawar",28011190,2025-09-11,10,Commercial,File,Approved,Bahria Town,Plot 423,zubair abbasi,"house 132, f-7, peshawar",419bfa7d
+REG-PRO-330,Usman Raza,Tariq Baig,"House 41, Nazimabad, Peshawar",17514717,2022-12-26,20,Commercial,Transfer Letter,Approved,Local Scheme,Plot 93,usman raza,"house 41, nazimabad, peshawar",568fc794
+REG-PRO-331,Imran Qureshi,Hina Abbasi,"House 13, Johar Town, Karachi",22605292,2021-10-05,7,Industrial,Allotment Letter,Pending,Clifton,Plot 479,imran qureshi,"house 13, johar town, karachi",849ae1a7
+REG-PRO-332,Tariq Siddiqui,Bilal Malik,"House 102, G-10, Rawalpindi",28167999,2026-01-17,5,Commercial,Transfer Letter,Unapproved,Bahria Town,Plot 479,tariq siddiqui,"house 102, g-10, rawalpindi",ded547f7
+REG-PRO-333,Sana Rizvi,Imran Khan,"House 135, F-7, Karachi",9454182,2022-10-11,10,Commercial,Registry,Approved,Hayatabad,Plot 264,sana rizvi,"house 135, f-7, karachi",cb715165
+REG-PRO-334,Usman Abbasi,Sana Chaudhry,"House 143, G-10, Lahore",6147203,2018-11-20,20,Residential,Allotment Letter,Approved,DHA,Plot 103,usman abbasi,"house 143, g-10, lahore",7ee30222
+REG-PRO-335,Usman Raza,Fatima Raza,"House 107, DHA, Faisalabad",23117511,2023-06-24,5,Residential,Registry,Pending,PECHS,Plot 196,usman raza,"house 107, dha, faisalabad",87647356
+REG-PRO-336,Ali Baig,Fatima Qureshi,"House 136, Nazimabad, Karachi",21435965,2020-11-02,14,Industrial,Transfer Letter,Approved,F-7,Plot 22,ali baig,"house 136, nazimabad, karachi",c3b8be5f
+REG-PRO-337,Imran Butt,Hamza Qureshi,"House 133, DHA, Karachi",11983144,2024-06-04,14,Agricultural,Transfer Letter,Approved,DHA,Plot 266,imran butt,"house 133, dha, karachi",008121d1
+REG-PRO-338,Fatima Mirza,Usman Baig,"House 31, Hayatabad, Lahore",23764019,2020-04-12,10,Agricultural,Registry,Approved,F-7,Plot 415,fatima mirza,"house 31, hayatabad, lahore",ae0ea59a
+REG-PRO-339,Hina Hassan,Usman Ahmed,"House 61, Nazimabad, Lahore",17260556,2025-03-14,14,Agricultural,Transfer Letter,Approved,Bahria Town,Plot 3,hina hassan,"house 61, nazimabad, lahore",6f5f4987
+REG-PRO-340,Imran Nawaz,Muhammad Nawaz,"House 112, Gulberg, Rawalpindi",3689495,2019-08-21,20,Agricultural,Allotment Letter,Approved,PECHS,Plot 197,imran nawaz,"house 112, gulberg, rawalpindi",b185f2b3
+REG-PRO-341,Ahmed Nawaz,Nadia Chaudhry,"House 66, Nazimabad, Rawalpindi",6504895,2022-08-27,10,Residential,File,Approved,Gulberg,Plot 134,ahmad nawaz,"house 66, nazimabad, rawalpindi",4594259f
+REG-PRO-342,Ali Siddiqui,Hina Nawaz,"House 79, Gulberg, Rawalpindi",25215481,2019-11-24,5,Agricultural,Transfer Letter,Approved,Local Scheme,Plot 212,ali siddiqui,"house 79, gulberg, rawalpindi",91548ea7
+REG-PRO-343,Zainab Rizvi,Sana Ahmed,"House 8, Johar Town, Peshawar",17871611,2019-01-15,14,Commercial,Allotment Letter,Approved,Local Scheme,Plot 433,zainab rizvi,"house 8, johar town, peshawar",cc2aac2d
+REG-PRO-344,Imran Chaudhry,Ayesha Sheikh,"House 40, F-7, Faisalabad",21322679,2020-07-03,14,Industrial,Allotment Letter,Approved,Clifton,Plot 364,imran chaudhry,"house 40, f-7, faisalabad",ae336d72
+REG-PRO-345,Hina Hassan,Sana Malik,"House 144, G-10, Karachi",25870474,2021-12-12,5,Industrial,Transfer Letter,Approved,PECHS,Plot 92,hina hassan,"house 144, g-10, karachi",1c626cba
+REG-PRO-346,Tariq Hassan,Imran Abbasi,"House 30, Hayatabad, Karachi",22743073,2019-04-25,14,Agricultural,Transfer Letter,Approved,Clifton,Plot 116,tariq hassan,"house 30, hayatabad, karachi",415bbd48
+REG-PRO-347,Ali Khan,Muhammad Nawaz,"House 139, Hayatabad, Islamabad",17916987,2018-12-01,7,Commercial,Transfer Letter,Approved,F-7,Plot 207,ali khan,"house 139, hayatabad, islamabad",93392ff5
+REG-PRO-348,Nadia Baig,Saima Malik,"House 114, Johar Town, Peshawar",12832574,2026-07-04,14,Residential,Registry,Unapproved,Gulberg,Plot 301,nadia baig,"house 114, johar town, peshawar",d4431dac
+REG-PRO-349,Fatima Khan,Hina Bibi,"House 117, Clifton, Islamabad",21635558,2020-06-21,7,Residential,Registry,Approved,Hayatabad,Plot 217,fatima khan,"house 117, clifton, islamabad",b387e52d
+REG-PRO-350,Waseem Sheikh,Hamza Khan,"House 8, Pechs, Rawalpindi",14293081,2026-12-25,14,Agricultural,Transfer Letter,Approved,DHA,Plot 393,waseem sheikh,"house 8, pechs, rawalpindi",8d5ffdd9
+REG-PRO-351,Hamza Raza,Fatima Abbasi,"House 96, G-10, Karachi",24628526,2023-06-06,10,Industrial,File,Unapproved,F-7,Plot 440,hamza raza,"house 96, g-10, karachi",4112c4f1
+REG-PRO-352,Ali Iqbal,Hina Butt,"House 108, Gulberg, Peshawar",16567048,2024-06-25,7,Commercial,Registry,Unapproved,DHA,Plot 93,ali iqbal,"house 108, gulberg, peshawar",c10d76fe
+REG-PRO-353,Amna Iqbal,Bilal Qureshi,"House 124, Nazimabad, Lahore",24805659,2020-12-18,5,Residential,Allotment Letter,Approved,Gulberg,Plot 369,amna iqbal,"house 124, nazimabad, lahore",63db9003
+REG-PRO-354,Zubair Javed,Ali Mirza,"House 45, F-7, Islamabad",22347257,2022-01-22,10,Residential,File,Pending,Local Scheme,Plot 196,zubair javed,"house 45, f-7, islamabad",d3830295
+REG-PRO-355,Hina Sheikh,Tariq Ahmed,"House 60, G-10, Peshawar",17969436,2018-05-18,7,Industrial,Allotment Letter,Unapproved,PECHS,Plot 135,hina sheikh,"house 60, g-10, peshawar",3d6e8a6a
+REG-PRO-356,Muhammad Qureshi,Saima Nawaz,"House 40, F-7, Rawalpindi",4610285,2024-12-25,7,Agricultural,Transfer Letter,Approved,DHA,Plot 489,muhammad qureshi,"house 40, f-7, rawalpindi",098f2277
+REG-PRO-357,Usman Hassan,Imran Abbasi,"House 109, Gulberg, Islamabad",25312714,2019-12-16,20,Industrial,Registry,Unapproved,Bahria Town,Plot 449,usman hassan,"house 109, gulberg, islamabad",56e35bdd
+REG-PRO-358,Fatima Javed,Hamza Qureshi,"House 54, Hayatabad, Faisalabad",14502822,2026-02-06,14,Commercial,Registry,Pending,Local Scheme,Plot 84,fatima javed,"house 54, hayatabad, faisalabad",8db91a49
+REG-PRO-359,Ahmed Ahmed,Zainab Siddiqui,"House 34, Nazimabad, Rawalpindi",9727458,2018-09-26,10,Commercial,Transfer Letter,Approved,Local Scheme,Plot 274,ahmad ahmad,"house 34, nazimabad, rawalpindi",7fa1c230
+REG-PRO-360,Zubair Iqbal,Zubair Raza,"House 80, Pechs, Faisalabad",24636399,2020-02-21,14,Industrial,Allotment Letter,Approved,Hayatabad,Plot 401,zubair iqbal,"house 80, pechs, faisalabad",c9f9db81
+REG-PRO-361,Tariq Abbasi,Fatima Sheikh,"House 51, G-10, Islamabad",6818405,2024-12-13,7,Residential,Transfer Letter,Unapproved,Local Scheme,Plot 290,tariq abbasi,"house 51, g-10, islamabad",a6eeb1aa
+REG-PRO-362,Waseem Chaudhry,Sana Ahmed,"House 33, G-10, Islamabad",6147811,2021-01-17,7,Commercial,Transfer Letter,Unapproved,Clifton,Plot 397,waseem chaudhry,"house 33, g-10, islamabad",0b1a1577
+REG-PRO-363,Saima Nawaz,Muhammad Nawaz,"House 38, Nazimabad, Rawalpindi",23747133,2021-11-27,10,Commercial,File,Approved,DHA,Plot 224,saima nawaz,"house 38, nazimabad, rawalpindi",7693df8d
+REG-PRO-364,Zubair Ahmed,Ayesha Chaudhry,"House 138, DHA, Islamabad",17868055,2022-02-06,7,Residential,Transfer Letter,Unapproved,Hayatabad,Plot 359,zubair ahmad,"house 138, dha, islamabad",74cfc986
+REG-PRO-365,Nadia Baig,Zubair Khan,"House 106, Nazimabad, Islamabad",18067733,2020-03-17,5,Residential,Transfer Letter,Unapproved,DHA,Plot 62,nadia baig,"house 106, nazimabad, islamabad",07a2dcf9
+REG-PRO-366,Zubair Mirza,Hina Baig,"House 30, Johar Town, Faisalabad",25227049,2019-01-07,7,Residential,Allotment Letter,Pending,DHA,Plot 486,zubair mirza,"house 30, johar town, faisalabad",9f7a294b
+REG-PRO-367,Waseem Siddiqui,Usman Mirza,"House 103, F-7, Rawalpindi",12691094,2022-11-17,20,Agricultural,Allotment Letter,Approved,Gulberg,Plot 322,waseem siddiqui,"house 103, f-7, rawalpindi",afcc674a
+REG-PRO-368,Hamza Iqbal,Waseem Khan,"House 72, F-7, Peshawar",6151945,2019-04-12,5,Industrial,Transfer Letter,Pending,DHA,Plot 116,hamza iqbal,"house 72, f-7, peshawar",ad4f7cee
+REG-PRO-369,Fatima Qureshi,Imran Baig,"House 13, Gulberg, Peshawar",16311260,2023-12-14,20,Industrial,Transfer Letter,Approved,DHA,Plot 176,fatima qureshi,"house 13, gulberg, peshawar",f7d6726d
+REG-PRO-370,Hina Raza,Fatima Javed,"House 73, Gulberg, Peshawar",11655921,2018-12-27,7,Industrial,File,Pending,Clifton,Plot 116,hina raza,"house 73, gulberg, peshawar",fcc73756
+REG-PRO-371,Amna Malik,Amna Siddiqui,"House 39, Nazimabad, Lahore",11769432,2019-12-15,20,Commercial,Allotment Letter,Approved,Local Scheme,Plot 162,amna malik,"house 39, nazimabad, lahore",9ac4242d
+REG-PRO-372,Tariq Khan,Ayesha Chaudhry,"House 89, F-7, Karachi",28656919,2025-06-01,10,Residential,Registry,Approved,DHA,Plot 219,tariq khan,"house 89, f-7, karachi",a6b53b8f
+REG-PRO-373,Ali Mirza,Nadia Rizvi,"House 15, Hayatabad, Faisalabad",23023352,2020-11-17,10,Industrial,Transfer Letter,Unapproved,Hayatabad,Plot 466,ali mirza,"house 15, hayatabad, faisalabad",2db4188f
+REG-PRO-374,Amna Qureshi,Saima Nawaz,"House 113, F-7, Faisalabad",5141711,2021-10-09,10,Commercial,Transfer Letter,Approved,Clifton,Plot 340,amna qureshi,"house 113, f-7, faisalabad",922aa8b4
+REG-PRO-375,Zainab Hassan,Bilal Mirza,"House 24, Nazimabad, Karachi",26990175,2021-07-05,14,Industrial,Registry,Approved,Bahria Town,Plot 226,zainab hassan,"house 24, nazimabad, karachi",0ba172cf
+REG-PRO-376,Usman Ahmed,Tariq Abbasi,"House 23, Gulberg, Karachi",12768774,2021-05-09,5,Commercial,Transfer Letter,Unapproved,Local Scheme,Plot 440,usman ahmad,"house 23, gulberg, karachi",c24f61e3
+REG-PRO-377,Hina Raza,Tariq Khan,"House 57, DHA, Rawalpindi",20619801,2018-06-04,7,Agricultural,Registry,Approved,F-7,Plot 146,hina raza,"house 57, dha, rawalpindi",3dd87297
+REG-PRO-378,Imran Iqbal,Imran Hassan,"House 84, Johar Town, Karachi",9646552,2024-09-06,20,Agricultural,Registry,Unapproved,Hayatabad,Plot 481,imran iqbal,"house 84, johar town, karachi",80a85733
+REG-PRO-379,Hamza Sheikh,Tariq Malik,"House 61, Johar Town, Rawalpindi",8216214,2021-08-01,10,Residential,Transfer Letter,Approved,Clifton,Plot 31,hamza sheikh,"house 61, johar town, rawalpindi",6352b62e
+REG-PRO-380,Ahmed Raza,Usman Sheikh,"House 1, Bahria Town, Karachi",19151588,2021-12-27,5,Residential,Transfer Letter,Approved,DHA,Plot 469,ahmad raza,"house 1, bahria town, karachi",667aae5e
+REG-PRO-381,Ahmed Mirza,Zubair Mirza,"House 55, Johar Town, Rawalpindi",5086742,2020-02-10,7,Residential,Allotment Letter,Approved,PECHS,Plot 380,ahmad mirza,"house 55, johar town, rawalpindi",31e7920f
+REG-PRO-382,Saima Bibi,Ali Bibi,"House 91, Bahria Town, Peshawar",13390973,2023-05-14,20,Commercial,Allotment Letter,Approved,Gulberg,Plot 169,saima bibi,"house 91, bahria town, peshawar",48ee6848
+REG-PRO-383,Bilal Butt,Imran Sheikh,"House 136, Nazimabad, Lahore",18875131,2019-07-22,10,Agricultural,Allotment Letter,Pending,Hayatabad,Plot 58,bilal butt,"house 136, nazimabad, lahore",29d70dee
+REG-PRO-384,Imran Mirza,Saima Qureshi,"House 3, Bahria Town, Lahore",16283268,2020-04-11,7,Agricultural,Allotment Letter,Pending,PECHS,Plot 181,imran mirza,"house 3, bahria town, lahore",02573ac4
+REG-PRO-385,Ahmed Hassan,Zainab Javed,"House 57, Hayatabad, Lahore",19551403,2026-10-13,7,Commercial,Transfer Letter,Unapproved,Clifton,Plot 386,ahmad hassan,"house 57, hayatabad, lahore",f2a024da
+REG-PRO-386,Zainab Javed,Nadia Rizvi,"House 66, G-10, Karachi",14647750,2023-02-27,7,Industrial,Registry,Approved,Bahria Town,Plot 373,zainab javed,"house 66, g-10, karachi",201990a6
+REG-PRO-387,Amna Baig,Imran Siddiqui,"House 16, Hayatabad, Rawalpindi",18061221,2023-10-08,20,Commercial,Transfer Letter,Approved,PECHS,Plot 5,amna baig,"house 16, hayatabad, rawalpindi",b9e52322
+REG-PRO-388,Ayesha Khan,Zubair Malik,"House 149, G-10, Rawalpindi",28081646,2020-09-02,5,Agricultural,Transfer Letter,Approved,Local Scheme,Plot 412,ayesha khan,"house 149, g-10, rawalpindi",a063290c
+REG-PRO-389,Saima Butt,Amna Bibi,"House 140, Pechs, Faisalabad",17871331,2018-12-03,7,Residential,Registry,Pending,Gulberg,Plot 255,saima butt,"house 140, pechs, faisalabad",4a768653
+REG-PRO-390,Hina Nawaz,Tariq Malik,"House 9, Nazimabad, Lahore",22427734,2025-06-03,20,Industrial,Registry,Approved,Gulberg,Plot 205,hina nawaz,"house 9, nazimabad, lahore",4b1fe282
+REG-PRO-391,Ahmed Ahmed,Amna Sheikh,"House 53, Gulberg, Peshawar",4615454,2019-07-20,20,Commercial,Transfer Letter,Pending,PECHS,Plot 410,ahmad ahmad,"house 53, gulberg, peshawar",33528294
+REG-PRO-392,Imran Bibi,Nadia Sheikh,"House 31, Bahria Town, Peshawar",19273324,2022-09-03,10,Agricultural,Allotment Letter,Approved,Local Scheme,Plot 158,imran bibi,"house 31, bahria town, peshawar",15cbafe8
+REG-PRO-393,Hamza Malik,Muhammad Khan,"House 4, DHA, Karachi",8624576,2026-01-25,14,Residential,File,Pending,PECHS,Plot 183,hamza malik,"house 4, dha, karachi",53969300
+REG-PRO-394,Waseem Butt,Zubair Abbasi,"House 43, G-10, Islamabad",4614066,2019-07-01,20,Industrial,File,Approved,Gulberg,Plot 483,waseem butt,"house 43, g-10, islamabad",86491762
+REG-PRO-395,Ahmed Iqbal,Saima Raza,"House 128, Clifton, Lahore",17177448,2020-11-21,5,Commercial,Allotment Letter,Approved,Clifton,Plot 68,ahmad iqbal,"house 128, clifton, lahore",d128eb9d
+REG-PRO-396,Imran Abbasi,Muhammad Bibi,"House 31, G-10, Lahore",11738739,2022-04-11,14,Residential,File,Unapproved,PECHS,Plot 80,imran abbasi,"house 31, g-10, lahore",fd3e9f88
+REG-PRO-397,Amna Ahmed,Saima Hassan,"House 9, Clifton, Faisalabad",24456906,2026-11-11,14,Commercial,Allotment Letter,Unapproved,Hayatabad,Plot 57,amna ahmad,"house 9, clifton, faisalabad",71720431
+REG-PRO-398,Saima Khan,Hamza Ahmed,"House 36, Hayatabad, Islamabad",16202062,2024-02-16,20,Agricultural,File,Pending,PECHS,Plot 4,saima khan,"house 36, hayatabad, islamabad",29f5be25
+REG-PRO-399,Fatima Raza,Amna Hassan,"House 49, Johar Town, Lahore",13340020,2026-07-07,14,Residential,File,Unapproved,PECHS,Plot 68,fatima raza,"house 49, johar town, lahore",c401ae36
+REG-PRO-400,Waseem Siddiqui,Hamza Bibi,"House 120, DHA, Karachi",19512303,2023-07-20,20,Commercial,Registry,Pending,Local Scheme,Plot 4,waseem siddiqui,"house 120, dha, karachi",a3be940b
+REG-PRO-401,Nadia Javed,Sana Chaudhry,"House 29, F-7, Rawalpindi",5093061,2025-06-12,20,Agricultural,Allotment Letter,Pending,DHA,Plot 211,nadia javed,"house 29, f-7, rawalpindi",dad83ee2
+REG-PRO-402,Ahmed Sheikh,Zubair Qureshi,"House 58, Hayatabad, Faisalabad",27294259,2022-07-08,20,Commercial,Allotment Letter,Approved,PECHS,Plot 397,ahmad sheikh,"house 58, hayatabad, faisalabad",9ae49675
+REG-PRO-403,Bilal Abbasi,Hina Javed,"House 118, Pechs, Karachi",27758359,2019-02-23,7,Agricultural,Transfer Letter,Unapproved,PECHS,Plot 386,bilal abbasi,"house 118, pechs, karachi",60c4016d
+REG-PRO-404,Saima Khan,Ayesha Sheikh,"House 28, Johar Town, Peshawar",17985169,2021-08-27,20,Residential,Transfer Letter,Approved,PECHS,Plot 435,saima khan,"house 28, johar town, peshawar",ee31b7be
+REG-PRO-405,Imran Javed,Hamza Bibi,"House 38, Gulberg, Islamabad",28315205,2019-02-23,5,Commercial,File,Approved,Gulberg,Plot 431,imran javed,"house 38, gulberg, islamabad",21f875d0
+REG-PRO-406,Sana Abbasi,Hamza Raza,"House 2, Bahria Town, Islamabad",12887987,2025-10-12,14,Commercial,Allotment Letter,Approved,PECHS,Plot 44,sana abbasi,"house 2, bahria town, islamabad",d9358f15
+REG-PRO-407,Saima Siddiqui,Tariq Butt,"House 97, Johar Town, Faisalabad",4094395,2023-03-27,5,Commercial,Registry,Approved,Hayatabad,Plot 435,saima siddiqui,"house 97, johar town, faisalabad",1f81b8d4
+REG-PRO-408,Hamza Butt,Nadia Javed,"House 117, Clifton, Lahore",12108998,2021-11-20,10,Agricultural,Transfer Letter,Approved,Gulberg,Plot 482,hamza butt,"house 117, clifton, lahore",89343387
+REG-PRO-409,Bilal Javed,Hamza Khan,"House 113, Nazimabad, Islamabad",8420159,2021-01-08,10,Agricultural,Transfer Letter,Approved,Hayatabad,Plot 70,bilal javed,"house 113, nazimabad, islamabad",df6ace2c
+REG-PRO-410,Bilal Bibi,Zubair Chaudhry,"House 47, F-7, Islamabad",7039624,2023-08-23,20,Industrial,Transfer Letter,Pending,DHA,Plot 200,bilal bibi,"house 47, f-7, islamabad",9da464ab
+REG-PRO-411,Amna Raza,Usman Mirza,"House 132, Gulberg, Rawalpindi",6918203,2026-06-14,5,Industrial,Registry,Unapproved,Hayatabad,Plot 468,amna raza,"house 132, gulberg, rawalpindi",885822cc
+REG-PRO-412,Imran Hassan,Hamza Chaudhry,"House 145, G-10, Lahore",23928045,2018-01-09,10,Commercial,Transfer Letter,Approved,PECHS,Plot 488,imran hassan,"house 145, g-10, lahore",17bc31c0
+REG-PRO-413,Muhammad Ahmed,Waseem Malik,"House 136, Hayatabad, Islamabad",15229581,2018-06-22,5,Agricultural,Allotment Letter,Approved,F-7,Plot 301,muhammad ahmad,"house 136, hayatabad, islamabad",af7226e6
+REG-PRO-414,Amna Qureshi,Muhammad Abbasi,"House 129, Johar Town, Lahore",10659263,2018-11-14,5,Commercial,Registry,Approved,F-7,Plot 286,amna qureshi,"house 129, johar town, lahore",6b0c4acf
+REG-PRO-415,Sana Malik,Muhammad Abbasi,"House 143, Hayatabad, Peshawar",11994373,2026-12-13,7,Residential,Registry,Approved,F-7,Plot 299,sana malik,"house 143, hayatabad, peshawar",1c601cd7
+REG-PRO-416,Hamza Abbasi,Sana Qureshi,"House 127, Clifton, Peshawar",15857475,2021-12-20,5,Agricultural,Transfer Letter,Approved,Clifton,Plot 64,hamza abbasi,"house 127, clifton, peshawar",bfd3de8e
+REG-PRO-417,Hamza Rizvi,Nadia Baig,"House 110, Johar Town, Islamabad",16748830,2023-03-19,20,Commercial,Allotment Letter,Approved,F-7,Plot 435,hamza rizvi,"house 110, johar town, islamabad",7c05c0bd
+REG-PRO-418,Tariq Qureshi,Usman Rizvi,"House 89, Bahria Town, Lahore",6495997,2025-11-06,5,Residential,File,Approved,F-7,Plot 376,tariq qureshi,"house 89, bahria town, lahore",a85430d8
+REG-PRO-419,Ayesha Javed,Muhammad Siddiqui,"House 147, Clifton, Lahore",27944480,2022-08-09,7,Residential,Transfer Letter,Approved,DHA,Plot 490,ayesha javed,"house 147, clifton, lahore",ff8cc00b
+REG-PRO-420,Saima Sheikh,Ali Raza,"House 112, G-10, Rawalpindi",20084197,2019-03-23,14,Industrial,File,Approved,Bahria Town,Plot 146,saima sheikh,"house 112, g-10, rawalpindi",840221d1
+REG-PRO-421,Waseem Sheikh,Fatima Sheikh,"House 49, G-10, Karachi",29852958,2026-10-19,14,Residential,Registry,Approved,Clifton,Plot 116,waseem sheikh,"house 49, g-10, karachi",c778ebf7
+REG-PRO-422,Imran Ahmed,Hina Hassan,"House 55, Bahria Town, Islamabad",22369914,2018-09-26,5,Industrial,File,Approved,PECHS,Plot 265,imran ahmad,"house 55, bahria town, islamabad",41fb40d1
+REG-PRO-423,Ayesha Sheikh,Amna Ahmed,"House 132, Clifton, Lahore",28243919,2022-10-17,20,Agricultural,Registry,Approved,Hayatabad,Plot 134,ayesha sheikh,"house 132, clifton, lahore",34263993
+REG-PRO-424,Usman Khan,Hina Khan,"House 105, Clifton, Rawalpindi",26027921,2019-01-17,7,Industrial,File,Pending,Hayatabad,Plot 283,usman khan,"house 105, clifton, rawalpindi",71adbc5c
+REG-PRO-425,Amna Ahmed,Imran Raza,"House 13, Nazimabad, Karachi",27794046,2018-09-01,7,Industrial,File,Approved,Gulberg,Plot 124,amna ahmad,"house 13, nazimabad, karachi",bf653b27
+REG-PRO-426,Fatima Iqbal,Nadia Baig,"House 150, Pechs, Islamabad",5822819,2022-09-18,5,Residential,File,Unapproved,Bahria Town,Plot 297,fatima iqbal,"house 150, pechs, islamabad",fd329944
+REG-PRO-427,Zainab Qureshi,Waseem Baig,"House 23, G-10, Islamabad",13237214,2019-04-09,5,Commercial,Registry,Approved,PECHS,Plot 116,zainab qureshi,"house 23, g-10, islamabad",0b2d9745
+REG-PRO-428,Ayesha Iqbal,Tariq Nawaz,"House 55, G-10, Faisalabad",20081863,2022-11-13,5,Agricultural,Transfer Letter,Approved,PECHS,Plot 346,ayesha iqbal,"house 55, g-10, faisalabad",624957d2
+REG-PRO-429,Ayesha Iqbal,Ahmed Javed,"House 96, Bahria Town, Peshawar",12967522,2018-06-10,5,Residential,Registry,Pending,F-7,Plot 357,ayesha iqbal,"house 96, bahria town, peshawar",e8777138
+REG-PRO-430,Nadia Hassan,Sana Siddiqui,"House 93, Nazimabad, Islamabad",16273484,2019-03-08,20,Industrial,Registry,Approved,DHA,Plot 167,nadia hassan,"house 93, nazimabad, islamabad",2e6c3ef5
+REG-PRO-431,Hina Bibi,Saima Butt,"House 95, Johar Town, Karachi",9142972,2018-12-28,10,Commercial,Registry,Approved,F-7,Plot 136,hina bibi,"house 95, johar town, karachi",2bcede3f
+REG-PRO-432,Hina Ahmed,Zainab Khan,"House 55, Nazimabad, Islamabad",27568003,2024-02-03,7,Agricultural,Registry,Approved,DHA,Plot 35,hina ahmad,"house 55, nazimabad, islamabad",228b1ef5
+REG-PRO-433,Zainab Qureshi,Hamza Abbasi,"House 7, Gulberg, Islamabad",16138433,2022-06-28,20,Agricultural,File,Pending,DHA,Plot 222,zainab qureshi,"house 7, gulberg, islamabad",bfa67b5d
+REG-PRO-434,Ayesha Rizvi,Hamza Iqbal,"House 57, Bahria Town, Faisalabad",7294298,2025-10-24,14,Commercial,Allotment Letter,Approved,Hayatabad,Plot 130,ayesha rizvi,"house 57, bahria town, faisalabad",021a9ac6
+REG-PRO-435,Sana Mirza,Hamza Chaudhry,"House 106, Nazimabad, Peshawar",7346282,2020-06-27,20,Residential,Transfer Letter,Unapproved,F-7,Plot 238,sana mirza,"house 106, nazimabad, peshawar",d9d2e534
+REG-PRO-436,Bilal Ahmed,Ayesha Bibi,"House 101, Nazimabad, Rawalpindi",4550723,2023-01-14,7,Residential,Registry,Approved,Bahria Town,Plot 120,bilal ahmad,"house 101, nazimabad, rawalpindi",1cd64808
+REG-PRO-437,Saima Qureshi,Ahmed Raza,"House 114, Pechs, Rawalpindi",26602712,2019-07-16,10,Residential,Registry,Approved,Bahria Town,Plot 279,saima qureshi,"house 114, pechs, rawalpindi",d36de9a1
+REG-PRO-438,Ayesha Sheikh,Hina Malik,"House 143, Nazimabad, Rawalpindi",8055028,2023-12-24,20,Commercial,File,Pending,Bahria Town,Plot 78,ayesha sheikh,"house 143, nazimabad, rawalpindi",68e94cf5
+REG-PRO-439,Fatima Sheikh,Saima Javed,"House 139, Hayatabad, Karachi",20942905,2020-03-16,14,Commercial,Allotment Letter,Approved,Gulberg,Plot 155,fatima sheikh,"house 139, hayatabad, karachi",b41ea98d
+REG-PRO-440,Hamza Abbasi,Zainab Abbasi,"House 1, G-10, Peshawar",5551219,2023-03-23,7,Industrial,Transfer Letter,Approved,DHA,Plot 46,hamza abbasi,"house 1, g-10, peshawar",f61a4f6c
+REG-PRO-441,Sana Hassan,Bilal Malik,"House 71, Johar Town, Lahore",12687917,2019-06-27,20,Industrial,Allotment Letter,Approved,Hayatabad,Plot 279,sana hassan,"house 71, johar town, lahore",86261583
+REG-PRO-442,Saima Ahmed,Saima Mirza,"House 90, Hayatabad, Lahore",24236943,2026-06-12,5,Residential,Transfer Letter,Approved,PECHS,Plot 36,saima ahmad,"house 90, hayatabad, lahore",8b05063d
+REG-PRO-443,Amna Nawaz,Bilal Hassan,"House 90, Nazimabad, Peshawar",29461605,2021-02-13,5,Commercial,Transfer Letter,Approved,PECHS,Plot 6,amna nawaz,"house 90, nazimabad, peshawar",a04aea34
+REG-PRO-444,Zainab Abbasi,Waseem Qureshi,"House 17, Clifton, Islamabad",26980688,2019-09-28,7,Agricultural,File,Approved,PECHS,Plot 104,zainab abbasi,"house 17, clifton, islamabad",066b1b3c
+REG-PRO-445,Usman Rizvi,Ayesha Iqbal,"House 76, Clifton, Faisalabad",27732545,2020-09-25,5,Residential,File,Approved,DHA,Plot 57,usman rizvi,"house 76, clifton, faisalabad",3925d839
+REG-PRO-446,Imran Raza,Sana Qureshi,"House 51, DHA, Faisalabad",5699133,2021-06-04,10,Industrial,Allotment Letter,Approved,F-7,Plot 357,imran raza,"house 51, dha, faisalabad",1227d692
+REG-PRO-447,Ayesha Hassan,Waseem Mirza,"House 80, G-10, Faisalabad",15319829,2022-05-14,7,Residential,Registry,Approved,Clifton,Plot 266,ayesha hassan,"house 80, g-10, faisalabad",20f3a985
+REG-PRO-448,Ahmed Malik,Usman Chaudhry,"House 124, Hayatabad, Peshawar",20507081,2018-03-05,7,Commercial,Transfer Letter,Approved,Bahria Town,Plot 97,ahmad malik,"house 124, hayatabad, peshawar",04135407
+REG-PRO-449,Hina Rizvi,Sana Qureshi,"House 137, Johar Town, Karachi",26135804,2024-01-15,14,Commercial,Allotment Letter,Pending,Clifton,Plot 163,hina rizvi,"house 137, johar town, karachi",94c4d182
+REG-PRO-450,Bilal Baig,Zainab Rizvi,"House 46, Pechs, Lahore",7481660,2023-07-02,5,Agricultural,Registry,Approved,Clifton,Plot 424,bilal baig,"house 46, pechs, lahore",7a1aa00c
+REG-PRO-451,Tariq Butt,Zainab Butt,"House 110, Nazimabad, Rawalpindi",6209201,2021-05-11,7,Agricultural,Allotment Letter,Approved,DHA,Plot 299,tariq butt,"house 110, nazimabad, rawalpindi",5671877c
+REG-PRO-452,Muhammad Baig,Amna Ahmed,"House 45, G-10, Karachi",22393565,2019-02-15,7,Agricultural,Registry,Unapproved,Local Scheme,Plot 104,muhammad baig,"house 45, g-10, karachi",e70828a1
+REG-PRO-453,Fatima Siddiqui,Tariq Chaudhry,"House 125, Clifton, Rawalpindi",19776434,2024-01-02,10,Industrial,Registry,Approved,Bahria Town,Plot 444,fatima siddiqui,"house 125, clifton, rawalpindi",00805dc5
+REG-PRO-454,Hamza Abbasi,Ayesha Javed,"House 70, G-10, Lahore",13820219,2026-06-05,7,Residential,Allotment Letter,Unapproved,Bahria Town,Plot 39,hamza abbasi,"house 70, g-10, lahore",c02245d3
+REG-PRO-455,Amna Hassan,Ayesha Javed,"House 130, Gulberg, Lahore",8578940,2023-04-07,14,Residential,File,Approved,Gulberg,Plot 289,amna hassan,"house 130, gulberg, lahore",fe4ba2e9
+REG-PRO-456,Ayesha Abbasi,Hina Javed,"House 120, Pechs, Islamabad",20034133,2022-04-17,10,Residential,Allotment Letter,Unapproved,F-7,Plot 21,ayesha abbasi,"house 120, pechs, islamabad",da5ac23c
+REG-PRO-457,Nadia Butt,Sana Baig,"House 101, G-10, Faisalabad",9805877,2020-11-04,14,Commercial,Registry,Approved,Bahria Town,Plot 152,nadia butt,"house 101, g-10, faisalabad",1d074af7
+REG-PRO-458,Imran Iqbal,Hina Hassan,"House 142, F-7, Karachi",13644870,2018-10-01,20,Residential,File,Approved,DHA,Plot 496,imran iqbal,"house 142, f-7, karachi",54c46f1e
+REG-PRO-459,Waseem Mirza,Tariq Ahmed,"House 21, G-10, Islamabad",23271737,2026-09-04,5,Industrial,Allotment Letter,Approved,Local Scheme,Plot 314,waseem mirza,"house 21, g-10, islamabad",900d098e
+REG-PRO-460,Hina Raza,Ayesha Sheikh,"House 17, Clifton, Islamabad",14854098,2026-03-03,14,Commercial,Transfer Letter,Unapproved,F-7,Plot 374,hina raza,"house 17, clifton, islamabad",066b1b3c
+REG-PRO-461,Hamza Raza,Hina Khan,"House 106, Clifton, Lahore",26028431,2019-07-17,20,Industrial,File,Pending,F-7,Plot 390,hamza raza,"house 106, clifton, lahore",6ce14642
+REG-PRO-462,Saima Baig,Saima Sheikh,"House 132, DHA, Karachi",13845175,2019-08-14,5,Agricultural,Registry,Approved,Clifton,Plot 151,saima baig,"house 132, dha, karachi",8c40866f
+REG-PRO-463,Zubair Raza,Bilal Javed,"House 112, Nazimabad, Rawalpindi",6087126,2025-11-25,10,Agricultural,File,Approved,Local Scheme,Plot 443,zubair raza,"house 112, nazimabad, rawalpindi",118ac7d7
+REG-PRO-464,Zainab Ahmed,Fatima Abbasi,"House 143, Nazimabad, Lahore",20365725,2022-02-05,5,Industrial,Registry,Approved,DHA,Plot 451,zainab ahmad,"house 143, nazimabad, lahore",27c3f610
+REG-PRO-465,Nadia Rizvi,Saima Qureshi,"House 108, DHA, Islamabad",10940138,2018-05-26,5,Agricultural,File,Approved,Hayatabad,Plot 57,nadia rizvi,"house 108, dha, islamabad",ede81ad8
+REG-PRO-466,Hamza Malik,Tariq Javed,"House 32, F-7, Rawalpindi",7573395,2022-06-18,5,Residential,Transfer Letter,Approved,Hayatabad,Plot 147,hamza malik,"house 32, f-7, rawalpindi",560943dd
+REG-PRO-467,Muhammad Hassan,Saima Mirza,"House 61, F-7, Faisalabad",7478984,2024-07-05,5,Commercial,Allotment Letter,Pending,F-7,Plot 128,muhammad hassan,"house 61, f-7, faisalabad",4817eba0
+REG-PRO-468,Amna Bibi,Saima Khan,"House 80, Pechs, Peshawar",24820731,2026-09-23,20,Industrial,Transfer Letter,Pending,Local Scheme,Plot 253,amna bibi,"house 80, pechs, peshawar",20988809
+REG-PRO-469,Imran Baig,Waseem Siddiqui,"House 18, Bahria Town, Faisalabad",24932645,2025-02-04,5,Industrial,File,Approved,PECHS,Plot 409,imran baig,"house 18, bahria town, faisalabad",ada663f4
+REG-PRO-470,Hina Raza,Sana Sheikh,"House 42, Clifton, Karachi",4148001,2025-10-12,10,Residential,Allotment Letter,Unapproved,Hayatabad,Plot 122,hina raza,"house 42, clifton, karachi",883ece2e
+REG-PRO-471,Bilal Javed,Saima Siddiqui,"House 29, Johar Town, Faisalabad",11866975,2026-10-03,10,Residential,Transfer Letter,Pending,Gulberg,Plot 390,bilal javed,"house 29, johar town, faisalabad",f94f69fd
+REG-PRO-472,Imran Sheikh,Nadia Khan,"House 14, Pechs, Islamabad",23935103,2019-02-18,14,Industrial,Transfer Letter,Approved,Hayatabad,Plot 59,imran sheikh,"house 14, pechs, islamabad",b5f36972
+REG-PRO-473,Hina Hassan,Bilal Ahmed,"House 129, F-7, Peshawar",6101909,2018-03-03,10,Industrial,Registry,Pending,Hayatabad,Plot 359,hina hassan,"house 129, f-7, peshawar",d5dc78e8
+REG-PRO-474,Nadia Malik,Imran Iqbal,"House 34, Clifton, Karachi",26193952,2019-12-26,5,Industrial,File,Approved,Bahria Town,Plot 457,nadia malik,"house 34, clifton, karachi",3097cb48
+REG-PRO-475,Hina Siddiqui,Saima Hassan,"House 36, Clifton, Faisalabad",5052677,2021-12-24,7,Commercial,File,Approved,Gulberg,Plot 427,hina siddiqui,"house 36, clifton, faisalabad",2ba0272b
+REG-PRO-476,Zubair Khan,Sana Iqbal,"House 95, Pechs, Faisalabad",5662388,2022-10-23,5,Industrial,Allotment Letter,Approved,DHA,Plot 173,zubair khan,"house 95, pechs, faisalabad",87958db5
+REG-PRO-477,Hamza Nawaz,Amna Malik,"House 26, Johar Town, Faisalabad",16623550,2021-07-03,10,Industrial,Registry,Approved,DHA,Plot 394,hamza nawaz,"house 26, johar town, faisalabad",e3c1964b
+REG-PRO-478,Amna Bibi,Fatima Bibi,"House 122, G-10, Islamabad",6004181,2019-09-11,10,Commercial,Transfer Letter,Approved,Bahria Town,Plot 41,amna bibi,"house 122, g-10, islamabad",73ecf2ac
+REG-PRO-479,Muhammad Mirza,Usman Khan,"House 111, F-7, Faisalabad",24303330,2023-01-21,7,Agricultural,File,Pending,Bahria Town,Plot 374,muhammad mirza,"house 111, f-7, faisalabad",7e0c2c83
+REG-PRO-480,Sana Rizvi,Hamza Raza,"House 22, Nazimabad, Islamabad",12044031,2024-05-02,14,Commercial,Registry,Pending,DHA,Plot 439,sana rizvi,"house 22, nazimabad, islamabad",74105139
+REG-PRO-481,Nadia Siddiqui,Imran Ahmed,"House 104, Clifton, Peshawar",10849210,2023-02-13,14,Commercial,Allotment Letter,Pending,Clifton,Plot 360,nadia siddiqui,"house 104, clifton, peshawar",1d412dab
+REG-PRO-482,Fatima Khan,Ayesha Chaudhry,"House 22, Clifton, Faisalabad",17704989,2026-05-01,10,Residential,Transfer Letter,Approved,PECHS,Plot 345,fatima khan,"house 22, clifton, faisalabad",54c5a8f0
+REG-PRO-483,Saima Javed,Tariq Sheikh,"House 65, DHA, Lahore",23989887,2023-01-01,20,Residential,File,Pending,DHA,Plot 120,saima javed,"house 65, dha, lahore",3249a108
+REG-PRO-484,Waseem Nawaz,Nadia Butt,"House 142, Johar Town, Faisalabad",4642065,2026-05-06,5,Agricultural,Registry,Approved,Hayatabad,Plot 381,waseem nawaz,"house 142, johar town, faisalabad",a570a7d1
+REG-PRO-485,Imran Raza,Ahmed Abbasi,"House 115, Hayatabad, Karachi",21999588,2021-10-16,5,Agricultural,Registry,Pending,Local Scheme,Plot 139,imran raza,"house 115, hayatabad, karachi",5816c3c7
+REG-PRO-486,Muhammad Rizvi,Waseem Mirza,"House 140, G-10, Lahore",3536255,2022-07-02,5,Residential,Allotment Letter,Approved,F-7,Plot 7,muhammad rizvi,"house 140, g-10, lahore",bca82de2
+REG-PRO-487,Hina Butt,Waseem Iqbal,"House 103, Clifton, Karachi",14607469,2022-03-12,5,Commercial,Registry,Approved,Clifton,Plot 154,hina butt,"house 103, clifton, karachi",2de8244e
+REG-PRO-488,Ali Butt,Nadia Qureshi,"House 29, Nazimabad, Lahore",19749025,2020-01-20,14,Residential,File,Approved,Hayatabad,Plot 230,ali butt,"house 29, nazimabad, lahore",7ff94eb7
+REG-PRO-489,Zainab Nawaz,Ahmed Malik,"House 79, Clifton, Lahore",6627761,2026-01-17,5,Industrial,File,Approved,Hayatabad,Plot 405,zainab nawaz,"house 79, clifton, lahore",bc0b862d
+REG-PRO-490,Zainab Abbasi,Ali Malik,"House 100, Nazimabad, Karachi",9665196,2026-05-26,7,Residential,Allotment Letter,Approved,Hayatabad,Plot 188,zainab abbasi,"house 100, nazimabad, karachi",5376ed4d
+REG-PRO-491,Saima Rizvi,Imran Javed,"House 78, DHA, Peshawar",24445749,2026-01-06,5,Residential,Registry,Approved,Gulberg,Plot 1,saima rizvi,"house 78, dha, peshawar",a0ef71de
+REG-PRO-492,Zainab Qureshi,Nadia Baig,"House 54, Clifton, Peshawar",27258112,2019-04-02,10,Agricultural,Registry,Approved,Local Scheme,Plot 291,zainab qureshi,"house 54, clifton, peshawar",3e60b73e
+REG-PRO-493,Imran Sheikh,Zubair Hassan,"House 133, Clifton, Karachi",28277297,2019-02-19,5,Industrial,Registry,Approved,F-7,Plot 379,imran sheikh,"house 133, clifton, karachi",6b6eca36
+REG-PRO-494,Hamza Sheikh,Zainab Chaudhry,"House 139, F-7, Islamabad",13104222,2022-10-18,5,Commercial,Registry,Unapproved,Clifton,Plot 384,hamza sheikh,"house 139, f-7, islamabad",a5d17714
+REG-PRO-495,Hina Nawaz,Zainab Baig,"House 39, DHA, Peshawar",25627568,2020-01-28,14,Agricultural,File,Unapproved,DHA,Plot 127,hina nawaz,"house 39, dha, peshawar",0fa4ba12
+REG-PRO-496,Zubair Qureshi,Hamza Butt,"House 80, Pechs, Peshawar",10863627,2024-07-06,14,Residential,Allotment Letter,Approved,Hayatabad,Plot 150,zubair qureshi,"house 80, pechs, peshawar",20988809
+REG-PRO-497,Usman Rizvi,Zubair Malik,"House 122, Nazimabad, Lahore",10082852,2018-07-24,20,Agricultural,Registry,Approved,DHA,Plot 187,usman rizvi,"house 122, nazimabad, lahore",4053bc4d
+REG-PRO-498,Tariq Ahmed,Nadia Sheikh,"House 7, G-10, Peshawar",7260059,2018-08-28,20,Residential,Allotment Letter,Approved,Hayatabad,Plot 447,tariq ahmad,"house 7, g-10, peshawar",3269c7be
+REG-PRO-499,Nadia Rizvi,Bilal Hassan,"House 134, DHA, Rawalpindi",15601512,2022-11-03,7,Commercial,Registry,Approved,Local Scheme,Plot 281,nadia rizvi,"house 134, dha, rawalpindi",72ad405d
+REG-PRO-500,Amna Siddiqui,Tariq Mirza,"House 37, F-7, Rawalpindi",5930368,2018-06-12,10,Agricultural,Allotment Letter,Approved,Hayatabad,Plot 300,amna siddiqui,"house 37, f-7, rawalpindi",c7eab57e
+REG-PRO-501,Zainab Malik,Imran Malik,"House 22, G-10, Peshawar",15960417,2026-08-13,7,Residential,Registry,Approved,Hayatabad,Plot 448,zainab malik,"house 22, g-10, peshawar",ae5cd480
+REG-PRO-502,Ahmed Sheikh,Amna Baig,"House 49, Johar Town, Faisalabad",23605460,2022-03-18,5,Commercial,Registry,Approved,Clifton,Plot 374,ahmad sheikh,"house 49, johar town, faisalabad",3ca11060
+REG-PRO-503,Amna Siddiqui,Zubair Siddiqui,"House 73, Johar Town, Rawalpindi",28976075,2018-03-21,7,Residential,Transfer Letter,Approved,Bahria Town,Plot 88,amna siddiqui,"house 73, johar town, rawalpindi",80fee157
+REG-PRO-504,Amna Siddiqui,Usman Qureshi,"House 39, Hayatabad, Islamabad",14601922,2023-07-15,20,Commercial,Registry,Approved,Local Scheme,Plot 400,amna siddiqui,"house 39, hayatabad, islamabad",66806f6c
+REG-PRO-505,Fatima Rizvi,Muhammad Baig,"House 18, DHA, Karachi",7490932,2025-04-27,10,Residential,Registry,Unapproved,Clifton,Plot 201,fatima rizvi,"house 18, dha, karachi",6b48c119
+REG-PRO-506,Hamza Bibi,Ali Sheikh,"House 29, F-7, Rawalpindi",18795993,2023-11-01,20,Agricultural,Registry,Pending,Bahria Town,Plot 40,hamza bibi,"house 29, f-7, rawalpindi",dad83ee2
+REG-PRO-507,Bilal Mirza,Saima Hassan,"House 143, Nazimabad, Faisalabad",10800505,2024-01-06,14,Agricultural,Transfer Letter,Approved,F-7,Plot 341,bilal mirza,"house 143, nazimabad, faisalabad",49af0523
+REG-PRO-508,Usman Iqbal,Hina Bibi,"House 63, Nazimabad, Lahore",23933460,2025-09-08,20,Industrial,Allotment Letter,Approved,Hayatabad,Plot 241,usman iqbal,"house 63, nazimabad, lahore",3df30eb2
+REG-PRO-509,Usman Mirza,Ayesha Ahmed,"House 121, Johar Town, Peshawar",18083628,2018-05-02,20,Commercial,Registry,Pending,Gulberg,Plot 420,usman mirza,"house 121, johar town, peshawar",d4b28b83
+REG-PRO-510,Saima Sheikh,Ali Raza,"House 136, Clifton, Karachi",18106039,2024-09-02,10,Residential,Transfer Letter,Unapproved,Hayatabad,Plot 279,saima sheikh,"house 136, clifton, karachi",d9164a22
+REG-PRO-511,Usman Malik,Imran Javed,"House 27, Bahria Town, Faisalabad",29501114,2021-07-10,10,Commercial,Transfer Letter,Unapproved,Bahria Town,Plot 38,usman malik,"house 27, bahria town, faisalabad",4875b0cb
+REG-PRO-512,Imran Rizvi,Hamza Bibi,"House 70, Nazimabad, Rawalpindi",23392115,2024-10-21,20,Residential,File,Unapproved,DHA,Plot 439,imran rizvi,"house 70, nazimabad, rawalpindi",7a2d9569
+REG-PRO-513,Muhammad Butt,Imran Nawaz,"House 93, Hayatabad, Rawalpindi",7508039,2020-07-07,10,Residential,Allotment Letter,Pending,PECHS,Plot 54,muhammad butt,"house 93, hayatabad, rawalpindi",84c00357
+REG-PRO-514,Hina Iqbal,Hamza Khan,"House 15, Gulberg, Peshawar",26851586,2021-11-01,14,Commercial,File,Approved,Hayatabad,Plot 496,hina iqbal,"house 15, gulberg, peshawar",4b0e7171
+REG-PRO-515,Imran Siddiqui,Muhammad Javed,"House 100, Bahria Town, Karachi",16804642,2023-10-27,10,Commercial,File,Approved,Local Scheme,Plot 231,imran siddiqui,"house 100, bahria town, karachi",163a3243
+REG-PRO-516,Bilal Malik,Sana Raza,"House 29, DHA, Islamabad",10205588,2022-09-13,10,Residential,Transfer Letter,Unapproved,Local Scheme,Plot 197,bilal malik,"house 29, dha, islamabad",e2ef9e4a
+REG-PRO-517,Hamza Qureshi,Muhammad Raza,"House 75, Nazimabad, Karachi",4979479,2024-11-24,5,Commercial,Allotment Letter,Approved,F-7,Plot 370,hamza qureshi,"house 75, nazimabad, karachi",6bbd3179
+REG-PRO-518,Ayesha Qureshi,Bilal Chaudhry,"House 107, Nazimabad, Karachi",7207391,2020-10-12,10,Industrial,Registry,Approved,F-7,Plot 351,ayesha qureshi,"house 107, nazimabad, karachi",31408f8e
+REG-PRO-519,Waseem Raza,Waseem Abbasi,"House 22, DHA, Karachi",6200909,2026-08-27,20,Industrial,Registry,Approved,Clifton,Plot 413,waseem raza,"house 22, dha, karachi",a5878653
+REG-PRO-520,Hamza Siddiqui,Muhammad Bibi,"House 93, Clifton, Faisalabad",20442512,2022-07-11,7,Agricultural,Allotment Letter,Unapproved,Gulberg,Plot 296,hamza siddiqui,"house 93, clifton, faisalabad",0305ba0f
+REG-PRO-521,Hina Chaudhry,Bilal Hassan,"House 17, Hayatabad, Karachi",11618781,2022-10-07,20,Commercial,Allotment Letter,Approved,Gulberg,Plot 275,hina chaudhry,"house 17, hayatabad, karachi",7e973c55
+REG-PRO-522,Ayesha Rizvi,Ayesha Nawaz,"House 18, Pechs, Islamabad",5215787,2019-04-23,10,Residential,Registry,Unapproved,Local Scheme,Plot 80,ayesha rizvi,"house 18, pechs, islamabad",21e531fa
+REG-PRO-523,Zainab Rizvi,Bilal Hassan,"House 92, Nazimabad, Lahore",4204809,2025-02-18,5,Commercial,File,Approved,Bahria Town,Plot 165,zainab rizvi,"house 92, nazimabad, lahore",c6f1c029
+REG-PRO-524,Sana Mirza,Fatima Baig,"House 63, DHA, Rawalpindi",11224559,2025-09-03,14,Industrial,File,Approved,Local Scheme,Plot 387,sana mirza,"house 63, dha, rawalpindi",8f6c3efa
+REG-PRO-525,Waseem Malik,Saima Siddiqui,"House 44, Gulberg, Islamabad",20856537,2022-09-21,14,Agricultural,Transfer Letter,Approved,Bahria Town,Plot 467,waseem malik,"house 44, gulberg, islamabad",6e5bda69
+REG-PRO-526,Nadia Qureshi,Muhammad Butt,"House 80, G-10, Karachi",23900969,2020-12-18,7,Industrial,Allotment Letter,Unapproved,DHA,Plot 234,nadia qureshi,"house 80, g-10, karachi",dd32cc7d
+REG-PRO-527,Waseem Bibi,Ahmed Bibi,"House 81, F-7, Faisalabad",28842576,2024-09-11,14,Agricultural,Registry,Approved,Local Scheme,Plot 62,waseem bibi,"house 81, f-7, faisalabad",6614fd7a
+REG-PRO-528,Tariq Bibi,Ahmed Ahmed,"House 13, Johar Town, Karachi",3662089,2019-07-04,20,Residential,File,Pending,F-7,Plot 414,tariq bibi,"house 13, johar town, karachi",849ae1a7
+REG-PRO-529,Nadia Nawaz,Fatima Abbasi,"House 88, Gulberg, Rawalpindi",19988838,2025-05-03,20,Agricultural,Registry,Pending,Clifton,Plot 203,nadia nawaz,"house 88, gulberg, rawalpindi",6b52c4aa
+REG-PRO-530,Sana Mirza,Imran Mirza,"House 74, Clifton, Karachi",4947737,2022-11-14,7,Industrial,File,Approved,Gulberg,Plot 401,sana mirza,"house 74, clifton, karachi",85daad5d
+REG-PRO-531,Hina Baig,Bilal Abbasi,"House 85, Hayatabad, Faisalabad",10043204,2024-06-28,7,Agricultural,Allotment Letter,Pending,DHA,Plot 172,hina baig,"house 85, hayatabad, faisalabad",e0adad69
+REG-PRO-532,Ayesha Bibi,Amna Malik,"House 150, Bahria Town, Islamabad",27163352,2023-05-10,20,Commercial,Transfer Letter,Approved,Clifton,Plot 145,ayesha bibi,"house 150, bahria town, islamabad",49931395
+REG-PRO-533,Nadia Javed,Ahmed Siddiqui,"House 44, G-10, Faisalabad",7678693,2018-10-12,5,Industrial,File,Approved,F-7,Plot 256,nadia javed,"house 44, g-10, faisalabad",df64beb8
+REG-PRO-534,Zainab Siddiqui,Hina Butt,"House 89, G-10, Islamabad",4122295,2023-05-15,10,Industrial,Registry,Pending,Clifton,Plot 333,zainab siddiqui,"house 89, g-10, islamabad",c9b5922f
+REG-PRO-535,Hina Sheikh,Ali Ahmed,"House 137, Nazimabad, Islamabad",26522869,2024-12-11,14,Residential,Transfer Letter,Unapproved,Gulberg,Plot 12,hina sheikh,"house 137, nazimabad, islamabad",3f1e9042
+REG-PRO-536,Fatima Iqbal,Tariq Siddiqui,"House 15, G-10, Karachi",6558165,2020-05-16,14,Commercial,Allotment Letter,Approved,Clifton,Plot 239,fatima iqbal,"house 15, g-10, karachi",e26d7afd
+REG-PRO-537,Fatima Nawaz,Zainab Qureshi,"House 127, Clifton, Karachi",29320808,2025-04-14,20,Commercial,File,Unapproved,DHA,Plot 235,fatima nawaz,"house 127, clifton, karachi",81b0df34
+REG-PRO-538,Hina Hassan,Bilal Chaudhry,"House 94, G-10, Peshawar",21962545,2023-06-26,10,Industrial,Transfer Letter,Unapproved,DHA,Plot 183,hina hassan,"house 94, g-10, peshawar",4e358402
+REG-PRO-539,Ali Rizvi,Zainab Baig,"House 122, Hayatabad, Karachi",5440588,2022-01-12,7,Residential,Registry,Approved,F-7,Plot 436,ali rizvi,"house 122, hayatabad, karachi",bb2f1b8f
+REG-PRO-540,Bilal Raza,Tariq Nawaz,"House 72, Hayatabad, Islamabad",25469132,2026-06-24,5,Residential,Allotment Letter,Approved,PECHS,Plot 234,bilal raza,"house 72, hayatabad, islamabad",4587daff
+REG-PRO-541,Ayesha Butt,Usman Qureshi,"House 136, G-10, Islamabad",5854560,2026-08-02,10,Commercial,Registry,Unapproved,Clifton,Plot 361,ayesha butt,"house 136, g-10, islamabad",3824e39c
+REG-PRO-542,Muhammad Hassan,Hamza Siddiqui,"House 143, G-10, Islamabad",17918240,2022-06-06,7,Residential,Registry,Approved,Hayatabad,Plot 284,muhammad hassan,"house 143, g-10, islamabad",0653cf15
+REG-PRO-543,Waseem Abbasi,Zainab Baig,"House 4, Bahria Town, Islamabad",11438568,2020-09-06,7,Residential,Allotment Letter,Approved,Local Scheme,Plot 118,waseem abbasi,"house 4, bahria town, islamabad",0aa1fbe4
+REG-PRO-544,Ayesha Butt,Waseem Baig,"House 50, G-10, Lahore",25499116,2025-10-09,7,Commercial,Registry,Unapproved,Bahria Town,Plot 118,ayesha butt,"house 50, g-10, lahore",aac7cd0f
+REG-PRO-545,Bilal Butt,Zainab Chaudhry,"House 108, Nazimabad, Lahore",9279757,2024-04-28,10,Agricultural,Transfer Letter,Pending,Gulberg,Plot 26,bilal butt,"house 108, nazimabad, lahore",9f9a5c37
+REG-PRO-546,Fatima Abbasi,Ahmed Abbasi,"House 110, DHA, Peshawar",14328545,2020-10-01,20,Residential,Transfer Letter,Approved,Bahria Town,Plot 37,fatima abbasi,"house 110, dha, peshawar",9529dc4d
+REG-PRO-547,Tariq Malik,Tariq Mirza,"House 99, Nazimabad, Rawalpindi",13936168,2021-06-25,14,Commercial,Registry,Pending,Clifton,Plot 140,tariq malik,"house 99, nazimabad, rawalpindi",1c6907df
+REG-PRO-548,Tariq Bibi,Hina Bibi,"House 40, Hayatabad, Islamabad",27346732,2019-07-16,20,Industrial,Transfer Letter,Approved,PECHS,Plot 232,tariq bibi,"house 40, hayatabad, islamabad",d2c54659
+REG-PRO-549,Usman Sheikh,Fatima Iqbal,"House 116, Nazimabad, Islamabad",3044574,2023-03-01,14,Residential,Registry,Pending,Hayatabad,Plot 382,usman sheikh,"house 116, nazimabad, islamabad",f02ac2cb
