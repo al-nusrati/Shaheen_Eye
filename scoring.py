@@ -13,7 +13,6 @@ load_dotenv()
 class ShaheenForensicEngine:
     
     def __init__(self):
-        # City-specific market rates per marla (PKR) - Updated 2025
         self.market_rates = {
             "dha": 3500000, "defence": 4000000, "bahria": 2200000,
             "gulberg": 3000000, "e-11": 4500000, "f-6": 5000000,
@@ -23,21 +22,18 @@ class ShaheenForensicEngine:
             "rawalpindi": 1800000, "peshawar": 1500000, "default": 800000
         }
         
-        # Proxy/Benami occupation list
         self.proxy_occupations = [
             'driver', 'housewife', 'student', 'peon', 'servant',
             'retired', 'unemployed', 'security guard', 'cook',
             'gardener', 'clerk', 'dependent', 'none'
         ]
         
-        # Luxury vehicle makes for import fraud detection
         self.luxury_vehicles = [
             'land cruiser', 'prado', 'fortuner', 'lexus', 'bmw',
             'mercedes', 'audi', 'porsche', 'range rover', 'hilux',
             'camry', 'crown'
         ]
         
-        # Vehicle market value lookup (PKR)
         self.vehicle_values = {
             (0, 800): 800000,
             (800, 1000): 1200000,
@@ -50,10 +46,6 @@ class ShaheenForensicEngine:
             (3000, 9999): 15000000
         }
 
-    # ==========================================
-    # UTILITY FUNCTIONS
-    # ==========================================
-    
     def get_vehicle_value(self, cc):
         cc = float(cc) if cc else 0
         for (low, high), val in self.vehicle_values.items():
@@ -68,12 +60,7 @@ class ShaheenForensicEngine:
                 return rate
         return self.market_rates["default"]
 
-    # ==========================================
-    # CATEGORY 1: BENAMI / ASSET CONCEALMENT
-    # ==========================================
-    
     def detect_benami_proxy(self, occupation, total_assets, declared_income):
-        """Fraud 1: Low-income proxy holding high-value assets"""
         score = 0
         occ = str(occupation).lower()
         if any(p in occ for p in self.proxy_occupations):
@@ -86,7 +73,6 @@ class ShaheenForensicEngine:
         return min(score, 100)
 
     def detect_family_ring(self, person_id, graph):
-        """Fraud 2: Zero-income family ring sharing address"""
         if graph is None:
             return 0
         try:
@@ -104,37 +90,27 @@ class ShaheenForensicEngine:
         return 0
 
     def detect_corporate_shield(self, buyer_name):
-        """Fraud 3: Shell company or trust holding assets"""
-        shield_keywords = [
-            'enterprises', 'associates', 'holdings', 'trust',
-            'pvt', 'limited', 'brothers', 'sons', 'trading'
-        ]
+        shield_keywords = ['enterprises', 'associates', 'holdings', 'trust', 'pvt', 'limited', 'brothers', 'sons', 'trading']
         name = str(buyer_name).lower()
         if any(k in name for k in shield_keywords):
             return 45
         return 0
 
-    # ==========================================
-    # CATEGORY 2: PROPERTY FRAUD
-    # ==========================================
-    
     def detect_dc_rate_underinvoicing(self, declared_val, area_marla, address):
-        """Fraud 4: Property declared at DC rate, paid at market rate in cash"""
         market_rate = self.get_market_rate(address)
         real_market_val = float(area_marla or 0) * market_rate
         if real_market_val == 0:
             return 0
         ratio = float(declared_val or 0) / real_market_val
         if ratio < 0.15:
-            return 55  # Declared < 15% of market = extreme under-invoicing
+            return 55  
         elif ratio < 0.30:
-            return 45  # Declared < 30% = significant under-invoicing
+            return 45  
         elif ratio < 0.50:
-            return 25  # Declared < 50% = moderate under-invoicing
+            return 25  
         return 0
 
     def detect_file_trading(self, registry_type, filer_status):
-        """Fraud 5: Off-radar property file trading to avoid FBR documentation"""
         file_types = ['file', 'allotment letter', 'transfer letter', 'open file']
         rtype = str(registry_type).lower()
         if any(f in rtype for f in file_types) and filer_status == 'Non-ATL':
@@ -144,12 +120,11 @@ class ShaheenForensicEngine:
         return 0
 
     def detect_property_flipping(self, transfer_count, years_span, declared_income):
-        """Fraud 6: Rapid property flipping to cycle black money"""
         if transfer_count is None:
             return 0
         velocity = float(transfer_count) / max(float(years_span or 1), 0.5)
         score = 0
-        if velocity > 3:  # More than 3 sales per year
+        if velocity > 3:  
             score += 40
         elif velocity > 1.5:
             score += 25
@@ -158,7 +133,6 @@ class ShaheenForensicEngine:
         return min(score, 60)
 
     def detect_illegal_society(self, noc_status, property_value):
-        """Fraud 7: Investment in unapproved housing society"""
         illegal_statuses = ['unapproved', 'illegal', 'pending', 'cancelled', 'encroachment']
         status = str(noc_status).lower()
         if any(s in status for s in illegal_statuses):
@@ -167,12 +141,7 @@ class ShaheenForensicEngine:
             return 20
         return 0
 
-    # ==========================================
-    # CATEGORY 3: INCOME WHITENING
-    # ==========================================
-    
     def detect_agri_shield(self, income_source, declared_income, total_assets):
-        """Fraud 8: Using tax-exempt agricultural income to justify luxury assets"""
         if 'agri' in str(income_source).lower():
             if total_assets > 50000000:
                 return 40
@@ -181,18 +150,16 @@ class ShaheenForensicEngine:
         return 0
 
     def detect_section_111_abuse(self, wealth_source, total_assets, prior_income_history):
-        """Fraud 9: Hawala loop — send black money abroad, receive back as 'remittance'"""
         remittance_keywords = ['remittance', 'foreign transfer', 'overseas', 'nrp', 'gift from abroad']
         ws = str(wealth_source).lower()
         if any(k in ws for k in remittance_keywords):
             if float(total_assets or 0) > 20000000 and float(prior_income_history or 0) < 2000000:
-                return 50  # Sudden massive wealth with no income history
+                return 50  
             elif float(total_assets or 0) > 10000000:
                 return 30
         return 0
 
     def detect_gift_declaration(self, wealth_source, asset_value):
-        """Fraud 10: Claiming luxury assets as 'gifts' to avoid source explanation"""
         gift_keywords = ['gift', 'inheritance', 'hiba', 'donation', 'bequest']
         ws = str(wealth_source).lower()
         if any(k in ws for k in gift_keywords):
@@ -205,28 +172,22 @@ class ShaheenForensicEngine:
         return 0
 
     def detect_prize_bond_laundering(self, income_source, declared_amount):
-        """Fraud 11: Using prize bonds to launder black money"""
         if 'prize' in str(income_source).lower() or 'bond' in str(income_source).lower():
             if float(declared_amount or 0) > 10000000:
                 return 35
         return 0
 
-    # ==========================================
-    # CATEGORY 4: VEHICLE FRAUD
-    # ==========================================
-    
     def detect_vehicle_underinvoicing(self, declared_import_value, vehicle_make_model, engine_cc):
-        """Fraud 12: Luxury vehicle under-invoiced at customs using Hawala"""
         if not declared_import_value or float(declared_import_value) == 0:
             return 0
         estimated_market = self.get_vehicle_value(engine_cc)
         model = str(vehicle_make_model).lower()
         is_luxury = any(lv in model for lv in self.luxury_vehicles)
         if is_luxury:
-            estimated_market *= 1.5  # Luxury premium
+            estimated_market *= 1.5  
         ratio = float(declared_import_value) / estimated_market
         if ratio < 0.10:
-            return 55  # Declared < 10% = extreme fraud
+            return 55  
         elif ratio < 0.25:
             return 40
         elif ratio < 0.50:
@@ -234,26 +195,19 @@ class ShaheenForensicEngine:
         return 0
 
     def detect_nonfiler_surcharge_buyin(self, filer_status, vehicle_value, years_as_nonfiler):
-        """Fraud 13: Non-filer treating surcharge as a 'fee' to stay undocumented"""
         if filer_status == 'Non-ATL' and float(vehicle_value or 0) > 3000000:
             if int(years_as_nonfiler or 0) > 3:
-                return 40  # Deliberately staying non-ATL for years
+                return 40  
             return 25
         return 0
 
     def detect_baggage_scheme_abuse(self, import_type, vehicle_count, vehicle_values_list=None):
-        """Fraud 14: Fake overseas Pakistani using baggage scheme repeatedly"""
         if 'baggage' in str(import_type).lower():
             if int(vehicle_count or 0) > 1:
-                return 45  # One vehicle allowed per returning Pakistani
+                return 45  
         return 0
 
-    # ==========================================
-    # CATEGORY 5: NETWORK/STRUCTURAL FRAUD
-    # ==========================================
-    
     def detect_duplicate_registry(self, registry_no, df):
-        """Fraud 15: Same plot sold to multiple buyers (double registry)"""
         if df is None or not registry_no:
             return 0
         try:
@@ -265,7 +219,6 @@ class ShaheenForensicEngine:
         return 0
 
     def detect_hawala_signature(self, total_assets, declared_income, wealth_source, has_bank_account):
-        """Fraud 16: Profile consistent with Hawala/cash-based wealth"""
         score = 0
         cash_sources = ['cash', 'unknown', 'undisclosed', 'none', '']
         ws = str(wealth_source).lower()
@@ -277,7 +230,6 @@ class ShaheenForensicEngine:
         return min(score, 75)
 
     def detect_rental_concealment(self, property_count, income_source, filer_status):
-        """Fraud 18: Multiple properties, zero rental income declared"""
         if int(property_count or 0) >= 2:
             if 'rental' not in str(income_source).lower() and 'rent' not in str(income_source).lower():
                 if filer_status == 'Non-ATL':
@@ -285,12 +237,7 @@ class ShaheenForensicEngine:
                 return 15
         return 0
 
-    # ==========================================
-    # ML LAYER: ISOLATION FOREST
-    # ==========================================
-    
     def compute_isolation_score(self, feature_df):
-        """Unsupervised ML anomaly detection on the full population"""
         features = [
             'declared_income_pkr', 'total_asset_value', 'vehicle_count',
             'max_vehicle_cc', 'property_count', 'avg_monthly_bill_pkr',
@@ -309,12 +256,7 @@ class ShaheenForensicEngine:
         normalized = 1 - (raw_scores - raw_scores.min()) / (raw_scores.max() - raw_scores.min() + 1e-9)
         return normalized * 100
 
-    # ==========================================
-    # GRAPH LAYER: CENTRALITY
-    # ==========================================
-    
     def compute_graph_features(self, graph, person_ids):
-        """Compute degree + betweenness centrality ONCE for the population"""
         centrality_scores = {}
         if graph is not None:
             try:
@@ -323,19 +265,12 @@ class ShaheenForensicEngine:
                 for pid in person_ids:
                     bc = betweenness.get(pid, 0)
                     dc = degree.get(pid, 0)
-                    # Scale and cap centrality bonus at 15 points
                     centrality_scores[pid] = min((bc + dc) * 100, 15)
-            except Exception as e:
-                print(f"Graph centrality calculation failed: {e}")
+            except:
                 centrality_scores = {pid: 0 for pid in person_ids}
         return centrality_scores
 
-    # ==========================================
-    # RISK PROPAGATION: CONTAMINATION
-    # ==========================================
-
     def compute_risk_contamination(self, person_id, base_scores, graph):
-        """Guilt-by-association: connected high-risk people raise your score"""
         if graph is None:
             return 0
         try:
@@ -344,22 +279,13 @@ class ShaheenForensicEngine:
                 return 0
             neighbor_scores = [base_scores.get(n, 0) for n in neighbors]
             avg_neighbor_score = np.mean(neighbor_scores)
-            return min(avg_neighbor_score * 0.15, 15)  # Max 15 contamination points
+            return min(avg_neighbor_score * 0.15, 15)  
         except:
             return 0
 
-    # ==========================================
-    # MASTER INTEGRATOR
-    # ==========================================
-
     def calculate_master_score(self, row, df_full=None, graph=None, base_scores=None, precomputed_centralities=None):
-        """
-        The complete forensic scoring engine.
-        Combines 18 fraud modules + Isolation Forest + Graph Centrality + Contamination
-        """
         pid = row.get('master_person_id', '')
         
-        # Compute all assets value
         vehicle_val = self.get_vehicle_value(row.get('max_vehicle_cc', 0)) * int(row.get('vehicle_count', 0) or 0)
         property_val = float(row.get('total_property_value', 0) or 0)
         total_assets = vehicle_val + property_val
@@ -367,7 +293,7 @@ class ShaheenForensicEngine:
         annual_utility = float(row.get('avg_monthly_bill_pkr', 0) or 0) * 12
         declared_income = float(row.get('declared_income_pkr', 0) or 0)
         
-        # BASE LIFESTYLE SCORE
+        # Base lifestyle score
         lifestyle_cost = annual_utility + (total_assets * 0.05)
         if declared_income <= 0:
             base_lifestyle = min(lifestyle_cost / 200000 * 10, 100)
@@ -375,7 +301,7 @@ class ShaheenForensicEngine:
             ratio = lifestyle_cost / declared_income
             base_lifestyle = min(ratio * 8, 100)
         
-        # ALL 18 FORENSIC MODULE SCORES
+        # All 18 forensic module scores
         forensic_scores = {
             'benami_proxy': self.detect_benami_proxy(
                 row.get('occupation', ''), total_assets, declared_income),
@@ -411,27 +337,25 @@ class ShaheenForensicEngine:
                 row.get('registry_no', ''), df_full),
         }
         
-        # TOP FRAUD FLAGS (for UI display — what fired)
         fired_flags = {k: v for k, v in forensic_scores.items() if v > 0}
         top_flags = sorted(fired_flags.items(), key=lambda x: x[1], reverse=True)[:3]
         
-        # COMBINED FORENSIC TOTAL
         forensic_total = sum(forensic_scores.values())
         
-        # GRAPH CENTRALITY BONUS (Precomputed $\mathcal{O}(1)$ lookup)
+        # Graph Centrality Bonus
         centrality_bonus = 0
         if precomputed_centralities is not None:
             centrality_bonus = precomputed_centralities.get(pid, 0)
         
-        # CONTAMINATION SCORE
+        # Contamination Score
         contamination = self.compute_risk_contamination(pid, base_scores or {}, graph)
         
-        # FINAL WEIGHTED SCORE
+        # Final weighted score
         final_score = (
-            base_lifestyle * 0.20 +      # 20% lifestyle math
-            forensic_total * 0.55 +       # 55% forensic modules (the beef)
-            centrality_bonus * 0.10 +     # 10% graph centrality
-            contamination * 0.15          # 15% guilt-by-association
+            base_lifestyle * 0.20 +      
+            forensic_total * 0.55 +       
+            centrality_bonus * 0.10 +     
+            contamination * 0.15          
         )
         
         return {
@@ -515,20 +439,38 @@ def process_master_csv(input_csv="outputs/master_entities.csv", output_csv="outp
     final_deviation_scores = []
     risk_categories = []
     top_flags_list = []
+    total_assets_val_list = []
     
     for i, res in enumerate(scored_results):
-        blended_score = (res['deviation_score'] * 0.6) + (ml_scores[i] * 0.4)
+        # Blend forensic score with unsupervised ML anomaly score
+        # ONLY APPLY ML ANOMALY PENALTY IF ASSETS EXCEED INCOME (Standard mask)
+        ml_p = ml_scores[i] if df.loc[i, 'total_asset_value'] > df.loc[i, 'declared_income_pkr'] else 0.0
+        
+        blended_score = (res['deviation_score'] * 0.6) + (ml_p * 0.4)
         final_score = min(round(blended_score, 1), 100)
+
+        # =============== COMPLIANT OVERRIDE ===============
+        # ATL filers with modest assets and real income should never score high,
+        # even if Isolation Forest flags them as anomalous.
+        row_data = df.loc[i]
+        if (str(row_data.get('filer_status', '')) == 'ATL' and
+            float(row_data.get('declared_income_pkr', 0)) > 500000 and
+            float(row_data.get('total_asset_value', 0)) < float(row_data.get('declared_income_pkr', 0)) * 5 and
+            res['deviation_score'] < 30):
+            final_score = min(final_score, 20)
+        # ==================================================
+
         final_deviation_scores.append(final_score)
         risk_categories.append(engine._categorize(final_score))
         
         flags = [f"{k.replace('_', ' ').title()}" for k, v in res['top_fraud_flags']]
         top_flags_list.append(", ".join(flags) if flags else "Lifestyle / Income Mismatch")
+        total_assets_val_list.append(res['total_assets_estimated'])
         
     df['deviation_score'] = final_deviation_scores
     df['risk_category'] = risk_categories
     df['top_risk_factor'] = top_flags_list
-    df['total_assets_val'] = df['total_asset_value'] # Sync column name
+    df['total_assets_val'] = total_assets_val_list
     
     os.makedirs(os.path.dirname(output_csv), exist_ok=True)
     df.to_csv(output_csv, index=False)
