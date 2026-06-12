@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import networkx as nx
@@ -9,10 +10,30 @@ import os
 import time
 import re
 import shutil
+import tempfile
 from datetime import datetime
+from pathlib import Path
+import zipfile
+import io
+from typing import Dict, List, Tuple, Optional, Any
+
+# Third-party
 from pyvis.network import Network
 import streamlit.components.v1 as components
+from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode, JsCode
+
+# Helper modules (must exist in project root)
 from overall_report import generate_overall_report
+from pdf_export import generate_pdf
+
+# Groq (optional)
+try:
+    from groq import Groq
+    from dotenv import load_dotenv
+    load_dotenv()
+    GROQ_AVAILABLE = True
+except ImportError:
+    GROQ_AVAILABLE = False
 
 # ── must be first streamlit call ─────────────────────────────
 st.set_page_config(
@@ -86,6 +107,17 @@ def load_data():
         if 'city' not in df.columns and os.path.exists(master):
             m = pd.read_csv(master)[['master_person_id', 'city']]
             df = df.merge(m, on='master_person_id', how='left')
+        # Ensure required columns exist
+        if 'full_name' not in df.columns:
+            df['full_name'] = df.get('name', 'Unknown')
+        if 'deviation_score' not in df.columns:
+            df['deviation_score'] = df.get('risk_score', 0)
+        if 'risk_category' not in df.columns:
+            df['risk_category'] = 'UNKNOWN'
+        if 'filer_status' not in df.columns:
+            df['filer_status'] = 'Unknown'
+        if 'master_person_id' not in df.columns:
+            df['master_person_id'] = df.index.astype(str)
         return df
     except FileNotFoundError:
         return pd.DataFrame()
@@ -95,7 +127,7 @@ def load_graph():
     if os.path.exists(path):
         with open(path, "rb") as f:
             return pickle.load(f)
-    return None
+    return nx.Graph()
 
 def load_audit():
     path = "outputs/audit_trails.json"
@@ -103,6 +135,10 @@ def load_audit():
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     return {}
+
+def save_audit(audit_dict):
+    with open("outputs/audit_trails.json", "w", encoding="utf-8") as f:
+        json.dump(audit_dict, f, indent=2)
 
 # ── colour helpers ────────────────────────────────────────────
 RISK_COLORS = {
@@ -129,198 +165,485 @@ PLOTLY_DARK = dict(
     yaxis=dict(gridcolor="#1f2937", linecolor="#374151"),
 )
 
-# ── Query helpers ─────────────────────────────────────────────
-def sanitize_query(query: str) -> str:
-    dangerous = re.compile(r"\b(select|insert|update|delete|drop|union|create|alter|truncate|exec|declare|xp_cmdshell)\b", re.IGNORECASE)
-    if dangerous.search(query):
-        return None
-    if re.search(r"(--|;|'|\"|\|)", query):
-        return None
-    cleaned = re.sub(r"[^a-zA-Z0-9\s\u0600-\u06FF\.,\-\?]", " ", query)
-    return cleaned.strip()
-URDU_TO_EN = {
-    "لاہور": "lahore", "کراچی": "karachi", "اسلام آباد": "islamabad",
-    "گاڑی": "vehicle", "کار": "car", "پراپرٹی": "property", "غیر فائلر": "non-filer"
-}
-def translate_urdu(txt: str) -> str:
-    for ur, en in URDU_TO_EN.items():
-        txt = txt.replace(ur, en)
-    return txt
-
 # ════════════════════════════════════════════════════════════════════════════
-# SIDEBAR (no session dropdown – only navigation and live stats)
+# FRAUD RING DETECTION (built-in, no external module needed)
 # ════════════════════════════════════════════════════════════════════════════
-with st.sidebar:
-    st.markdown("<p style='color:#4ade80;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px'>Navigation</p>", unsafe_allow_html=True)
-    page = st.radio("", [
-        "🏠 National Dashboard",
-        "📊 Risk Leaderboard",
-        "🔍 Individual Profile",
-        "🤖 Intelligence Query",
-        "📤 Live Data Upload",
-    ], label_visibility="collapsed")
+@st.cache_data(ttl=60)
+def detect_fraud_rings():
+    """
+    Detect fraud rings using the graph.
+    Rings are connected components where edges have types: SHARES_ADDRESS, SHARES_PHONE, SHARES_FBR_ID.
+    Returns (rings_df, person_to_ring)
+    """
+    graph = load_graph()
+    persons_df = load_data()
+    if persons_df.empty or graph.number_of_nodes() == 0:
+        return pd.DataFrame(), {}
 
-    st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
+    # We only consider person nodes (not assets like V_, P_, etc.)
+    person_nodes = [n for n in graph.nodes() if graph.nodes[n].get('type') == 'Person']
+    if not person_nodes:
+        return pd.DataFrame(), {}
 
-    # --- Hard Reset button (clears all caches and reloads) ---
-    if st.button("💣 Hard Reset (Clear all caches & reload)", key="hard_reset"):
-        for key in list(st.session_state.keys()):
-            del st.session_state[key]
-        st.cache_data.clear()
-        st.cache_resource.clear()
-        st.rerun()
+    # Build subgraph with only person nodes, but edges that are "SHARES_*"
+    ring_graph = nx.Graph()
+    ring_graph.add_nodes_from(person_nodes)
+    for u, v, data in graph.edges(data=True):
+        if u in person_nodes and v in person_nodes:
+            edge_type = data.get('type', '')
+            if any(t in edge_type for t in ['SHARES_ADDRESS', 'SHARES_PHONE', 'SHARES_FBR_ID']):
+                ring_graph.add_edge(u, v, type=edge_type)
 
-    # --- Live stats (fresh every time) ---
-    df = load_data()
-    if not df.empty:
-        total = len(df)
-        critical = int((df['deviation_score'] >= 80).sum())
-        high = int(((df['deviation_score'] >= 65) & (df['deviation_score'] < 80)).sum())
-        st.markdown("<p style='color:#6b7280;font-size:10px;font-weight:600;text-transform:uppercase'>Live Stats</p>", unsafe_allow_html=True)
-        for label, val, col in [
-            ("Citizens Analyzed", f"{total:,}", "#94a3b8"),
-            ("🔴 Critical Risk", str(critical), "#ef4444"),
-            ("🟡 High Risk", str(high), "#f59e0b"),
-        ]:
-            st.markdown(f"<div style='display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #1f2937'><span style='color:#6b7280;font-size:12px'>{label}</span><span style='color:{col};font-weight:600'>{val}</span></div>", unsafe_allow_html=True)
-        st.markdown(f"<p style='color:#6b7280;font-size:10px'>{total:,} profiles loaded</p>", unsafe_allow_html=True)
+    # Find connected components with at least 2 persons
+    components = list(nx.connected_components(ring_graph))
+    rings = []
+    person_to_ring = {}
+    for ring_id, comp in enumerate(components):
+        if len(comp) < 2:
+            continue
+        members = list(comp)
+        # Get person data for these members
+        ring_persons = persons_df[persons_df['master_person_id'].isin(members)].copy()
+        if ring_persons.empty:
+            continue
+        total_assets = ring_persons['total_assets_estimated'].fillna(0).sum()
+        total_income = ring_persons['declared_income_pkr'].fillna(0).sum()
+        non_filer_count = (ring_persons['filer_status'] == 'Non-ATL').sum()
+        # Find anchor: highest assets / income discrepancy (largest assets - income)
+        ring_persons['discrepancy'] = ring_persons['total_assets_estimated'].fillna(0) - ring_persons['declared_income_pkr'].fillna(0)
+        anchor_idx = ring_persons['discrepancy'].idxmax()
+        anchor_name = ring_persons.loc[anchor_idx, 'full_name'] if anchor_idx in ring_persons.index else "Unknown"
+        anchor_income = ring_persons.loc[anchor_idx, 'declared_income_pkr'] if anchor_idx in ring_persons.index else 0
+        tax_gap = total_assets * 0.15  # simplified
+        rings.append({
+            'ring_id': ring_id,
+            'size': len(members),
+            'members': members,
+            'total_estimated_assets': total_assets,
+            'total_declared_income': total_income,
+            'non_filer_count': non_filer_count,
+            'anchor_name': anchor_name,
+            'anchor_income': anchor_income,
+            'estimated_tax_gap': tax_gap
+        })
+        for pid in members:
+            person_to_ring[pid] = ring_id
+
+    rings_df = pd.DataFrame(rings) if rings else pd.DataFrame()
+    return rings_df, person_to_ring
+
+def get_ring_evidence_chain(ring_id, rings_df, graph, persons_df):
+    """Generate a human-readable evidence chain for a fraud ring."""
+    if rings_df.empty:
+        return "No ring data available."
+    ring_data = rings_df[rings_df['ring_id'] == ring_id].iloc[0]
+    members = ring_data['members']
+    lines = []
+    lines.append(f"Ring #{ring_id} contains {ring_data['size']} persons.")
+    lines.append(f"Anchor (likely beneficiary): {ring_data['anchor_name']} (assets: Rs.{ring_data['total_estimated_assets']/1e6:.1f}M, income: Rs.{ring_data['anchor_income']/1e6:.1f}M).")
+    lines.append(f"Non‑filers: {ring_data['non_filer_count']} out of {ring_data['size']}.")
+    # Collect edges
+    edge_summary = []
+    for u, v, data in graph.edges(data=True):
+        if u in members and v in members:
+            edge_type = data.get('type', '')
+            edge_summary.append(f"{persons_df[persons_df['master_person_id']==u]['full_name'].iloc[0] if u in persons_df['master_person_id'].values else u} ↔ {persons_df[persons_df['master_person_id']==v]['full_name'].iloc[0] if v in persons_df['master_person_id'].values else v} : {edge_type}")
+    if edge_summary:
+        lines.append("Evidence links:")
+        lines.extend(edge_summary[:10])  # limit
     else:
-        st.info("No data found. Use Live Data Upload to load files.")
-
-    st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#374151;font-size:10px;text-align:center'>Shaheen-Eye P-FIS v1.0<br>FMU — Govt. of Pakistan<br>© 2025 — CONFIDENTIAL</p>", unsafe_allow_html=True)
-
-# ── Load data for pages (fresh) ──────────────────────────────
-df = load_data()
-G = load_graph()
-audits = load_audit()
+        lines.append("No explicit shared address/phone/FBR ID edges found (but ring detected via transitive closure).")
+    return "\n".join(lines)
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 1 – NATIONAL DASHBOARD (unchanged)
+# ENHANCED NLP QUERY HELPERS (English, Urdu, Roman Urdu)
 # ════════════════════════════════════════════════════════════════════════════
-if "National" in page:
+def get_groq_client():
+    api_key = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+    if not api_key or not GROQ_AVAILABLE:
+        return None
+    return Groq(api_key=api_key)
+
+def translate_roman_urdu(text: str) -> str:
+    """Very basic Roman Urdu to English mapping for common words."""
+    mapping = {
+        "kaun": "who", "kya": "what", "kahaan": "where",
+        "sab se zyada": "most", "sab se kam": "least",
+        "saf": "clean", "saf data": "clear data", "saaf": "clean",
+        "khatarnak": "critical", "bohat khatarnak": "critical",
+        "high risk": "high risk", "critical risk": "critical",
+        "non-filer": "non-filer", "non-atl": "non-filer",
+        "filer": "filer", "atl": "filer",
+        "lahore": "lahore", "karachi": "karachi", "islamabad": "islamabad",
+        "rawalpindi": "rawalpindi", "peshawar": "peshawar",
+        "cc": "cc", "engine": "cc",
+        "income": "income", "assets": "assets", "property": "property",
+        "vehicle": "vehicle", "car": "vehicle",
+        "top": "top", "bottom": "bottom", "lowest": "lowest"
+    }
+    lower = text.lower()
+    for ur, en in mapping.items():
+        lower = lower.replace(ur, en)
+    return lower
+
+def parse_query_with_llm(query: str) -> dict:
+    """Use Groq to extract filters from natural language query."""
+    client = get_groq_client()
+    if not client:
+        return {}
+
+    system_prompt = """You are a query parser for a tax compliance database. 
+Output a JSON object with these fields (omit if not present):
+{
+    "city": string (Lahore, Karachi, etc.),
+    "risk_category": string (LOW, MEDIUM, HIGH, CRITICAL),
+    "filer_status": string (ATL, Non-ATL),
+    "min_cc": integer,
+    "max_cc": integer,
+    "min_income": integer,
+    "max_income": integer,
+    "min_assets": integer,
+    "max_assets": integer,
+    "fraud_flag": string (e.g., "Benami", "DC Rate"),
+    "sort_by": string (risk_score, income, assets, name, city),
+    "sort_order": string (asc, desc),
+    "limit": integer
+}
+
+If user asks for "most clear data", "most compliant", "lowest risk" -> sort_by="risk_score", sort_order="asc", limit=5.
+If user asks for "most critical", "highest risk" -> sort_by="risk_score", sort_order="desc", limit=5.
+If user asks "top X in city" -> limit=X, city=that city, sort_by="risk_score", sort_order="desc".
+If user asks for "non-filers with vehicles above 2000cc" -> filer_status="Non-ATL", min_cc=2000.
+If Roman Urdu or Urdu, understand same intent.
+
+Only output valid JSON, no extra text."""
+    
+    try:
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": query}
+            ],
+            temperature=0.1,
+            response_format={"type": "json_object"},
+            max_tokens=300
+        )
+        return json.loads(response.choices[0].message.content)
+    except Exception as e:
+        st.warning(f"LLM parsing error: {e}. Using fallback.")
+        return {}
+
+def apply_query_filters(df: pd.DataFrame, filters: dict) -> pd.DataFrame:
+    """Apply parsed filters to dataframe."""
+    if not filters:
+        return df
+    filtered = df.copy()
+    if filters.get("city"):
+        filtered = filtered[filtered['city'].str.contains(filters["city"], case=False, na=False)]
+    if filters.get("risk_category"):
+        filtered = filtered[filtered['risk_category'] == filters["risk_category"].upper()]
+    if filters.get("filer_status"):
+        status = "ATL" if filters["filer_status"] == "ATL" else "Non-ATL"
+        filtered = filtered[filtered['filer_status'] == status]
+    if filters.get("min_cc") and "max_vehicle_cc" in filtered.columns:
+        filtered = filtered[filtered['max_vehicle_cc'] >= filters["min_cc"]]
+    if filters.get("max_cc") and "max_vehicle_cc" in filtered.columns:
+        filtered = filtered[filtered['max_vehicle_cc'] <= filters["max_cc"]]
+    if filters.get("min_income") and "declared_income_pkr" in filtered.columns:
+        filtered = filtered[filtered['declared_income_pkr'] >= filters["min_income"]]
+    if filters.get("max_income") and "declared_income_pkr" in filtered.columns:
+        filtered = filtered[filtered['declared_income_pkr'] <= filters["max_income"]]
+    if filters.get("min_assets") and "total_assets_estimated" in filtered.columns:
+        filtered = filtered[filtered['total_assets_estimated'] >= filters["min_assets"]]
+    if filters.get("max_assets") and "total_assets_estimated" in filtered.columns:
+        filtered = filtered[filtered['total_assets_estimated'] <= filters["max_assets"]]
+    if filters.get("fraud_flag") and "top_fraud_flags" in filtered.columns:
+        flag = filters["fraud_flag"].lower()
+        filtered = filtered[filtered['top_fraud_flags'].str.lower().str.contains(flag, na=False)]
+    sort_by_map = {
+        "risk_score": "deviation_score",
+        "income": "declared_income_pkr",
+        "assets": "total_assets_estimated",
+        "name": "full_name",
+        "city": "city"
+    }
+    sort_by = filters.get("sort_by", "risk_score")
+    col = sort_by_map.get(sort_by, "deviation_score")
+    if col in filtered.columns:
+        ascending = (filters.get("sort_order", "desc") == "asc")
+        filtered = filtered.sort_values(by=col, ascending=ascending)
+    limit = filters.get("limit")
+    if limit and isinstance(limit, int) and limit > 0:
+        filtered = filtered.head(limit)
+    return filtered
+
+def generate_natural_summary(df: pd.DataFrame, original_query: str, filters: dict) -> str:
+    """Produce a one-sentence summary in natural language."""
     if df.empty:
-        st.warning("No data loaded. Use Live Data Upload to load files.")
-        st.stop()
-
-    c1, c2, c3, c4 = st.columns(4)
-    tax_gap = float(df[df['deviation_score'] >= 65]['total_assets_estimated'].fillna(0).sum()) * 0.15
-    rings = 0
-    if G is not None:
+        return "No profiles match your query."
+    client = get_groq_client()
+    if client:
         try:
-            comms = list(nx.connected_components(G))
-            rings = sum(1 for c in comms if len([n for n in c if G.nodes[n].get('type') == 'Person']) >= 3)
-        except Exception:
-            rings = 6
+            sample = df.head(5)[['full_name', 'deviation_score', 'risk_category', 'city']].to_string()
+            prompt = f"User asked: '{original_query}'. The top results are:\n{sample}\nWrite one concise sentence summarizing these results."
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.3,
+                max_tokens=100
+            )
+            return response.choices[0].message.content.strip()
+        except:
+            pass
+    return f"Found {len(df)} profile(s) matching your query."
+
+def fallback_keyword_parser(query: str) -> dict:
+    """Rule-based parser for when LLM is unavailable or fails."""
+    q = query.lower()
+    filters = {}
+    for city in ['lahore', 'karachi', 'islamabad', 'rawalpindi', 'peshawar', 'multan', 'faisalabad']:
+        if city in q:
+            filters['city'] = city.capitalize()
+            break
+    if 'critical' in q:
+        filters['risk_category'] = 'CRITICAL'
+    elif 'high risk' in q or 'high' in q:
+        filters['risk_category'] = 'HIGH'
+    elif 'medium' in q:
+        filters['risk_category'] = 'MEDIUM'
+    elif 'low risk' in q or 'low' in q:
+        filters['risk_category'] = 'LOW'
+    if 'non-filer' in q or 'non-atl' in q:
+        filters['filer_status'] = 'Non-ATL'
+    elif 'filer' in q or 'atl' in q:
+        filters['filer_status'] = 'ATL'
+    cc_match = re.search(r'(\d{3,4})\s*cc', q)
+    if cc_match:
+        cc = int(cc_match.group(1))
+        if 'above' in q or 'more than' in q or 'greater' in q:
+            filters['min_cc'] = cc
+        elif 'below' in q or 'less than' in q:
+            filters['max_cc'] = cc
+        else:
+            filters['min_cc'] = cc
+    income_match = re.search(r'income\s*(above|more than|greater than|below|less than)\s*(\d+)', q)
+    if income_match:
+        val = int(income_match.group(2))
+        if income_match.group(1) in ['above','more than','greater than']:
+            filters['min_income'] = val
+        else:
+            filters['max_income'] = val
+    assets_match = re.search(r'assets?\s*(above|more than|greater than|below|less than)\s*(\d+)', q)
+    if assets_match:
+        val = int(assets_match.group(2))
+        if assets_match.group(1) in ['above','more than','greater than']:
+            filters['min_assets'] = val
+        else:
+            filters['max_assets'] = val
+    fraud_keywords = ['benami', 'dc rate', 'file trading', 'hawala', 'agri shield', 'gift']
+    for fk in fraud_keywords:
+        if fk in q:
+            filters['fraud_flag'] = fk
+            break
+    if 'most clear' in q or 'most compliant' in q or 'lowest risk' in q or 'saaf' in q:
+        filters['sort_by'] = 'risk_score'
+        filters['sort_order'] = 'asc'
+        if not filters.get('limit'):
+            filters['limit'] = 5
+    elif 'most critical' in q or 'highest risk' in q or 'khatarnak' in q:
+        filters['sort_by'] = 'risk_score'
+        filters['sort_order'] = 'desc'
+        if not filters.get('limit'):
+            filters['limit'] = 5
+    limit_match = re.search(r'top\s*(\d+)', q)
+    if limit_match:
+        filters['limit'] = int(limit_match.group(1))
+        if 'sort_by' not in filters:
+            filters['sort_by'] = 'risk_score'
+            filters['sort_order'] = 'desc'
+    return filters
+
+def parse_query_comprehensive(query: str) -> dict:
+    """Combined parser: try LLM, fallback to rule-based."""
+    eng_query = translate_roman_urdu(query)
+    filters = parse_query_with_llm(eng_query)
+    if filters:
+        return filters
+    return fallback_keyword_parser(eng_query)
+
+# ════════════════════════════════════════════════════════════════════════════
+# PIPELINE AND BACKUP HELPERS (for Live Data Upload)
+# ════════════════════════════════════════════════════════════════════════════
+def run_pipeline_steps():
+    """Run the 4-step forensic pipeline. Returns (success, error_msg)."""
+    steps = [
+        ("🔄 Preprocessing — normalizing names & addresses",            "preprocess",        "run_preprocessing"),
+        ("🔗 Entity Resolution — linking identities across 4 datasets", "entity_resolution", "run_entity_resolution"),
+        ("🕸️  Building Knowledge Graph — mapping financial footprints",  "build_graph",       "construct_graph"),
+        ("🧠 Forensic Scoring — running 18 fraud detection modules",     "scoring",           "process_master_csv"),
+    ]
+    prog   = st.progress(0)
+    status = st.empty()
+    for i, (msg, mod, fn_name) in enumerate(steps):
+        status.markdown(
+            f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;"
+            f"padding:10px 14px;border-radius:4px;color:#93c5fd;font-size:13px'>{msg}...</div>",
+            unsafe_allow_html=True)
+        try:
+            import importlib
+            m  = importlib.import_module(mod)
+            fn = getattr(m, fn_name)
+            fn()
+        except Exception as e:
+            status.empty()
+            return False, f"Error in **{mod}**: {e}"
+        prog.progress((i + 1) / len(steps))
+        time.sleep(0.3)
+    status.markdown(
+        "<div style='background:#071f10;border-left:3px solid #22c55e;"
+        "padding:12px 14px;border-radius:4px;color:#4ade80;"
+        "font-weight:600;font-size:13px'>✅ Pipeline complete!</div>",
+        unsafe_allow_html=True)
+    return True, ""
+
+def backup_production_data():
+    raw_backup = tempfile.mkdtemp()
+    out_backup = tempfile.mkdtemp()
+    if os.path.exists("data/raw"):
+        shutil.copytree("data/raw", os.path.join(raw_backup, "raw"), dirs_exist_ok=True)
+    if os.path.exists("outputs"):
+        shutil.copytree("outputs", os.path.join(out_backup, "outputs"), dirs_exist_ok=True)
+    return raw_backup, out_backup
+
+def restore_production_data(raw_backup, out_backup):
+    if os.path.exists(os.path.join(raw_backup, "raw")):
+        shutil.rmtree("data/raw", ignore_errors=True)
+        shutil.copytree(os.path.join(raw_backup, "raw"), "data/raw")
+    if os.path.exists(os.path.join(out_backup, "outputs")):
+        shutil.rmtree("outputs", ignore_errors=True)
+        shutil.copytree(os.path.join(out_backup, "outputs"), "outputs")
+
+def smart_merge(existing_df, new_df, id_cols):
+    """Upsert new_df into existing_df using id_cols. Returns (merged_df, n_updated, n_added)."""
+    if existing_df.empty:
+        return new_df.copy(), 0, len(new_df)
+    if new_df.empty:
+        return existing_df.copy(), 0, 0
+    for col in id_cols:
+        if col not in existing_df.columns:
+            existing_df[col] = None
+        if col not in new_df.columns:
+            new_df[col] = None
+    existing_df['_merge_key'] = existing_df[id_cols].fillna('').agg('|'.join, axis=1)
+    new_df['_merge_key'] = new_df[id_cols].fillna('').agg('|'.join, axis=1)
+    updated = 0
+    added = 0
+    for _, row in new_df.iterrows():
+        key = row['_merge_key']
+        mask = existing_df['_merge_key'] == key
+        if mask.any():
+            for col in new_df.columns:
+                if col not in id_cols and col != '_merge_key' and pd.notna(row[col]):
+                    existing_df.loc[mask, col] = row[col]
+            updated += 1
+        else:
+            existing_df = pd.concat([existing_df, pd.DataFrame([row])], ignore_index=True)
+            added += 1
+    existing_df.drop(columns=['_merge_key'], inplace=True)
+    return existing_df, updated, added
+
+def render_dashboard(rdf, label="Preview"):
+    """Render a National-Dashboard-style view for any scored dataframe."""
+    if rdf.empty:
+        st.warning("No scored data to display.")
+        return
+    if 'top_risk_factor' in rdf.columns and 'top_fraud_flags' not in rdf.columns:
+        rdf = rdf.rename(columns={'top_risk_factor': 'top_fraud_flags'})
+    if 'total_assets_val' in rdf.columns and 'total_assets_estimated' not in rdf.columns:
+        rdf = rdf.rename(columns={'total_assets_val': 'total_assets_estimated'})
+    tax_gap = float(rdf[rdf['deviation_score'] >= 65]['total_assets_estimated'].fillna(0).sum()) * 0.15 if 'total_assets_estimated' in rdf.columns else 0
+    mc1, mc2, mc3, mc4 = st.columns(4)
     cards = [
-        (c1, "critical", "#ef4444", str(int((df['deviation_score']>=80).sum())), "🔴 Critical Risk Profiles"),
-        (c2, "warning", "#f59e0b", f"Rs. {tax_gap/1e9:.1f}B", "⚠️ Estimated Tax Gap"),
-        (c3, "info", "#3b82f6", f"{len(df):,}", "📊 Citizens Analyzed"),
-        (c4, "success", "#22c55e", str(rings), "🕸️ Fraud Rings Detected"),
+        (mc1, "critical", "#ef4444", str(int((rdf['deviation_score'] >= 80).sum())),        "🔴 Critical Risk"),
+        (mc2, "warning",  "#f59e0b", str(int(((rdf['deviation_score'] >= 65) & (rdf['deviation_score'] < 80)).sum())), "🟡 High Risk"),
+        (mc3, "info",     "#3b82f6", f"{len(rdf):,}",                                        "📊 Profiles Scored"),
+        (mc4, "success",  "#22c55e", f"Rs. {tax_gap/1e9:.2f}B",                              "⚠️ Est. Tax Gap"),
     ]
     for col, cls, clr, val, lbl in cards:
         with col:
             st.markdown(f"<div class='metric-card {cls}'><p class='metric-val' style='color:{clr}'>{val}</p><p class='metric-lbl'>{lbl}</p></div>", unsafe_allow_html=True)
-
     st.markdown("<br>", unsafe_allow_html=True)
-
-    col_hist, col_city = st.columns([3,2])
-    with col_hist:
-        st.markdown("<p class='section-title'>National Risk Score Distribution</p>", unsafe_allow_html=True)
-        fig_h = px.histogram(df, x="deviation_score", nbins=25, color_discrete_sequence=["#3b82f6"], labels={"deviation_score": "Compliance Deviation Score", "count": "Citizens"}, template="plotly_dark")
+    ch1, ch2 = st.columns([3,2])
+    with ch1:
+        st.markdown("<p class='section-title'>Risk Score Distribution</p>", unsafe_allow_html=True)
+        fig_h = px.histogram(rdf, x="deviation_score", nbins=25, color_discrete_sequence=["#3b82f6"], labels={"deviation_score": "Score", "count": "Profiles"}, template="plotly_dark")
         fig_h.add_vline(x=65, line_dash="dash", line_color="#f59e0b", annotation_text="High Risk", annotation_font_color="#f59e0b")
         fig_h.add_vline(x=80, line_dash="dash", line_color="#ef4444", annotation_text="Critical", annotation_font_color="#ef4444")
-        fig_h.update_layout(**PLOTLY_DARK, height=280, margin=dict(t=10,b=10))
+        fig_h.update_layout(**PLOTLY_DARK, height=260, margin=dict(t=10,b=10))
         st.plotly_chart(fig_h, use_container_width=True)
-
-    with col_city:
-        st.markdown("<p class='section-title'>Risk by City</p>", unsafe_allow_html=True)
-        if 'city' in df.columns:
-            city_df = df.groupby('city')['deviation_score'].mean().reset_index().sort_values('deviation_score')
+    with ch2:
+        st.markdown("<p class='section-title'>Avg Score by City</p>", unsafe_allow_html=True)
+        if 'city' in rdf.columns:
+            city_df = rdf.groupby('city')['deviation_score'].mean().reset_index().sort_values('deviation_score')
             fig_c = px.bar(city_df, x='deviation_score', y='city', orientation='h', color='deviation_score', color_continuous_scale=["#22c55e","#f59e0b","#ef4444"], template="plotly_dark", labels={"deviation_score":"Avg Score","city":""})
-            fig_c.update_layout(**PLOTLY_DARK, height=280, coloraxis_showscale=False, margin=dict(t=10,b=10))
+            fig_c.update_layout(**PLOTLY_DARK, height=260, coloraxis_showscale=False, margin=dict(t=10,b=10))
             st.plotly_chart(fig_c, use_container_width=True)
-
-    col_map, col_pie = st.columns([3,2])
-    with col_map:
-        st.markdown("<p class='section-title'>🇵🇰 Pakistan Risk Heatmap</p>", unsafe_allow_html=True)
-        city_coords = {
-            "Lahore": (31.5204, 74.3587), "Karachi": (24.8607, 67.0011), "Islamabad": (33.6844, 73.0479),
-            "Rawalpindi": (33.6007, 73.0679), "Faisalabad": (31.4504, 73.1350), "Multan": (30.1575, 71.5249),
-            "Peshawar": (34.0151, 71.5249), "Quetta": (30.1798, 66.9750), "Gujranwala": (32.1877, 74.1945),
-            "Sialkot": (32.4945, 74.5229)
-        }
-        if 'city' in df.columns:
-            avg_by_city = df.groupby('city')['deviation_score'].mean().reset_index()
-            map_rows = []
-            for _, r in avg_by_city.iterrows():
-                if r['city'] in city_coords:
-                    lat, lon = city_coords[r['city']]
-                    map_rows.append({"city": r['city'], "lat": lat, "lon": lon, "score": r['deviation_score']})
-            if map_rows:
-                mdf = pd.DataFrame(map_rows)
-                fig_m = px.scatter_geo(mdf, lat='lat', lon='lon', size='score', color='score', hover_name='city', color_continuous_scale=["#22c55e","#f59e0b","#ef4444"], size_max=15, scope="asia", template="plotly_dark")
-                fig_m.update_geos(center={"lat":30.3753,"lon":69.3451}, projection_scale=5.5, bgcolor="#111827", landcolor="#1f2937", oceancolor="#111827", lakecolor="#111827", showcountries=True, countrycolor="#374151")
-                fig_m.update_layout(height=300, paper_bgcolor="#111827", font_color="#94a3b8", coloraxis_showscale=False, margin={"r":0,"t":0,"l":0,"b":0})
-                st.plotly_chart(fig_m, use_container_width=True)
-
-    with col_pie:
-        st.markdown("<p class='section-title'>Risk Category Breakdown</p>", unsafe_allow_html=True)
-        if 'risk_category' in df.columns:
-            rc = df['risk_category'].value_counts()
+    ch3, ch4 = st.columns([2,3])
+    with ch3:
+        st.markdown("<p class='section-title'>Risk Breakdown</p>", unsafe_allow_html=True)
+        if 'risk_category' in rdf.columns:
+            rc = rdf['risk_category'].value_counts()
             fig_p = px.pie(values=rc.values, names=rc.index, color=rc.index, color_discrete_map=RISK_COLORS, template="plotly_dark", hole=0.45)
-            fig_p.update_layout(paper_bgcolor="#111827", font_color="#94a3b8", height=300, showlegend=True, legend=dict(orientation="v", x=1.0, y=0.5, font=dict(size=11)), margin=dict(t=10,b=10))
+            fig_p.update_layout(paper_bgcolor="#111827", font_color="#94a3b8", height=260, showlegend=True, legend=dict(orientation="v", x=1.0, y=0.5, font=dict(size=10)), margin=dict(t=10,b=10))
             st.plotly_chart(fig_p, use_container_width=True)
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<p class='section-title'>Most Common Fraud Patterns Detected</p>", unsafe_allow_html=True)
-    if 'top_fraud_flags' in df.columns:
-        all_flags = []
-        for flags_str in df['top_fraud_flags'].dropna():
-            for f in str(flags_str).split(','):
-                f = f.strip()
-                if f and f not in ('None','nan',''):
-                    all_flags.append(f)
-        if all_flags:
-            flag_counts = pd.Series(all_flags).value_counts().head(10).reset_index()
-            flag_counts.columns = ['Fraud Pattern', 'Count']
-            fig_f = px.bar(flag_counts.sort_values('Count'), x='Count', y='Fraud Pattern', orientation='h', color='Count', color_continuous_scale=["#1d4ed8","#dc2626"], template="plotly_dark", labels={"Count":"Profiles Flagged"})
-            fig_f.update_layout(**PLOTLY_DARK, height=320, coloraxis_showscale=False, margin=dict(t=10,b=10))
-            st.plotly_chart(fig_f, use_container_width=True)
-
-    col_btn1, col_btn2, _ = st.columns([1,1,3])
-    with col_btn1:
-        if st.button("📊 Export Overall Intelligence Report (PDF)", type="primary"):
-            try:
-                if df.empty:
-                    st.error("No data to generate report.")
-                else:
-                    report_df = df.copy()
-                    if 'top_fraud_flags' not in report_df.columns and 'top_risk_factor' not in report_df.columns:
-                        report_df['top_fraud_flags'] = "No fraud data"
-                    pdf_path = generate_overall_report(report_df)
-                    with open(pdf_path, "rb") as f:
-                        st.download_button(
-                            label="⬇️ Download Overall Report",
-                            data=f.read(),
-                            file_name="FBR_Overall_Report.pdf",
-                            mime="application/pdf",
-                            key="download_overall_report"
-                        )
-            except Exception as e:
-                st.error(f"Report generation error: {e}")
+    with ch4:
+        st.markdown("<p class='section-title'>Top Fraud Patterns</p>", unsafe_allow_html=True)
+        if 'top_fraud_flags' in rdf.columns:
+            all_flags = []
+            for fs in rdf['top_fraud_flags'].dropna():
+                for f in str(fs).split(','):
+                    f = f.strip()
+                    if f and f not in ('None','nan',''):
+                        all_flags.append(f)
+            if all_flags:
+                fc = pd.Series(all_flags).value_counts().head(8).reset_index()
+                fc.columns = ['Pattern', 'Count']
+                fig_f = px.bar(fc.sort_values('Count'), x='Count', y='Pattern', orientation='h', color='Count', color_continuous_scale=["#1d4ed8","#dc2626"], template="plotly_dark")
+                fig_f.update_layout(**PLOTLY_DARK, height=260, coloraxis_showscale=False, margin=dict(t=10,b=10))
+                st.plotly_chart(fig_f, use_container_width=True)
+    st.markdown("<p class='section-title'>Top 10 Highest-Risk Profiles</p>", unsafe_allow_html=True)
+    disp_cols = ['full_name', 'deviation_score', 'risk_category', 'filer_status', 'declared_income_pkr', 'city', 'top_fraud_flags']
+    avail = [c for c in disp_cols if c in rdf.columns]
+    st.dataframe(rdf.sort_values('deviation_score', ascending=False)[avail].head(10), use_container_width=True)
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 2 – RISK LEADERBOARD (unchanged)
+# PAGE 1 – NATIONAL DASHBOARD
 # ════════════════════════════════════════════════════════════════════════════
-elif "Leaderboard" in page:
+def page_national_dashboard():
+    df = load_data()
+    if df.empty:
+        st.warning("No data loaded. Use Live Data Upload to load files.")
+        return
+    render_dashboard(df, "")
+    if st.button("📊 Export Overall Intelligence Report (PDF)", type="primary"):
+        try:
+            pdf_path = generate_overall_report(df)
+            with open(pdf_path, "rb") as f:
+                st.download_button("⬇️ Download Overall Report", f.read(), file_name="FBR_Overall_Report.pdf", mime="application/pdf")
+        except Exception as e:
+            st.error(f"Report error: {e}")
+
+# ════════════════════════════════════════════════════════════════════════════
+# PAGE 2 – RISK LEADERBOARD
+# ════════════════════════════════════════════════════════════════════════════
+def page_risk_leaderboard():
+    df = load_data()
     if df.empty:
         st.warning("No data. Use Live Data Upload to load files.")
-        st.stop()
-
+        return
     st.markdown("<p class='section-title'>Risk Intelligence Leaderboard</p>", unsafe_allow_html=True)
     st.markdown("<p style='color:#4b5563;font-size:12px;margin-bottom:16px'>Select a row to open the full profile investigation.</p>", unsafe_allow_html=True)
-
     fc1, fc2, fc3, fc4 = st.columns(4)
     with fc1:
         cities = sorted(df['city'].dropna().unique().tolist()) if 'city' in df.columns else []
@@ -331,7 +654,6 @@ elif "Leaderboard" in page:
         atl_f = st.multiselect("📋 ATL Status", ['ATL','Non-ATL'], key="lb_atl")
     with fc4:
         min_s = st.slider("Min Score", 0, 100, 0, key="lb_score")
-
     fdf = df.copy()
     if city_f: fdf = fdf[fdf['city'].isin(city_f)]
     if risk_f: fdf = fdf[fdf['risk_category'].isin(risk_f)]
@@ -339,11 +661,8 @@ elif "Leaderboard" in page:
     fdf = fdf[fdf['deviation_score'] >= min_s]
     fdf = fdf.sort_values('deviation_score', ascending=False).reset_index(drop=True)
     fdf.index += 1
-
     st.markdown(f"<p style='color:#6b7280;font-size:12px'>Showing <b style='color:#94a3b8'>{len(fdf)}</b> profiles</p>", unsafe_allow_html=True)
-
     try:
-        from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode, JsCode
         disp = ['full_name','city','deviation_score','risk_category','filer_status','declared_income_pkr','vehicle_make_model','top_fraud_flags']
         avail = [c for c in disp if c in fdf.columns]
         gb = GridOptionsBuilder.from_dataframe(fdf[avail])
@@ -360,7 +679,6 @@ elif "Leaderboard" in page:
         gb.configure_column("vehicle_make_model", headerName="Vehicle")
         gb.configure_column("top_fraud_flags", headerName="🔍 Fraud Detected")
         resp = AgGrid(fdf[avail], gridOptions=gb.build(), update_mode=GridUpdateMode.SELECTION_CHANGED, allow_unsafe_jscode=True, height=600, theme="alpine-dark")
-
         sel = resp.get('selected_rows', [])
         if sel is not None and len(sel) > 0:
             if isinstance(sel, pd.DataFrame):
@@ -378,13 +696,17 @@ elif "Leaderboard" in page:
         st.info("For interactive table: pip install streamlit-aggrid")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 3 – INDIVIDUAL PROFILE (with fixed timeline)
+# PAGE 3 – INDIVIDUAL PROFILE (with ring indicator)
 # ════════════════════════════════════════════════════════════════════════════
-elif "Individual" in page:
+def page_individual_profile():
+    df = load_data()
     if df.empty:
         st.warning("No data. Use Live Data Upload to load files.")
-        st.stop()
-
+        return
+    graph = load_graph()
+    audits = load_audit()
+    # Fraud ring detection
+    rings_df, person_to_ring = detect_fraud_rings()
     names = df['full_name'].drop_duplicates().tolist()
     default = 0
     if 'sel_pid' in st.session_state:
@@ -392,7 +714,6 @@ elif "Individual" in page:
         m = df[df['master_person_id'] == pid_sel]
         if len(m) > 0 and m.iloc[0]['full_name'] in names:
             default = names.index(m.iloc[0]['full_name'])
-
     sel_name = st.selectbox("Select citizen profile", names, index=default)
     person = df[df['full_name'] == sel_name].iloc[0]
     pid = person['master_person_id']
@@ -400,9 +721,16 @@ elif "Individual" in page:
     flags_raw = str(person.get('top_fraud_flags', ''))
     cat = str(person.get('risk_category', 'UNKNOWN')).upper()
     clr = risk_color(cat)
-
     st.markdown(f"<div class='profile-header' style='border-left:4px solid {clr}'><div style='display:flex;justify-content:space-between;align-items:start'><div><h2 style='color:{clr};margin:0;font-size:22px'>{sel_name}</h2><p style='color:#6b7280;margin:4px 0;font-size:13px'>NTN/FBR-ID: {person.get('master_person_id','N/A')} &nbsp;·&nbsp; City: {person.get('city','N/A')} &nbsp;·&nbsp; Occupation: {person.get('occupation','N/A')} &nbsp;·&nbsp; ATL: <b style='color:{'#22c55e' if person.get('filer_status')=='ATL' else '#ef4444'}'>{person.get('filer_status','N/A')}</b></p></div><div style='text-align:right'><p style='font-size:48px;font-weight:800;color:{clr};margin:0;line-height:1'>{score:.0f}<span style='font-size:16px;color:#4b5563'>/100</span></p><span style='background:{clr};color:{'black' if cat=='HIGH' else 'white'};padding:4px 14px;border-radius:12px;font-size:11px;font-weight:700'>{cat}</span></div></div></div>", unsafe_allow_html=True)
-
+    
+    # Ring indicator
+    ring_id = person_to_ring.get(pid, -1)
+    if ring_id != -1 and not rings_df.empty:
+        ring_data = rings_df[rings_df['ring_id'] == ring_id].iloc[0]
+        st.info(f"🔗 This person belongs to **Fraud Ring #{ring_id}** with {ring_data['size']} members. "
+                f"Ring total assets: Rs. {ring_data['total_estimated_assets']/1e6:.1f}M. "
+                f"Go to **Fraud Rings** page to see the full network.")
+    
     col_graph, col_intel = st.columns([1,1])
     with col_graph:
         st.markdown("<p class='section-title'>Financial Footprint Graph</p>", unsafe_allow_html=True)
@@ -425,12 +753,12 @@ elif "Individual" in page:
         fbr_clr = "#22c55e" if person.get('filer_status')=='ATL' else "#ef4444"
         net.add_node(fbr_id, label=f"📋 FBR\nRs.{float(person.get('declared_income_pkr',0)):,.0f}", color={"background":"#0f172a","border":fbr_clr}, size=22, title=f"<b>FBR Filing</b><br>Income: Rs.{float(person.get('declared_income_pkr',0)):,.0f}<br>Status: {person.get('filer_status','N/A')}", shape="box")
         net.add_edge(pid, fbr_id, label="FILED", color=fbr_clr, width=2)
-        if G is not None:
+        if graph.number_of_nodes() > 0:
             try:
-                for n_id in list(G.neighbors(pid))[:4]:
-                    edata = G.edges.get((pid, n_id), {})
-                    if edata.get('type') == 'SHARES_ADDRESS':
-                        ndata = G.nodes.get(n_id, {})
+                for n_id in list(graph.neighbors(pid))[:4]:
+                    edge_type = graph.get_edge_data(pid, n_id, {}).get('type', '')
+                    if 'SHARES_ADDRESS' in edge_type:
+                        ndata = graph.nodes.get(n_id, {})
                         net.add_node(n_id, label=str(ndata.get('name',''))[:12], color={"background":"#2e1065","border":"#a855f7"}, size=20, title=f"<b>Same Address</b><br>{ndata.get('name',n_id)}", shape="dot")
                         net.add_edge(pid, n_id, label="SAME ADDRESS", color="#a855f7", width=1, dashes=True)
             except Exception:
@@ -443,11 +771,10 @@ elif "Individual" in page:
                 components.html(f.read(), height=430)
         except Exception as e:
             st.warning(f"Graph rendering error: {e}. Showing basic info.")
-            if G is not None:
-                neighbors = list(G.neighbors(pid))
+            if graph.number_of_nodes() > 0:
+                neighbors = list(graph.neighbors(pid))
                 if neighbors:
-                    st.write("Connected entities:", [G.nodes[n].get('name', n) for n in neighbors[:5]])
-
+                    st.write("Connected entities:", [graph.nodes[n].get('name', n) for n in neighbors[:5]])
         st.markdown("<p class='section-title' style='margin-top:20px'>Forensic Enforcement Directive</p>", unsafe_allow_html=True)
         directive_text = ""
         if score >= 80:
@@ -467,7 +794,6 @@ elif "Individual" in page:
                 <span style="font-size: 18px;">⚖️</span> {directive_text}
             </div>
         """, unsafe_allow_html=True)
-
     with col_intel:
         declared = float(person.get('declared_income_pkr', 0))
         lifestyle = float(person.get('annual_utility_bill', 0))
@@ -490,20 +816,18 @@ elif "Individual" in page:
             if st.button("🤖 Generate Investigation Note", key="gen_audit"):
                 with st.spinner("FBR IIW — Generating report..."):
                     try:
-                        from groq import Groq
-                        from dotenv import load_dotenv
-                        load_dotenv()
-                        client = Groq()
-                        SYSTEM = "You are a Senior FBR Forensic Investigator. Write a 3-paragraph legal investigation note. Cite exact figures. Reference ITO 2001 or Benami Act 2017. Recommend enforcement action. Tone: cold, legal, authoritative."
-                        resp = client.chat.completions.create(model="llama-3.3-70b-versatile", messages=[{"role":"system","content":SYSTEM},{"role":"user","content":f"SUBJECT: {sel_name}, SCORE: {score}/100, ASSETS: {flags_raw}, Income: Rs.{declared:,.0f}, Lifestyle: Rs.{lifestyle:,.0f}/yr"}], temperature=0.2, max_tokens=400)
-                        audit_text = resp.choices[0].message.content
-                        audits[pid] = audit_text
-                        with open("outputs/audit_trails.json", "w", encoding="utf-8") as f:
-                            json.dump(audits, f, indent=2)
-                        st.markdown(f"<div class='audit-box'>{audit_text.replace(chr(10),'<br>')}</div>", unsafe_allow_html=True)
+                        if not GROQ_AVAILABLE:
+                            st.error("Groq not installed or API key missing.")
+                        else:
+                            client = Groq()
+                            SYSTEM = "You are a Senior FBR Forensic Investigator. Write a 3-paragraph legal investigation note. Cite exact figures. Reference ITO 2001 or Benami Act 2017. Recommend enforcement action. Tone: cold, legal, authoritative."
+                            resp = client.chat.completions.create(model="llama-3.3-70b-versatile", messages=[{"role":"system","content":SYSTEM},{"role":"user","content":f"SUBJECT: {sel_name}, SCORE: {score}/100, ASSETS: {flags_raw}, Income: Rs.{declared:,.0f}, Lifestyle: Rs.{lifestyle:,.0f}/yr"}], temperature=0.2, max_tokens=400)
+                            audit_text = resp.choices[0].message.content
+                            audits[pid] = audit_text
+                            save_audit(audits)
+                            st.markdown(f"<div class='audit-box'>{audit_text.replace(chr(10),'<br>')}</div>", unsafe_allow_html=True)
                     except Exception as e:
                         st.error(f"Groq error: {e}")
-
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("<p class='section-title'>Evidence Timeline — Assets vs Tax Filings</p>", unsafe_allow_html=True)
     tl = []
@@ -532,13 +856,11 @@ elif "Individual" in page:
         fig_tl.update_xaxes(range=[min_yr - padding, max_yr + padding])
         fig_tl.update_layout(**PLOTLY_DARK, height=240, showlegend=False, margin={"t": 50, "b": 10, "l": 10, "r": 50})
         st.plotly_chart(fig_tl, use_container_width=True)
-
     st.markdown("<hr style='border-color:#1f2937'>", unsafe_allow_html=True)
     ex1, ex2, _ = st.columns([1,1,3])
     with ex1:
         if st.button("📄 Export PDF Report", type="primary"):
             try:
-                from pdf_export import generate_pdf
                 pdf_path = generate_pdf(person.to_dict(), audits.get(pid, ""))
                 with open(pdf_path, "rb") as f:
                     st.download_button("⬇️ Download PDF", f, file_name=f"FBR_Investigation_{pid}.pdf", mime="application/pdf")
@@ -547,7 +869,6 @@ elif "Individual" in page:
     with ex2:
         if st.button("📦 Export Full Package"):
             try:
-                import zipfile, io
                 buf = io.BytesIO()
                 with zipfile.ZipFile(buf, "w") as zf:
                     from pdf_export import generate_pdf
@@ -560,295 +881,157 @@ elif "Individual" in page:
                 st.error(f"ZIP error: {e}")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 4 – INTELLIGENCE QUERY (unchanged)
+# PAGE 4 – FRAUD RINGS INTELLIGENCE
 # ════════════════════════════════════════════════════════════════════════════
-elif "Query" in page:
+def page_fraud_rings():
+    st.markdown("<p class='section-title'>🕸️ Fraud Rings Intelligence</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#4b5563;font-size:13px;margin-bottom:16px'>Communities of people linked by shared addresses, phones, or FBR IDs – revealing benami networks.</p>", unsafe_allow_html=True)
+
+    rings_df, person_to_ring = detect_fraud_rings()
+    if rings_df.empty:
+        st.info("No fraud rings with at least 2 members detected.")
+        return
+
+    total_rings = len(rings_df)
+    total_tax_gap = rings_df['estimated_tax_gap'].sum()
+    total_members = rings_df['size'].sum()
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Fraud Rings Detected", total_rings)
+    col2.metric("Total Members in Rings", total_members)
+    col3.metric("Estimated Total Tax Gap", f"Rs. {total_tax_gap/1e9:.2f}B")
+
+    st.markdown("---")
+
+    # Ring selector
+    ring_options = {f"Ring {row['ring_id']} (Size {row['size']}, Anchor: {row['anchor_name']})": row['ring_id']
+                    for _, row in rings_df.iterrows()}
+    selected_label = st.selectbox("Select a fraud ring to inspect", list(ring_options.keys()))
+    selected_ring_id = ring_options[selected_label]
+    ring_data = rings_df[rings_df['ring_id'] == selected_ring_id].iloc[0]
+
+    # Ring details
+    st.subheader(f"Ring {selected_ring_id}")
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Members", ring_data['size'])
+    c2.metric("Total Assets", f"Rs. {ring_data['total_estimated_assets']/1e6:.1f}M")
+    c3.metric("Total Declared Income", f"Rs. {ring_data['total_declared_income']/1e6:.1f}M")
+    c4.metric("Est. Tax Gap", f"Rs. {ring_data['estimated_tax_gap']/1e6:.1f}M")
+
+    st.markdown(f"**Anchor (Likely Beneficiary):** {ring_data['anchor_name']} (Asset value: Rs. {ring_data['total_estimated_assets']/1e6:.1f}M, declared income: Rs. {ring_data['anchor_income']/1e6:.1f}M – discrepancy suggests benami structure)")
+    st.markdown(f"**Non‑Filers in ring:** {ring_data['non_filer_count']} out of {ring_data['size']} members are Non‑ATL, controlling Rs. {ring_data['total_estimated_assets']/1e6:.1f}M")
+
+    # Evidence chain
+    st.subheader("Evidence Chain – How these people are connected")
+    graph = load_graph()
+    persons_df = load_data()
+    evidence = get_ring_evidence_chain(selected_ring_id, rings_df, graph, persons_df)
+    st.markdown(f"<div class='audit-box' style='background:#0f1b2d;'>{evidence.replace(chr(10), '<br>')}</div>", unsafe_allow_html=True)
+
+    # Network graph of the ring
+    st.subheader("Ring Network Graph")
+    members = ring_data['members']
+    subgraph = graph.subgraph(members)
+    net = Network(height="500px", width="100%", bgcolor="#111827", font_color="#e2e8f0")
+    for node in subgraph.nodes():
+        risk = persons_df[persons_df['master_person_id'] == node]['risk_category'].values
+        color = risk_color(risk[0]) if len(risk) > 0 else "#6b7280"
+        net.add_node(node, label=node[:10], color=color, title=f"Person ID: {node}")
+    for u, v, data in subgraph.edges(data=True):
+        typ = data.get('type', 'edge')
+        net.add_edge(u, v, title=typ)
+    os.makedirs("outputs/graphs", exist_ok=True)
+    net.save_graph("outputs/graphs/ring_network.html")
+    with open("outputs/graphs/ring_network.html", "r", encoding="utf-8") as f:
+        components.html(f.read(), height=550)
+
+    # Member table
+    st.subheader("Ring Members")
+    members_df = persons_df[persons_df['master_person_id'].isin(members)][['full_name', 'city', 'deviation_score', 'risk_category', 'filer_status', 'declared_income_pkr', 'total_assets_estimated']]
+    st.dataframe(members_df, use_container_width=True)
+
+# ════════════════════════════════════════════════════════════════════════════
+# PAGE 5 – ENHANCED INTELLIGENCE QUERY (NLP)
+# ════════════════════════════════════════════════════════════════════════════
+def page_intelligence_query():
+    df = load_data()
     if df.empty:
         st.warning("No data. Use Live Data Upload to load files.")
-        st.stop()
-    st.markdown("<p class='section-title'>Intelligence Query Interface</p>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#4b5563;font-size:13px;margin-bottom:16px'>Query Pakistan's financial population in plain language.</p>", unsafe_allow_html=True)
-    quick = ["Non-filers in DHA with 2000cc+ vehicles", "Citizens with zero income and property above 20M", "Bahria Town residents with Non-ATL status", "All critical risk profiles in Karachi", "Drivers or housewives owning luxury vehicles", "Properties with File registry type and Non-ATL owner"]
-
+        return
+    st.markdown("<p class='section-title'>Intelligence Query Interface (NLP)</p>", unsafe_allow_html=True)
+    st.markdown("""
+    <p style='color:#4b5563;font-size:13px;margin-bottom:16px'>Ask in <b>English, Urdu, or Roman Urdu</b>. Examples:</p>
+    <ul>
+        <li>Who has the most clear data among all?</li>
+        <li>Show me top 5 critical risk profiles in Lahore</li>
+        <li>Non-filers in Karachi with vehicles above 2000cc</li>
+        <li>سب سے زیادہ کمپلائنٹ کون ہے؟</li>
+        <li>Lahore mein sab se zyada khatarnak kaun hai?</li>
+    </ul>
+    """, unsafe_allow_html=True)
     if 'auto_run' not in st.session_state:
-        st.session_state['auto_run'] = False
-
-    qc1, qc2, qc3 = st.columns(3)
+        st.session_state.auto_run = False
+    quick = [
+        "Most compliant citizens",
+        "Top 5 critical in Lahore",
+        "Non-filers with vehicles >2000cc",
+        "سب سے زیادہ کمپلائنٹ",
+        "Lahore high risk"
+    ]
+    cols = st.columns(5)
     for i, q in enumerate(quick):
-        col = [qc1, qc2, qc3][i % 3]
-        with col:
-            if st.button(f"🔍 {q}", key=f"q{i}"):
-                st.session_state['query_val'] = q
-                st.session_state['auto_run'] = True
+        with cols[i]:
+            if st.button(f"🔍 {q[:20]}...", key=f"quick_{i}"):
+                st.session_state.query_val = q
+                st.session_state.auto_run = True
                 st.rerun()
-
-    query = st.text_input("💬 Enter query:", value=st.session_state.get('query_val',''), placeholder="e.g. Show Land Cruiser owners with zero income in Lahore")
+    query = st.text_input("💬 Ask anything:", value=st.session_state.get('query_val',''), placeholder="e.g. Show me compliant citizens in Islamabad")
     if query != st.session_state.get('query_val',''):
-        st.session_state['query_val'] = query
-
-    execute_clicked = st.button("🚀 Execute", type="primary")
-    if (execute_clicked or st.session_state['auto_run']) and query:
-        st.session_state['auto_run'] = False
-        safe_q = sanitize_query(query)
-        if safe_q is None:
-            st.error("🔒 Security violation: Unauthorized characters detected.")
-        elif safe_q.strip() == "":
-            st.warning("⚠️ Please enter a valid search query.")
-        else:
-            q_lower = translate_urdu(safe_q).lower()
-            valid_keywords = ["lahore","karachi","islamabad","rawalpindi","non-filer","non-atl","filer","atl","cc","vehicle","luxury","high asset"]
-            if not any(kw in q_lower for kw in valid_keywords):
-                st.warning("No valid filter keywords found. Try 'lahore', 'non-filer', etc.")
-                res = pd.DataFrame()
-                summary = "No valid query terms."
-            else:
-                with st.spinner("Scanning population..."):
-                    res = df.copy()
-                    if "non-filer" in q_lower or "non-atl" in q_lower or "nonfiler" in q_lower:
-                        res = res[res['filer_status'] == 'Non-ATL']
-                    elif "filer" in q_lower or " atl " in q_lower:
-                        res = res[res['filer_status'] == 'ATL']
-                    cc_match = re.search(r'(\d{3,4})\s*cc', q_lower)
-                    if cc_match:
-                        cc_val = int(cc_match.group(1))
-                        if "above" in q_lower or "more" in q_lower:
-                            res = res[res['max_vehicle_cc'] >= cc_val]
-                        else:
-                            res = res[res['max_vehicle_cc'] <= cc_val]
-                    for city in ['lahore','karachi','islamabad','rawalpindi']:
-                        if city in q_lower:
-                            res = res[res['city'].str.lower() == city]
-                            break
-                    if "zero income" in q_lower or "0 income" in q_lower:
-                        res = res[res['declared_income_pkr'] == 0]
-                    pm = re.search(r'(\d+)\s*(million|crore|m\b|cr\b)', q_lower)
-                    if pm and 'property' in q_lower:
-                        v = int(pm.group(1))
-                        mx = 10_000_000 if 'crore' in pm.group(2) else 1_000_000
-                        thresh = v * mx
-                        if any(w in q_lower for w in ['above','more']):
-                            res = res[res['total_property_value'] >= thresh]
-                    for kw, mdl in [('land cruiser','Land Cruiser'),('fortuner','Fortuner'),('prado','Prado'),('civic','Civic'),('corolla','Corolla'),('alto','Alto')]:
-                        if kw in q_lower and 'vehicle_make_model' in res.columns:
-                            res = res[res['vehicle_make_model'].str.contains(mdl, na=False)]
-                    for occ in ['driver','housewife','student','retired']:
-                        if occ in q_lower and 'occupation' in res.columns:
-                            res = res[res['occupation'].str.lower().str.contains(occ, na=False)]
-                    if 'critical' in q_lower:
-                        res = res[res['risk_category']=='CRITICAL']
-                    elif 'high risk' in q_lower:
-                        res = res[res['risk_category'].isin(['CRITICAL','HIGH'])]
-                    if 'file' in q_lower and 'registry' in q_lower and 'registry_type' in res.columns:
-                        res = res[res['registry_type'].str.lower().str.contains('file', na=False)]
-                    res = res.sort_values('deviation_score', ascending=False)
-                    summary = f"Query returned {len(res)} profiles. Avg score: {res['deviation_score'].mean():.0f}."
-                    try:
-                        from groq import Groq
-                        from dotenv import load_dotenv
-                        load_dotenv()
-                        client = Groq()
-                        r = client.chat.completions.create(model="llama-3.3-70b-versatile", messages=[{"role":"user","content":f"Write ONE sentence summary for FBR auditor: Query '{query}' returned {len(res)} profiles. Avg score: {res['deviation_score'].mean():.0f}/100. Top: {res.iloc[0]['full_name'] if len(res)>0 else 'none'} score {res.iloc[0]['deviation_score'] if len(res)>0 else 0:.0f}."}], max_tokens=80, temperature=0.1)
-                        summary = r.choices[0].message.content.strip()
-                    except Exception:
-                        pass
-            if len(res) > 0:
-                st.markdown(f"<div class='query-result-box'>🤖 <b>Intelligence Summary:</b> {summary}</div>", unsafe_allow_html=True)
-                disp_c = ['full_name','city','deviation_score','risk_category','filer_status','declared_income_pkr','vehicle_make_model']
-                av = [c for c in disp_c if c in res.columns]
-                st.dataframe(res[av].head(20), use_container_width=True, height=280)
-                st.markdown("<p class='section-title' style='margin-top:16px'>Risk Network — Top Results</p>", unsafe_allow_html=True)
-                net_q = Network(height="260px", width="100%", bgcolor="#111827", font_color="#e2e8f0")
-                for _, row_q in res.head(5).iterrows():
-                    sc = float(row_q.get('deviation_score',0))
-                    nc = score_color(sc)
-                    net_q.add_node(row_q['master_person_id'], label=f"{str(row_q['full_name']).split()[0]}\n{sc:.0f}", color={"background":nc,"border":"#ffffff"}, size=int(sc/5)+12, title=f"{row_q['full_name']}<br>Score: {sc:.0f}<br>{row_q.get('city','')}")
-                os.makedirs("outputs/graphs", exist_ok=True)
-                net_q.save_graph("outputs/graphs/_query.html")
-                with open("outputs/graphs/_query.html", "r", encoding="utf-8") as f:
-                    components.html(f.read(), height=270)
-            else:
-                st.info("No profiles match. Try different terms.")
+        st.session_state.query_val = query
+    execute = st.button("🚀 Execute", type="primary")
+    if (execute or st.session_state.get('auto_run', False)) and query:
+        st.session_state.auto_run = False
+        with st.spinner("Understanding your query..."):
+            filters = parse_query_comprehensive(query)
+            filtered = apply_query_filters(df, filters)
+            if filtered.empty:
+                st.info("No profiles match your query.")
+                return
+            summary = generate_natural_summary(filtered, query, filters)
+            st.markdown(f"<div class='query-result-box'>🤖 <b>Intelligence Summary:</b> {summary}</div>", unsafe_allow_html=True)
+            display_cols = ['full_name', 'city', 'deviation_score', 'risk_category', 'filer_status', 'declared_income_pkr', 'max_vehicle_cc', 'top_fraud_flags']
+            avail = [c for c in display_cols if c in filtered.columns]
+            st.dataframe(filtered[avail].head(20), use_container_width=True, height=300)
+            if len(filtered) > 0:
+                st.markdown("<p class='section-title' style='margin-top:20px'>Risk Network — Top Results</p>", unsafe_allow_html=True)
+                graph = load_graph()
+                if graph.number_of_nodes() > 0 and 'master_person_id' in filtered.columns:
+                    top_ids = filtered.head(5)['master_person_id'].tolist()
+                    net = Network(height="400px", width="100%", bgcolor="#111827", font_color="#e2e8f0")
+                    added_nodes = set(top_ids)
+                    for pid in top_ids:
+                        if pid in graph:
+                            score_val = filtered[filtered['master_person_id'] == pid]['deviation_score'].values[0] if not filtered.empty else 0
+                            node_color = score_color(score_val)
+                            net.add_node(pid, label=pid[:15], title=f"Score: {score_val:.0f}", color=node_color, size=30)
+                            for neighbor in graph.neighbors(pid):
+                                if neighbor not in added_nodes:
+                                    added_nodes.add(neighbor)
+                                    net.add_node(neighbor, label=str(neighbor)[:10], size=20)
+                                net.add_edge(pid, neighbor)
+                    os.makedirs("outputs/graphs", exist_ok=True)
+                    net.save_graph("outputs/graphs/_query_net.html")
+                    with open("outputs/graphs/_query_net.html", "r", encoding="utf-8") as f:
+                        components.html(f.read(), height=400)
+                else:
+                    st.info("Graph data not available for these profiles.")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 5 – LIVE DATA UPLOAD (Test + Merge workflow with both upload modes)
+# PAGE 6 – LIVE DATA UPLOAD (Test + Merge workflow with both upload modes)
 # ════════════════════════════════════════════════════════════════════════════
-elif "Upload" in page:
-
-    # ── helpers ───────────────────────────────────────────────────────────
-    def smart_merge(existing_df, new_df, id_cols):
-        """
-        Upsert new_df into existing_df.
-        - Match on id_cols (unique record identifiers, NOT names).
-        - For matched rows: update every column in existing with new values.
-        - For unmatched rows: append as genuinely new records.
-        Returns (merged_df, n_updated, n_added).
-        """
-        if existing_df.empty:
-            return new_df.copy(), 0, len(new_df)
-        if new_df.empty:
-            return existing_df.copy(), 0, 0
-
-        valid_ids = [c for c in id_cols if c in existing_df.columns and c in new_df.columns]
-        if not valid_ids:
-            merged = pd.concat([existing_df, new_df], ignore_index=True).drop_duplicates()
-            return merged, 0, len(new_df)
-
-        existing_idx = existing_df.set_index(valid_ids)
-        new_idx      = new_df.set_index(valid_ids)
-
-        overlap_keys = existing_idx.index.intersection(new_idx.index)
-        n_updated = len(overlap_keys)
-        new_keys  = new_idx.index.difference(existing_idx.index)
-        n_added   = len(new_keys)
-
-        if n_updated > 0:
-            shared_cols = [c for c in new_df.columns if c in existing_df.columns and c not in valid_ids]
-            existing_idx.loc[overlap_keys, shared_cols] = new_idx.loc[overlap_keys, shared_cols]
-
-        if n_added > 0:
-            new_rows = new_idx.loc[new_keys].reset_index()
-            existing_idx = pd.concat([existing_idx.reset_index(), new_rows], ignore_index=True).set_index(valid_ids)
-
-        return existing_idx.reset_index(), n_updated, n_added
-
-    def run_pipeline_steps():
-        """Run the 4-step forensic pipeline. Returns (success, error_msg)."""
-        steps = [
-            ("🔄 Preprocessing — normalizing names & addresses",            "preprocess",        "run_preprocessing"),
-            ("🔗 Entity Resolution — linking identities across 4 datasets", "entity_resolution", "run_entity_resolution"),
-            ("🕸️  Building Knowledge Graph — mapping financial footprints",  "build_graph",       "construct_graph"),
-            ("🧠 Forensic Scoring — running 17 fraud detection modules",     "scoring",           "process_master_csv"),
-        ]
-        prog   = st.progress(0)
-        status = st.empty()
-        for i, (msg, mod, fn_name) in enumerate(steps):
-            status.markdown(
-                f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;"
-                f"padding:10px 14px;border-radius:4px;color:#93c5fd;font-size:13px'>{msg}...</div>",
-                unsafe_allow_html=True)
-            try:
-                import importlib
-                m  = importlib.import_module(mod)
-                fn = getattr(m, fn_name)
-                fn()
-            except Exception as e:
-                status.empty()
-                return False, f"Error in **{mod}**: {e}"
-            prog.progress((i + 1) / len(steps))
-            time.sleep(0.3)
-        status.markdown(
-            "<div style='background:#071f10;border-left:3px solid #22c55e;"
-            "padding:12px 14px;border-radius:4px;color:#4ade80;"
-            "font-weight:600;font-size:13px'>✅ Pipeline complete!</div>",
-            unsafe_allow_html=True)
-        return True, ""
-
-    def render_dashboard(rdf, label="Preview"):
-        """Render a National-Dashboard-style view for any scored dataframe."""
-        if rdf.empty:
-            st.warning("No scored data to display.")
-            return
-
-        if 'top_risk_factor' in rdf.columns and 'top_fraud_flags' not in rdf.columns:
-            rdf = rdf.rename(columns={'top_risk_factor': 'top_fraud_flags'})
-        if 'total_assets_val' in rdf.columns and 'total_assets_estimated' not in rdf.columns:
-            rdf = rdf.rename(columns={'total_assets_val': 'total_assets_estimated'})
-
-        tax_gap = float(rdf[rdf['deviation_score'] >= 65]['total_assets_estimated'].fillna(0).sum()) * 0.15 \
-                  if 'total_assets_estimated' in rdf.columns else 0
-        mc1, mc2, mc3, mc4 = st.columns(4)
-        cards = [
-            (mc1, "critical", "#ef4444", str(int((rdf['deviation_score'] >= 80).sum())),        "🔴 Critical Risk"),
-            (mc2, "warning",  "#f59e0b", str(int(((rdf['deviation_score'] >= 65) & (rdf['deviation_score'] < 80)).sum())), "🟡 High Risk"),
-            (mc3, "info",     "#3b82f6", f"{len(rdf):,}",                                        "📊 Profiles Scored"),
-            (mc4, "success",  "#22c55e", f"Rs. {tax_gap/1e9:.2f}B",                              "⚠️ Est. Tax Gap"),
-        ]
-        for col, cls, clr, val, lbl in cards:
-            with col:
-                st.markdown(
-                    f"<div class='metric-card {cls}'>"
-                    f"<p class='metric-val' style='color:{clr}'>{val}</p>"
-                    f"<p class='metric-lbl'>{lbl}</p></div>",
-                    unsafe_allow_html=True)
-
-        st.markdown("<br>", unsafe_allow_html=True)
-
-        ch1, ch2 = st.columns([3, 2])
-        with ch1:
-            st.markdown("<p class='section-title'>Risk Score Distribution</p>", unsafe_allow_html=True)
-            fig_h = px.histogram(rdf, x="deviation_score", nbins=25,
-                                 color_discrete_sequence=["#3b82f6"],
-                                 labels={"deviation_score": "Score", "count": "Profiles"},
-                                 template="plotly_dark")
-            fig_h.add_vline(x=65, line_dash="dash", line_color="#f59e0b",
-                            annotation_text="High Risk", annotation_font_color="#f59e0b")
-            fig_h.add_vline(x=80, line_dash="dash", line_color="#ef4444",
-                            annotation_text="Critical", annotation_font_color="#ef4444")
-            fig_h.update_layout(**PLOTLY_DARK, height=260, margin=dict(t=10, b=10))
-            st.plotly_chart(fig_h, use_container_width=True)
-
-        with ch2:
-            st.markdown("<p class='section-title'>Avg Score by City</p>", unsafe_allow_html=True)
-            if 'city' in rdf.columns:
-                city_df = rdf.groupby('city')['deviation_score'].mean().reset_index().sort_values('deviation_score')
-                fig_c = px.bar(city_df, x='deviation_score', y='city', orientation='h',
-                               color='deviation_score',
-                               color_continuous_scale=["#22c55e", "#f59e0b", "#ef4444"],
-                               template="plotly_dark",
-                               labels={"deviation_score": "Avg Score", "city": ""})
-                fig_c.update_layout(**PLOTLY_DARK, height=260, coloraxis_showscale=False, margin=dict(t=10, b=10))
-                st.plotly_chart(fig_c, use_container_width=True)
-
-        ch3, ch4 = st.columns([2, 3])
-        with ch3:
-            st.markdown("<p class='section-title'>Risk Breakdown</p>", unsafe_allow_html=True)
-            if 'risk_category' in rdf.columns:
-                rc = rdf['risk_category'].value_counts()
-                fig_p = px.pie(values=rc.values, names=rc.index,
-                               color=rc.index, color_discrete_map=RISK_COLORS,
-                               template="plotly_dark", hole=0.45)
-                fig_p.update_layout(paper_bgcolor="#111827", font_color="#94a3b8",
-                                    height=260, showlegend=True,
-                                    legend=dict(orientation="v", x=1.0, y=0.5, font=dict(size=10)),
-                                    margin=dict(t=10, b=10))
-                st.plotly_chart(fig_p, use_container_width=True)
-
-        with ch4:
-            st.markdown("<p class='section-title'>Top Fraud Patterns</p>", unsafe_allow_html=True)
-            if 'top_fraud_flags' in rdf.columns:
-                all_flags = []
-                for fs in rdf['top_fraud_flags'].dropna():
-                    for f in str(fs).split(','):
-                        f = f.strip()
-                        if f and f not in ('None', 'nan', ''):
-                            all_flags.append(f)
-                if all_flags:
-                    fc = pd.Series(all_flags).value_counts().head(8).reset_index()
-                    fc.columns = ['Pattern', 'Count']
-                    fig_f = px.bar(fc.sort_values('Count'), x='Count', y='Pattern',
-                                   orientation='h', color='Count',
-                                   color_continuous_scale=["#1d4ed8", "#dc2626"],
-                                   template="plotly_dark")
-                    fig_f.update_layout(**PLOTLY_DARK, height=260,
-                                        coloraxis_showscale=False, margin=dict(t=10, b=10))
-                    st.plotly_chart(fig_f, use_container_width=True)
-
-        st.markdown("<p class='section-title'>Top 10 Highest-Risk Profiles</p>", unsafe_allow_html=True)
-        disp_cols = ['full_name', 'deviation_score', 'risk_category',
-                     'filer_status', 'declared_income_pkr', 'city', 'top_fraud_flags']
-        avail = [c for c in disp_cols if c in rdf.columns]
-        st.dataframe(
-            rdf.sort_values('deviation_score', ascending=False)[avail].head(10),
-            use_container_width=True)
-
-    # ── page header ───────────────────────────────────────────────────────
+def page_live_data_upload():
     st.markdown("<p class='section-title'>Live Data Ingestion Pipeline</p>", unsafe_allow_html=True)
-    st.markdown(
-        "<p style='color:#4b5563;font-size:13px;margin-bottom:20px'>"
-        "Upload new government datasets. Test them in isolation, then merge them into the live database when ready.</p>",
-        unsafe_allow_html=True)
+    st.markdown("<p style='color:#4b5563;font-size:13px;margin-bottom:20px'>Upload new government datasets. Test them in isolation, then merge them into the live database when ready.</p>", unsafe_allow_html=True)
 
-    # ── Upload mode toggle ────────────────────────────────────
     upload_mode = st.radio(
         "📂 Upload mode",
         ["4 Separate Files (standard)", "1 Combined File (auto-split)"],
@@ -856,9 +1039,7 @@ elif "Upload" in page:
         key="upload_mode"
     )
 
-    # ════════════════════════════════════
-    # MODE A — 4 separate files (original)
-    # ════════════════════════════════════
+    # MODE A — 4 separate files
     if upload_mode == "4 Separate Files (standard)":
         with st.expander("📋 Required CSV Format — click to expand"):
             e1, e2 = st.columns(2)
@@ -898,7 +1079,6 @@ elif "Upload" in page:
         all_up = all([fbr_f, exc_f, disco_f, prop_f])
 
         if all_up:
-            # cache uploaded previews
             current_files = (fbr_f.name, exc_f.name, disco_f.name, prop_f.name)
             if st.session_state.get('_up_names') != current_files:
                 previews = []
@@ -945,156 +1125,71 @@ elif "Upload" in page:
             if not st.session_state.get('_test_done', False):
                 st.info("👆 Click **Test** to run the pipeline on your uploaded files and preview results before committing to the live database.")
 
-            # ── Test run (4‑file mode) ─────────────────────────────────
             if test_btn:
                 st.session_state.pop('_test_done', None)
                 st.session_state.pop('_test_rdf', None)
-
-                TEMP_RAW = "data/raw_test"
-                TEMP_OUT = "outputs/test_run"
-                os.makedirs(TEMP_RAW, exist_ok=True)
-                os.makedirs(TEMP_OUT, exist_ok=True)
-
-                for df_tmp, fname in zip(
-                        [fbr_new, exc_new, disco_new, prop_new],
-                        ["fbr_tax_records.csv", "excise_vehicles.csv",
-                         "disco_consumption.csv", "property_transfers.csv"]):
-                    df_tmp.to_csv(os.path.join(TEMP_RAW, fname), index=False)
-
-                # Backup and swap
-                BACKUP = "data/raw_backup"
-                os.makedirs(BACKUP, exist_ok=True)
-                raw_files = ["fbr_tax_records.csv","excise_vehicles.csv","disco_consumption.csv","property_transfers.csv"]
-                for fn in raw_files:
-                    src = f"data/raw/{fn}"
-                    if os.path.exists(src):
-                        shutil.copy(src, os.path.join(BACKUP, fn))
-                    df_map = dict(zip(raw_files, [fbr_new, exc_new, disco_new, prop_new]))
-                    df_map[fn].to_csv(src, index=False)
-
-                out_files = ["scored_entities.csv","master_entities.csv","shaheen_graph.pkl","audit_trails.json"]
-                OUT_BACKUP = "outputs/backup_before_test"
-                os.makedirs(OUT_BACKUP, exist_ok=True)
-                for fn in out_files:
-                    src = f"outputs/{fn}"
-                    if os.path.exists(src):
-                        shutil.copy(src, os.path.join(OUT_BACKUP, fn))
-
-                ok = False
+                raw_bak, out_bak = backup_production_data()
                 try:
-                    with st.spinner("Running forensic pipeline on test data…"):
-                        ok, err = run_pipeline_steps()
+                    fbr_f.seek(0); exc_f.seek(0); disco_f.seek(0); prop_f.seek(0)
+                    pd.read_csv(fbr_f).to_csv("data/raw/fbr_tax_records.csv", index=False)
+                    pd.read_csv(exc_f).to_csv("data/raw/excise_vehicles.csv", index=False)
+                    pd.read_csv(disco_f).to_csv("data/raw/disco_consumption.csv", index=False)
+                    pd.read_csv(prop_f).to_csv("data/raw/property_transfers.csv", index=False)
+                    ok, err = run_pipeline_steps()
                     if ok:
-                        rdf = pd.read_csv("outputs/scored_entities.csv")
-                        st.session_state['_test_rdf']  = rdf
+                        test_df = load_data()
+                        st.session_state['_test_rdf'] = test_df
                         st.session_state['_test_done'] = True
+                        st.success("Test successful! Preview below.")
+                        render_dashboard(test_df, "Test Run Dashboard")
                     else:
-                        st.error(err)
+                        st.error(f"Pipeline failed: {err}")
                 except Exception as e:
-                    st.error(f"Test run error: {e}")
+                    st.error(f"Test error: {e}")
                 finally:
-                    # Restore original files
-                    for fn in raw_files:
-                        bk = os.path.join(BACKUP, fn)
-                        if os.path.exists(bk):
-                            shutil.copy(bk, f"data/raw/{fn}")
-                        elif os.path.exists(f"data/raw/{fn}"):
-                            os.remove(f"data/raw/{fn}")
-                    for fn in out_files:
-                        bk = os.path.join(OUT_BACKUP, fn)
-                        if os.path.exists(bk):
-                            shutil.copy(bk, f"outputs/{fn}")
-
-                if ok:
+                    restore_production_data(raw_bak, out_bak)
                     st.rerun()
 
-            # Show test dashboard
             if st.session_state.get('_test_done') and st.session_state.get('_test_rdf') is not None:
                 st.markdown("---")
-                st.markdown(
-                    "<div style='background:#071f10;border:1px solid #22c55e;border-radius:8px;"
-                    "padding:12px 18px;margin-bottom:16px'>"
-                    "<span style='color:#4ade80;font-weight:700;font-size:14px'>🧪 TEST RUN RESULTS</span>"
-                    "<span style='color:#6b7280;font-size:12px;margin-left:12px'>"
-                    "Pipeline ran on your uploaded files only — live database is unchanged.</span>"
-                    "</div>",
-                    unsafe_allow_html=True)
-                render_dashboard(st.session_state['_test_rdf'].copy(), label="Test Run")
+                st.markdown("<div style='background:#071f10;border:1px solid #22c55e;padding:12px;border-radius:8px'><span style='color:#4ade80'>🧪 TEST RUN RESULTS</span> — live data unchanged</div>", unsafe_allow_html=True)
+                render_dashboard(st.session_state['_test_rdf'].copy(), "Test Run")
                 if not st.session_state.get('_merge_done'):
-                    st.markdown("---")
-                    st.info("✅ Satisfied with the results? Click **🔀 Merge into Live Database** above to commit these files.")
+                    st.info("✅ Satisfied with the results? Click **Merge into Live Database** above to commit these files.")
 
-            # ── Merge (4‑file mode) ─────────────────────────────────────
             if merge_btn and st.session_state.get('_test_done'):
-                os.makedirs("data/raw", exist_ok=True)
-                merge_log = []
-
-                # FBR
-                fbr_path = "data/raw/fbr_tax_records.csv"
-                if os.path.exists(fbr_path):
-                    existing_fbr = pd.read_csv(fbr_path)
-                    merged_fbr, upd, added = smart_merge(existing_fbr, fbr_new, id_cols=['fbr_id'])
-                    merge_log.append(f"**FBR:** {upd} updated · {added} new")
-                else:
-                    merged_fbr = fbr_new.copy()
-                    merge_log.append(f"**FBR:** {len(merged_fbr)} written (new)")
-                merged_fbr.to_csv(fbr_path, index=False)
-
-                # Excise
-                exc_path = "data/raw/excise_vehicles.csv"
-                if os.path.exists(exc_path):
-                    existing_exc = pd.read_csv(exc_path)
-                    merged_exc, upd, added = smart_merge(existing_exc, exc_new, id_cols=['vehicle_reg_no'])
-                    merge_log.append(f"**Excise:** {upd} updated · {added} new")
-                else:
-                    merged_exc = exc_new.copy()
-                    merge_log.append(f"**Excise:** {len(merged_exc)} written (new)")
-                merged_exc.to_csv(exc_path, index=False)
-
-                # DISCO
-                disco_path = "data/raw/disco_consumption.csv"
-                if os.path.exists(disco_path):
-                    existing_disco = pd.read_csv(disco_path)
-                    merged_disco, upd, added = smart_merge(existing_disco, disco_new, id_cols=['meter_ref_no'])
-                    merge_log.append(f"**DISCO:** {upd} updated · {added} new")
-                else:
-                    merged_disco = disco_new.copy()
-                    merge_log.append(f"**DISCO:** {len(merged_disco)} written (new)")
-                merged_disco.to_csv(disco_path, index=False)
-
-                # Property
-                prop_path = "data/raw/property_transfers.csv"
-                if os.path.exists(prop_path):
-                    existing_prop = pd.read_csv(prop_path)
-                    merged_prop, upd, added = smart_merge(existing_prop, prop_new, id_cols=['registry_no'])
-                    merge_log.append(f"**Property:** {upd} updated · {added} new")
-                else:
-                    merged_prop = prop_new.copy()
-                    merge_log.append(f"**Property:** {len(merged_prop)} written (new)")
-                merged_prop.to_csv(prop_path, index=False)
-
-                st.markdown("---")
-                st.markdown("<p class='section-title'>Merge Summary</p>", unsafe_allow_html=True)
-                for line in merge_log:
-                    st.markdown(
-                        f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;"
-                        f"padding:8px 14px;border-radius:4px;color:#93c5fd;"
-                        f"font-size:13px;margin:4px 0'>{line}</div>",
-                        unsafe_allow_html=True)
-                st.markdown("<br>", unsafe_allow_html=True)
-
-                with st.spinner("Re-running full forensic pipeline on merged database…"):
-                    ok2, err2 = run_pipeline_steps()
-                if ok2:
-                    st.session_state['_merge_done'] = True
-                    st.success("✅ Merge complete. Live database updated. Navigate to National Dashboard to see updated results.")
-                    st.balloons()
-                    for k in ['_test_done', '_test_rdf']:
-                        st.session_state.pop(k, None)
-                    st.rerun()
-                else:
-                    st.error(f"Pipeline failed after merge: {err2}")
-
+                try:
+                    existing_fbr = pd.read_csv("data/raw/fbr_tax_records.csv") if Path("data/raw/fbr_tax_records.csv").exists() else pd.DataFrame()
+                    existing_exc = pd.read_csv("data/raw/excise_vehicles.csv") if Path("data/raw/excise_vehicles.csv").exists() else pd.DataFrame()
+                    existing_disco = pd.read_csv("data/raw/disco_consumption.csv") if Path("data/raw/disco_consumption.csv").exists() else pd.DataFrame()
+                    existing_prop = pd.read_csv("data/raw/property_transfers.csv") if Path("data/raw/property_transfers.csv").exists() else pd.DataFrame()
+                    new_fbr, new_exc, new_disco, new_prop = st.session_state['_up_dfs']
+                    m_fbr, u_fbr, a_fbr = smart_merge(existing_fbr, new_fbr, ['fbr_id'])
+                    m_exc, u_exc, a_exc = smart_merge(existing_exc, new_exc, ['vehicle_reg_no'])
+                    m_disco, u_disco, a_disco = smart_merge(existing_disco, new_disco, ['meter_ref_no'])
+                    m_prop, u_prop, a_prop = smart_merge(existing_prop, new_prop, ['registry_no'])
+                    m_fbr.to_csv("data/raw/fbr_tax_records.csv", index=False)
+                    m_exc.to_csv("data/raw/excise_vehicles.csv", index=False)
+                    m_disco.to_csv("data/raw/disco_consumption.csv", index=False)
+                    m_prop.to_csv("data/raw/property_transfers.csv", index=False)
+                    st.markdown("---")
+                    st.markdown("<p class='section-title'>Merge Summary</p>", unsafe_allow_html=True)
+                    st.markdown(f"**FBR:** {u_fbr} updated, {a_fbr} new")
+                    st.markdown(f"**Excise:** {u_exc} updated, {a_exc} new")
+                    st.markdown(f"**DISCO:** {u_disco} updated, {a_disco} new")
+                    st.markdown(f"**Property:** {u_prop} updated, {a_prop} new")
+                    with st.spinner("Re-running pipeline on merged data..."):
+                        ok2, err2 = run_pipeline_steps()
+                    if ok2:
+                        st.success("✅ Merge complete. Refreshing...")
+                        st.session_state['_merge_done'] = True
+                        for k in ['_test_done','_test_rdf']:
+                            st.session_state.pop(k, None)
+                        st.rerun()
+                    else:
+                        st.error(f"Pipeline failed: {err2}")
+                except Exception as e:
+                    st.error(f"Merge error: {e}")
         else:
             st.info("⬆️ Upload all 4 CSV files above to continue.")
             st.markdown("---")
@@ -1115,9 +1210,7 @@ elif "Upload" in page:
                     else:
                         col.info("Run generate_data.py first")
 
-    # ════════════════════════════════════
     # MODE B — 1 combined file (auto-split)
-    # ════════════════════════════════════
     else:
         st.markdown("---")
         st.markdown("<p class='section-title'>Step 1 — Upload Combined CSV</p>", unsafe_allow_html=True)
@@ -1134,13 +1227,11 @@ elif "Upload" in page:
             unsafe_allow_html=True)
 
         combined_f = st.file_uploader("📄 Upload combined CSV", type=["csv"], key="u_combined")
-
         if combined_f:
             combined_f.seek(0)
             cdf = pd.read_csv(combined_f)
             st.success(f"✅ Loaded {len(cdf):,} rows · {len(cdf.columns)} columns")
 
-            # Define expected column sets
             FBR_COLS   = {'fbr_id','full_name','declared_income_pkr','tax_paid_pkr','filer_status',
                           'reported_address','phone_number','income_source','wealth_source',
                           'occupation','years_as_nonfiler','has_bank_account'}
@@ -1215,59 +1306,43 @@ elif "Upload" in page:
             if not st.session_state.get('_test_done_comb', False):
                 st.info("👆 Click **Test** to run the pipeline on your uploaded file and preview results before committing to the live database.")
 
-            # ── Test run (combined mode) ─────────────────────────────────
             if test_btn2:
                 st.session_state.pop('_test_done_comb', None)
                 st.session_state.pop('_test_rdf_comb', None)
-
-                # Build individual dataframes from combined file
                 cols_to_fbr   = list(fbr_found)
                 cols_to_exc   = list(exc_found)
                 cols_to_disco = list(disco_found)
                 cols_to_prop  = list(prop_found)
-
                 fbr_comb   = cdf[cols_to_fbr].copy()   if cols_to_fbr   else pd.DataFrame()
                 exc_comb   = cdf[cols_to_exc].copy()   if cols_to_exc   else pd.DataFrame()
                 disco_comb = cdf[cols_to_disco].copy() if cols_to_disco else pd.DataFrame()
                 prop_comb  = cdf[cols_to_prop].copy()  if cols_to_prop  else pd.DataFrame()
-
-                # Store them in session for later merge
                 st.session_state['_fbr_comb']   = fbr_comb
                 st.session_state['_exc_comb']   = exc_comb
                 st.session_state['_disco_comb'] = disco_comb
                 st.session_state['_prop_comb']  = prop_comb
-
-                # Backup and replace
-                BACKUP = "data/raw_backup"
-                os.makedirs(BACKUP, exist_ok=True)
-                raw_files = ["fbr_tax_records.csv","excise_vehicles.csv","disco_consumption.csv","property_transfers.csv"]
-                df_map = {
-                    "fbr_tax_records.csv": fbr_comb,
-                    "excise_vehicles.csv": exc_comb,
-                    "disco_consumption.csv": disco_comb,
-                    "property_transfers.csv": prop_comb
-                }
-
-                for fn in raw_files:
-                    src = f"data/raw/{fn}"
-                    if os.path.exists(src):
-                        shutil.copy(src, os.path.join(BACKUP, fn))
-                    df_map[fn].to_csv(src, index=False)
-
-                out_files = ["scored_entities.csv","master_entities.csv","shaheen_graph.pkl","audit_trails.json"]
-                OUT_BACKUP = "outputs/backup_before_test"
-                os.makedirs(OUT_BACKUP, exist_ok=True)
-                for fn in out_files:
-                    src = f"outputs/{fn}"
-                    if os.path.exists(src):
-                        shutil.copy(src, os.path.join(OUT_BACKUP, fn))
-
-                ok = False
+                raw_bak, out_bak = backup_production_data()
                 try:
-                    with st.spinner("Running forensic pipeline on test data…"):
-                        ok, err = run_pipeline_steps()
+                    raw_files = ["fbr_tax_records.csv","excise_vehicles.csv","disco_consumption.csv","property_transfers.csv"]
+                    df_map = {
+                        "fbr_tax_records.csv": fbr_comb,
+                        "excise_vehicles.csv": exc_comb,
+                        "disco_consumption.csv": disco_comb,
+                        "property_transfers.csv": prop_comb
+                    }
+                    for fn in raw_files:
+                        src = f"data/raw/{fn}"
+                        if os.path.exists(src):
+                            shutil.copy(src, os.path.join(raw_bak, fn))
+                        df_map[fn].to_csv(src, index=False)
+                    out_files = ["scored_entities.csv","master_entities.csv","shaheen_graph.pkl","audit_trails.json"]
+                    for fn in out_files:
+                        src = f"outputs/{fn}"
+                        if os.path.exists(src):
+                            shutil.copy(src, os.path.join(out_bak, fn))
+                    ok, err = run_pipeline_steps()
                     if ok:
-                        rdf = pd.read_csv("outputs/scored_entities.csv")
+                        rdf = load_data()
                         st.session_state['_test_rdf_comb']  = rdf
                         st.session_state['_test_done_comb'] = True
                     else:
@@ -1275,104 +1350,71 @@ elif "Upload" in page:
                 except Exception as e:
                     st.error(f"Test run error: {e}")
                 finally:
-                    for fn in raw_files:
-                        bk = os.path.join(BACKUP, fn)
-                        if os.path.exists(bk):
-                            shutil.copy(bk, f"data/raw/{fn}")
-                        elif os.path.exists(f"data/raw/{fn}"):
-                            os.remove(f"data/raw/{fn}")
-                    for fn in out_files:
-                        bk = os.path.join(OUT_BACKUP, fn)
-                        if os.path.exists(bk):
-                            shutil.copy(bk, f"outputs/{fn}")
-
-                if ok:
+                    restore_production_data(raw_bak, out_bak)
                     st.rerun()
 
-            # Show test dashboard (combined)
             if st.session_state.get('_test_done_comb') and st.session_state.get('_test_rdf_comb') is not None:
                 st.markdown("---")
-                st.markdown(
-                    "<div style='background:#071f10;border:1px solid #22c55e;border-radius:8px;"
-                    "padding:12px 18px;margin-bottom:16px'>"
-                    "<span style='color:#4ade80;font-weight:700;font-size:14px'>🧪 TEST RUN RESULTS</span>"
-                    "<span style='color:#6b7280;font-size:12px;margin-left:12px'>"
-                    "Pipeline ran on your uploaded file only — live database is unchanged.</span>"
-                    "</div>",
-                    unsafe_allow_html=True)
-                render_dashboard(st.session_state['_test_rdf_comb'].copy(), label="Test Run")
+                st.markdown("<div style='background:#071f10;border:1px solid #22c55e;padding:12px;border-radius:8px'><span style='color:#4ade80'>🧪 TEST RUN RESULTS</span> — live data unchanged</div>", unsafe_allow_html=True)
+                render_dashboard(st.session_state['_test_rdf_comb'].copy(), "Test Run")
                 if not st.session_state.get('_merge_done_comb', False):
-                    st.markdown("---")
-                    st.info("✅ Satisfied with the results? Click **🔀 Merge into Live Database** above to commit this file.")
+                    st.info("✅ Satisfied with the results? Click **Merge into Live Database** above to commit this file.")
 
-            # ── Merge (combined mode) ─────────────────────────────────────
             if merge_btn2 and st.session_state.get('_test_done_comb'):
-                os.makedirs("data/raw", exist_ok=True)
                 fbr_comb   = st.session_state.get('_fbr_comb', pd.DataFrame())
                 exc_comb   = st.session_state.get('_exc_comb', pd.DataFrame())
                 disco_comb = st.session_state.get('_disco_comb', pd.DataFrame())
                 prop_comb  = st.session_state.get('_prop_comb', pd.DataFrame())
-
                 merge_log = []
-
                 # FBR
                 fbr_path = "data/raw/fbr_tax_records.csv"
                 if os.path.exists(fbr_path) and not fbr_comb.empty:
                     existing_fbr = pd.read_csv(fbr_path)
-                    merged_fbr, upd, added = smart_merge(existing_fbr, fbr_comb, id_cols=['fbr_id'])
+                    merged_fbr, upd, added = smart_merge(existing_fbr, fbr_comb, ['fbr_id'])
                     merge_log.append(f"**FBR:** {upd} updated · {added} new")
                 else:
                     merged_fbr = fbr_comb.copy()
                     merge_log.append(f"**FBR:** {len(merged_fbr)} written (new)")
                 if not merged_fbr.empty:
                     merged_fbr.to_csv(fbr_path, index=False)
-
                 # Excise
                 exc_path = "data/raw/excise_vehicles.csv"
                 if os.path.exists(exc_path) and not exc_comb.empty:
                     existing_exc = pd.read_csv(exc_path)
-                    merged_exc, upd, added = smart_merge(existing_exc, exc_comb, id_cols=['vehicle_reg_no'])
+                    merged_exc, upd, added = smart_merge(existing_exc, exc_comb, ['vehicle_reg_no'])
                     merge_log.append(f"**Excise:** {upd} updated · {added} new")
                 else:
                     merged_exc = exc_comb.copy()
                     merge_log.append(f"**Excise:** {len(merged_exc)} written (new)")
                 if not merged_exc.empty:
                     merged_exc.to_csv(exc_path, index=False)
-
                 # DISCO
                 disco_path = "data/raw/disco_consumption.csv"
                 if os.path.exists(disco_path) and not disco_comb.empty:
                     existing_disco = pd.read_csv(disco_path)
-                    merged_disco, upd, added = smart_merge(existing_disco, disco_comb, id_cols=['meter_ref_no'])
+                    merged_disco, upd, added = smart_merge(existing_disco, disco_comb, ['meter_ref_no'])
                     merge_log.append(f"**DISCO:** {upd} updated · {added} new")
                 else:
                     merged_disco = disco_comb.copy()
                     merge_log.append(f"**DISCO:** {len(merged_disco)} written (new)")
                 if not merged_disco.empty:
                     merged_disco.to_csv(disco_path, index=False)
-
                 # Property
                 prop_path = "data/raw/property_transfers.csv"
                 if os.path.exists(prop_path) and not prop_comb.empty:
                     existing_prop = pd.read_csv(prop_path)
-                    merged_prop, upd, added = smart_merge(existing_prop, prop_comb, id_cols=['registry_no'])
+                    merged_prop, upd, added = smart_merge(existing_prop, prop_comb, ['registry_no'])
                     merge_log.append(f"**Property:** {upd} updated · {added} new")
                 else:
                     merged_prop = prop_comb.copy()
                     merge_log.append(f"**Property:** {len(merged_prop)} written (new)")
                 if not merged_prop.empty:
                     merged_prop.to_csv(prop_path, index=False)
-
                 st.markdown("---")
                 st.markdown("<p class='section-title'>Merge Summary</p>", unsafe_allow_html=True)
                 for line in merge_log:
-                    st.markdown(
-                        f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;"
-                        f"padding:8px 14px;border-radius:4px;color:#93c5fd;"
-                        f"font-size:13px;margin:4px 0'>{line}</div>",
-                        unsafe_allow_html=True)
+                    st.markdown(f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;padding:8px 14px;border-radius:4px;color:#93c5fd;font-size:13px;margin:4px 0'>{line}</div>", unsafe_allow_html=True)
                 st.markdown("<br>", unsafe_allow_html=True)
-
                 with st.spinner("Re-running full forensic pipeline on merged database…"):
                     ok2, err2 = run_pipeline_steps()
                 if ok2:
@@ -1384,7 +1426,6 @@ elif "Upload" in page:
                     st.rerun()
                 else:
                     st.error(f"Pipeline failed after merge: {err2}")
-
         else:
             st.info("⬆️ Upload your combined CSV file above to continue.")
             st.markdown("---")
@@ -1404,3 +1445,57 @@ elif "Upload" in page:
                             col.download_button(f"⬇️ {lbl}", f.read(), file_name=fname, mime="text/csv")
                     else:
                         col.info("Run generate_data.py first")
+
+# ════════════════════════════════════════════════════════════════════════════
+# SIDEBAR (no session dropdown – only navigation and live stats)
+# ════════════════════════════════════════════════════════════════════════════
+with st.sidebar:
+    st.markdown("<p style='color:#4ade80;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px'>Navigation</p>", unsafe_allow_html=True)
+    page = st.radio("", [
+        "🏠 National Dashboard",
+        "📊 Risk Leaderboard",
+        "🔍 Individual Profile",
+        "🕸️ Fraud Rings",
+        "🤖 Intelligence Query",
+        "📤 Live Data Upload",
+    ], label_visibility="collapsed")
+    st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
+    if st.button("💣 Hard Reset (Clear all caches & reload)", key="hard_reset"):
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
+        st.cache_data.clear()
+        st.cache_resource.clear()
+        st.rerun()
+    df_side = load_data()
+    if not df_side.empty:
+        total = len(df_side)
+        critical = int((df_side['deviation_score'] >= 80).sum())
+        high = int(((df_side['deviation_score'] >= 65) & (df_side['deviation_score'] < 80)).sum())
+        st.markdown("<p style='color:#6b7280;font-size:10px;font-weight:600;text-transform:uppercase'>Live Stats</p>", unsafe_allow_html=True)
+        for label, val, col in [
+            ("Citizens Analyzed", f"{total:,}", "#94a3b8"),
+            ("🔴 Critical Risk", str(critical), "#ef4444"),
+            ("🟡 High Risk", str(high), "#f59e0b"),
+        ]:
+            st.markdown(f"<div style='display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #1f2937'><span style='color:#6b7280;font-size:12px'>{label}</span><span style='color:{col};font-weight:600'>{val}</span></div>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color:#6b7280;font-size:10px'>{total:,} profiles loaded</p>", unsafe_allow_html=True)
+    else:
+        st.info("No data found. Use Live Data Upload to load files.")
+    st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#374151;font-size:10px;text-align:center'>Shaheen-Eye P-FIS v1.0<br>FMU — Govt. of Pakistan<br>© 2025 — CONFIDENTIAL</p>", unsafe_allow_html=True)
+
+# ════════════════════════════════════════════════════════════════════════════
+# PAGE ROUTING
+# ════════════════════════════════════════════════════════════════════════════
+if "National" in page:
+    page_national_dashboard()
+elif "Leaderboard" in page:
+    page_risk_leaderboard()
+elif "Individual" in page:
+    page_individual_profile()
+elif "Fraud Rings" in page:
+    page_fraud_rings()
+elif "Query" in page:
+    page_intelligence_query()
+elif "Upload" in page:
+    page_live_data_upload()
