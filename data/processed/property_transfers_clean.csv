@@ -1,10 +1,13 @@
 registry_no,buyer_name,seller_name,property_address,property_value_pkr,transfer_date,area_marla,property_type,registry_type,noc_status,society_name,plot_number,clean_name,clean_address,address_id
-PR-501,Zahid Mahmood,Ali Builders,"Plot 10, DHA Phase 5, Lahore",25000000,2025-01-10,10,Residential,File,Approved,DHA Lahore,Plot 10,zahid mahmood,"plot 10, dha phase 5, lahore",a4bc90d0
-PR-502,Zahid Mahmood,Saad Estate,"Plot 11, DHA Phase 5, Lahore",26000000,2025-03-15,10,Residential,File,Approved,DHA Lahore,Plot 11,zahid mahmood,"plot 11, dha phase 5, lahore",1185892f
-PR-503,Zahid Mahmood,Imran Khan,"Plot 12, DHA Phase 5, Lahore",24000000,2025-06-20,10,Residential,File,Approved,DHA Lahore,Plot 12,zahid mahmood,"plot 12, dha phase 5, lahore",58bbd0c1
-PR-504,Dr. Salman Raza,CDA,"House 45, Sector F-8, Islamabad",45000000,2015-08-11,20,Residential,Registry,Approved,F-8,House 45,dr. salman raza,"house 45, sector f-8, islamabad",d5aaa9d2
-PR-505,Shazia Bibi,Malik Riaz,"Plot 55, DHA Phase 6, Lahore",5000000,2024-11-01,20,Residential,Registry,Approved,DHA Lahore,Plot 55,shazia bibi,"plot 55, dha phase 6, lahore",bbe23920
-PR-506,Kamran Sheikh,KDA,"Plot 88, Clifton Block 4, Karachi",150000000,2023-02-14,40,Commercial,Registry,Approved,Clifton,Plot 88,kamran sheikh,"plot 88, clifton block 4, karachi",5f6af7a7
-PR-507,Tariq Qureshi,Bahria,"Villa 5, Bahria Town Phase 8, Rawalpindi",35000000,2021-09-09,10,Residential,Registry,Approved,Bahria Town,Villa 5,tariq qureshi,"villa 5, bahria town phase 8, rawalpindi",17ee5610
-PR-508,Waqas Ali,FGEHA,"House 10, G-11, Islamabad",18000000,2018-05-05,8,Residential,Registry,Approved,G-11,House 10,waqas ali,"house 10, g-11, islamabad",3bb78193
-PR-509,Javed Afridi,Pechs Society,"House 5, Pechs, Karachi",22000000,2018-12-12,10,Residential,Registry,Approved,PECHS,House 5,javed afridi,"house 5, pechs, karachi",710351dd
+PR-501,Zahid Mahmood,Ali Builders,"Plot 10, DHA Phase 5, Lahore",25000000.0,2025-01-10,10.0,Residential,File,Approved,DHA Lahore,Plot 10,zahid mahmood,"plot 10, dha phase 5, lahore",a4bc90d0
+PR-502,Zahid Mahmood,Saad Estate,"Plot 11, DHA Phase 5, Lahore",26000000.0,2025-03-15,10.0,Residential,File,Approved,DHA Lahore,Plot 11,zahid mahmood,"plot 11, dha phase 5, lahore",1185892f
+PR-503,Zahid Mahmood,Imran Khan,"Plot 12, DHA Phase 5, Lahore",24000000.0,2025-06-20,10.0,Residential,File,Approved,DHA Lahore,Plot 12,zahid mahmood,"plot 12, dha phase 5, lahore",58bbd0c1
+PR-504,Dr. Salman Raza,CDA,"House 45, Sector F-8, Islamabad",45000000.0,2015-08-11,20.0,Residential,Registry,Approved,F-8,House 45,dr. salman raza,"house 45, sector f-8, islamabad",d5aaa9d2
+PR-505,Shazia Bibi,Malik Riaz,"Plot 55, DHA Phase 6, Lahore",5000000.0,2024-11-01,20.0,Residential,Registry,Approved,DHA Lahore,Plot 55,shazia bibi,"plot 55, dha phase 6, lahore",bbe23920
+PR-506,Kamran Sheikh,KDA,"Plot 88, Clifton Block 4, Karachi",150000000.0,2023-02-14,40.0,Commercial,Registry,Approved,Clifton,Plot 88,kamran sheikh,"plot 88, clifton block 4, karachi",5f6af7a7
+PR-507,Tariq Qureshi,Bahria,"Villa 5, Bahria Town Phase 8, Rawalpindi",35000000.0,2021-09-09,10.0,Residential,Registry,Approved,Bahria Town,Villa 5,tariq qureshi,"villa 5, bahria town phase 8, rawalpindi",17ee5610
+PR-508,Waqas Ali,FGEHA,"House 10, G-11, Islamabad",18000000.0,2018-05-05,8.0,Residential,Registry,Approved,G-11,House 10,waqas ali,"house 10, g-11, islamabad",3bb78193
+PR-509,Javed Afridi,Pechs Society,"House 5, Pechs, Karachi",22000000.0,2018-12-12,10.0,Residential,Registry,Approved,PECHS,House 5,javed afridi,"house 5, pechs, karachi",710351dd
+REG-PRO-101,Muhammad Arshad,Malik Riaz Developers,"Plot 14, DHA Phase 6, Lahore",2500000.0,2025-01-15,20.0,Residential,File,Approved,DHA Lahore,Plot 14,muhammad arshad,"plot 14, dha phase 6, lahore",be309bb7
+REG-PRO-102,Farhan Ahmed,Zubair Khan,"House 5, Street 2, Gulberg III, Lahore",80000000.0,2024-03-10,20.0,Residential,Registry,Approved,Gulberg,House 5,farhan ahmad,"house 5, street 2, gulberg iii, lahore",7d856895
+,,,,,,,,,,,,,,UNKNOWN

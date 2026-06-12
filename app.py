@@ -43,6 +43,69 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# ════════════════════════════════════════════════════════════════════════════
+# AUTHENTICATION GATE — RBAC login (Investigator / Senior Analyst / Director IIW)
+# ════════════════════════════════════════════════════════════════════════════
+USERS = {
+    "investigator": {"password": os.getenv("PFIS_INV_PASSWORD", "shaheen123"), "role": "Investigator", "display": "Field Investigator"},
+    "analyst":      {"password": os.getenv("PFIS_ANALYST_PASSWORD", "shaheen123"), "role": "Senior Analyst", "display": "Senior Analyst"},
+    "director":     {"password": os.getenv("PFIS_DIRECTOR_PASSWORD", "shaheen123"), "role": "Director IIW", "display": "Director, IIW"},
+}
+
+def login_screen():
+    st.markdown("""
+    <style>
+    .stApp { background-color: #0a0e1a; color: #e2e8f0; }
+    </style>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div style="text-align:center; padding-top:60px;">
+        <h1 style="color:#bbf7d0;">🦅 SHAHEEN-EYE | P-FIS</h1>
+        <p style="color:#4ade80; font-size:12px; letter-spacing:1px;">
+        FEDERAL BOARD OF REVENUE — INTELLIGENCE &amp; INVESTIGATION WING<br>
+        CLASSIFICATION: CONFIDENTIAL · AUTHORIZED PERSONNEL ONLY
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    _, mid, _ = st.columns([1, 1.2, 1])
+    with mid:
+        with st.form("login_form"):
+            st.markdown("<p style='color:#94a3b8; font-size:13px; font-weight:600; text-transform:uppercase;'>Officer Login</p>", unsafe_allow_html=True)
+            username = st.text_input("Username").strip().lower()
+            password = st.text_input("Password", type="password")
+            st.markdown("<p style='color:#6b7280; font-size:11px; margin-top:8px;'>🔑 Tap YubiKey here to unlock data-at-rest encryption (optional for demo):</p>", unsafe_allow_html=True)
+            yubikey_input = st.text_input("YubiKey static password", type="password", key="yubikey_field", label_visibility="collapsed")
+            submitted = st.form_submit_button("🔐 Authenticate", use_container_width=True)
+
+        if submitted:
+            user = USERS.get(username)
+            if user and password == user["password"]:
+                st.session_state["authenticated"] = True
+                st.session_state["username"] = username
+                st.session_state["role"] = user["role"]
+                st.session_state["display_name"] = user["display"]
+                if yubikey_input:
+                    # Derive at-rest encryption key from YubiKey-typed static password.
+                    # Never written to .env or disk - lives only in this session's memory.
+                    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+                    from cryptography.hazmat.primitives import hashes
+                    import base64 as _b64
+                    _kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=b"shaheen-eye-pfis-salt-v1", iterations=200_000)
+                    st.session_state["pfis_encryption_key"] = _b64.urlsafe_b64encode(_kdf.derive(yubikey_input.encode())).decode()
+                else:
+                    st.session_state["pfis_encryption_key"] = None
+                st.rerun()
+            else:
+                st.error("⛔ Invalid credentials. This attempt has been logged.")
+
+    st.markdown("<p style='text-align:center; color:#374151; font-size:10px; margin-top:40px;'>Shaheen-Eye P-FIS v1.0 · Govt. of Pakistan · © 2025</p>", unsafe_allow_html=True)
+
+
+if not st.session_state.get("authenticated", False):
+    login_screen()
+    st.stop()
+
 # ── global CSS (sidebar contrast fix) ────────────────────────
 st.markdown("""
 <style>
@@ -1503,6 +1566,16 @@ def page_live_data_upload():
 # SIDEBAR (no session dropdown – only navigation and live stats)
 # ════════════════════════════════════════════════════════════════════════════
 with st.sidebar:
+    st.markdown(f"""
+    <div style='background:#111827;border:1px solid #1f2937;border-radius:8px;padding:10px 12px;margin-bottom:12px;'>
+        <p style='color:#4ade80;font-size:11px;font-weight:600;margin:0;'>👤 {st.session_state.get('display_name','Officer')}</p>
+        <p style='color:#6b7280;font-size:10px;margin:2px 0 0;'>Role: {st.session_state.get('role','Unknown')}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    if st.button("🚪 Logout", key="logout_btn"):
+        for key in ["authenticated", "username", "role", "display_name"]:
+            st.session_state.pop(key, None)
+        st.rerun()
     st.markdown("<p style='color:#4ade80;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px'>Navigation</p>", unsafe_allow_html=True)
     page = st.radio("", [
         "🏠 National Dashboard",
@@ -1513,12 +1586,16 @@ with st.sidebar:
         "📤 Live Data Upload",
     ], label_visibility="collapsed")
     st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
-    if st.button("💣 Hard Reset (Clear all caches & reload)", key="hard_reset"):
-        for key in list(st.session_state.keys()):
-            del st.session_state[key]
-        st.cache_data.clear()
-        st.cache_resource.clear()
-        st.rerun()
+    if st.session_state.get("role") in ("Senior Analyst", "Director IIW"):
+        if st.button("💣 Hard Reset (Clear all caches & reload)", key="hard_reset"):
+            for key in list(st.session_state.keys()):
+                if key not in ("authenticated", "username", "role", "display_name"):
+                    del st.session_state[key]
+            st.cache_data.clear()
+            st.cache_resource.clear()
+            st.rerun()
+    else:
+        st.caption("🔒 Hard Reset restricted to Senior Analyst / Director roles.")
     df_side = load_data()
     if not df_side.empty:
         total = len(df_side)
