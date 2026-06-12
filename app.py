@@ -197,21 +197,13 @@ def pretty_columns(df: pd.DataFrame) -> pd.DataFrame:
     """Return a copy of df with human-readable column headers for display."""
     return df.rename(columns={c: COLUMN_LABELS.get(c, c) for c in df.columns})
 
-def fmt_pkr(value) -> str:
-    """Format a PKR amount compactly: Rs. 1.2M / Rs. 850K / Rs. 3,200."""
+# ── safe integer conversion for years ─────────────────────────
+def _safe_int_year(val, default=2020):
     try:
-        v = float(value)
-    except (TypeError, ValueError):
-        return "Rs. 0"
-    sign = "-" if v < 0 else ""
-    v = abs(v)
-    if v >= 1e9:
-        return f"{sign}Rs. {v/1e9:.2f}B"
-    if v >= 1e6:
-        return f"{sign}Rs. {v/1e6:.2f}M"
-    if v >= 1e3:
-        return f"{sign}Rs. {v/1e3:.0f}K"
-    return f"{sign}Rs. {v:,.0f}"
+        v = float(val)
+        return int(v) if not pd.isna(v) else default
+    except:
+        return default
 
 # ════════════════════════════════════════════════════════════════════════════
 # FRAUD RING DETECTION (built-in, no external module needed)
@@ -543,6 +535,12 @@ def run_pipeline_steps():
             m  = importlib.import_module(mod)
             fn = getattr(m, fn_name)
             fn()
+        except ImportError as e:
+            status.empty()
+            return False, f"Missing module: {mod}.py – ensure it exists in the app directory. Details: {e}"
+        except AttributeError as e:
+            status.empty()
+            return False, f"Module {mod}.py does not contain function {fn_name}. Details: {e}"
         except Exception as e:
             status.empty()
             return False, f"Error in **{mod}**: {e}"
@@ -663,7 +661,7 @@ def render_dashboard(rdf, label="Preview"):
     st.markdown("<p class='section-title'>Top 10 Highest-Risk Profiles</p>", unsafe_allow_html=True)
     disp_cols = ['full_name', 'deviation_score', 'risk_category', 'filer_status', 'declared_income_pkr', 'city', 'top_fraud_flags']
     avail = [c for c in disp_cols if c in rdf.columns]
-    st.dataframe(rdf.sort_values('deviation_score', ascending=False)[avail].head(10), use_container_width=True)
+    st.dataframe(pretty_columns(rdf.sort_values('deviation_score', ascending=False)[avail].head(10)), use_container_width=True)
 
 # ════════════════════════════════════════════════════════════════════════════
 # PAGE 1 – NATIONAL DASHBOARD
@@ -740,7 +738,7 @@ def page_risk_leaderboard():
                 st.session_state['selected_name'] = name
                 st.success(f"✅ Selected: **{name}** — navigate to Individual Profile")
     except ImportError:
-        st.dataframe(fdf, use_container_width=True, height=600)
+        st.dataframe(pretty_columns(fdf), use_container_width=True, height=600)
         st.info("For interactive table: pip install streamlit-aggrid")
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -861,28 +859,35 @@ def page_individual_profile():
         if audit_text:
             st.markdown(f"<div class='audit-box'>{audit_text.replace(chr(10),'<br>')}</div>", unsafe_allow_html=True)
         else:
-            if st.button("🤖 Generate Investigation Note", key="gen_audit"):
-                with st.spinner("FBR IIW — Generating report..."):
-                    try:
-                        if not GROQ_AVAILABLE:
-                            st.error("Groq not installed or API key missing.")
-                        else:
-                            client = Groq()
+            # Check Groq availability before showing button
+            if not GROQ_AVAILABLE:
+                st.error("Groq library not installed. Run: pip install groq")
+            elif not os.getenv("GROQ_API_KEY") and not st.secrets.get("GROQ_API_KEY"):
+                st.error("GROQ_API_KEY not found. Set it in .env or Streamlit secrets to generate AI investigation notes.")
+            else:
+                if st.button("🤖 Generate Investigation Note", key="gen_audit"):
+                    with st.spinner("FBR IIW — Generating report..."):
+                        try:
+                            client = Groq(api_key=os.getenv("GROQ_API_KEY") or st.secrets["GROQ_API_KEY"])
                             SYSTEM = "You are a Senior FBR Forensic Investigator. Write a 3-paragraph legal investigation note. Cite exact figures. Reference ITO 2001 or Benami Act 2017. Recommend enforcement action. Tone: cold, legal, authoritative."
                             resp = client.chat.completions.create(model="llama-3.3-70b-versatile", messages=[{"role":"system","content":SYSTEM},{"role":"user","content":f"SUBJECT: {sel_name}, SCORE: {score}/100, ASSETS: {flags_raw}, Income: Rs.{declared:,.0f}, Lifestyle: Rs.{lifestyle:,.0f}/yr"}], temperature=0.2, max_tokens=400)
                             audit_text = resp.choices[0].message.content
                             audits[pid] = audit_text
                             save_audit(audits)
                             st.markdown(f"<div class='audit-box'>{audit_text.replace(chr(10),'<br>')}</div>", unsafe_allow_html=True)
-                    except Exception as e:
-                        st.error(f"Groq error: {e}")
+                        except Exception as e:
+                            st.error(f"Groq error: {e}")
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("<p class='section-title'>Evidence Timeline — Assets vs Tax Filings</p>", unsafe_allow_html=True)
     tl = []
     if person.get('vehicle_registration_year'):
-        tl.append({"Event": f"Vehicle Registered — {person.get('vehicle_make_model','Vehicle')}", "Year": int(person.get('vehicle_registration_year', 2020)), "Type": "Asset Acquired"})
+        tl.append({"Event": f"Vehicle Registered — {person.get('vehicle_make_model','Vehicle')}",
+                   "Year": _safe_int_year(person.get('vehicle_registration_year'), 2020),
+                   "Type": "Asset Acquired"})
     if person.get('property_transfer_year'):
-        tl.append({"Event": f"Property Transfer — {person.get('city','')}", "Year": int(person.get('property_transfer_year', 2021)), "Type": "Asset Acquired"})
+        tl.append({"Event": f"Property Transfer — {person.get('city','')}",
+                   "Year": _safe_int_year(person.get('property_transfer_year'), 2021),
+                   "Type": "Asset Acquired"})
     for yr in range(2022, 2026):
         tl.append({"Event": f"FBR Filing — {yr}", "Year": yr, "Type": "Non-Filing" if person.get('filer_status')=='Non-ATL' else "Filed"})
     if tl:
@@ -995,7 +1000,7 @@ def page_fraud_rings():
     # Member table
     st.subheader("Ring Members")
     members_df = persons_df[persons_df['master_person_id'].isin(members)][['full_name', 'city', 'deviation_score', 'risk_category', 'filer_status', 'declared_income_pkr', 'total_assets_estimated']]
-    st.dataframe(members_df, use_container_width=True)
+    st.dataframe(pretty_columns(members_df), use_container_width=True)
 
 # ════════════════════════════════════════════════════════════════════════════
 # PAGE 5 – ENHANCED INTELLIGENCE QUERY (NLP)
@@ -1048,7 +1053,7 @@ def page_intelligence_query():
             st.markdown(f"<div class='query-result-box'>🤖 <b>Intelligence Summary:</b> {summary}</div>", unsafe_allow_html=True)
             display_cols = ['full_name', 'city', 'deviation_score', 'risk_category', 'filer_status', 'declared_income_pkr', 'max_vehicle_cc', 'top_fraud_flags']
             avail = [c for c in display_cols if c in filtered.columns]
-            st.dataframe(filtered[avail].head(20), use_container_width=True, height=300)
+            st.dataframe(pretty_columns(filtered[avail].head(20)), use_container_width=True, height=300)
             if len(filtered) > 0:
                 st.markdown("<p class='section-title' style='margin-top:20px'>Risk Network — Top Results</p>", unsafe_allow_html=True)
                 graph = load_graph()
@@ -1529,6 +1534,11 @@ with st.sidebar:
         st.markdown(f"<p style='color:#6b7280;font-size:10px'>{total:,} profiles loaded</p>", unsafe_allow_html=True)
     else:
         st.info("No data found. Use Live Data Upload to load files.")
+    # API key warning
+    if not GROQ_AVAILABLE:
+        st.sidebar.warning("⚠️ Groq library not installed. AI summaries & audit notes disabled.")
+    elif not os.getenv("GROQ_API_KEY") and not st.secrets.get("GROQ_API_KEY"):
+        st.sidebar.warning("⚠️ GROQ_API_KEY not set. AI features unavailable. Set it in .env or Streamlit secrets.")
     st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
     st.markdown("<p style='color:#374151;font-size:10px;text-align:center'>Shaheen-Eye P-FIS v1.0<br>FMU — Govt. of Pakistan<br>© 2025 — CONFIDENTIAL</p>", unsafe_allow_html=True)
 
