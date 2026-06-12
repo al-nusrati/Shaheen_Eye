@@ -2,11 +2,10 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch, cm
 from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable, Image
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
 import os
 from datetime import datetime
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable, Image
 import matplotlib.pyplot as plt
 import networkx as nx
 
@@ -18,103 +17,104 @@ WARNING_ORANGE = colors.HexColor('#e67e22')
 TEXT_DARK = colors.HexColor('#1a1a2e')
 
 def generate_static_graph(person_data, output_path):
-    """Draws a professional 'Person-on-Top' graph with data values for the PDF."""
+    """Draws a high-resolution, perfectly aligned tree-graph for PDF reports."""
     try:
         import matplotlib.pyplot as plt
         import networkx as nx
+        
+        # Clear any existing plots from memory to prevent ghosting
+        plt.clf()
+        plt.close('all')
 
         G = nx.Graph()
         
         # --- 1. DATA EXTRACTION & FORMATTING ---
         def fmt_pkr(val):
             val = float(val or 0)
-            if val >= 10_000_000: return f"Rs.{val/10_000_000:.1f}Cr"
-            if val >= 100_000: return f"Rs.{val/100_000:.1f}L"
+            if val >= 10_000_000:
+                return f"Rs.{val/10_000_000:.1f}Cr"
+            if val >= 100_000:
+                return f"Rs.{val/100_000:.1f}L"
             return f"Rs.{val:,.0f}"
 
         full_name = person_data.get('full_name', 'Subject')
-        
-        # Create Labels with Values
         p_label = f"{full_name.split()[0]}\n(Subject)"
         
-        # Identify which nodes to add
         assets = []
-        
         # Vehicle
         if float(person_data.get('vehicle_count', 0)) > 0:
             cc = int(float(person_data.get('max_vehicle_cc', 0)))
             v_label = f"Vehicle\n{cc}cc"
-            G.add_node("V", label=v_label, color='#7f1d1d', size=3500)
+            G.add_node("V", label=v_label, color='#7f1d1d')
             assets.append("V")
-            
         # Property
         if float(person_data.get('property_count', 0)) > 0:
             p_val = float(person_data.get('total_property_value', 0))
             pr_label = f"Property\n{fmt_pkr(p_val)}"
-            G.add_node("P", label=pr_label, color='#052e16', size=3500)
+            G.add_node("P", label=pr_label, color='#052e16')
             assets.append("P")
-            
         # Meter
         if float(person_data.get('avg_monthly_bill_pkr', 0)) > 0:
             bill = float(person_data.get('avg_monthly_bill_pkr', 0))
             m_label = f"Utility\n{fmt_pkr(bill)}/mo"
-            G.add_node("M", label=m_label, color='#d97706', size=3500)
+            G.add_node("M", label=m_label, color='#d97706')
             assets.append("M")
-            
         # FBR
         inc = float(person_data.get('declared_income_pkr', 0))
         f_label = f"FBR Filing\n{fmt_pkr(inc)}"
-        G.add_node("F", label=f_label, color='#22c55e' if person_data.get('filer_status')=='ATL' else '#ef4444', size=3500)
+        G.add_node("F", label=f_label, color='#22c55e' if person_data.get('filer_status')=='ATL' else '#ef4444')
         assets.append("F")
 
-        # Add central node and edges
-        G.add_node("Person", label=p_label, color='#3b82f6', size=4500)
+        # Add central node
+        G.add_node("Person", label=p_label, color='#3b82f6')
         for a in assets:
             G.add_edge("Person", a)
 
-        # --- 2. CUSTOM "TOP-DOWN" LAYOUT ---
-        # Position the Person at the top center (0, 1)
-        # Position assets in a row underneath them
-        pos = {"Person": (0, 1)}
+        # --- 2. HIERARCHICAL POSITIONS (Tree Style) ---
+        pos = {"Person": (0, 1)}  # Top Center
         
-        # Fan out assets horizontally at y=0
         if len(assets) > 0:
-            width = 2.0
+            # Spread nodes wider to prevent text overlap
+            width = 3.5
             x_step = width / (len(assets) - 1) if len(assets) > 1 else 0
             start_x = -width / 2
             for i, node_id in enumerate(assets):
-                pos[node_id] = (start_x + (i * x_step), 0)
+                pos[node_id] = (start_x + (i * x_step), 0)  # Bottom Row
 
         # --- 3. RENDERING ---
-        plt.figure(figsize=(8, 5))
+        plt.figure(figsize=(10, 6))
         
-        # Draw edges with nice curves
-        nx.draw_networkx_edges(G, pos, width=2, edge_color='#dddddd', alpha=0.5)
+        # Draw Edges (BLACK and THICK)
+        nx.draw_networkx_edges(G, pos, width=2.5, edge_color='black', alpha=0.8)
         
-        # Draw Nodes
+        # Draw Nodes (LARGE to fit text)
         node_colors = [G.nodes[n]['color'] for n in G.nodes()]
-        node_sizes = [G.nodes[n]['size'] for n in G.nodes()]
-        nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=node_sizes, 
-                               edgecolors='white', linewidths=2.5)
+        nx.draw_networkx_nodes(G, pos,
+                               node_color=node_colors,
+                               node_size=8500,
+                               edgecolors='black',
+                               linewidths=1.5)
         
-        # Draw Labels (Values)
+        # Draw Labels (Clean and Centered)
         labels = {n: G.nodes[n]['label'] for n in G.nodes()}
-        nx.draw_networkx_labels(G, pos, labels=labels, font_size=9, 
-                                font_color='white', font_weight='bold')
+        nx.draw_networkx_labels(G, pos, labels=labels,
+                                font_size=9,
+                                font_color='white',
+                                font_weight='bold',
+                                font_family='sans-serif')
         
         plt.axis('off')
-        plt.margins(0.25)
-        plt.savefig(output_path, format="PNG", bbox_inches='tight', dpi=200, transparent=True)
-        plt.close()
+        plt.margins(0.2)
+        plt.savefig(output_path, format="PNG", bbox_inches='tight', dpi=150, transparent=True)
+        
+        plt.clf()
+        plt.close('all')
         return True
     except Exception as e:
         print(f"Graph generation failed: {e}")
         return False
 
-
-
 def generate_pdf(person_data: dict, audit_text: str = "", output_dir: str = "outputs/reports") -> str:
-    
     os.makedirs(output_dir, exist_ok=True)
     pid = person_data.get('master_person_id', 'UNKNOWN')
     name = person_data.get('full_name', 'Unknown Person')
@@ -184,7 +184,7 @@ def generate_pdf(person_data: dict, audit_text: str = "", output_dir: str = "out
     conf_style = ParagraphStyle('Conf', parent=styles['Normal'],
                                 fontSize=10, textColor=colors.white,
                                 fontName='Helvetica-Bold', alignment=TA_CENTER)
-    conf_table = Table([[Paragraph("⚠ CONFIDENTIAL — INTELLIGENCE & INVESTIGATION WING — AUTHORIZED ACCESS ONLY ⚠", conf_style)]], 
+    conf_table = Table([[Paragraph("⚠ CONFIDENTIAL — INTELLIGENCE & INVESTIGATION WING — AUTHORIZED ACCESS ONLY ⚠", conf_style)]],
                        colWidths=[18*cm])
     conf_table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), DANGER_RED),
@@ -202,17 +202,13 @@ def generate_pdf(person_data: dict, audit_text: str = "", output_dir: str = "out
     
     # ---- RISK SCORE BOX ----
     score_style = ParagraphStyle('Score', parent=styles['Normal'],
-                                 fontSize=28, 
-                                 leading=34,  # <-- FIX: Increased line height for the giant font
+                                 fontSize=28, leading=34,
                                  textColor=risk_color,
-                                 fontName='Helvetica-Bold', 
-                                 alignment=TA_CENTER,
-                                 spaceAfter=8) # <-- FIX: Added padding below the score
-                                 
+                                 fontName='Helvetica-Bold', alignment=TA_CENTER,
+                                 spaceAfter=8)
     score_label_style = ParagraphStyle('ScoreLabel', parent=styles['Normal'],
                                        fontSize=11, textColor=TEXT_DARK,
                                        fontName='Helvetica', alignment=TA_CENTER)
-    
     score_table = Table([
         [Paragraph(name.upper(), title_style)],
         [Paragraph(f"{score:.0f} / 100", score_style)],
@@ -238,19 +234,19 @@ def generate_pdf(person_data: dict, audit_text: str = "", output_dir: str = "out
     story.append(section_header("I. SUBJECT IDENTIFICATION"))
     story.append(Spacer(1, 0.2*cm))
     
-   
     safe_address = str(person_data.get('reported_address', 'N/A'))
-    if safe_address.lower() == 'nan': safe_address = 'N/A'
+    if safe_address.lower() == 'nan':
+        safe_address = 'N/A'
     address_paragraph = Paragraph(safe_address, body_style)
     
-   
     safe_income = str(person_data.get('income_source', 'N/A'))
-    if safe_income.lower() == 'nan': safe_income = 'N/A'
+    if safe_income.lower() == 'nan':
+        safe_income = 'N/A'
 
     id_data = [
         ["Full Name:", name, "NTN/FBR-ID:", person_data.get('fbr_id','N/A')],
         ["City:", person_data.get('city','N/A'), "ATL Status:", person_data.get('filer_status','N/A')],
-        ["Address:", address_paragraph, "Occupation:", person_data.get('occupation','N/A')], # <-- FIX APPLIED HERE
+        ["Address:", address_paragraph, "Occupation:", person_data.get('occupation','N/A')],
         ["Phone:", person_data.get('phone_number','N/A'), "Years Non-ATL:", str(person_data.get('years_as_nonfiler',0))],
         ["Income Source:", safe_income, "Wealth Source:", person_data.get('wealth_source','N/A')],
     ]
@@ -264,32 +260,24 @@ def generate_pdf(person_data: dict, audit_text: str = "", output_dir: str = "out
         ('BACKGROUND', (2,0), (2,-1), colors.HexColor('#f0f0f0')),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#cccccc')),
         ('PADDING', (0,0), (-1,-1), 6),
-        ('TEXTCOLOR', (1,1), (1,1), 
+        ('TEXTCOLOR', (1,1), (1,1),
          colors.HexColor('#c0392b') if person_data.get('filer_status')=='Non-ATL' else colors.HexColor('#27ae60')),
     ]))
     story.append(id_table)
     story.append(Spacer(1, 0.3*cm))
 
-
-    #func that will grapg add img to pdf 
     # ---- NETWORK GRAPH IMAGE ----
     graph_img_path = os.path.join(output_dir, f"temp_graph_{pid}.png")
     if generate_static_graph(person_data, graph_img_path):
         story.append(section_header("II. FINANCIAL FOOTPRINT NETWORK"))
         story.append(Spacer(1, 0.2*cm))
-        # Add the image to the PDF, centered
         img = Image(graph_img_path, width=12*cm, height=8.4*cm)
         img.hAlign = 'CENTER'
         story.append(img)
         story.append(Spacer(1, 0.3*cm))
-        
-        # Note: You will need to rename the next section headers to III, IV, V, VI if you want the numbers to match perfectly!
-
-
-
 
     # ---- ASSET INVENTORY ----
-    story.append(section_header("II. DECLARED vs ESTIMATED ASSET INVENTORY"))
+    story.append(section_header("III. DECLARED vs ESTIMATED ASSET INVENTORY"))
     story.append(Spacer(1, 0.2*cm))
     
     declared = person_data.get('declared_income_pkr', 0)
@@ -326,7 +314,7 @@ def generate_pdf(person_data: dict, audit_text: str = "", output_dir: str = "out
     story.append(Spacer(1, 0.3*cm))
     
     # ---- FRAUD FLAGS ----
-    story.append(section_header("III. FORENSIC FRAUD MODULES TRIGGERED"))
+    story.append(section_header("IV. FORENSIC FRAUD MODULES TRIGGERED"))
     story.append(Spacer(1, 0.2*cm))
     
     flags = str(person_data.get('top_fraud_flags','')).split(',')
@@ -366,7 +354,7 @@ def generate_pdf(person_data: dict, audit_text: str = "", output_dir: str = "out
     story.append(Spacer(1, 0.3*cm))
     
     # ---- AI AUDIT TRAIL ----
-    story.append(section_header("IV. INVESTIGATOR'S REPORT (AI-ASSISTED ANALYSIS)"))
+    story.append(section_header("V. INVESTIGATOR'S REPORT (AI-ASSISTED ANALYSIS)"))
     story.append(Spacer(1, 0.2*cm))
     
     if audit_text:
@@ -381,36 +369,43 @@ def generate_pdf(person_data: dict, audit_text: str = "", output_dir: str = "out
     
     story.append(Spacer(1, 0.3*cm))
     
-    # ---- RECOMMENDED ACTION ----
-    story.append(section_header("V. RECOMMENDED ENFORCEMENT ACTION"))
+    # ---- ENFORCEMENT DIRECTIVE ----
+    story.append(section_header("VI. ENFORCEMENT DIRECTIVE"))
     story.append(Spacer(1, 0.2*cm))
     
+    flags_list = str(person_data.get('top_fraud_flags',''))
+    
     if score >= 80:
-        action = "IMMEDIATE ACTION REQUIRED: Issue show-cause notice under Section 122(9) of the Income Tax Ordinance, 2001. If Benami indicators present, refer to Benami Zone for asset freezing under Section 24 of Benami Transactions (Prohibition) Act 2017. Refer to FIA if Hawala/Hundi indicators detected (Anti-Money Laundering Act 2010)."
+        action = "<b>CRITICAL NON-COMPLIANCE DETECTED:</b> System mandates immediate issuance of Show-Cause Notice under Section 122(9) of the Income Tax Ordinance, 2001. "
+        if "Benami" in flags_list:
+            action += "<b>Benami indicators confirmed:</b> Refer to Benami Zone for immediate asset freezing under Section 24 of the Benami Act 2017. "
+        if "Dc Underinvoicing" in flags_list or "DC Rate" in flags_list:
+            action += "<b>Valuation Fraud:</b> Re-calculate tax liability based on Fair Market Value under Section 68. "
+        action += "Refer case to FIA for Anti-Money Laundering investigation."
     elif score >= 65:
-        action = "PRIORITY AUDIT: Issue notice under Section 114 requiring submission of wealth statement and income tax return. Request documentation for all identified assets. Schedule in-person audit within 30 days."
+        action = "<b>HIGH RISK PROFILE:</b> Initiate mandatory audit under Section 114. Subject is required to provide physical source of wealth documentation for all identified assets within 15 days."
     elif score >= 45:
-        action = "MONITORING: Add to FBR watchlist. Request voluntary filing of income tax return. Monitor for new asset acquisitions in next 12 months."
+        action = "<b>MONITORING:</b> Add subject to FBR Watchlist. Issue notice for voluntary wealth statement reconciliation."
     else:
-        action = "NO ACTION REQUIRED: Profile is within acceptable compliance parameters. Continue routine monitoring."
+        action = "<b>COMPLIANT:</b> No enforcement action required at this stage. Profile remains within acceptable deviation parameters."
     
     action_table = Table([[Paragraph(action, audit_style)]], colWidths=[18*cm])
-    action_color = colors.HexColor('#fff3cd') if score >= 80 else colors.HexColor('#f8f9fa')
+    action_color = colors.HexColor('#fff8f8') if score >= 80 else colors.HexColor('#f8f9fa')
     action_table.setStyle(TableStyle([
         ('BOX', (0,0), (-1,-1), 1.5, risk_color),
         ('BACKGROUND', (0,0), (-1,-1), action_color),
         ('PADDING', (0,0), (-1,-1), 10),
     ]))
     story.append(action_table)
-    story.append(Spacer(1, 0.5*cm))
+    story.append(Spacer(1, 0.3*cm))
     
     # ---- FOOTER ----
     story.append(HRFlowable(width="100%", thickness=1, color=FBR_GREEN))
     footer_data = [[
         Paragraph(f"Case ID: {pid}", ParagraphStyle('f', fontSize=8, textColor=colors.grey)),
-        Paragraph(f"Generated by Shaheen-Eye P-FIS | {datetime.now().strftime('%d/%m/%Y %H:%M')}", 
+        Paragraph(f"Generated by Shaheen-Eye P-FIS | {datetime.now().strftime('%d/%m/%Y %H:%M')}",
                   ParagraphStyle('f', fontSize=8, textColor=colors.grey, alignment=TA_CENTER)),
-        Paragraph("CONFIDENTIAL — FMU, Govt. of Pakistan", 
+        Paragraph("CONFIDENTIAL — FMU, Govt. of Pakistan",
                   ParagraphStyle('f', fontSize=8, textColor=colors.grey, alignment=TA_RIGHT)),
     ]]
     footer = Table(footer_data, colWidths=[6*cm, 6*cm, 6*cm])
