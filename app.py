@@ -59,41 +59,21 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Session management ────────────────────────────────────────
+# ── Session management functions (kept for backward compatibility, but no session dropdown) ──
 SESSIONS_DIR = "outputs/sessions"
 os.makedirs(SESSIONS_DIR, exist_ok=True)
 
-def save_current_session(session_name=None):
-    if session_name is None:
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        session_folder = os.path.join(SESSIONS_DIR, timestamp)
-    else:
-        session_folder = os.path.join(SESSIONS_DIR, session_name)
+def save_current_session():
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    session_folder = os.path.join(SESSIONS_DIR, timestamp)
     os.makedirs(session_folder, exist_ok=True)
     for fname in ["scored_entities.csv", "master_entities.csv", "shaheen_graph.pkl", "audit_trails.json"]:
         src = f"outputs/{fname}"
         if os.path.exists(src):
             shutil.copy(src, os.path.join(session_folder, fname))
-    return os.path.basename(session_folder)
+    return timestamp
 
-def load_session(session_name):
-    session_folder = os.path.join(SESSIONS_DIR, session_name)
-    if not os.path.exists(session_folder):
-        return False
-    for fname in ["scored_entities.csv", "master_entities.csv", "shaheen_graph.pkl", "audit_trails.json"]:
-        src = os.path.join(session_folder, fname)
-        if os.path.exists(src):
-            shutil.copy(src, f"outputs/{fname}")
-    return True
-
-def get_available_sessions():
-    sessions = []
-    for item in os.listdir(SESSIONS_DIR):
-        if os.path.isdir(os.path.join(SESSIONS_DIR, item)):
-            sessions.append(item)
-    return sorted(sessions, reverse=True)
-
-# ── data loaders (no cache – always fresh) ───────────────────
+# ── data loaders (always read fresh from disk) ───────────────
 def load_data():
     scored = "outputs/scored_entities.csv"
     master = "outputs/master_entities.csv"
@@ -123,18 +103,6 @@ def load_audit():
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     return {}
-
-# ── initialise session state ─────────────────────────────────
-if 'current_session' not in st.session_state:
-    st.session_state.current_session = "Current (demo/latest)"
-if 'loading_session' not in st.session_state:
-    st.session_state.loading_session = False
-if 'upload_preview_dfs' not in st.session_state:
-    st.session_state.upload_preview_dfs = None
-if 'upload_preview_files_names' not in st.session_state:
-    st.session_state.upload_preview_files_names = None
-if 'force_refresh' not in st.session_state:
-    st.session_state.force_refresh = False
 
 # ── colour helpers ────────────────────────────────────────────
 RISK_COLORS = {
@@ -180,7 +148,7 @@ def translate_urdu(txt: str) -> str:
     return txt
 
 # ════════════════════════════════════════════════════════════════════════════
-# SIDEBAR
+# SIDEBAR (no session dropdown – only navigation and live stats)
 # ════════════════════════════════════════════════════════════════════════════
 with st.sidebar:
     st.markdown("<p style='color:#4ade80;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px'>Navigation</p>", unsafe_allow_html=True)
@@ -194,32 +162,15 @@ with st.sidebar:
 
     st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
 
-    if st.button("🔄 Refresh Data (reload from disk)", key="force_refresh_btn"):
-        st.session_state.force_refresh = True
+    # --- Hard Reset button (clears all caches and reloads) ---
+    if st.button("💣 Hard Reset (Clear all caches & reload)", key="hard_reset"):
+        for key in list(st.session_state.keys()):
+            del st.session_state[key]
+        st.cache_data.clear()
+        st.cache_resource.clear()
         st.rerun()
 
-    sessions = get_available_sessions()
-    if sessions:
-        current_display = "Current (demo/latest)"
-        selected_session = st.selectbox(
-            "📁 Load previous upload",
-            [current_display] + sessions,
-            index=0,
-            key="session_selector"
-        )
-        if selected_session != current_display and not st.session_state.loading_session:
-            if selected_session != st.session_state.current_session:
-                st.session_state.loading_session = True
-                with st.spinner(f"Loading session {selected_session} ..."):
-                    success = load_session(selected_session)
-                if success:
-                    st.session_state.current_session = selected_session
-                    st.session_state.force_refresh = True
-                    st.rerun()
-                else:
-                    st.error("Failed to load session")
-                st.session_state.loading_session = False
-
+    # --- Live stats (fresh every time) ---
     df = load_data()
     if not df.empty:
         total = len(df)
@@ -232,26 +183,24 @@ with st.sidebar:
             ("🟡 High Risk", str(high), "#f59e0b"),
         ]:
             st.markdown(f"<div style='display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #1f2937'><span style='color:#6b7280;font-size:12px'>{label}</span><span style='color:{col};font-weight:600'>{val}</span></div>", unsafe_allow_html=True)
-        st.markdown(f"<p style='color:#6b7280;font-size:10px'>Current session: <b>{st.session_state.current_session}</b><br>{total} profiles loaded</p>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color:#6b7280;font-size:10px'>{total:,} profiles loaded</p>", unsafe_allow_html=True)
     else:
-        st.info("No data found. Run a pipeline or load a session.")
+        st.info("No data found. Use Live Data Upload to load files.")
 
     st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
     st.markdown("<p style='color:#374151;font-size:10px;text-align:center'>Shaheen-Eye P-FIS v1.0<br>FMU — Govt. of Pakistan<br>© 2025 — CONFIDENTIAL</p>", unsafe_allow_html=True)
 
-# ── Load data for pages (fresh every time) ───────────────────
+# ── Load data for pages (fresh) ──────────────────────────────
 df = load_data()
 G = load_graph()
 audits = load_audit()
-if st.session_state.force_refresh:
-    st.session_state.force_refresh = False
 
 # ════════════════════════════════════════════════════════════════════════════
 # PAGE 1 – NATIONAL DASHBOARD (unchanged)
 # ════════════════════════════════════════════════════════════════════════════
 if "National" in page:
     if df.empty:
-        st.warning("No data loaded. Run the pipeline first or load a session.")
+        st.warning("No data loaded. Use Live Data Upload to load files.")
         st.stop()
 
     c1, c2, c3, c4 = st.columns(4)
@@ -310,7 +259,7 @@ if "National" in page:
                     map_rows.append({"city": r['city'], "lat": lat, "lon": lon, "score": r['deviation_score']})
             if map_rows:
                 mdf = pd.DataFrame(map_rows)
-                fig_m = px.scatter_geo(mdf, lat='lat', lon='lon', size='score', color='score', hover_name='city', color_continuous_scale=["#22c55e","#f59e0b","#ef4444"], size_max=45, scope="asia", template="plotly_dark")
+                fig_m = px.scatter_geo(mdf, lat='lat', lon='lon', size='score', color='score', hover_name='city', color_continuous_scale=["#22c55e","#f59e0b","#ef4444"], size_max=15, scope="asia", template="plotly_dark")
                 fig_m.update_geos(center={"lat":30.3753,"lon":69.3451}, projection_scale=5.5, bgcolor="#111827", landcolor="#1f2937", oceancolor="#111827", lakecolor="#111827", showcountries=True, countrycolor="#374151")
                 fig_m.update_layout(height=300, paper_bgcolor="#111827", font_color="#94a3b8", coloraxis_showscale=False, margin={"r":0,"t":0,"l":0,"b":0})
                 st.plotly_chart(fig_m, use_container_width=True)
@@ -362,11 +311,11 @@ if "National" in page:
                 st.error(f"Report generation error: {e}")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 2 – RISK LEADERBOARD
+# PAGE 2 – RISK LEADERBOARD (unchanged)
 # ════════════════════════════════════════════════════════════════════════════
 elif "Leaderboard" in page:
     if df.empty:
-        st.warning("No data. Run the pipeline first.")
+        st.warning("No data. Use Live Data Upload to load files.")
         st.stop()
 
     st.markdown("<p class='section-title'>Risk Intelligence Leaderboard</p>", unsafe_allow_html=True)
@@ -429,11 +378,11 @@ elif "Leaderboard" in page:
         st.info("For interactive table: pip install streamlit-aggrid")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 3 – INDIVIDUAL PROFILE (with fixed timeline chart)
+# PAGE 3 – INDIVIDUAL PROFILE (with fixed timeline)
 # ════════════════════════════════════════════════════════════════════════════
 elif "Individual" in page:
     if df.empty:
-        st.warning("No data. Run the pipeline first.")
+        st.warning("No data. Use Live Data Upload to load files.")
         st.stop()
 
     names = df['full_name'].drop_duplicates().tolist()
@@ -576,24 +525,12 @@ elif "Individual" in page:
                 "Filed":          "#22c55e"
             }
         )
-        # Fix 1: allow text to overflow
-        fig_tl.update_traces(
-            textposition="top center",
-            marker=dict(size=14),
-            cliponaxis=False
-        )
-        # Fix 2: add padding to X-axis so the last dot isn't on the edge
+        fig_tl.update_traces(textposition="top center", marker=dict(size=14), cliponaxis=False)
         min_yr = tl_df['Year'].min()
         max_yr = tl_df['Year'].max()
         padding = 0.5 if max_yr == min_yr else (max_yr - min_yr) * 0.15
         fig_tl.update_xaxes(range=[min_yr - padding, max_yr + padding])
-        # Fix 3: increase height and margins to give text room
-        fig_tl.update_layout(
-            **PLOTLY_DARK,
-            height=240,
-            showlegend=False,
-            margin={"t": 50, "b": 10, "l": 10, "r": 50}
-        )
+        fig_tl.update_layout(**PLOTLY_DARK, height=240, showlegend=False, margin={"t": 50, "b": 10, "l": 10, "r": 50})
         st.plotly_chart(fig_tl, use_container_width=True)
 
     st.markdown("<hr style='border-color:#1f2937'>", unsafe_allow_html=True)
@@ -627,7 +564,7 @@ elif "Individual" in page:
 # ════════════════════════════════════════════════════════════════════════════
 elif "Query" in page:
     if df.empty:
-        st.warning("No data. Run the pipeline first.")
+        st.warning("No data. Use Live Data Upload to load files.")
         st.stop()
     st.markdown("<p class='section-title'>Intelligence Query Interface</p>", unsafe_allow_html=True)
     st.markdown("<p style='color:#4b5563;font-size:13px;margin-bottom:16px'>Query Pakistan's financial population in plain language.</p>", unsafe_allow_html=True)
@@ -733,158 +670,737 @@ elif "Query" in page:
                 st.info("No profiles match. Try different terms.")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 5 – LIVE DATA UPLOAD (with merge option and test run)
+# PAGE 5 – LIVE DATA UPLOAD (Test + Merge workflow with both upload modes)
 # ════════════════════════════════════════════════════════════════════════════
 elif "Upload" in page:
-    st.markdown("<p class='section-title'>Live Data Ingestion Pipeline</p>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#4b5563;font-size:13px;margin-bottom:20px'>Upload new government datasets to run the complete Shaheen-Eye forensic pipeline in real time. The system will link identities, build the knowledge graph, and score every citizen automatically.</p>", unsafe_allow_html=True)
 
-    with st.expander("📋 Required CSV Format — click to expand"):
-        e1, e2 = st.columns(2)
-        with e1:
-            st.markdown("""**fbr_tax_records.csv**\n`fbr_id, full_name, declared_income_pkr, tax_paid_pkr,\nfiler_status (ATL/Non-ATL), reported_address, phone_number,\nincome_source, wealth_source, occupation,\nyears_as_nonfiler, has_bank_account`\n\n**excise_vehicles.csv**\n`vehicle_reg_no, owner_name, engine_capacity_cc,\nvehicle_make_model, registration_year, owner_address,\nimport_type, declared_import_value_pkr`""")
-        with e2:
-            st.markdown("""**disco_consumption.csv**\n`meter_ref_no, consumer_name, installation_address,\navg_monthly_bill_pkr, connection_type`\n\n**property_transfers.csv**\n`registry_no, buyer_name, seller_name, property_address,\nproperty_value_pkr, transfer_date, area_marla,\nproperty_type, registry_type, noc_status,\nsociety_name, plot_number`""")
+    # ── helpers ───────────────────────────────────────────────────────────
+    def smart_merge(existing_df, new_df, id_cols):
+        """
+        Upsert new_df into existing_df.
+        - Match on id_cols (unique record identifiers, NOT names).
+        - For matched rows: update every column in existing with new values.
+        - For unmatched rows: append as genuinely new records.
+        Returns (merged_df, n_updated, n_added).
+        """
+        if existing_df.empty:
+            return new_df.copy(), 0, len(new_df)
+        if new_df.empty:
+            return existing_df.copy(), 0, 0
 
-    st.markdown("---")
-    st.markdown("<p class='section-title'>Step 1 — Upload Your 4 Datasets</p>", unsafe_allow_html=True)
-    u1, u2 = st.columns(2)
-    with u1:
-        fbr_f = st.file_uploader("🏦 FBR Tax Declarations", type=["csv"], key="u_fbr")
-        disco_f = st.file_uploader("⚡ DISCO Utility Consumption", type=["csv"], key="u_disco")
-    with u2:
-        exc_f = st.file_uploader("🚗 Provincial Excise (Vehicles)", type=["csv"], key="u_exc")
-        prop_f = st.file_uploader("🏠 Real Estate Registry", type=["csv"], key="u_prop")
+        valid_ids = [c for c in id_cols if c in existing_df.columns and c in new_df.columns]
+        if not valid_ids:
+            merged = pd.concat([existing_df, new_df], ignore_index=True).drop_duplicates()
+            return merged, 0, len(new_df)
 
-    all_up = all([fbr_f, exc_f, disco_f, prop_f])
+        existing_idx = existing_df.set_index(valid_ids)
+        new_idx      = new_df.set_index(valid_ids)
 
-    merge_mode = False
-    if all_up:
-        merge_mode = st.checkbox("📌 Merge with existing data (append new records to current dataset)", value=False,
-                                 help="If checked, new records will be added to the existing data. If unchecked, existing data will be completely replaced.")
-        if st.button("🔄 Clear all uploaded files"):
-            for key in ['u_fbr', 'u_exc', 'u_disco', 'u_prop', 'upload_preview_dfs', 'upload_preview_files_names']:
-                if key in st.session_state:
-                    del st.session_state[key]
-            st.rerun()
+        overlap_keys = existing_idx.index.intersection(new_idx.index)
+        n_updated = len(overlap_keys)
+        new_keys  = new_idx.index.difference(existing_idx.index)
+        n_added   = len(new_keys)
 
-    if all_up:
-        st.success("✅ All 4 datasets received.")
+        if n_updated > 0:
+            shared_cols = [c for c in new_df.columns if c in existing_df.columns and c not in valid_ids]
+            existing_idx.loc[overlap_keys, shared_cols] = new_idx.loc[overlap_keys, shared_cols]
 
-        current_files = (fbr_f.name, exc_f.name, disco_f.name, prop_f.name)
-        if (st.session_state.upload_preview_files_names != current_files) or st.session_state.upload_preview_dfs is None:
-            previews = []
-            for uf in [fbr_f, exc_f, disco_f, prop_f]:
-                uf.seek(0)
-                previews.append(pd.read_csv(uf))
-            st.session_state.upload_preview_dfs = previews
-            st.session_state.upload_preview_files_names = current_files
+        if n_added > 0:
+            new_rows = new_idx.loc[new_keys].reset_index()
+            existing_idx = pd.concat([existing_idx.reset_index(), new_rows], ignore_index=True).set_index(valid_ids)
 
-        with st.expander("👁️ Preview uploaded data"):
-            tabs = st.tabs(["FBR","Excise","DISCO","Property"])
-            labels = ["FBR Tax","Excise Vehicles","DISCO Consumption","Property Registry"]
-            for tab, tmp, lb in zip(tabs, st.session_state.upload_preview_dfs, labels):
-                with tab:
-                    st.markdown(f"**{lb}** — {len(tmp):,} records, {len(tmp.columns)} columns")
-                    st.dataframe(tmp.head(5), use_container_width=True)
+        return existing_idx.reset_index(), n_updated, n_added
 
-        st.markdown("---")
-        st.markdown("<p class='section-title'>Step 2 — Run Forensic Pipeline</p>", unsafe_allow_html=True)
-
-        col_test, col_full = st.columns(2)
-        with col_test:
-            test_run = st.button("🧪 Test Run (preview results, don't save session)", type="secondary")
-        with col_full:
-            full_run = st.button("🚀 Run Complete Forensic Analysis (save session)", type="primary")
-
-        run_pipeline = test_run or full_run
-
-        if run_pipeline:
-            os.makedirs("data/raw", exist_ok=True)
-
-            # Handle merge vs replace
-            if merge_mode and os.path.exists("data/raw/fbr_tax_records.csv"):
-                existing_fbr = pd.read_csv("data/raw/fbr_tax_records.csv")
-                existing_exc = pd.read_csv("data/raw/excise_vehicles.csv") if os.path.exists("data/raw/excise_vehicles.csv") else pd.DataFrame()
-                existing_disco = pd.read_csv("data/raw/disco_consumption.csv") if os.path.exists("data/raw/disco_consumption.csv") else pd.DataFrame()
-                existing_prop = pd.read_csv("data/raw/property_transfers.csv") if os.path.exists("data/raw/property_transfers.csv") else pd.DataFrame()
-
-                fbr_f.seek(0); new_fbr = pd.read_csv(fbr_f)
-                exc_f.seek(0); new_exc = pd.read_csv(exc_f)
-                disco_f.seek(0); new_disco = pd.read_csv(disco_f)
-                prop_f.seek(0); new_prop = pd.read_csv(prop_f)
-
-                merged_fbr = pd.concat([existing_fbr, new_fbr], ignore_index=True).drop_duplicates(subset=['fbr_id', 'full_name'])
-                merged_exc = pd.concat([existing_exc, new_exc], ignore_index=True).drop_duplicates(subset=['vehicle_reg_no'])
-                merged_disco = pd.concat([existing_disco, new_disco], ignore_index=True).drop_duplicates(subset=['meter_ref_no'])
-                merged_prop = pd.concat([existing_prop, new_prop], ignore_index=True).drop_duplicates(subset=['registry_no'])
-
-                merged_fbr.to_csv("data/raw/fbr_tax_records.csv", index=False)
-                merged_exc.to_csv("data/raw/excise_vehicles.csv", index=False)
-                merged_disco.to_csv("data/raw/disco_consumption.csv", index=False)
-                merged_prop.to_csv("data/raw/property_transfers.csv", index=False)
-                st.info(f"Merged: now {len(merged_fbr)} FBR records, {len(merged_exc)} vehicle records, etc.")
-            else:
-                for uf, fname in zip([fbr_f, exc_f, disco_f, prop_f], ["fbr_tax_records.csv","excise_vehicles.csv","disco_consumption.csv","property_transfers.csv"]):
-                    uf.seek(0)
-                    pd.read_csv(uf).to_csv(f"data/raw/{fname}", index=False)
-
-            prog = st.progress(0)
-            status = st.empty()
-            steps = [
-                ("🔄 Preprocessing — normalizing names & addresses", "preprocess", "run_preprocessing"),
-                ("🔗 Entity Resolution — linking identities across 4 datasets", "entity_resolution", "run_entity_resolution"),
-                ("🕸️  Building Knowledge Graph — mapping financial footprints", "build_graph", "construct_graph"),
-                ("🧠 Forensic Scoring — running 17 fraud detection modules", "scoring", "process_master_csv"),
-            ]
-            pipeline_success = True
-            for i, (msg, mod, fn_name) in enumerate(steps):
-                status.markdown(f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;padding:10px 14px;border-radius:4px;color:#93c5fd;font-size:13px'>{msg}...</div>", unsafe_allow_html=True)
-                try:
-                    import importlib
-                    m = importlib.import_module(mod)
-                    fn = getattr(m, fn_name)
-                    fn()
-                except Exception as e:
-                    st.error(f"Error in {mod}: {e}")
-                    pipeline_success = False
-                    break
-                prog.progress((i+1)/len(steps))
-                time.sleep(0.3)
-
-            if pipeline_success:
-                status.markdown("<div style='background:#071f10;border-left:3px solid #22c55e;padding:12px 14px;border-radius:4px;color:#4ade80;font-weight:600;font-size:13px'>✅ Pipeline complete!</div>", unsafe_allow_html=True)
-
-                if test_run:
-                    st.success("Test run completed. Results are shown below. They are NOT saved as a session.")
-                    rdf = pd.read_csv("outputs/scored_entities.csv")
-                    st.dataframe(rdf.sort_values('deviation_score', ascending=False).head(10), use_container_width=True)
-                    st.info("Click 'Run Complete Forensic Analysis' to permanently save this data as a session.")
-                else:
-                    session_id = save_current_session()
-                    st.success(f"Saved as session: {session_id}. You can load it from the sidebar dropdown.")
-                    st.session_state.current_session = session_id
-                    st.session_state.force_refresh = True
-                    st.rerun()
-            else:
-                st.error("Pipeline failed. Please check your CSV formats.")
-
-    else:
-        st.info("⬆️ Upload all 4 CSV files above.")
-        st.markdown("---")
-        st.markdown("<p class='section-title'>📥 Download Sample Templates</p>", unsafe_allow_html=True)
-        tc1, tc2 = st.columns(2)
-        templates = [
-            ("data/raw/fbr_tax_records.csv", "FBR Tax Records", "fbr_sample.csv"),
-            ("data/raw/excise_vehicles.csv", "Excise Vehicles", "excise_sample.csv"),
-            ("data/raw/disco_consumption.csv", "DISCO Consumption", "disco_sample.csv"),
-            ("data/raw/property_transfers.csv", "Property Registry", "property_sample.csv"),
+    def run_pipeline_steps():
+        """Run the 4-step forensic pipeline. Returns (success, error_msg)."""
+        steps = [
+            ("🔄 Preprocessing — normalizing names & addresses",            "preprocess",        "run_preprocessing"),
+            ("🔗 Entity Resolution — linking identities across 4 datasets", "entity_resolution", "run_entity_resolution"),
+            ("🕸️  Building Knowledge Graph — mapping financial footprints",  "build_graph",       "construct_graph"),
+            ("🧠 Forensic Scoring — running 17 fraud detection modules",     "scoring",           "process_master_csv"),
         ]
-        for i, (path, lbl, fname) in enumerate(templates):
-            col = tc1 if i % 2 == 0 else tc2
+        prog   = st.progress(0)
+        status = st.empty()
+        for i, (msg, mod, fn_name) in enumerate(steps):
+            status.markdown(
+                f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;"
+                f"padding:10px 14px;border-radius:4px;color:#93c5fd;font-size:13px'>{msg}...</div>",
+                unsafe_allow_html=True)
+            try:
+                import importlib
+                m  = importlib.import_module(mod)
+                fn = getattr(m, fn_name)
+                fn()
+            except Exception as e:
+                status.empty()
+                return False, f"Error in **{mod}**: {e}"
+            prog.progress((i + 1) / len(steps))
+            time.sleep(0.3)
+        status.markdown(
+            "<div style='background:#071f10;border-left:3px solid #22c55e;"
+            "padding:12px 14px;border-radius:4px;color:#4ade80;"
+            "font-weight:600;font-size:13px'>✅ Pipeline complete!</div>",
+            unsafe_allow_html=True)
+        return True, ""
+
+    def render_dashboard(rdf, label="Preview"):
+        """Render a National-Dashboard-style view for any scored dataframe."""
+        if rdf.empty:
+            st.warning("No scored data to display.")
+            return
+
+        if 'top_risk_factor' in rdf.columns and 'top_fraud_flags' not in rdf.columns:
+            rdf = rdf.rename(columns={'top_risk_factor': 'top_fraud_flags'})
+        if 'total_assets_val' in rdf.columns and 'total_assets_estimated' not in rdf.columns:
+            rdf = rdf.rename(columns={'total_assets_val': 'total_assets_estimated'})
+
+        tax_gap = float(rdf[rdf['deviation_score'] >= 65]['total_assets_estimated'].fillna(0).sum()) * 0.15 \
+                  if 'total_assets_estimated' in rdf.columns else 0
+        mc1, mc2, mc3, mc4 = st.columns(4)
+        cards = [
+            (mc1, "critical", "#ef4444", str(int((rdf['deviation_score'] >= 80).sum())),        "🔴 Critical Risk"),
+            (mc2, "warning",  "#f59e0b", str(int(((rdf['deviation_score'] >= 65) & (rdf['deviation_score'] < 80)).sum())), "🟡 High Risk"),
+            (mc3, "info",     "#3b82f6", f"{len(rdf):,}",                                        "📊 Profiles Scored"),
+            (mc4, "success",  "#22c55e", f"Rs. {tax_gap/1e9:.2f}B",                              "⚠️ Est. Tax Gap"),
+        ]
+        for col, cls, clr, val, lbl in cards:
             with col:
-                if os.path.exists(path):
-                    with open(path, "rb") as f:
-                        col.download_button(f"⬇️ {lbl}", f.read(), file_name=fname, mime="text/csv")
+                st.markdown(
+                    f"<div class='metric-card {cls}'>"
+                    f"<p class='metric-val' style='color:{clr}'>{val}</p>"
+                    f"<p class='metric-lbl'>{lbl}</p></div>",
+                    unsafe_allow_html=True)
+
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        ch1, ch2 = st.columns([3, 2])
+        with ch1:
+            st.markdown("<p class='section-title'>Risk Score Distribution</p>", unsafe_allow_html=True)
+            fig_h = px.histogram(rdf, x="deviation_score", nbins=25,
+                                 color_discrete_sequence=["#3b82f6"],
+                                 labels={"deviation_score": "Score", "count": "Profiles"},
+                                 template="plotly_dark")
+            fig_h.add_vline(x=65, line_dash="dash", line_color="#f59e0b",
+                            annotation_text="High Risk", annotation_font_color="#f59e0b")
+            fig_h.add_vline(x=80, line_dash="dash", line_color="#ef4444",
+                            annotation_text="Critical", annotation_font_color="#ef4444")
+            fig_h.update_layout(**PLOTLY_DARK, height=260, margin=dict(t=10, b=10))
+            st.plotly_chart(fig_h, use_container_width=True)
+
+        with ch2:
+            st.markdown("<p class='section-title'>Avg Score by City</p>", unsafe_allow_html=True)
+            if 'city' in rdf.columns:
+                city_df = rdf.groupby('city')['deviation_score'].mean().reset_index().sort_values('deviation_score')
+                fig_c = px.bar(city_df, x='deviation_score', y='city', orientation='h',
+                               color='deviation_score',
+                               color_continuous_scale=["#22c55e", "#f59e0b", "#ef4444"],
+                               template="plotly_dark",
+                               labels={"deviation_score": "Avg Score", "city": ""})
+                fig_c.update_layout(**PLOTLY_DARK, height=260, coloraxis_showscale=False, margin=dict(t=10, b=10))
+                st.plotly_chart(fig_c, use_container_width=True)
+
+        ch3, ch4 = st.columns([2, 3])
+        with ch3:
+            st.markdown("<p class='section-title'>Risk Breakdown</p>", unsafe_allow_html=True)
+            if 'risk_category' in rdf.columns:
+                rc = rdf['risk_category'].value_counts()
+                fig_p = px.pie(values=rc.values, names=rc.index,
+                               color=rc.index, color_discrete_map=RISK_COLORS,
+                               template="plotly_dark", hole=0.45)
+                fig_p.update_layout(paper_bgcolor="#111827", font_color="#94a3b8",
+                                    height=260, showlegend=True,
+                                    legend=dict(orientation="v", x=1.0, y=0.5, font=dict(size=10)),
+                                    margin=dict(t=10, b=10))
+                st.plotly_chart(fig_p, use_container_width=True)
+
+        with ch4:
+            st.markdown("<p class='section-title'>Top Fraud Patterns</p>", unsafe_allow_html=True)
+            if 'top_fraud_flags' in rdf.columns:
+                all_flags = []
+                for fs in rdf['top_fraud_flags'].dropna():
+                    for f in str(fs).split(','):
+                        f = f.strip()
+                        if f and f not in ('None', 'nan', ''):
+                            all_flags.append(f)
+                if all_flags:
+                    fc = pd.Series(all_flags).value_counts().head(8).reset_index()
+                    fc.columns = ['Pattern', 'Count']
+                    fig_f = px.bar(fc.sort_values('Count'), x='Count', y='Pattern',
+                                   orientation='h', color='Count',
+                                   color_continuous_scale=["#1d4ed8", "#dc2626"],
+                                   template="plotly_dark")
+                    fig_f.update_layout(**PLOTLY_DARK, height=260,
+                                        coloraxis_showscale=False, margin=dict(t=10, b=10))
+                    st.plotly_chart(fig_f, use_container_width=True)
+
+        st.markdown("<p class='section-title'>Top 10 Highest-Risk Profiles</p>", unsafe_allow_html=True)
+        disp_cols = ['full_name', 'deviation_score', 'risk_category',
+                     'filer_status', 'declared_income_pkr', 'city', 'top_fraud_flags']
+        avail = [c for c in disp_cols if c in rdf.columns]
+        st.dataframe(
+            rdf.sort_values('deviation_score', ascending=False)[avail].head(10),
+            use_container_width=True)
+
+    # ── page header ───────────────────────────────────────────────────────
+    st.markdown("<p class='section-title'>Live Data Ingestion Pipeline</p>", unsafe_allow_html=True)
+    st.markdown(
+        "<p style='color:#4b5563;font-size:13px;margin-bottom:20px'>"
+        "Upload new government datasets. Test them in isolation, then merge them into the live database when ready.</p>",
+        unsafe_allow_html=True)
+
+    # ── Upload mode toggle ────────────────────────────────────
+    upload_mode = st.radio(
+        "📂 Upload mode",
+        ["4 Separate Files (standard)", "1 Combined File (auto-split)"],
+        horizontal=True,
+        key="upload_mode"
+    )
+
+    # ════════════════════════════════════
+    # MODE A — 4 separate files (original)
+    # ════════════════════════════════════
+    if upload_mode == "4 Separate Files (standard)":
+        with st.expander("📋 Required CSV Format — click to expand"):
+            e1, e2 = st.columns(2)
+            with e1:
+                st.markdown(
+                    "**fbr_tax_records.csv**\n"
+                    "`fbr_id, full_name, declared_income_pkr, tax_paid_pkr,\n"
+                    "filer_status (ATL/Non-ATL), reported_address, phone_number,\n"
+                    "income_source, wealth_source, occupation,\n"
+                    "years_as_nonfiler, has_bank_account`\n\n"
+                    "**excise_vehicles.csv**\n"
+                    "`vehicle_reg_no, owner_name, engine_capacity_cc,\n"
+                    "vehicle_make_model, registration_year, owner_address,\n"
+                    "import_type, declared_import_value_pkr`")
+            with e2:
+                st.markdown(
+                    "**disco_consumption.csv**\n"
+                    "`meter_ref_no, consumer_name, installation_address,\n"
+                    "avg_monthly_bill_pkr, connection_type`\n\n"
+                    "**property_transfers.csv**\n"
+                    "`registry_no, buyer_name, seller_name, property_address,\n"
+                    "property_value_pkr, transfer_date, area_marla,\n"
+                    "property_type, registry_type, noc_status,\n"
+                    "society_name, plot_number`")
+
+        st.markdown("---")
+        st.markdown("<p class='section-title'>Step 1 — Upload Your 4 Datasets</p>", unsafe_allow_html=True)
+
+        u1, u2 = st.columns(2)
+        with u1:
+            fbr_f   = st.file_uploader("🏦 FBR Tax Declarations",        type=["csv"], key="u_fbr")
+            disco_f = st.file_uploader("⚡ DISCO Utility Consumption",    type=["csv"], key="u_disco")
+        with u2:
+            exc_f   = st.file_uploader("🚗 Provincial Excise (Vehicles)", type=["csv"], key="u_exc")
+            prop_f  = st.file_uploader("🏠 Real Estate Registry",         type=["csv"], key="u_prop")
+
+        all_up = all([fbr_f, exc_f, disco_f, prop_f])
+
+        if all_up:
+            # cache uploaded previews
+            current_files = (fbr_f.name, exc_f.name, disco_f.name, prop_f.name)
+            if st.session_state.get('_up_names') != current_files:
+                previews = []
+                for uf in [fbr_f, exc_f, disco_f, prop_f]:
+                    uf.seek(0)
+                    previews.append(pd.read_csv(uf))
+                st.session_state['_up_dfs']   = previews
+                st.session_state['_up_names'] = current_files
+                for k in ['_test_done', '_test_rdf', '_merge_done']:
+                    st.session_state.pop(k, None)
+
+            up_dfs = st.session_state['_up_dfs']
+            fbr_new, exc_new, disco_new, prop_new = up_dfs
+
+            with st.expander("👁️ Preview uploaded data"):
+                tabs   = st.tabs(["FBR", "Excise", "DISCO", "Property"])
+                labels = ["FBR Tax", "Excise Vehicles", "DISCO Consumption", "Property Registry"]
+                for tab, tmp, lb in zip(tabs, up_dfs, labels):
+                    with tab:
+                        st.markdown(f"**{lb}** — {len(tmp):,} records · {len(tmp.columns)} columns")
+                        st.dataframe(tmp.head(5), use_container_width=True)
+
+            st.markdown("---")
+            st.markdown("<p class='section-title'>Step 2 — Choose Action</p>", unsafe_allow_html=True)
+
+            col_test, col_merge, col_clear = st.columns([2, 2, 1])
+            with col_test:
+                test_btn = st.button(
+                    "🧪 Test — Run on uploaded files only (don't touch live data)",
+                    type="secondary", use_container_width=True)
+            with col_merge:
+                merge_btn = st.button(
+                    "🔀 Merge into Live Database",
+                    type="primary", use_container_width=True,
+                    disabled=not st.session_state.get('_test_done', False),
+                    help="Run a Test first, then this button activates.")
+            with col_clear:
+                if st.button("🗑️ Clear", use_container_width=True):
+                    for k in ['u_fbr', 'u_exc', 'u_disco', 'u_prop',
+                              '_up_dfs', '_up_names', '_test_done', '_test_rdf', '_merge_done']:
+                        st.session_state.pop(k, None)
+                    st.rerun()
+
+            if not st.session_state.get('_test_done', False):
+                st.info("👆 Click **Test** to run the pipeline on your uploaded files and preview results before committing to the live database.")
+
+            # ── Test run (4‑file mode) ─────────────────────────────────
+            if test_btn:
+                st.session_state.pop('_test_done', None)
+                st.session_state.pop('_test_rdf', None)
+
+                TEMP_RAW = "data/raw_test"
+                TEMP_OUT = "outputs/test_run"
+                os.makedirs(TEMP_RAW, exist_ok=True)
+                os.makedirs(TEMP_OUT, exist_ok=True)
+
+                for df_tmp, fname in zip(
+                        [fbr_new, exc_new, disco_new, prop_new],
+                        ["fbr_tax_records.csv", "excise_vehicles.csv",
+                         "disco_consumption.csv", "property_transfers.csv"]):
+                    df_tmp.to_csv(os.path.join(TEMP_RAW, fname), index=False)
+
+                # Backup and swap
+                BACKUP = "data/raw_backup"
+                os.makedirs(BACKUP, exist_ok=True)
+                raw_files = ["fbr_tax_records.csv","excise_vehicles.csv","disco_consumption.csv","property_transfers.csv"]
+                for fn in raw_files:
+                    src = f"data/raw/{fn}"
+                    if os.path.exists(src):
+                        shutil.copy(src, os.path.join(BACKUP, fn))
+                    df_map = dict(zip(raw_files, [fbr_new, exc_new, disco_new, prop_new]))
+                    df_map[fn].to_csv(src, index=False)
+
+                out_files = ["scored_entities.csv","master_entities.csv","shaheen_graph.pkl","audit_trails.json"]
+                OUT_BACKUP = "outputs/backup_before_test"
+                os.makedirs(OUT_BACKUP, exist_ok=True)
+                for fn in out_files:
+                    src = f"outputs/{fn}"
+                    if os.path.exists(src):
+                        shutil.copy(src, os.path.join(OUT_BACKUP, fn))
+
+                ok = False
+                try:
+                    with st.spinner("Running forensic pipeline on test data…"):
+                        ok, err = run_pipeline_steps()
+                    if ok:
+                        rdf = pd.read_csv("outputs/scored_entities.csv")
+                        st.session_state['_test_rdf']  = rdf
+                        st.session_state['_test_done'] = True
+                    else:
+                        st.error(err)
+                except Exception as e:
+                    st.error(f"Test run error: {e}")
+                finally:
+                    # Restore original files
+                    for fn in raw_files:
+                        bk = os.path.join(BACKUP, fn)
+                        if os.path.exists(bk):
+                            shutil.copy(bk, f"data/raw/{fn}")
+                        elif os.path.exists(f"data/raw/{fn}"):
+                            os.remove(f"data/raw/{fn}")
+                    for fn in out_files:
+                        bk = os.path.join(OUT_BACKUP, fn)
+                        if os.path.exists(bk):
+                            shutil.copy(bk, f"outputs/{fn}")
+
+                if ok:
+                    st.rerun()
+
+            # Show test dashboard
+            if st.session_state.get('_test_done') and st.session_state.get('_test_rdf') is not None:
+                st.markdown("---")
+                st.markdown(
+                    "<div style='background:#071f10;border:1px solid #22c55e;border-radius:8px;"
+                    "padding:12px 18px;margin-bottom:16px'>"
+                    "<span style='color:#4ade80;font-weight:700;font-size:14px'>🧪 TEST RUN RESULTS</span>"
+                    "<span style='color:#6b7280;font-size:12px;margin-left:12px'>"
+                    "Pipeline ran on your uploaded files only — live database is unchanged.</span>"
+                    "</div>",
+                    unsafe_allow_html=True)
+                render_dashboard(st.session_state['_test_rdf'].copy(), label="Test Run")
+                if not st.session_state.get('_merge_done'):
+                    st.markdown("---")
+                    st.info("✅ Satisfied with the results? Click **🔀 Merge into Live Database** above to commit these files.")
+
+            # ── Merge (4‑file mode) ─────────────────────────────────────
+            if merge_btn and st.session_state.get('_test_done'):
+                os.makedirs("data/raw", exist_ok=True)
+                merge_log = []
+
+                # FBR
+                fbr_path = "data/raw/fbr_tax_records.csv"
+                if os.path.exists(fbr_path):
+                    existing_fbr = pd.read_csv(fbr_path)
+                    merged_fbr, upd, added = smart_merge(existing_fbr, fbr_new, id_cols=['fbr_id'])
+                    merge_log.append(f"**FBR:** {upd} updated · {added} new")
                 else:
-                    col.info("Run generate_data.py first")
+                    merged_fbr = fbr_new.copy()
+                    merge_log.append(f"**FBR:** {len(merged_fbr)} written (new)")
+                merged_fbr.to_csv(fbr_path, index=False)
+
+                # Excise
+                exc_path = "data/raw/excise_vehicles.csv"
+                if os.path.exists(exc_path):
+                    existing_exc = pd.read_csv(exc_path)
+                    merged_exc, upd, added = smart_merge(existing_exc, exc_new, id_cols=['vehicle_reg_no'])
+                    merge_log.append(f"**Excise:** {upd} updated · {added} new")
+                else:
+                    merged_exc = exc_new.copy()
+                    merge_log.append(f"**Excise:** {len(merged_exc)} written (new)")
+                merged_exc.to_csv(exc_path, index=False)
+
+                # DISCO
+                disco_path = "data/raw/disco_consumption.csv"
+                if os.path.exists(disco_path):
+                    existing_disco = pd.read_csv(disco_path)
+                    merged_disco, upd, added = smart_merge(existing_disco, disco_new, id_cols=['meter_ref_no'])
+                    merge_log.append(f"**DISCO:** {upd} updated · {added} new")
+                else:
+                    merged_disco = disco_new.copy()
+                    merge_log.append(f"**DISCO:** {len(merged_disco)} written (new)")
+                merged_disco.to_csv(disco_path, index=False)
+
+                # Property
+                prop_path = "data/raw/property_transfers.csv"
+                if os.path.exists(prop_path):
+                    existing_prop = pd.read_csv(prop_path)
+                    merged_prop, upd, added = smart_merge(existing_prop, prop_new, id_cols=['registry_no'])
+                    merge_log.append(f"**Property:** {upd} updated · {added} new")
+                else:
+                    merged_prop = prop_new.copy()
+                    merge_log.append(f"**Property:** {len(merged_prop)} written (new)")
+                merged_prop.to_csv(prop_path, index=False)
+
+                st.markdown("---")
+                st.markdown("<p class='section-title'>Merge Summary</p>", unsafe_allow_html=True)
+                for line in merge_log:
+                    st.markdown(
+                        f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;"
+                        f"padding:8px 14px;border-radius:4px;color:#93c5fd;"
+                        f"font-size:13px;margin:4px 0'>{line}</div>",
+                        unsafe_allow_html=True)
+                st.markdown("<br>", unsafe_allow_html=True)
+
+                with st.spinner("Re-running full forensic pipeline on merged database…"):
+                    ok2, err2 = run_pipeline_steps()
+                if ok2:
+                    st.session_state['_merge_done'] = True
+                    st.success("✅ Merge complete. Live database updated. Navigate to National Dashboard to see updated results.")
+                    st.balloons()
+                    for k in ['_test_done', '_test_rdf']:
+                        st.session_state.pop(k, None)
+                    st.rerun()
+                else:
+                    st.error(f"Pipeline failed after merge: {err2}")
+
+        else:
+            st.info("⬆️ Upload all 4 CSV files above to continue.")
+            st.markdown("---")
+            st.markdown("<p class='section-title'>📥 Download Sample Templates</p>", unsafe_allow_html=True)
+            tc1, tc2 = st.columns(2)
+            templates = [
+                ("data/raw/fbr_tax_records.csv",    "FBR Tax Records",   "fbr_sample.csv"),
+                ("data/raw/excise_vehicles.csv",     "Excise Vehicles",   "excise_sample.csv"),
+                ("data/raw/disco_consumption.csv",   "DISCO Consumption", "disco_sample.csv"),
+                ("data/raw/property_transfers.csv",  "Property Registry", "property_sample.csv"),
+            ]
+            for i, (path, lbl, fname) in enumerate(templates):
+                col = tc1 if i % 2 == 0 else tc2
+                with col:
+                    if os.path.exists(path):
+                        with open(path, "rb") as f:
+                            col.download_button(f"⬇️ {lbl}", f.read(), file_name=fname, mime="text/csv")
+                    else:
+                        col.info("Run generate_data.py first")
+
+    # ════════════════════════════════════
+    # MODE B — 1 combined file (auto-split)
+    # ════════════════════════════════════
+    else:
+        st.markdown("---")
+        st.markdown("<p class='section-title'>Step 1 — Upload Combined CSV</p>", unsafe_allow_html=True)
+        st.markdown(
+            "<div style='background:#0f1b2d;border-left:3px solid #3b82f6;padding:12px 16px;border-radius:4px;color:#93c5fd;font-size:13px;margin-bottom:16px'>"
+            "<b>Auto-split mode:</b> Upload a single CSV that contains columns from any or all of the 4 datasets. "
+            "The system will detect which columns belong to which dataset and route them automatically.<br>"
+            "Recognised column sets:<br>"
+            "• <b>FBR:</b> fbr_id / full_name / declared_income_pkr / filer_status<br>"
+            "• <b>Excise:</b> vehicle_reg_no / engine_capacity_cc / vehicle_make_model<br>"
+            "• <b>DISCO:</b> meter_ref_no / avg_monthly_bill_pkr / connection_type<br>"
+            "• <b>Property:</b> registry_no / property_value_pkr / registry_type"
+            "</div>",
+            unsafe_allow_html=True)
+
+        combined_f = st.file_uploader("📄 Upload combined CSV", type=["csv"], key="u_combined")
+
+        if combined_f:
+            combined_f.seek(0)
+            cdf = pd.read_csv(combined_f)
+            st.success(f"✅ Loaded {len(cdf):,} rows · {len(cdf.columns)} columns")
+
+            # Define expected column sets
+            FBR_COLS   = {'fbr_id','full_name','declared_income_pkr','tax_paid_pkr','filer_status',
+                          'reported_address','phone_number','income_source','wealth_source',
+                          'occupation','years_as_nonfiler','has_bank_account'}
+            EXC_COLS   = {'vehicle_reg_no','owner_name','engine_capacity_cc','vehicle_make_model',
+                          'registration_year','owner_address','import_type','declared_import_value_pkr'}
+            DISCO_COLS = {'meter_ref_no','consumer_name','installation_address',
+                          'avg_monthly_bill_pkr','connection_type'}
+            PROP_COLS  = {'registry_no','buyer_name','seller_name','property_address',
+                          'property_value_pkr','transfer_date','area_marla','property_type',
+                          'registry_type','noc_status','society_name','plot_number'}
+
+            actual = set(cdf.columns)
+            fbr_found   = actual & FBR_COLS
+            exc_found   = actual & EXC_COLS
+            disco_found = actual & DISCO_COLS
+            prop_found  = actual & PROP_COLS
+
+            KEY_FBR   = {'fbr_id','full_name','declared_income_pkr','filer_status'}
+            KEY_EXC   = {'vehicle_reg_no','engine_capacity_cc','vehicle_make_model'}
+            KEY_DISCO = {'meter_ref_no','avg_monthly_bill_pkr'}
+            KEY_PROP  = {'registry_no','property_value_pkr','registry_type'}
+
+            det_fbr   = bool(fbr_found & KEY_FBR)
+            det_exc   = bool(exc_found & KEY_EXC)
+            det_disco = bool(disco_found & KEY_DISCO)
+            det_prop  = bool(prop_found & KEY_PROP)
+
+            st.markdown("**Detected datasets in your file:**")
+            dc1, dc2, dc3, dc4 = st.columns(4)
+            for col, label, detected, found in [
+                (dc1, "🏦 FBR Tax",    det_fbr,   fbr_found),
+                (dc2, "🚗 Excise",     det_exc,   exc_found),
+                (dc3, "⚡ DISCO",      det_disco, disco_found),
+                (dc4, "🏠 Property",   det_prop,  prop_found),
+            ]:
+                with col:
+                    color = "#22c55e" if detected else "#6b7280"
+                    icon  = "✅" if detected else "❌"
+                    st.markdown(f"<div style='background:#111827;border:1px solid {color};border-radius:8px;padding:10px;text-align:center'>"
+                                f"<p style='color:{color};font-weight:700;margin:0'>{icon} {label}</p>"
+                                f"<p style='color:#6b7280;font-size:11px;margin:4px 0 0'>{len(found)} cols matched</p>"
+                                f"</div>", unsafe_allow_html=True)
+
+            if not any([det_fbr, det_exc, det_disco, det_prop]):
+                st.error("❌ No recognisable columns found. Please check column names match the expected formats.")
+                st.stop()
+
+            with st.expander("👁️ Preview uploaded data (first 5 rows)"):
+                st.dataframe(cdf.head(5), use_container_width=True)
+
+            st.markdown("---")
+            st.markdown("<p class='section-title'>Step 2 — Choose Action</p>", unsafe_allow_html=True)
+
+            col_test2, col_merge2, col_clear2 = st.columns([2,2,1])
+            with col_test2:
+                test_btn2 = st.button(
+                    "🧪 Test — Run on uploaded files only (don't touch live data)",
+                    type="secondary", use_container_width=True, key="test_comb")
+            with col_merge2:
+                merge_btn2 = st.button(
+                    "🔀 Merge into Live Database",
+                    type="primary", use_container_width=True, key="merge_comb",
+                    disabled=not st.session_state.get('_test_done_comb', False),
+                    help="Run a Test first, then this button activates.")
+            with col_clear2:
+                if st.button("🗑️ Clear", use_container_width=True, key="clear_comb"):
+                    for k in ['u_combined', '_test_done_comb', '_test_rdf_comb', '_merge_done_comb',
+                              '_up_combined_df']:
+                        st.session_state.pop(k, None)
+                    st.rerun()
+
+            if not st.session_state.get('_test_done_comb', False):
+                st.info("👆 Click **Test** to run the pipeline on your uploaded file and preview results before committing to the live database.")
+
+            # ── Test run (combined mode) ─────────────────────────────────
+            if test_btn2:
+                st.session_state.pop('_test_done_comb', None)
+                st.session_state.pop('_test_rdf_comb', None)
+
+                # Build individual dataframes from combined file
+                cols_to_fbr   = list(fbr_found)
+                cols_to_exc   = list(exc_found)
+                cols_to_disco = list(disco_found)
+                cols_to_prop  = list(prop_found)
+
+                fbr_comb   = cdf[cols_to_fbr].copy()   if cols_to_fbr   else pd.DataFrame()
+                exc_comb   = cdf[cols_to_exc].copy()   if cols_to_exc   else pd.DataFrame()
+                disco_comb = cdf[cols_to_disco].copy() if cols_to_disco else pd.DataFrame()
+                prop_comb  = cdf[cols_to_prop].copy()  if cols_to_prop  else pd.DataFrame()
+
+                # Store them in session for later merge
+                st.session_state['_fbr_comb']   = fbr_comb
+                st.session_state['_exc_comb']   = exc_comb
+                st.session_state['_disco_comb'] = disco_comb
+                st.session_state['_prop_comb']  = prop_comb
+
+                # Backup and replace
+                BACKUP = "data/raw_backup"
+                os.makedirs(BACKUP, exist_ok=True)
+                raw_files = ["fbr_tax_records.csv","excise_vehicles.csv","disco_consumption.csv","property_transfers.csv"]
+                df_map = {
+                    "fbr_tax_records.csv": fbr_comb,
+                    "excise_vehicles.csv": exc_comb,
+                    "disco_consumption.csv": disco_comb,
+                    "property_transfers.csv": prop_comb
+                }
+
+                for fn in raw_files:
+                    src = f"data/raw/{fn}"
+                    if os.path.exists(src):
+                        shutil.copy(src, os.path.join(BACKUP, fn))
+                    df_map[fn].to_csv(src, index=False)
+
+                out_files = ["scored_entities.csv","master_entities.csv","shaheen_graph.pkl","audit_trails.json"]
+                OUT_BACKUP = "outputs/backup_before_test"
+                os.makedirs(OUT_BACKUP, exist_ok=True)
+                for fn in out_files:
+                    src = f"outputs/{fn}"
+                    if os.path.exists(src):
+                        shutil.copy(src, os.path.join(OUT_BACKUP, fn))
+
+                ok = False
+                try:
+                    with st.spinner("Running forensic pipeline on test data…"):
+                        ok, err = run_pipeline_steps()
+                    if ok:
+                        rdf = pd.read_csv("outputs/scored_entities.csv")
+                        st.session_state['_test_rdf_comb']  = rdf
+                        st.session_state['_test_done_comb'] = True
+                    else:
+                        st.error(err)
+                except Exception as e:
+                    st.error(f"Test run error: {e}")
+                finally:
+                    for fn in raw_files:
+                        bk = os.path.join(BACKUP, fn)
+                        if os.path.exists(bk):
+                            shutil.copy(bk, f"data/raw/{fn}")
+                        elif os.path.exists(f"data/raw/{fn}"):
+                            os.remove(f"data/raw/{fn}")
+                    for fn in out_files:
+                        bk = os.path.join(OUT_BACKUP, fn)
+                        if os.path.exists(bk):
+                            shutil.copy(bk, f"outputs/{fn}")
+
+                if ok:
+                    st.rerun()
+
+            # Show test dashboard (combined)
+            if st.session_state.get('_test_done_comb') and st.session_state.get('_test_rdf_comb') is not None:
+                st.markdown("---")
+                st.markdown(
+                    "<div style='background:#071f10;border:1px solid #22c55e;border-radius:8px;"
+                    "padding:12px 18px;margin-bottom:16px'>"
+                    "<span style='color:#4ade80;font-weight:700;font-size:14px'>🧪 TEST RUN RESULTS</span>"
+                    "<span style='color:#6b7280;font-size:12px;margin-left:12px'>"
+                    "Pipeline ran on your uploaded file only — live database is unchanged.</span>"
+                    "</div>",
+                    unsafe_allow_html=True)
+                render_dashboard(st.session_state['_test_rdf_comb'].copy(), label="Test Run")
+                if not st.session_state.get('_merge_done_comb', False):
+                    st.markdown("---")
+                    st.info("✅ Satisfied with the results? Click **🔀 Merge into Live Database** above to commit this file.")
+
+            # ── Merge (combined mode) ─────────────────────────────────────
+            if merge_btn2 and st.session_state.get('_test_done_comb'):
+                os.makedirs("data/raw", exist_ok=True)
+                fbr_comb   = st.session_state.get('_fbr_comb', pd.DataFrame())
+                exc_comb   = st.session_state.get('_exc_comb', pd.DataFrame())
+                disco_comb = st.session_state.get('_disco_comb', pd.DataFrame())
+                prop_comb  = st.session_state.get('_prop_comb', pd.DataFrame())
+
+                merge_log = []
+
+                # FBR
+                fbr_path = "data/raw/fbr_tax_records.csv"
+                if os.path.exists(fbr_path) and not fbr_comb.empty:
+                    existing_fbr = pd.read_csv(fbr_path)
+                    merged_fbr, upd, added = smart_merge(existing_fbr, fbr_comb, id_cols=['fbr_id'])
+                    merge_log.append(f"**FBR:** {upd} updated · {added} new")
+                else:
+                    merged_fbr = fbr_comb.copy()
+                    merge_log.append(f"**FBR:** {len(merged_fbr)} written (new)")
+                if not merged_fbr.empty:
+                    merged_fbr.to_csv(fbr_path, index=False)
+
+                # Excise
+                exc_path = "data/raw/excise_vehicles.csv"
+                if os.path.exists(exc_path) and not exc_comb.empty:
+                    existing_exc = pd.read_csv(exc_path)
+                    merged_exc, upd, added = smart_merge(existing_exc, exc_comb, id_cols=['vehicle_reg_no'])
+                    merge_log.append(f"**Excise:** {upd} updated · {added} new")
+                else:
+                    merged_exc = exc_comb.copy()
+                    merge_log.append(f"**Excise:** {len(merged_exc)} written (new)")
+                if not merged_exc.empty:
+                    merged_exc.to_csv(exc_path, index=False)
+
+                # DISCO
+                disco_path = "data/raw/disco_consumption.csv"
+                if os.path.exists(disco_path) and not disco_comb.empty:
+                    existing_disco = pd.read_csv(disco_path)
+                    merged_disco, upd, added = smart_merge(existing_disco, disco_comb, id_cols=['meter_ref_no'])
+                    merge_log.append(f"**DISCO:** {upd} updated · {added} new")
+                else:
+                    merged_disco = disco_comb.copy()
+                    merge_log.append(f"**DISCO:** {len(merged_disco)} written (new)")
+                if not merged_disco.empty:
+                    merged_disco.to_csv(disco_path, index=False)
+
+                # Property
+                prop_path = "data/raw/property_transfers.csv"
+                if os.path.exists(prop_path) and not prop_comb.empty:
+                    existing_prop = pd.read_csv(prop_path)
+                    merged_prop, upd, added = smart_merge(existing_prop, prop_comb, id_cols=['registry_no'])
+                    merge_log.append(f"**Property:** {upd} updated · {added} new")
+                else:
+                    merged_prop = prop_comb.copy()
+                    merge_log.append(f"**Property:** {len(merged_prop)} written (new)")
+                if not merged_prop.empty:
+                    merged_prop.to_csv(prop_path, index=False)
+
+                st.markdown("---")
+                st.markdown("<p class='section-title'>Merge Summary</p>", unsafe_allow_html=True)
+                for line in merge_log:
+                    st.markdown(
+                        f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;"
+                        f"padding:8px 14px;border-radius:4px;color:#93c5fd;"
+                        f"font-size:13px;margin:4px 0'>{line}</div>",
+                        unsafe_allow_html=True)
+                st.markdown("<br>", unsafe_allow_html=True)
+
+                with st.spinner("Re-running full forensic pipeline on merged database…"):
+                    ok2, err2 = run_pipeline_steps()
+                if ok2:
+                    st.session_state['_merge_done_comb'] = True
+                    st.success("✅ Merge complete. Live database updated. Navigate to National Dashboard to see updated results.")
+                    st.balloons()
+                    for k in ['_test_done_comb', '_test_rdf_comb', '_fbr_comb', '_exc_comb', '_disco_comb', '_prop_comb']:
+                        st.session_state.pop(k, None)
+                    st.rerun()
+                else:
+                    st.error(f"Pipeline failed after merge: {err2}")
+
+        else:
+            st.info("⬆️ Upload your combined CSV file above to continue.")
+            st.markdown("---")
+            st.markdown("<p class='section-title'>📥 Download Sample Templates</p>", unsafe_allow_html=True)
+            tc1, tc2 = st.columns(2)
+            templates = [
+                ("data/raw/fbr_tax_records.csv",    "FBR Tax Records",   "fbr_sample.csv"),
+                ("data/raw/excise_vehicles.csv",     "Excise Vehicles",   "excise_sample.csv"),
+                ("data/raw/disco_consumption.csv",   "DISCO Consumption", "disco_sample.csv"),
+                ("data/raw/property_transfers.csv",  "Property Registry", "property_sample.csv"),
+            ]
+            for i, (path, lbl, fname) in enumerate(templates):
+                col = tc1 if i % 2 == 0 else tc2
+                with col:
+                    if os.path.exists(path):
+                        with open(path, "rb") as f:
+                            col.download_button(f"⬇️ {lbl}", f.read(), file_name=fname, mime="text/csv")
+                    else:
+                        col.info("Run generate_data.py first")
