@@ -63,15 +63,18 @@ st.markdown("""
 SESSIONS_DIR = "outputs/sessions"
 os.makedirs(SESSIONS_DIR, exist_ok=True)
 
-def save_current_session():
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    session_folder = os.path.join(SESSIONS_DIR, timestamp)
+def save_current_session(session_name=None):
+    if session_name is None:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        session_folder = os.path.join(SESSIONS_DIR, timestamp)
+    else:
+        session_folder = os.path.join(SESSIONS_DIR, session_name)
     os.makedirs(session_folder, exist_ok=True)
     for fname in ["scored_entities.csv", "master_entities.csv", "shaheen_graph.pkl", "audit_trails.json"]:
         src = f"outputs/{fname}"
         if os.path.exists(src):
             shutil.copy(src, os.path.join(session_folder, fname))
-    return timestamp
+    return os.path.basename(session_folder)
 
 def load_session(session_name):
     session_folder = os.path.join(SESSIONS_DIR, session_name)
@@ -90,8 +93,7 @@ def get_available_sessions():
             sessions.append(item)
     return sorted(sessions, reverse=True)
 
-# ── data loaders ─────────────────────────────────────────────
-@st.cache_data(ttl=300)
+# ── data loaders (no cache – always fresh) ───────────────────
 def load_data():
     scored = "outputs/scored_entities.csv"
     master = "outputs/master_entities.csv"
@@ -108,7 +110,6 @@ def load_data():
     except FileNotFoundError:
         return pd.DataFrame()
 
-@st.cache_resource
 def load_graph():
     path = "outputs/shaheen_graph.pkl"
     if os.path.exists(path):
@@ -116,7 +117,6 @@ def load_graph():
             return pickle.load(f)
     return None
 
-@st.cache_data(ttl=300)
 def load_audit():
     path = "outputs/audit_trails.json"
     if os.path.exists(path):
@@ -124,9 +124,17 @@ def load_audit():
             return json.load(f)
     return {}
 
-df      = load_data()
-G       = load_graph()
-audits  = load_audit()
+# ── initialise session state ─────────────────────────────────
+if 'current_session' not in st.session_state:
+    st.session_state.current_session = "Current (demo/latest)"
+if 'loading_session' not in st.session_state:
+    st.session_state.loading_session = False
+if 'upload_preview_dfs' not in st.session_state:
+    st.session_state.upload_preview_dfs = None
+if 'upload_preview_files_names' not in st.session_state:
+    st.session_state.upload_preview_files_names = None
+if 'force_refresh' not in st.session_state:
+    st.session_state.force_refresh = False
 
 # ── colour helpers ────────────────────────────────────────────
 RISK_COLORS = {
@@ -136,10 +144,8 @@ RISK_COLORS = {
     "LOW":      "#22d3ee",
     "COMPLIANT":"#22c55e",
 }
-
 def risk_color(cat):
     return RISK_COLORS.get(str(cat).upper(), "#6b7280")
-
 def score_color(s):
     s = float(s) if s else 0
     if s >= 80: return "#ef4444"
@@ -147,7 +153,6 @@ def score_color(s):
     if s >= 45: return "#3b82f6"
     if s >= 25: return "#22d3ee"
     return "#22c55e"
-
 PLOTLY_DARK = dict(
     plot_bgcolor="#111827",
     paper_bgcolor="#111827",
@@ -156,7 +161,7 @@ PLOTLY_DARK = dict(
     yaxis=dict(gridcolor="#1f2937", linecolor="#374151"),
 )
 
-# ── Query sanitisation and Urdu translation ──────────────────
+# ── Query helpers ─────────────────────────────────────────────
 def sanitize_query(query: str) -> str:
     dangerous = re.compile(r"\b(select|insert|update|delete|drop|union|create|alter|truncate|exec|declare|xp_cmdshell)\b", re.IGNORECASE)
     if dangerous.search(query):
@@ -165,7 +170,6 @@ def sanitize_query(query: str) -> str:
         return None
     cleaned = re.sub(r"[^a-zA-Z0-9\s\u0600-\u06FF\.,\-\?]", " ", query)
     return cleaned.strip()
-
 URDU_TO_EN = {
     "لاہور": "lahore", "کراچی": "karachi", "اسلام آباد": "islamabad",
     "گاڑی": "vehicle", "کار": "car", "پراپرٹی": "property", "غیر فائلر": "non-filer"
@@ -175,7 +179,9 @@ def translate_urdu(txt: str) -> str:
         txt = txt.replace(ur, en)
     return txt
 
-# ── sidebar (with session selector) ───────────────────────────
+# ════════════════════════════════════════════════════════════════════════════
+# SIDEBAR
+# ════════════════════════════════════════════════════════════════════════════
 with st.sidebar:
     st.markdown("<p style='color:#4ade80;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px'>Navigation</p>", unsafe_allow_html=True)
     page = st.radio("", [
@@ -188,18 +194,33 @@ with st.sidebar:
 
     st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
 
+    if st.button("🔄 Refresh Data (reload from disk)", key="force_refresh_btn"):
+        st.session_state.force_refresh = True
+        st.rerun()
+
     sessions = get_available_sessions()
     if sessions:
-        selected_session = st.selectbox("📁 Load previous upload", ["Current (demo/latest)"] + sessions, index=0)
-        if selected_session != "Current (demo/latest)":
-            if load_session(selected_session):
-                st.cache_data.clear()
-                st.cache_resource.clear()
-                st.success(f"Loaded session {selected_session}")
-                st.rerun()
-            else:
-                st.error("Failed to load session")
+        current_display = "Current (demo/latest)"
+        selected_session = st.selectbox(
+            "📁 Load previous upload",
+            [current_display] + sessions,
+            index=0,
+            key="session_selector"
+        )
+        if selected_session != current_display and not st.session_state.loading_session:
+            if selected_session != st.session_state.current_session:
+                st.session_state.loading_session = True
+                with st.spinner(f"Loading session {selected_session} ..."):
+                    success = load_session(selected_session)
+                if success:
+                    st.session_state.current_session = selected_session
+                    st.session_state.force_refresh = True
+                    st.rerun()
+                else:
+                    st.error("Failed to load session")
+                st.session_state.loading_session = False
 
+    df = load_data()
     if not df.empty:
         total = len(df)
         critical = int((df['deviation_score'] >= 80).sum())
@@ -211,16 +232,26 @@ with st.sidebar:
             ("🟡 High Risk", str(high), "#f59e0b"),
         ]:
             st.markdown(f"<div style='display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #1f2937'><span style='color:#6b7280;font-size:12px'>{label}</span><span style='color:{col};font-weight:600'>{val}</span></div>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color:#6b7280;font-size:10px'>Current session: <b>{st.session_state.current_session}</b><br>{total} profiles loaded</p>", unsafe_allow_html=True)
+    else:
+        st.info("No data found. Run a pipeline or load a session.")
 
     st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
     st.markdown("<p style='color:#374151;font-size:10px;text-align:center'>Shaheen-Eye P-FIS v1.0<br>FMU — Govt. of Pakistan<br>© 2025 — CONFIDENTIAL</p>", unsafe_allow_html=True)
 
+# ── Load data for pages (fresh every time) ───────────────────
+df = load_data()
+G = load_graph()
+audits = load_audit()
+if st.session_state.force_refresh:
+    st.session_state.force_refresh = False
+
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 1 – NATIONAL DASHBOARD
+# PAGE 1 – NATIONAL DASHBOARD (unchanged)
 # ════════════════════════════════════════════════════════════════════════════
 if "National" in page:
     if df.empty:
-        st.warning("No data loaded. Run the pipeline first.")
+        st.warning("No data loaded. Run the pipeline first or load a session.")
         st.stop()
 
     c1, c2, c3, c4 = st.columns(4)
@@ -308,18 +339,14 @@ if "National" in page:
             fig_f.update_layout(**PLOTLY_DARK, height=320, coloraxis_showscale=False, margin=dict(t=10,b=10))
             st.plotly_chart(fig_f, use_container_width=True)
 
-    # Overall report button
     col_btn1, col_btn2, _ = st.columns([1,1,3])
     with col_btn1:
         if st.button("📊 Export Overall Intelligence Report (PDF)", type="primary"):
             try:
-                # Ensure df is not empty and has required columns
                 if df.empty:
                     st.error("No data to generate report.")
                 else:
-                    # Make a copy to avoid modifying original
                     report_df = df.copy()
-                    # Ensure the fraud column exists (use fallback)
                     if 'top_fraud_flags' not in report_df.columns and 'top_risk_factor' not in report_df.columns:
                         report_df['top_fraud_flags'] = "No fraud data"
                     pdf_path = generate_overall_report(report_df)
@@ -333,10 +360,9 @@ if "National" in page:
                         )
             except Exception as e:
                 st.error(f"Report generation error: {e}")
-                st.info("Try refreshing the page and clicking again. If problem persists, check that outputs/scored_entities.csv exists.")
-                
+
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 2 – RISK LEADERBOARD (with DataFrame‑safe selection fix)
+# PAGE 2 – RISK LEADERBOARD
 # ════════════════════════════════════════════════════════════════════════════
 elif "Leaderboard" in page:
     if df.empty:
@@ -385,11 +411,9 @@ elif "Leaderboard" in page:
         gb.configure_column("vehicle_make_model", headerName="Vehicle")
         gb.configure_column("top_fraud_flags", headerName="🔍 Fraud Detected")
         resp = AgGrid(fdf[avail], gridOptions=gb.build(), update_mode=GridUpdateMode.SELECTION_CHANGED, allow_unsafe_jscode=True, height=600, theme="alpine-dark")
-        
-        # FIX: Handle selection safely (works whether sel is list or DataFrame)
+
         sel = resp.get('selected_rows', [])
         if sel is not None and len(sel) > 0:
-            # Convert to DataFrame if necessary
             if isinstance(sel, pd.DataFrame):
                 row_sel = sel.iloc[0]
             else:
@@ -405,14 +429,13 @@ elif "Leaderboard" in page:
         st.info("For interactive table: pip install streamlit-aggrid")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 3 – INDIVIDUAL PROFILE (with duplicate‑safe dropdown)
+# PAGE 3 – INDIVIDUAL PROFILE (with fixed timeline chart)
 # ════════════════════════════════════════════════════════════════════════════
 elif "Individual" in page:
     if df.empty:
         st.warning("No data. Run the pipeline first.")
         st.stop()
 
-    # Use unique names to avoid duplicate entries in dropdown
     names = df['full_name'].drop_duplicates().tolist()
     default = 0
     if 'sel_pid' in st.session_state:
@@ -425,7 +448,8 @@ elif "Individual" in page:
     person = df[df['full_name'] == sel_name].iloc[0]
     pid = person['master_person_id']
     score = float(person.get('deviation_score', 0))
-    cat = str(person.get('risk_category','UNKNOWN')).upper()
+    flags_raw = str(person.get('top_fraud_flags', ''))
+    cat = str(person.get('risk_category', 'UNKNOWN')).upper()
     clr = risk_color(cat)
 
     st.markdown(f"<div class='profile-header' style='border-left:4px solid {clr}'><div style='display:flex;justify-content:space-between;align-items:start'><div><h2 style='color:{clr};margin:0;font-size:22px'>{sel_name}</h2><p style='color:#6b7280;margin:4px 0;font-size:13px'>NTN/FBR-ID: {person.get('master_person_id','N/A')} &nbsp;·&nbsp; City: {person.get('city','N/A')} &nbsp;·&nbsp; Occupation: {person.get('occupation','N/A')} &nbsp;·&nbsp; ATL: <b style='color:{'#22c55e' if person.get('filer_status')=='ATL' else '#ef4444'}'>{person.get('filer_status','N/A')}</b></p></div><div style='text-align:right'><p style='font-size:48px;font-weight:800;color:{clr};margin:0;line-height:1'>{score:.0f}<span style='font-size:16px;color:#4b5563'>/100</span></p><span style='background:{clr};color:{'black' if cat=='HIGH' else 'white'};padding:4px 14px;border-radius:12px;font-size:11px;font-weight:700'>{cat}</span></div></div></div>", unsafe_allow_html=True)
@@ -475,6 +499,26 @@ elif "Individual" in page:
                 if neighbors:
                     st.write("Connected entities:", [G.nodes[n].get('name', n) for n in neighbors[:5]])
 
+        st.markdown("<p class='section-title' style='margin-top:20px'>Forensic Enforcement Directive</p>", unsafe_allow_html=True)
+        directive_text = ""
+        if score >= 80:
+            directive_text = "<b>CRITICAL:</b> Immediate enforcement mandated. "
+        elif score >= 65:
+            directive_text = "<b>HIGH RISK:</b> Priority audit sequence initiated. "
+        if "Benami" in flags_raw:
+            directive_text += "Benami holdings detected; initiate Section 24 asset freeze. "
+        if "Dc Underinvoicing" in flags_raw or "DC Rate" in flags_raw:
+            directive_text += "Valuation fraud detected; invoke ITO Section 68. "
+        if "File Trading" in flags_raw:
+            directive_text += "Documented evasion via File Trading; refer to regional registrar. "
+        if not flags_raw or flags_raw == "None":
+            directive_text = "No immediate legal violations detected. Maintain routine monitoring."
+        st.markdown(f"""
+            <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid {clr}; border-radius: 8px; padding: 15px; color: {clr}; font-size: 13px;">
+                <span style="font-size: 18px;">⚖️</span> {directive_text}
+            </div>
+        """, unsafe_allow_html=True)
+
     with col_intel:
         declared = float(person.get('declared_income_pkr', 0))
         lifestyle = float(person.get('annual_utility_bill', 0))
@@ -483,7 +527,6 @@ elif "Individual" in page:
         st.markdown("<p class='section-title'>Score Breakdown</p>", unsafe_allow_html=True)
         st.markdown(f"<div class='formula-box' style='color:#94a3b8'>Declared Annual Income : <b style='color:#22c55e'>Rs. {declared:,.0f}</b><br>Estimated Lifestyle Cost: <b style='color:#f59e0b'>Rs. {lifestyle:,.0f}</b><br>Total Asset Value       : <b style='color:#ef4444'>Rs. {assets:,.0f}</b><br><hr style='border-color:#1f2937;margin:8px 0'>Lifestyle / Income Ratio: <b style='color:{clr}'>{ratio:.1f}x</b><br><br><b style='color:{clr};font-size:18px'>Final Score: {score:.0f}/100 — {cat}</b></div>", unsafe_allow_html=True)
         st.markdown("<p class='section-title' style='margin-top:16px'>Fraud Modules Triggered</p>", unsafe_allow_html=True)
-        flags_raw = str(person.get('top_fraud_flags',''))
         flags = [f.strip() for f in flags_raw.split(',') if f.strip() not in ('','None','nan')]
         if flags:
             for flag in flags:
@@ -523,9 +566,34 @@ elif "Individual" in page:
         tl.append({"Event": f"FBR Filing — {yr}", "Year": yr, "Type": "Non-Filing" if person.get('filer_status')=='Non-ATL' else "Filed"})
     if tl:
         tl_df = pd.DataFrame(tl)
-        fig_tl = px.scatter(tl_df, x='Year', y='Type', text='Event', color='Type', template="plotly_dark", color_discrete_map={"Asset Acquired": "#ef4444", "Non-Filing": "#f59e0b", "Filed": "#22c55e"})
-        fig_tl.update_traces(textposition="top center", marker=dict(size=14))
-        fig_tl.update_layout(**PLOTLY_DARK, height=200, showlegend=False, margin={"t":30,"b":10})
+        fig_tl = px.scatter(
+            tl_df, x='Year', y='Type',
+            text='Event', color='Type',
+            template="plotly_dark",
+            color_discrete_map={
+                "Asset Acquired": "#ef4444",
+                "Non-Filing":     "#f59e0b",
+                "Filed":          "#22c55e"
+            }
+        )
+        # Fix 1: allow text to overflow
+        fig_tl.update_traces(
+            textposition="top center",
+            marker=dict(size=14),
+            cliponaxis=False
+        )
+        # Fix 2: add padding to X-axis so the last dot isn't on the edge
+        min_yr = tl_df['Year'].min()
+        max_yr = tl_df['Year'].max()
+        padding = 0.5 if max_yr == min_yr else (max_yr - min_yr) * 0.15
+        fig_tl.update_xaxes(range=[min_yr - padding, max_yr + padding])
+        # Fix 3: increase height and margins to give text room
+        fig_tl.update_layout(
+            **PLOTLY_DARK,
+            height=240,
+            showlegend=False,
+            margin={"t": 50, "b": 10, "l": 10, "r": 50}
+        )
         st.plotly_chart(fig_tl, use_container_width=True)
 
     st.markdown("<hr style='border-color:#1f2937'>", unsafe_allow_html=True)
@@ -555,7 +623,7 @@ elif "Individual" in page:
                 st.error(f"ZIP error: {e}")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 4 – INTELLIGENCE QUERY (same as before – already fixed)
+# PAGE 4 – INTELLIGENCE QUERY (unchanged)
 # ════════════════════════════════════════════════════════════════════════════
 elif "Query" in page:
     if df.empty:
@@ -564,8 +632,7 @@ elif "Query" in page:
     st.markdown("<p class='section-title'>Intelligence Query Interface</p>", unsafe_allow_html=True)
     st.markdown("<p style='color:#4b5563;font-size:13px;margin-bottom:16px'>Query Pakistan's financial population in plain language.</p>", unsafe_allow_html=True)
     quick = ["Non-filers in DHA with 2000cc+ vehicles", "Citizens with zero income and property above 20M", "Bahria Town residents with Non-ATL status", "All critical risk profiles in Karachi", "Drivers or housewives owning luxury vehicles", "Properties with File registry type and Non-ATL owner"]
-    # --- SURGICAL PATCH START ---
-    # 1. Initialize our trigger variable if it doesn't exist
+
     if 'auto_run' not in st.session_state:
         st.session_state['auto_run'] = False
 
@@ -573,27 +640,19 @@ elif "Query" in page:
     for i, q in enumerate(quick):
         col = [qc1, qc2, qc3][i % 3]
         with col:
-            # 2. When a button is clicked, save the text, set the trigger, and FORCE a rerun
             if st.button(f"🔍 {q}", key=f"q{i}"):
                 st.session_state['query_val'] = q
                 st.session_state['auto_run'] = True
-                st.rerun()  # This forces the page to refresh instantly
+                st.rerun()
 
-    # 3. The text box reads from the session state
     query = st.text_input("💬 Enter query:", value=st.session_state.get('query_val',''), placeholder="e.g. Show Land Cruiser owners with zero income in Lahore")
-    
-    # 4. Update session state if user types manually
     if query != st.session_state.get('query_val',''):
         st.session_state['query_val'] = query
 
     execute_clicked = st.button("🚀 Execute", type="primary")
-    
-    # 5. Run the query if Execute is clicked OR if the auto_run trigger is True
     if (execute_clicked or st.session_state['auto_run']) and query:
-        st.session_state['auto_run'] = False  # Reset trigger immediately
-        
+        st.session_state['auto_run'] = False
         safe_q = sanitize_query(query)
-    # --- SURGICAL PATCH END ---
         if safe_q is None:
             st.error("🔒 Security violation: Unauthorized characters detected.")
         elif safe_q.strip() == "":
@@ -674,7 +733,7 @@ elif "Query" in page:
                 st.info("No profiles match. Try different terms.")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 5 – LIVE DATA UPLOAD (unchanged from the good version)
+# PAGE 5 – LIVE DATA UPLOAD (with merge option and test run)
 # ════════════════════════════════════════════════════════════════════════════
 elif "Upload" in page:
     st.markdown("<p class='section-title'>Live Data Ingestion Pipeline</p>", unsafe_allow_html=True)
@@ -699,37 +758,87 @@ elif "Upload" in page:
 
     all_up = all([fbr_f, exc_f, disco_f, prop_f])
 
+    merge_mode = False
+    if all_up:
+        merge_mode = st.checkbox("📌 Merge with existing data (append new records to current dataset)", value=False,
+                                 help="If checked, new records will be added to the existing data. If unchecked, existing data will be completely replaced.")
+        if st.button("🔄 Clear all uploaded files"):
+            for key in ['u_fbr', 'u_exc', 'u_disco', 'u_prop', 'upload_preview_dfs', 'upload_preview_files_names']:
+                if key in st.session_state:
+                    del st.session_state[key]
+            st.rerun()
+
     if all_up:
         st.success("✅ All 4 datasets received.")
+
+        current_files = (fbr_f.name, exc_f.name, disco_f.name, prop_f.name)
+        if (st.session_state.upload_preview_files_names != current_files) or st.session_state.upload_preview_dfs is None:
+            previews = []
+            for uf in [fbr_f, exc_f, disco_f, prop_f]:
+                uf.seek(0)
+                previews.append(pd.read_csv(uf))
+            st.session_state.upload_preview_dfs = previews
+            st.session_state.upload_preview_files_names = current_files
+
         with st.expander("👁️ Preview uploaded data"):
             tabs = st.tabs(["FBR","Excise","DISCO","Property"])
-            uploads = [fbr_f, exc_f, disco_f, prop_f]
             labels = ["FBR Tax","Excise Vehicles","DISCO Consumption","Property Registry"]
-            for tab, uf, lb in zip(tabs, uploads, labels):
-                uf.seek(0)
-                tmp = pd.read_csv(uf)
+            for tab, tmp, lb in zip(tabs, st.session_state.upload_preview_dfs, labels):
                 with tab:
                     st.markdown(f"**{lb}** — {len(tmp):,} records, {len(tmp.columns)} columns")
                     st.dataframe(tmp.head(5), use_container_width=True)
 
         st.markdown("---")
         st.markdown("<p class='section-title'>Step 2 — Run Forensic Pipeline</p>", unsafe_allow_html=True)
-        STEPS = [
-            ("🔄 Preprocessing — normalizing names & addresses", "preprocess", "run_preprocessing"),
-            ("🔗 Entity Resolution — linking identities across 4 datasets", "entity_resolution", "run_entity_resolution"),
-            ("🕸️  Building Knowledge Graph — mapping financial footprints", "build_graph", "construct_graph"),
-            ("🧠 Forensic Scoring — running 17 fraud detection modules", "scoring", "process_master_csv"),
-        ]
 
-        if st.button("🚀 Run Complete Forensic Analysis", type="primary"):
+        col_test, col_full = st.columns(2)
+        with col_test:
+            test_run = st.button("🧪 Test Run (preview results, don't save session)", type="secondary")
+        with col_full:
+            full_run = st.button("🚀 Run Complete Forensic Analysis (save session)", type="primary")
+
+        run_pipeline = test_run or full_run
+
+        if run_pipeline:
             os.makedirs("data/raw", exist_ok=True)
-            for uf, fname in zip([fbr_f, exc_f, disco_f, prop_f], ["fbr_tax_records.csv","excise_vehicles.csv","disco_consumption.csv","property_transfers.csv"]):
-                uf.seek(0)
-                pd.read_csv(uf).to_csv(f"data/raw/{fname}", index=False)
+
+            # Handle merge vs replace
+            if merge_mode and os.path.exists("data/raw/fbr_tax_records.csv"):
+                existing_fbr = pd.read_csv("data/raw/fbr_tax_records.csv")
+                existing_exc = pd.read_csv("data/raw/excise_vehicles.csv") if os.path.exists("data/raw/excise_vehicles.csv") else pd.DataFrame()
+                existing_disco = pd.read_csv("data/raw/disco_consumption.csv") if os.path.exists("data/raw/disco_consumption.csv") else pd.DataFrame()
+                existing_prop = pd.read_csv("data/raw/property_transfers.csv") if os.path.exists("data/raw/property_transfers.csv") else pd.DataFrame()
+
+                fbr_f.seek(0); new_fbr = pd.read_csv(fbr_f)
+                exc_f.seek(0); new_exc = pd.read_csv(exc_f)
+                disco_f.seek(0); new_disco = pd.read_csv(disco_f)
+                prop_f.seek(0); new_prop = pd.read_csv(prop_f)
+
+                merged_fbr = pd.concat([existing_fbr, new_fbr], ignore_index=True).drop_duplicates(subset=['fbr_id', 'full_name'])
+                merged_exc = pd.concat([existing_exc, new_exc], ignore_index=True).drop_duplicates(subset=['vehicle_reg_no'])
+                merged_disco = pd.concat([existing_disco, new_disco], ignore_index=True).drop_duplicates(subset=['meter_ref_no'])
+                merged_prop = pd.concat([existing_prop, new_prop], ignore_index=True).drop_duplicates(subset=['registry_no'])
+
+                merged_fbr.to_csv("data/raw/fbr_tax_records.csv", index=False)
+                merged_exc.to_csv("data/raw/excise_vehicles.csv", index=False)
+                merged_disco.to_csv("data/raw/disco_consumption.csv", index=False)
+                merged_prop.to_csv("data/raw/property_transfers.csv", index=False)
+                st.info(f"Merged: now {len(merged_fbr)} FBR records, {len(merged_exc)} vehicle records, etc.")
+            else:
+                for uf, fname in zip([fbr_f, exc_f, disco_f, prop_f], ["fbr_tax_records.csv","excise_vehicles.csv","disco_consumption.csv","property_transfers.csv"]):
+                    uf.seek(0)
+                    pd.read_csv(uf).to_csv(f"data/raw/{fname}", index=False)
 
             prog = st.progress(0)
             status = st.empty()
-            for i, (msg, mod, fn_name) in enumerate(STEPS):
+            steps = [
+                ("🔄 Preprocessing — normalizing names & addresses", "preprocess", "run_preprocessing"),
+                ("🔗 Entity Resolution — linking identities across 4 datasets", "entity_resolution", "run_entity_resolution"),
+                ("🕸️  Building Knowledge Graph — mapping financial footprints", "build_graph", "construct_graph"),
+                ("🧠 Forensic Scoring — running 17 fraud detection modules", "scoring", "process_master_csv"),
+            ]
+            pipeline_success = True
+            for i, (msg, mod, fn_name) in enumerate(steps):
                 status.markdown(f"<div style='background:#0f1b2d;border-left:3px solid #3b82f6;padding:10px 14px;border-radius:4px;color:#93c5fd;font-size:13px'>{msg}...</div>", unsafe_allow_html=True)
                 try:
                     import importlib
@@ -738,41 +847,27 @@ elif "Upload" in page:
                     fn()
                 except Exception as e:
                     st.error(f"Error in {mod}: {e}")
+                    pipeline_success = False
                     break
-                prog.progress((i+1)/len(STEPS))
+                prog.progress((i+1)/len(steps))
                 time.sleep(0.3)
 
-            status.markdown("<div style='background:#071f10;border-left:3px solid #22c55e;padding:12px 14px;border-radius:4px;color:#4ade80;font-weight:600;font-size:13px'>✅ Pipeline complete — navigate to Risk Leaderboard</div>", unsafe_allow_html=True)
-            st.cache_data.clear()
-            st.cache_resource.clear()
+            if pipeline_success:
+                status.markdown("<div style='background:#071f10;border-left:3px solid #22c55e;padding:12px 14px;border-radius:4px;color:#4ade80;font-weight:600;font-size:13px'>✅ Pipeline complete!</div>", unsafe_allow_html=True)
 
-            session_id = save_current_session()
-            st.success(f"Saved as session: {session_id}. You can load it from the sidebar dropdown.")
-
-            try:
-                rdf = pd.read_csv("outputs/scored_entities.csv")
-                rc1, rc2, rc3, rc4 = st.columns(4)
-                asset_col = 'total_assets_estimated' if 'total_assets_estimated' in rdf.columns else 'total_assets_val'
-                gap = rdf[rdf['deviation_score']>=65][asset_col].fillna(0).sum() * 0.15
-                for col, lbl, val, clr in [
-                    (rc1,"Citizens Analyzed", f"{len(rdf):,}", "#94a3b8"),
-                    (rc2,"🔴 Critical", str(int((rdf['deviation_score']>=80).sum())), "#ef4444"),
-                    (rc3,"⚠️ High Risk", str(int((rdf['deviation_score']>=65).sum())), "#f59e0b"),
-                    (rc4,"Est. Tax Gap", f"Rs.{gap/1e9:.1f}B", "#22c55e"),
-                ]:
-                    with col:
-                        st.markdown(f"<div class='metric-card'><p class='metric-val' style='color:{clr}'>{val}</p><p class='metric-lbl'>{lbl}</p></div>", unsafe_allow_html=True)
-                st.dataframe(rdf.sort_values('deviation_score', ascending=False).head(10), use_container_width=True)
-
-                if st.button("📊 Export Full Pipeline Report (PDF)", key="export_upload_report"):
-                    try:
-                        pdf_path = generate_overall_report(rdf)
-                        with open(pdf_path, "rb") as f:
-                            st.download_button("⬇️ Download Report", f, file_name="FBR_Pipeline_Report.pdf", mime="application/pdf")
-                    except Exception as e:
-                        st.error(f"Report generation error: {e}")
-            except Exception:
-                pass
+                if test_run:
+                    st.success("Test run completed. Results are shown below. They are NOT saved as a session.")
+                    rdf = pd.read_csv("outputs/scored_entities.csv")
+                    st.dataframe(rdf.sort_values('deviation_score', ascending=False).head(10), use_container_width=True)
+                    st.info("Click 'Run Complete Forensic Analysis' to permanently save this data as a session.")
+                else:
+                    session_id = save_current_session()
+                    st.success(f"Saved as session: {session_id}. You can load it from the sidebar dropdown.")
+                    st.session_state.current_session = session_id
+                    st.session_state.force_refresh = True
+                    st.rerun()
+            else:
+                st.error("Pipeline failed. Please check your CSV formats.")
 
     else:
         st.info("⬆️ Upload all 4 CSV files above.")
