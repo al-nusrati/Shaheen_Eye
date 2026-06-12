@@ -564,15 +564,36 @@ elif "Query" in page:
     st.markdown("<p class='section-title'>Intelligence Query Interface</p>", unsafe_allow_html=True)
     st.markdown("<p style='color:#4b5563;font-size:13px;margin-bottom:16px'>Query Pakistan's financial population in plain language.</p>", unsafe_allow_html=True)
     quick = ["Non-filers in DHA with 2000cc+ vehicles", "Citizens with zero income and property above 20M", "Bahria Town residents with Non-ATL status", "All critical risk profiles in Karachi", "Drivers or housewives owning luxury vehicles", "Properties with File registry type and Non-ATL owner"]
+    # --- SURGICAL PATCH START ---
+    # 1. Initialize our trigger variable if it doesn't exist
+    if 'auto_run' not in st.session_state:
+        st.session_state['auto_run'] = False
+
     qc1, qc2, qc3 = st.columns(3)
     for i, q in enumerate(quick):
         col = [qc1, qc2, qc3][i % 3]
         with col:
+            # 2. When a button is clicked, save the text, set the trigger, and FORCE a rerun
             if st.button(f"🔍 {q}", key=f"q{i}"):
                 st.session_state['query_val'] = q
-    query = st.text_input("💬 Enter query:", value=st.session_state.get('query_val',''), placeholder="e.g. Show Land Cruiser owners with zero income in Lahore", key="query_input")
-    if st.button("🚀 Execute", type="primary") and query:
+                st.session_state['auto_run'] = True
+                st.rerun()  # This forces the page to refresh instantly
+
+    # 3. The text box reads from the session state
+    query = st.text_input("💬 Enter query:", value=st.session_state.get('query_val',''), placeholder="e.g. Show Land Cruiser owners with zero income in Lahore")
+    
+    # 4. Update session state if user types manually
+    if query != st.session_state.get('query_val',''):
+        st.session_state['query_val'] = query
+
+    execute_clicked = st.button("🚀 Execute", type="primary")
+    
+    # 5. Run the query if Execute is clicked OR if the auto_run trigger is True
+    if (execute_clicked or st.session_state['auto_run']) and query:
+        st.session_state['auto_run'] = False  # Reset trigger immediately
+        
         safe_q = sanitize_query(query)
+    # --- SURGICAL PATCH END ---
         if safe_q is None:
             st.error("🔒 Security violation: Unauthorized characters detected.")
         elif safe_q.strip() == "":
