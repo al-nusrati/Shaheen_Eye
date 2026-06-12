@@ -166,6 +166,54 @@ PLOTLY_DARK = dict(
 )
 
 # ════════════════════════════════════════════════════════════════════════════
+# DISPLAY HELPERS — human-readable labels & number formatting
+# ════════════════════════════════════════════════════════════════════════════
+COLUMN_LABELS = {
+    "full_name": "Full Name",
+    "city": "City",
+    "deviation_score": "Risk Score",
+    "risk_category": "Risk Level",
+    "filer_status": "ATL Status",
+    "declared_income_pkr": "Declared Income (PKR)",
+    "tax_paid_pkr": "Tax Paid (PKR)",
+    "total_assets_estimated": "Total Assets (PKR)",
+    "total_property_value": "Property Value (PKR)",
+    "avg_monthly_bill_pkr": "Avg. Monthly Bill (PKR)",
+    "annual_utility_bill": "Annual Utility Bill (PKR)",
+    "vehicle_make_model": "Vehicle",
+    "max_vehicle_cc": "Engine Capacity (CC)",
+    "vehicle_count": "Vehicles Owned",
+    "property_count": "Properties Owned",
+    "top_fraud_flags": "Fraud Indicators",
+    "occupation": "Occupation",
+    "master_person_id": "Person ID",
+    "phone_number": "Phone Number",
+    "registry_type": "Registry Type",
+    "noc_status": "NOC Status",
+    "area_marla": "Area (Marla)",
+}
+
+def pretty_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Return a copy of df with human-readable column headers for display."""
+    return df.rename(columns={c: COLUMN_LABELS.get(c, c) for c in df.columns})
+
+def fmt_pkr(value) -> str:
+    """Format a PKR amount compactly: Rs. 1.2M / Rs. 850K / Rs. 3,200."""
+    try:
+        v = float(value)
+    except (TypeError, ValueError):
+        return "Rs. 0"
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    if v >= 1e9:
+        return f"{sign}Rs. {v/1e9:.2f}B"
+    if v >= 1e6:
+        return f"{sign}Rs. {v/1e6:.2f}M"
+    if v >= 1e3:
+        return f"{sign}Rs. {v/1e3:.0f}K"
+    return f"{sign}Rs. {v:,.0f}"
+
+# ════════════════════════════════════════════════════════════════════════════
 # FRAUD RING DETECTION (built-in, no external module needed)
 # ════════════════════════════════════════════════════════════════════════════
 @st.cache_data(ttl=60)
