@@ -49,3 +49,4 @@ outputs/reports/
 *.swo
 .DS_Store
 Thumbs.db
+.aider*
