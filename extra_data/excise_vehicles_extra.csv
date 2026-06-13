@@ -1,0 +1,321 @@
+vehicle_reg_no,owner_name,engine_capacity_cc,vehicle_make_model,registration_year,owner_address,import_type,declared_import_value_pkr
+REG-4255-0,Sobia Javed,1500,Toyota Yaris,2020,"House 63, Gulberg, Gujranwala",Local,0
+REG-4866-2,Muhammad Hassan,1000,Suzuki WagonR,2025,"House 179, Johar Town, Rawalpindi",Imported,0
+REG-5523-3,Saima Bhatti,1300,Toyota Corolla,2024,"House 68, Gulberg, Karachi",Local,0
+REG-1146-4,Usman Malik,1300,Honda City,2015,"House 12, Hayatabad, Gujranwala",Imported,0
+REG-7084-5,Zainab Chaudhry,1300,Toyota Corolla,2016,"House 91, Johar Town, Peshawar",Local,0
+REG-6544-6,Zainab Mirza,1000,Suzuki WagonR,2025,"House 98, Satellite Town, Sialkot",Local,0
+REG-9787-7,Ahmed Siddiqui,1300,Toyota Corolla,2016,"House 146, Pechs, Faisalabad",Local,0
+REG-6690-8,Sobia Rizvi,1800,Honda Civic,2022,"House 138, Bahria Town, Peshawar",Local,0
+REG-6868-9,Ali Ahmed,1800,Toyota Corolla Grande,2026,"House 40, Johar Town, Sialkot",Local,0
+REG-8951-10,Muhammad Ahmed,660,Suzuki Alto,2026,"House 175, F-7, Sialkot",Imported,0
+REG-9029-11,Sobia Javed,2700,Toyota Fortuner,2018,"House 129, Johar Town, Islamabad",Local,0
+REG-8674-12,Waseem Khan,1800,Honda Civic,2019,"House 154, G-10, Islamabad",Local,0
+REG-8362-13,Kashif Malik,1300,Toyota Corolla,2019,"House 22, DHA, Rawalpindi",Local,0
+REG-1011-14,Waseem Bhatti,2000,Toyota Prado,2025,"House 109, Bahria Town, Sialkot",Imported,0
+REG-4912-17,Usman Ahmed,1800,Honda Civic,2020,"House 25, Cantt, Rawalpindi",Local,0
+REG-7348-18,Tariq Butt,2700,Toyota Fortuner,2018,"House 28, Model Town, Gujranwala",Imported,0
+REG-6285-20,Tariq Sheikh,1500,Toyota Yaris,2021,"House 43, Pechs, Islamabad",Local,0
+REG-2092-21,Amna Nawaz,2700,Toyota Fortuner,2015,"House 40, Pechs, Peshawar",Local,0
+REG-4310-22,Ali Soomro,660,Suzuki Alto,2016,"House 123, G-10, Sukkur",Imported,0
+REG-7366-23,Farah Bibi,660,Suzuki Alto,2025,"House 104, Hayatabad, Karachi",Imported,0
+REG-5193-24,Imran Javed,3000,Toyota Land Cruiser,2015,"House 53, Model Town, Multan",Local,0
+REG-1214-25,Muhammad Mirza,1000,Suzuki WagonR,2018,"House 160, G-10, Quetta",Imported,0
+REG-6913-28,Farah Javed,660,Suzuki Alto,2023,"House 130, Clifton, Hyderabad",Imported,0
+REG-5355-31,Saima Siddiqui,3000,Toyota Land Cruiser,2023,"House 175, Cantt, Faisalabad",Local,0
+REG-9511-34,Ahmed Javed,1300,Honda City,2016,"House 90, G-10, Multan",Local,0
+REG-4164-36,Bilal Sheikh,1300,Honda City,2023,"House 182, Hayatabad, Multan",Local,0
+REG-7802-37,Farah Butt,1300,Toyota Corolla,2026,"House 160, Pechs, Faisalabad",Local,0
+REG-7997-39,Nadia Soomro,2000,Toyota Prado,2016,"House 156, F-7, Peshawar",Local,0
+REG-6529-41,Hina Bhatti,2700,Toyota Fortuner,2025,"House 197, DHA, Lahore",Local,0
+REG-8258-42,Ayesha Khan,3000,Toyota Land Cruiser,2020,"House 193, Pechs, Quetta",Local,0
+REG-7090-43,Fatima Mirza,1800,Honda Civic,2021,"House 35, Nazimabad, Lahore",Imported,0
+REG-9939-45,Hina Bibi,1300,Honda City,2018,"House 71, F-7, Gujranwala",Imported,0
+REG-8331-48,Nadia Rizvi,2000,Toyota Prado,2021,"House 192, Cantt, Peshawar",Local,0
+REG-3213-51,Imran Qureshi,2700,Toyota Fortuner,2019,"House 72, Johar Town, Rawalpindi",Local,0
+REG-4519-52,Asad Sheikh,1300,Honda City,2020,"House 194, Clifton, Faisalabad",Local,0
+REG-3534-57,Amna Nawaz,3000,Toyota Land Cruiser,2016,"House 120, Nazimabad, Sukkur",Local,0
+REG-3267-58,Farah Qureshi,1300,Toyota Corolla,2019,"House 87, Cantt, Rawalpindi",Local,0
+REG-5920-60,Hina Nawaz,1500,Toyota Yaris,2016,"House 115, Nazimabad, Quetta",Imported,0
+REG-2264-61,Amna Abbasi,1300,Honda City,2026,"House 89, Model Town, Peshawar",Local,0
+REG-2562-63,Waseem Bhatti,3000,Toyota Land Cruiser,2024,"House 73, Satellite Town, Peshawar",Local,0
+REG-7251-64,Bilal Sheikh,3000,Toyota Land Cruiser,2016,"House 14, DHA, Peshawar",Local,0
+REG-7824-66,Ayesha Raza,1800,Toyota Corolla Grande,2016,"House 145, Hayatabad, Karachi",Local,0
+REG-1886-70,Farah Siddiqui,1800,Toyota Corolla Grande,2019,"House 109, Cantt, Peshawar",Local,0
+REG-3450-71,Sobia Soomro,3000,Toyota Land Cruiser,2020,"House 74, Bahria Town, Lahore",Local,0
+REG-8300-72,Ahmed Bhatti,1800,Toyota Corolla Grande,2024,"House 11, Nazimabad, Peshawar",Local,0
+REG-7460-73,Kashif Khan,1500,Toyota Yaris,2017,"House 196, Model Town, Rawalpindi",Local,0
+REG-1807-74,Hina Malik,2000,Toyota Prado,2023,"House 121, Bahria Town, Peshawar",Imported,0
+REG-9221-75,Sana Qureshi,1800,Toyota Corolla Grande,2021,"House 195, G-10, Islamabad",Local,0
+REG-8993-77,Ali Siddiqui,1300,Honda City,2021,"House 69, Cantt, Hyderabad",Local,0
+REG-5034-78,Hamza Hassan,2700,Toyota Fortuner,2018,"House 80, DHA, Karachi",Local,0
+REG-6298-79,Asad Raza,1800,Toyota Corolla Grande,2025,"House 128, Johar Town, Karachi",Local,0
+REG-7939-80,Tariq Siddiqui,1800,Toyota Corolla Grande,2020,"House 154, Nazimabad, Quetta",Local,0
+REG-1396-81,Muhammad Iqbal,1800,Honda Civic,2019,"House 186, Cantt, Faisalabad",Local,0
+REG-3389-83,Tariq Qureshi,2000,Toyota Prado,2022,"House 170, Johar Town, Sukkur",Local,0
+REG-3555-85,Ahmed Butt,1800,Honda Civic,2026,"House 173, Hayatabad, Faisalabad",Local,0
+REG-4982-86,Asad Iqbal,660,Suzuki Alto,2024,"House 59, Gulberg, Hyderabad",Local,0
+REG-5999-89,Zubair Iqbal,1000,Suzuki WagonR,2022,"House 174, F-7, Quetta",Imported,0
+REG-9814-90,Sana Siddiqui,1300,Honda City,2018,"House 99, Pechs, Gujranwala",Local,0
+REG-9991-91,Farah Qureshi,1500,Toyota Yaris,2022,"House 71, F-7, Sukkur",Local,0
+REG-7170-92,Hamza Siddiqui,660,Suzuki Alto,2024,"House 159, Cantt, Hyderabad",Local,0
+REG-5653-93,Sobia Raza,660,Suzuki Alto,2018,"House 24, Hayatabad, Lahore",Local,0
+REG-2091-94,Zainab Javed,660,Suzuki Alto,2021,"House 124, Nazimabad, Sialkot",Local,0
+REG-2767-95,Amna Chaudhry,1800,Honda Civic,2015,"House 24, Satellite Town, Gujranwala",Local,0
+REG-7237-97,Zubair Iqbal,1300,Honda City,2023,"House 167, Clifton, Hyderabad",Local,0
+REG-9709-99,Hina Bhatti,3000,Toyota Land Cruiser,2016,"House 105, Model Town, Multan",Local,0
+REG-1352-100,Asad Chaudhry,2000,Toyota Prado,2015,"House 16, Gulberg, Faisalabad",Local,0
+REG-7445-102,Imran Raza,2000,Toyota Prado,2026,"House 153, Clifton, Hyderabad",Local,0
+REG-6822-103,Ayesha Khan,1800,Honda Civic,2025,"House 92, Gulberg, Islamabad",Local,0
+REG-5519-104,Sobia Malik,2700,Toyota Fortuner,2015,"House 122, Satellite Town, Islamabad",Local,0
+REG-5590-108,Nadia Ahmed,2700,Toyota Fortuner,2018,"House 81, G-10, Multan",Local,0
+REG-3248-109,Nadia Ahmed,1800,Toyota Corolla Grande,2016,"House 191, Gulberg, Karachi",Imported,0
+REG-4726-110,Farah Baig,3000,Toyota Land Cruiser,2021,"House 185, Gulberg, Gujranwala",Local,0
+REG-6118-111,Ayesha Nawaz,1800,Toyota Corolla Grande,2024,"House 58, Nazimabad, Hyderabad",Local,0
+REG-4387-112,Amna Bhatti,1300,Toyota Corolla,2025,"House 158, Clifton, Hyderabad",Local,0
+REG-3262-113,Imran Chaudhry,1300,Honda City,2019,"House 2, Satellite Town, Peshawar",Local,0
+REG-3589-114,Ahmed Abbasi,1300,Toyota Corolla,2020,"House 56, Model Town, Sukkur",Local,0
+REG-4016-115,Rabia Malik,1000,Suzuki WagonR,2020,"House 14, G-10, Sukkur",Local,0
+REG-5970-119,Hamza Abbasi,1800,Toyota Corolla Grande,2022,"House 144, Bahria Town, Islamabad",Local,0
+REG-2749-120,Nadia Soomro,1300,Honda City,2017,"House 104, Gulberg, Quetta",Local,0
+REG-5372-121,Naveed Chaudhry,3000,Toyota Land Cruiser,2024,"House 23, Cantt, Islamabad",Local,0
+REG-1427-122,Sobia Butt,1300,Honda City,2020,"House 57, Gulberg, Sialkot",Local,0
+REG-3196-123,Saima Chaudhry,2000,Toyota Prado,2023,"House 187, Nazimabad, Sialkot",Imported,0
+REG-9051-125,Zubair Malik,1800,Toyota Corolla Grande,2022,"House 121, G-10, Gujranwala",Local,0
+REG-1528-126,Saima Iqbal,1300,Honda City,2021,"House 20, Johar Town, Peshawar",Local,0
+REG-4351-129,Tariq Baig,1300,Honda City,2016,"House 199, G-10, Faisalabad",Local,0
+REG-8496-133,Waseem Rizvi,1800,Honda Civic,2018,"House 190, F-7, Karachi",Imported,0
+REG-7232-134,Naveed Bhatti,660,Suzuki Alto,2026,"House 43, Bahria Town, Islamabad",Local,0
+REG-9784-135,Sobia Mirza,3000,Toyota Land Cruiser,2023,"House 60, Hayatabad, Quetta",Local,0
+REG-8485-136,Tariq Abbasi,2000,Toyota Prado,2015,"House 136, Cantt, Quetta",Local,0
+REG-1643-137,Amna Ahmed,1800,Toyota Corolla Grande,2023,"House 183, Model Town, Lahore",Imported,0
+REG-4110-138,Nadia Malik,660,Suzuki Alto,2019,"House 57, Johar Town, Peshawar",Imported,0
+REG-5684-139,Saima Bibi,1500,Toyota Yaris,2022,"House 8, Pechs, Rawalpindi",Local,0
+REG-1893-140,Naveed Nawaz,3000,Toyota Land Cruiser,2026,"House 115, Satellite Town, Quetta",Local,0
+REG-2481-141,Fatima Iqbal,2000,Toyota Prado,2026,"House 61, Satellite Town, Sialkot",Local,0
+REG-9952-142,Rabia Rizvi,3000,Toyota Land Cruiser,2017,"House 5, Gulberg, Karachi",Imported,0
+REG-1408-143,Kashif Baig,2000,Toyota Prado,2017,"House 48, G-10, Hyderabad",Imported,0
+REG-8449-144,Tariq Chaudhry,1300,Honda City,2016,"House 65, Garden Town, Multan",Local,0
+REG-3024-145,Ali Chaudhry,1300,Toyota Corolla,2016,"House 140, Satellite Town, Hyderabad",Local,0
+REG-9582-147,Bilal Sheikh,1000,Suzuki WagonR,2026,"House 193, Pechs, Sialkot",Imported,0
+REG-7204-150,Zainab Mirza,1300,Toyota Corolla,2023,"House 90, Johar Town, Peshawar",Imported,0
+REG-6491-151,Ahmed Qureshi,1300,Toyota Corolla,2024,"House 94, Cantt, Gujranwala",Local,0
+REG-3930-152,Hamza Chaudhry,1300,Toyota Corolla,2026,"House 93, Bahria Town, Lahore",Local,0
+REG-8311-153,Ayesha Abbasi,1500,Toyota Yaris,2019,"House 94, Johar Town, Faisalabad",Local,0
+REG-4323-154,Fatima Javed,1300,Toyota Corolla,2015,"House 199, Nazimabad, Quetta",Local,0
+REG-9169-155,Ahmed Mirza,2000,Toyota Prado,2023,"House 45, Gulberg, Rawalpindi",Local,0
+REG-4897-156,Naveed Hassan,2000,Toyota Prado,2018,"House 93, Garden Town, Peshawar",Imported,0
+REG-2300-157,Amna Soomro,2000,Toyota Prado,2024,"House 95, DHA, Quetta",Local,0
+REG-5556-158,Nadia Soomro,2700,Toyota Fortuner,2024,"House 19, Satellite Town, Sukkur",Local,0
+REG-1902-159,Kashif Hassan,1300,Toyota Corolla,2025,"House 197, Garden Town, Islamabad",Local,0
+REG-5889-160,Imran Bibi,660,Suzuki Alto,2020,"House 89, Bahria Town, Peshawar",Local,0
+REG-3920-161,Rabia Rizvi,1800,Toyota Corolla Grande,2017,"House 24, Model Town, Islamabad",Local,0
+REG-3906-162,Ahmed Sheikh,3000,Toyota Land Cruiser,2022,"House 165, DHA, Hyderabad",Local,0
+REG-6289-164,Imran Bhatti,1500,Toyota Yaris,2020,"House 37, Pechs, Quetta",Imported,0
+REG-3204-168,Hina Iqbal,2000,Toyota Prado,2016,"House 138, Hayatabad, Quetta",Local,0
+REG-9595-169,Tariq Sheikh,1800,Toyota Corolla Grande,2018,"House 146, G-10, Multan",Local,0
+REG-9666-170,Rabia Bhatti,1000,Suzuki WagonR,2016,"House 31, Johar Town, Sialkot",Imported,0
+REG-7996-172,Waseem Raza,1500,Toyota Yaris,2024,"House 84, Nazimabad, Quetta",Local,0
+REG-6797-173,Amna Nawaz,3000,Toyota Land Cruiser,2017,"House 182, G-10, Hyderabad",Imported,0
+REG-9069-174,Sobia Khan,2000,Toyota Prado,2017,"House 153, Gulberg, Gujranwala",Local,0
+REG-8616-177,Imran Nawaz,660,Suzuki Alto,2025,"House 135, Bahria Town, Sukkur",Local,0
+REG-7793-179,Usman Nawaz,3000,Toyota Land Cruiser,2021,"House 82, F-7, Rawalpindi",Local,0
+REG-4478-180,Ayesha Iqbal,2700,Toyota Fortuner,2015,"House 11, Garden Town, Multan",Local,0
+REG-2111-181,Amna Javed,1500,Toyota Yaris,2019,"House 36, Clifton, Rawalpindi",Local,0
+REG-1100-182,Fatima Baig,1800,Honda Civic,2016,"House 85, Clifton, Gujranwala",Local,0
+REG-1477-183,Sana Butt,3000,Toyota Land Cruiser,2017,"House 74, Johar Town, Gujranwala",Local,0
+REG-8849-184,Ali Qureshi,1800,Honda Civic,2022,"House 127, Pechs, Islamabad",Local,0
+REG-3545-185,Amna Abbasi,2000,Toyota Prado,2025,"House 127, F-7, Faisalabad",Imported,0
+REG-8577-187,Ahmed Qureshi,1800,Honda Civic,2021,"House 172, Nazimabad, Multan",Local,0
+REG-9779-189,Tariq Abbasi,1800,Honda Civic,2015,"House 181, Gulberg, Gujranwala",Local,0
+REG-6793-190,Sobia Bhatti,1800,Honda Civic,2016,"House 96, Bahria Town, Rawalpindi",Local,0
+REG-6556-191,Ahmed Soomro,660,Suzuki Alto,2021,"House 29, Johar Town, Sialkot",Local,0
+REG-4070-192,Fatima Siddiqui,1800,Toyota Corolla Grande,2024,"House 184, G-10, Islamabad",Local,0
+REG-5448-196,Fatima Hassan,660,Suzuki Alto,2021,"House 138, Garden Town, Gujranwala",Local,0
+REG-7088-197,Nadia Rizvi,1300,Honda City,2022,"House 98, Johar Town, Peshawar",Local,0
+REG-3867-198,Farah Baig,1500,Toyota Yaris,2016,"House 158, Satellite Town, Rawalpindi",Local,0
+REG-8907-202,Ayesha Iqbal,660,Suzuki Alto,2023,"House 97, G-10, Sialkot",Local,0
+REG-9579-203,Nadia Rizvi,2000,Toyota Prado,2019,"House 136, DHA, Quetta",Local,0
+REG-9456-204,Ahmed Rizvi,1000,Suzuki WagonR,2025,"House 186, Gulberg, Gujranwala",Local,0
+REG-8526-205,Sobia Rizvi,660,Suzuki Alto,2021,"House 56, Clifton, Karachi",Local,0
+REG-2426-206,Sobia Nawaz,660,Suzuki Alto,2020,"House 63, Satellite Town, Rawalpindi",Imported,0
+REG-1368-208,Imran Baig,1500,Toyota Yaris,2024,"House 12, Clifton, Faisalabad",Local,0
+REG-6257-209,Imran Bibi,1300,Honda City,2018,"House 98, Bahria Town, Peshawar",Local,0
+REG-6228-210,Sobia Nawaz,2700,Toyota Fortuner,2022,"House 118, Cantt, Peshawar",Local,0
+REG-5483-211,Waseem Sheikh,1300,Toyota Corolla,2016,"House 20, Nazimabad, Islamabad",Local,0
+REG-4384-213,Muhammad Rizvi,1000,Suzuki WagonR,2023,"House 142, Johar Town, Gujranwala",Local,0
+REG-3319-214,Nadia Hassan,1500,Toyota Yaris,2026,"House 28, Nazimabad, Lahore",Local,0
+REG-2167-215,Saima Qureshi,1300,Toyota Corolla,2019,"House 118, F-7, Faisalabad",Local,0
+REG-3131-216,Ahmed Qureshi,660,Suzuki Alto,2015,"House 98, Garden Town, Gujranwala",Imported,0
+REG-1881-218,Farah Javed,1800,Toyota Corolla Grande,2016,"House 140, DHA, Peshawar",Imported,0
+REG-8304-219,Sana Hassan,3000,Toyota Land Cruiser,2024,"House 145, Garden Town, Sukkur",Local,0
+REG-9740-220,Waseem Chaudhry,1300,Honda City,2016,"House 14, Satellite Town, Sukkur",Imported,0
+REG-8672-221,Zubair Nawaz,1000,Suzuki WagonR,2016,"House 59, DHA, Faisalabad",Imported,0
+REG-8709-222,Hamza Malik,2000,Toyota Prado,2018,"House 22, Cantt, Karachi",Local,0
+REG-5227-223,Muhammad Iqbal,3000,Toyota Land Cruiser,2020,"House 114, Gulberg, Faisalabad",Imported,0
+REG-6320-224,Fatima Khan,1800,Honda Civic,2022,"House 23, Nazimabad, Quetta",Imported,0
+REG-2849-225,Nadia Qureshi,2000,Toyota Prado,2020,"House 200, DHA, Multan",Imported,0
+REG-5624-226,Sana Javed,1300,Toyota Corolla,2020,"House 127, Bahria Town, Islamabad",Local,0
+REG-2752-227,Saima Javed,1800,Toyota Corolla Grande,2020,"House 64, Cantt, Quetta",Local,0
+REG-7773-229,Tariq Butt,1800,Toyota Corolla Grande,2018,"House 75, G-10, Quetta",Local,0
+REG-7288-230,Amna Hassan,2000,Toyota Prado,2016,"House 175, Gulberg, Faisalabad",Local,0
+REG-8063-231,Nadia Nawaz,3000,Toyota Land Cruiser,2021,"House 36, Gulberg, Sukkur",Local,0
+REG-3835-232,Hina Soomro,1300,Honda City,2025,"House 103, Gulberg, Multan",Local,0
+REG-8584-236,Fatima Raza,3000,Toyota Land Cruiser,2020,"House 90, Pechs, Peshawar",Local,0
+REG-2140-238,Sobia Bibi,1800,Toyota Corolla Grande,2024,"House 133, Cantt, Gujranwala",Local,0
+REG-7208-239,Zainab Baig,3000,Toyota Land Cruiser,2020,"House 102, Model Town, Multan",Imported,0
+REG-2483-240,Bilal Malik,660,Suzuki Alto,2018,"House 148, Clifton, Sukkur",Local,0
+REG-3403-243,Naveed Raza,660,Suzuki Alto,2025,"House 131, Bahria Town, Karachi",Local,0
+REG-7389-244,Asad Hassan,1500,Toyota Yaris,2024,"House 143, Johar Town, Islamabad",Imported,0
+REG-5910-245,Saima Khan,1800,Honda Civic,2024,"House 125, Hayatabad, Quetta",Local,0
+REG-9362-251,Sana Soomro,3000,Toyota Land Cruiser,2021,"House 69, Satellite Town, Faisalabad",Local,0
+REG-1870-253,Asad Malik,2700,Toyota Fortuner,2015,"House 104, Pechs, Gujranwala",Local,0
+REG-1510-254,Sobia Malik,1500,Toyota Yaris,2018,"House 188, DHA, Hyderabad",Imported,0
+REG-7271-256,Fatima Mirza,1800,Honda Civic,2021,"House 5, Model Town, Faisalabad",Imported,0
+REG-3841-257,Bilal Malik,1300,Honda City,2022,"House 168, Bahria Town, Sukkur",Local,0
+REG-6902-258,Naveed Bibi,1800,Toyota Corolla Grande,2021,"House 110, Pechs, Lahore",Local,0
+REG-3200-259,Waseem Mirza,1300,Toyota Corolla,2015,"House 3, Hayatabad, Islamabad",Local,0
+REG-8974-260,Fatima Ahmed,1300,Toyota Corolla,2025,"House 81, Clifton, Karachi",Imported,0
+REG-7813-262,Usman Malik,1300,Toyota Corolla,2022,"House 26, Hayatabad, Multan",Imported,0
+REG-9346-263,Hamza Javed,2000,Toyota Prado,2021,"House 166, Cantt, Faisalabad",Imported,0
+REG-4044-264,Sana Siddiqui,1300,Honda City,2021,"House 133, DHA, Sukkur",Local,0
+REG-9220-265,Hina Bhatti,1300,Honda City,2019,"House 19, Johar Town, Rawalpindi",Imported,0
+REG-1620-267,Asad Abbasi,660,Suzuki Alto,2024,"House 197, Nazimabad, Multan",Imported,0
+REG-2311-269,Hamza Sheikh,2000,Toyota Prado,2017,"House 63, Satellite Town, Peshawar",Local,0
+REG-9574-270,Zainab Ahmed,1000,Suzuki WagonR,2024,"House 4, Model Town, Peshawar",Local,0
+REG-9834-271,Sobia Javed,1000,Suzuki WagonR,2024,"House 188, G-10, Islamabad",Local,0
+REG-9765-272,Hina Mirza,1800,Honda Civic,2015,"House 131, Satellite Town, Peshawar",Imported,0
+REG-6431-273,Kashif Ahmed,2000,Toyota Prado,2021,"House 59, F-7, Islamabad",Local,0
+REG-5981-276,Sana Butt,660,Suzuki Alto,2026,"House 23, Gulberg, Multan",Local,0
+REG-3770-277,Sobia Bhatti,2000,Toyota Prado,2024,"House 63, Cantt, Hyderabad",Local,0
+REG-1447-278,Ayesha Khan,1500,Toyota Yaris,2019,"House 105, Nazimabad, Sukkur",Imported,0
+REG-2259-279,Sobia Iqbal,2700,Toyota Fortuner,2019,"House 27, DHA, Faisalabad",Local,0
+REG-5509-280,Ahmed Sheikh,1500,Toyota Yaris,2019,"House 60, Satellite Town, Islamabad",Local,0
+REG-3476-282,Sobia Butt,3000,Toyota Land Cruiser,2025,"House 82, Cantt, Faisalabad",Imported,0
+REG-5280-283,Fatima Hassan,1300,Toyota Corolla,2026,"House 116, Gulberg, Hyderabad",Local,0
+REG-1542-284,Fatima Malik,2700,Toyota Fortuner,2020,"House 41, F-7, Quetta",Local,0
+REG-9125-286,Ayesha Ahmed,1300,Toyota Corolla,2021,"House 4, Johar Town, Karachi",Imported,0
+REG-3740-287,Ahmed Khan,2000,Toyota Prado,2018,"House 17, Hayatabad, Hyderabad",Local,0
+REG-2900-288,Zainab Soomro,1500,Toyota Yaris,2015,"House 111, Johar Town, Lahore",Local,0
+REG-5937-289,Bilal Javed,2000,Toyota Prado,2022,"House 115, Clifton, Faisalabad",Local,0
+REG-8775-290,Ahmed Javed,1800,Toyota Corolla Grande,2019,"House 99, Pechs, Quetta",Local,0
+REG-1194-291,Amna Nawaz,1800,Toyota Corolla Grande,2019,"House 89, Cantt, Multan",Imported,0
+REG-9687-292,Bilal Sheikh,1800,Honda Civic,2025,"House 121, G-10, Lahore",Local,0
+REG-6797-293,Amna Sheikh,2700,Toyota Fortuner,2021,"House 196, Clifton, Gujranwala",Local,0
+REG-2610-294,Kashif Khan,1500,Toyota Yaris,2019,"House 181, Satellite Town, Sukkur",Imported,0
+REG-4193-295,Ahmed Sheikh,1300,Honda City,2023,"House 60, Johar Town, Islamabad",Local,0
+REG-6132-296,Naveed Hassan,1300,Toyota Corolla,2023,"House 83, Clifton, Hyderabad",Local,0
+REG-1195-297,Ahmed Chaudhry,1000,Suzuki WagonR,2021,"House 181, Garden Town, Sialkot",Local,0
+REG-6759-298,Hina Butt,2000,Toyota Prado,2018,"House 45, Pechs, Sukkur",Local,0
+REG-1388-299,Zainab Khan,660,Suzuki Alto,2024,"House 180, Satellite Town, Peshawar",Local,0
+REG-4552-300,Hina Raza,3000,Toyota Land Cruiser,2024,"House 85, Clifton, Hyderabad",Local,0
+REG-3128-302,Ali Qureshi,3000,Toyota Land Cruiser,2021,"House 113, Satellite Town, Karachi",Local,0
+REG-5826-304,Imran Hassan,1500,Toyota Yaris,2022,"House 97, Gulberg, Peshawar",Local,0
+REG-7995-305,Zainab Bhatti,1500,Toyota Yaris,2026,"House 112, DHA, Sukkur",Local,0
+REG-5543-306,Sobia Rizvi,1000,Suzuki WagonR,2015,"House 68, Satellite Town, Multan",Imported,0
+REG-5230-307,Ali Chaudhry,660,Suzuki Alto,2019,"House 1, Nazimabad, Hyderabad",Local,0
+REG-4287-308,Zainab Iqbal,2000,Toyota Prado,2024,"House 21, DHA, Karachi",Imported,0
+REG-2776-309,Saima Qureshi,2000,Toyota Prado,2017,"House 95, Model Town, Karachi",Imported,0
+REG-8234-310,Ali Raza,1000,Suzuki WagonR,2026,"House 193, Clifton, Peshawar",Local,0
+REG-2153-311,Waseem Baig,1000,Suzuki WagonR,2024,"House 138, DHA, Sialkot",Local,0
+REG-3438-313,Ayesha Sheikh,2000,Toyota Prado,2025,"House 109, Cantt, Rawalpindi",Local,0
+REG-3483-315,Nadia Ahmed,1500,Toyota Yaris,2026,"House 107, Hayatabad, Sukkur",Local,0
+REG-9039-317,Tariq Raza,2700,Toyota Fortuner,2022,"House 159, Bahria Town, Lahore",Imported,0
+REG-9849-318,Saima Khan,1000,Suzuki WagonR,2018,"House 87, Satellite Town, Lahore",Local,0
+REG-2985-319,Sobia Mirza,2000,Toyota Prado,2024,"House 199, Bahria Town, Rawalpindi",Local,0
+REG-7563-320,Hina Abbasi,1500,Toyota Yaris,2015,"House 96, Clifton, Quetta",Local,0
+REG-2318-321,Kashif Khan,1800,Honda Civic,2022,"House 45, Cantt, Islamabad",Local,0
+REG-1644-322,Saima Mirza,1300,Toyota Corolla,2021,"House 130, G-10, Lahore",Local,0
+REG-2749-323,Saima Chaudhry,1800,Toyota Corolla Grande,2025,"House 42, Garden Town, Islamabad",Local,0
+REG-4104-324,Usman Bibi,2000,Toyota Prado,2017,"House 166, Garden Town, Islamabad",Local,0
+REG-4907-325,Asad Hassan,3000,Toyota Land Cruiser,2022,"House 154, DHA, Gujranwala",Imported,0
+REG-6041-326,Tariq Chaudhry,2700,Toyota Fortuner,2022,"House 118, Satellite Town, Sukkur",Imported,0
+REG-1918-328,Bilal Javed,1800,Honda Civic,2020,"House 168, Model Town, Peshawar",Local,0
+REG-9570-329,Ayesha Khan,1300,Honda City,2022,"House 168, Pechs, Hyderabad",Local,0
+REG-1604-331,Zainab Iqbal,1000,Suzuki WagonR,2026,"House 25, Garden Town, Islamabad",Local,0
+REG-8720-332,Saima Bibi,660,Suzuki Alto,2024,"House 191, G-10, Gujranwala",Local,0
+REG-1235-333,Hina Sheikh,1300,Toyota Corolla,2017,"House 163, Garden Town, Quetta",Local,0
+REG-3796-336,Hina Malik,3000,Toyota Land Cruiser,2024,"House 34, Cantt, Hyderabad",Local,0
+REG-4613-338,Sana Raza,2000,Toyota Prado,2016,"House 27, Satellite Town, Rawalpindi",Local,0
+REG-6312-339,Rabia Abbasi,1800,Toyota Corolla Grande,2016,"House 87, F-7, Peshawar",Local,0
+REG-1746-340,Hamza Raza,1300,Honda City,2024,"House 55, Cantt, Islamabad",Local,0
+REG-5487-341,Amna Bhatti,1000,Suzuki WagonR,2017,"House 13, Model Town, Multan",Imported,0
+REG-3703-342,Bilal Nawaz,1800,Honda Civic,2022,"House 180, Johar Town, Multan",Local,0
+REG-7162-344,Usman Bhatti,1000,Suzuki WagonR,2017,"House 52, Gulberg, Peshawar",Local,0
+REG-3939-346,Sobia Ahmed,660,Suzuki Alto,2016,"House 66, Gulberg, Islamabad",Local,0
+REG-3079-347,Ali Iqbal,2000,Toyota Prado,2018,"House 93, Garden Town, Karachi",Local,0
+REG-8379-348,Saima Mirza,2700,Toyota Fortuner,2021,"House 160, Model Town, Islamabad",Local,0
+REG-3949-350,Zubair Hassan,660,Suzuki Alto,2026,"House 157, Johar Town, Hyderabad",Imported,0
+REG-5934-351,Nadia Mirza,1000,Suzuki WagonR,2020,"House 12, Johar Town, Quetta",Imported,0
+REG-4144-352,Waseem Abbasi,1300,Honda City,2016,"House 177, Garden Town, Gujranwala",Local,0
+REG-9315-353,Rabia Sheikh,2700,Toyota Fortuner,2018,"House 3, Garden Town, Islamabad",Imported,0
+REG-1869-355,Zubair Malik,1500,Toyota Yaris,2018,"House 128, Johar Town, Karachi",Local,0
+REG-9151-357,Hamza Mirza,2000,Toyota Prado,2017,"House 85, G-10, Faisalabad",Local,0
+REG-1885-358,Asad Iqbal,660,Suzuki Alto,2025,"House 141, G-10, Lahore",Local,0
+REG-5118-359,Bilal Bhatti,1800,Toyota Corolla Grande,2020,"House 51, Satellite Town, Sukkur",Imported,0
+REG-9804-360,Nadia Sheikh,660,Suzuki Alto,2017,"House 163, G-10, Sukkur",Local,0
+REG-2160-362,Imran Abbasi,1000,Suzuki WagonR,2018,"House 99, Pechs, Karachi",Imported,0
+REG-7865-363,Ayesha Baig,1800,Honda Civic,2018,"House 155, Cantt, Quetta",Local,0
+REG-6343-364,Farah Chaudhry,1000,Suzuki WagonR,2018,"House 173, Clifton, Rawalpindi",Local,0
+REG-4276-365,Hina Soomro,1800,Toyota Corolla Grande,2021,"House 147, Gulberg, Sukkur",Local,0
+REG-8936-366,Tariq Raza,3000,Toyota Land Cruiser,2015,"House 14, Gulberg, Sialkot",Imported,0
+REG-8454-367,Naveed Iqbal,3000,Toyota Land Cruiser,2017,"House 53, Garden Town, Islamabad",Imported,0
+REG-4181-368,Waseem Iqbal,2000,Toyota Prado,2025,"House 178, Model Town, Sukkur",Local,0
+REG-1525-370,Zubair Hassan,1300,Toyota Corolla,2026,"House 175, Clifton, Sukkur",Local,0
+REG-8627-371,Zainab Soomro,1000,Suzuki WagonR,2022,"House 66, F-7, Multan",Imported,0
+REG-4602-372,Rabia Iqbal,1800,Honda Civic,2019,"House 126, DHA, Hyderabad",Local,0
+REG-3784-374,Usman Bhatti,3000,Toyota Land Cruiser,2024,"House 136, G-10, Faisalabad",Local,0
+REG-9015-375,Tariq Ahmed,2700,Toyota Fortuner,2018,"House 99, Model Town, Lahore",Imported,0
+REG-5041-377,Farah Siddiqui,1800,Toyota Corolla Grande,2018,"House 176, Gulberg, Gujranwala",Local,0
+REG-3440-378,Sobia Raza,1300,Honda City,2024,"House 7, Garden Town, Gujranwala",Local,0
+REG-1656-379,Kashif Bibi,660,Suzuki Alto,2022,"House 67, Nazimabad, Peshawar",Local,0
+REG-8852-380,Amna Khan,1800,Toyota Corolla Grande,2026,"House 165, Model Town, Multan",Local,0
+REG-2361-381,Sana Iqbal,1300,Honda City,2023,"House 156, Nazimabad, Faisalabad",Local,0
+REG-4571-382,Sobia Qureshi,1800,Toyota Corolla Grande,2017,"House 140, Bahria Town, Quetta",Local,0
+REG-1260-383,Kashif Bhatti,1000,Suzuki WagonR,2022,"House 101, DHA, Karachi",Local,0
+REG-1399-384,Ayesha Hassan,2000,Toyota Prado,2022,"House 48, Pechs, Rawalpindi",Imported,0
+REG-8607-387,Kashif Soomro,1800,Honda Civic,2026,"House 94, Hayatabad, Sukkur",Local,0
+REG-9698-389,Zainab Bhatti,1800,Honda Civic,2015,"House 21, Nazimabad, Quetta",Local,0
+REG-9887-390,Waseem Khan,1500,Toyota Yaris,2024,"House 149, Gulberg, Sukkur",Local,0
+REG-1898-392,Hamza Bhatti,1800,Honda Civic,2023,"House 176, G-10, Multan",Local,0
+REG-8624-394,Waseem Chaudhry,1800,Honda Civic,2024,"House 100, Model Town, Lahore",Local,0
+REG-2097-395,Sobia Javed,1300,Toyota Corolla,2023,"House 149, Nazimabad, Sukkur",Local,0
+REG-4909-396,Hamza Abbasi,1800,Honda Civic,2023,"House 104, F-7, Sialkot",Local,0
+REG-4437-397,Ahmed Abbasi,3000,Toyota Land Cruiser,2026,"House 165, Bahria Town, Sialkot",Local,0
+REG-9250-398,Sobia Ahmed,1500,Toyota Yaris,2025,"House 124, Clifton, Gujranwala",Imported,0
+REG-7108-399,Ayesha Soomro,1000,Suzuki WagonR,2020,"House 152, Clifton, Lahore",Imported,0
+REG-3010-400,Waseem Qureshi,2700,Toyota Fortuner,2022,"House 154, F-7, Islamabad",Local,0
+REG-2075-401,Nadia Bhatti,1800,Honda Civic,2018,"House 37, Bahria Town, Quetta",Imported,0
+REG-3929-402,Tariq Qureshi,1800,Toyota Corolla Grande,2019,"House 34, Hayatabad, Quetta",Local,0
+REG-2835-403,Zainab Nawaz,1500,Toyota Yaris,2026,"House 158, Hayatabad, Islamabad",Local,0
+REG-9530-404,Rabia Rizvi,1300,Honda City,2025,"House 1, Model Town, Quetta",Local,0
+REG-3163-405,Tariq Chaudhry,2700,Toyota Fortuner,2022,"House 151, Cantt, Rawalpindi",Local,0
+REG-5776-406,Sana Bhatti,660,Suzuki Alto,2018,"House 140, Garden Town, Rawalpindi",Local,0
+REG-9513-407,Waseem Khan,1300,Honda City,2025,"House 97, Nazimabad, Hyderabad",Local,0
+REG-6346-408,Bilal Rizvi,1800,Honda Civic,2022,"House 109, Hayatabad, Gujranwala",Imported,0
+REG-3161-409,Zainab Chaudhry,3000,Toyota Land Cruiser,2019,"House 144, Nazimabad, Multan",Local,0
+REG-5720-411,Farah Sheikh,1800,Honda Civic,2015,"House 42, Cantt, Faisalabad",Local,0
+REG-3725-412,Hamza Chaudhry,2000,Toyota Prado,2024,"House 21, Gulberg, Karachi",Local,0
+REG-3514-414,Hamza Khan,1300,Toyota Corolla,2017,"House 41, Bahria Town, Hyderabad",Local,0
+REG-3072-415,Naveed Malik,1800,Honda Civic,2022,"House 24, Clifton, Hyderabad",Local,0
+REG-1568-416,Zubair Qureshi,1300,Honda City,2025,"House 148, Hayatabad, Rawalpindi",Local,0
+REG-9845-418,Kashif Khan,2000,Toyota Prado,2017,"House 124, Cantt, Faisalabad",Local,0
+REG-7628-419,Imran Baig,660,Suzuki Alto,2022,"House 91, Satellite Town, Gujranwala",Local,0
+REG-9313-422,Rabia Chaudhry,2700,Toyota Fortuner,2020,"House 40, Garden Town, Rawalpindi",Local,0
+REG-3409-423,Kashif Javed,1500,Toyota Yaris,2024,"House 126, G-10, Quetta",Imported,0
+REG-8847-424,Amna Sheikh,1000,Suzuki WagonR,2015,"House 129, Nazimabad, Lahore",Local,0
+REG-6047-425,Muhammad Siddiqui,1000,Suzuki WagonR,2015,"House 98, Satellite Town, Faisalabad",Imported,0
+REG-8306-426,Hamza Javed,1300,Honda City,2020,"House 121, Nazimabad, Islamabad",Local,0
+REG-4197-427,Tariq Javed,3000,Toyota Land Cruiser,2024,"House 116, Satellite Town, Multan",Local,0
+REG-9821-430,Ali Siddiqui,1000,Suzuki WagonR,2022,"House 66, Satellite Town, Karachi",Local,0
+REG-6206-432,Farah Abbasi,2000,Toyota Prado,2024,"House 125, G-10, Peshawar",Local,0
+REG-8006-434,Bilal Bhatti,1300,Toyota Corolla,2020,"House 166, G-10, Faisalabad",Imported,0
+REG-6651-435,Muhammad Raza,1500,Toyota Yaris,2020,"House 187, Bahria Town, Multan",Local,0
+REG-7809-438,Imran Nawaz,2000,Toyota Prado,2022,"House 120, DHA, Lahore",Local,0
+REG-7786-439,Asad Soomro,1800,Toyota Corolla Grande,2017,"House 112, Hayatabad, Hyderabad",Local,0
+REG-8776-440,Saima Baig,1500,Toyota Yaris,2023,"House 67, Johar Town, Karachi",Local,0
+REG-7156-441,Naveed Nawaz,3000,Toyota Land Cruiser,2016,"House 194, F-7, Faisalabad",Local,0
+REG-7791-442,Saima Siddiqui,1500,Toyota Yaris,2017,"House 106, Clifton, Hyderabad",Imported,0
+REG-7254-445,Amna Khan,1300,Toyota Corolla,2019,"House 48, Bahria Town, Lahore",Imported,0
+REG-5979-446,Muhammad Nawaz,1500,Toyota Yaris,2022,"House 56, Gulberg, Rawalpindi",Imported,0
+REG-3523-447,Ayesha Sheikh,660,Suzuki Alto,2019,"House 69, Gulberg, Faisalabad",Local,0

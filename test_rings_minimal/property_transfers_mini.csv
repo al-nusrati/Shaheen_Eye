@@ -1,0 +1,3 @@
+registry_no,buyer_name,seller_name,property_address,property_value_pkr,transfer_date,area_marla,property_type,registry_type,noc_status,society_name,plot_number
+REG-MINI-103,Hassan Ali,XYZ Estate,"House 29, DHA, Lahore",9172150,2025-10-13,5,Residential,File,Approved,DHA,Plot 261
+REG-MINI-107,Usman Chaudhry,ABC Builders,"House 99, F-7, Rawalpindi",12853335,2025-07-20,5,Residential,File,Pending,Bahria Town,Plot 284

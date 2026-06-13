@@ -1,0 +1,5 @@
+vehicle_reg_no,owner_name,engine_capacity_cc,vehicle_make_model,registration_year,owner_address,import_type,declared_import_value_pkr
+MINI-1463,Bilal Ahmed,1800,Honda Civic,2021,"House 10, Gulberg, Lahore",Local,0
+MINI-5646,Omar Farooq,1300,Toyota Corolla,2021,"House 25, Gulberg, Lahore",Local,0
+MINI-6376,Sana Khan,2000,Toyota Prado,2021,"House 59, Bahria Town, Rawalpindi",Imported,617310
+MINI-7924,Usman Chaudhry,660,Suzuki Alto,2023,"House 99, F-7, Rawalpindi",Local,0

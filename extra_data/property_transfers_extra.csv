@@ -1,0 +1,143 @@
+registry_no,buyer_name,seller_name,property_address,property_value_pkr,transfer_date,area_marla,property_type,registry_type,noc_status,society_name,plot_number
+REG-PRO-EX509,Ali Ahmed,Bibi Estate Agency,"House 40, Johar Town, Sialkot",12869976,2024-10-03,7,Commercial,Registry,Approved,Bahria Town,Plot 346
+REG-PRO-EX510,Muhammad Ahmed,Sheikh Estate Agency,"House 175, F-7, Sialkot",26013996,2025-11-28,12,Residential,File,Approved,DHA,Plot 713
+REG-PRO-EX512,Waseem Khan,Soomro Estate Agency,"House 154, G-10, Islamabad",19074768,2025-06-19,8,Residential,File,Approved,Model Town,Plot 345
+REG-PRO-EX516,Imran Malik,Baig Estate Agency,"House 132, Gulberg, Rawalpindi",18591472,2023-08-21,8,Residential,Registry,Approved,Johar Town,Plot 49
+REG-PRO-EX517,Usman Ahmed,Bibi Estate Agency,"House 25, Cantt, Rawalpindi",29834688,2026-12-03,12,Commercial,Registry,Unapproved,Clifton,Plot 280
+REG-PRO-EX518,Tariq Butt,Baig Estate Agency,"House 28, Model Town, Gujranwala",33521040,2023-06-26,12,Residential,Registry,Unapproved,Johar Town,Plot 444
+REG-PRO-EX522,Ali Soomro,Rizvi Estate Agency,"House 123, G-10, Sukkur",32411736,2023-01-21,12,Commercial,Registry,Unapproved,Garden Town,Plot 219
+REG-PRO-EX526,Hamza Chaudhry,Bhatti Estate Agency,"House 73, G-10, Islamabad",60687720,2025-10-24,20,Commercial,Registry,Unapproved,Model Town,Plot 374
+REG-PRO-EX528,Farah Javed,Iqbal Estate Agency,"House 130, Clifton, Hyderabad",73487680,2025-07-11,20,Residential,Registry,Pending,Johar Town,Plot 844
+REG-PRO-EX529,Imran Raza,Bhatti Estate Agency,"House 164, DHA, Peshawar",13129305,2023-07-08,7,Residential,Registry,Approved,DHA,Plot 252
+REG-PRO-EX536,Bilal Sheikh,Khan Estate Agency,"House 182, Hayatabad, Multan",10977848,2024-05-22,8,Commercial,Registry,Approved,Garden Town,Plot 802
+REG-PRO-EX537,Farah Butt,Bhatti Estate Agency,"House 160, Pechs, Faisalabad",10583060,2024-02-14,5,Residential,Registry,Pending,Gulberg,Plot 242
+REG-PRO-EX538,Ayesha Siddiqui,Ahmed Estate Agency,"House 108, Pechs, Faisalabad",57963880,2026-11-27,20,Commercial,Registry,Pending,Bahria Town,Plot 244
+REG-PRO-EX547,Nadia Qureshi,Siddiqui Estate Agency,"House 198, Johar Town, Sialkot",7673250,2024-08-14,5,Residential,Registry,Pending,Satellite Town,Plot 384
+REG-PRO-EX549,Farah Qureshi,Nawaz Estate Agency,"House 186, DHA, Quetta",30929604,2023-05-26,12,Residential,Registry,Pending,Clifton,Plot 842
+REG-PRO-EX553,Usman Mirza,Sheikh Estate Agency,"House 180, Johar Town, Islamabad",71551320,2023-05-18,20,Residential,Registry,Approved,Bahria Town,Plot 548
+REG-PRO-EX560,Hina Nawaz,Bibi Estate Agency,"House 115, Nazimabad, Quetta",19868475,2024-04-28,5,Residential,File,Approved,Cantt Society,Plot 809
+REG-PRO-EX561,Amna Abbasi,Nawaz Estate Agency,"House 89, Model Town, Peshawar",14311525,2025-06-23,5,Residential,Registry,Approved,Johar Town,Plot 519
+REG-PRO-EX562,Sobia Siddiqui,Rizvi Estate Agency,"House 81, Clifton, Peshawar",33254570,2024-08-23,10,Residential,Registry,Approved,Garden Town,Plot 811
+REG-PRO-EX564,Bilal Sheikh,Iqbal Estate Agency,"House 14, DHA, Peshawar",24046855,2024-10-03,7,Residential,Registry,Approved,Satellite Town,Plot 731
+REG-PRO-EX574,Hina Malik,Butt Estate Agency,"House 121, Bahria Town, Peshawar",65746140,2024-04-03,20,Residential,Registry,Approved,Cantt Society,Plot 898
+REG-PRO-EX578,Hamza Hassan,Bhatti Estate Agency,"House 80, DHA, Karachi",15713220,2023-02-15,5,Residential,Registry,Approved,DHA,Plot 411
+REG-PRO-EX581,Muhammad Iqbal,Soomro Estate Agency,"House 186, Cantt, Faisalabad",12108376,2022-01-23,8,Commercial,File,Pending,Garden Town,Plot 122
+REG-PRO-EX582,Zubair Butt,Javed Estate Agency,"House 49, Nazimabad, Faisalabad",11194400,2024-12-16,7,Residential,Registry,Pending,Model Town,Plot 615
+REG-PRO-EX583,Tariq Qureshi,Siddiqui Estate Agency,"House 170, Johar Town, Sukkur",30784272,2025-03-14,8,Residential,Registry,Approved,Johar Town,Plot 242
+REG-PRO-EX589,Zubair Iqbal,Qureshi Estate Agency,"House 174, F-7, Quetta",15090537,2023-12-13,7,Commercial,File,Unapproved,Johar Town,Plot 75
+REG-PRO-EX590,Sana Siddiqui,Butt Estate Agency,"House 99, Pechs, Gujranwala",5092880,2023-08-12,5,Commercial,Registry,Approved,Johar Town,Plot 517
+REG-PRO-EX598,Amna Raza,Butt Estate Agency,"House 100, Gulberg, Karachi",34405440,2025-03-03,12,Residential,File,Approved,Johar Town,Plot 120
+REG-PRO-EX603,Ayesha Khan,Iqbal Estate Agency,"House 92, Gulberg, Islamabad",20831288,2024-10-27,8,Residential,Registry,Pending,Gulberg,Plot 324
+REG-PRO-EX611,Ayesha Nawaz,Hassan Estate Agency,"House 58, Nazimabad, Hyderabad",8820525,2022-08-09,5,Residential,File,Pending,Bahria Town,Plot 917
+REG-PRO-EX613,Imran Chaudhry,Rizvi Estate Agency,"House 2, Satellite Town, Peshawar",30191064,2025-08-16,8,Residential,Registry,Approved,Clifton,Plot 96
+REG-PRO-EX614,Ahmed Abbasi,Hassan Estate Agency,"House 56, Model Town, Sukkur",12461768,2026-05-19,8,Commercial,Registry,Unapproved,DHA,Plot 539
+REG-PRO-EX616,Rabia Mirza,Nawaz Estate Agency,"House 107, Johar Town, Peshawar",9162295,2022-06-01,5,Residential,Registry,Pending,Clifton,Plot 605
+REG-PRO-EX618,Usman Raza,Khan Estate Agency,"House 196, Clifton, Lahore",11559848,2022-08-27,8,Commercial,File,Pending,Johar Town,Plot 609
+REG-PRO-EX621,Naveed Chaudhry,Butt Estate Agency,"House 23, Cantt, Islamabad",32405364,2026-03-07,12,Residential,Registry,Approved,DHA,Plot 762
+REG-PRO-EX622,Sobia Butt,Malik Estate Agency,"House 57, Gulberg, Sialkot",28796028,2025-05-06,12,Residential,File,Approved,DHA,Plot 873
+REG-PRO-EX623,Saima Chaudhry,Iqbal Estate Agency,"House 187, Nazimabad, Sialkot",24877720,2023-02-10,10,Residential,File,Approved,F-7 Sector,Plot 135
+REG-PRO-EX625,Zubair Malik,Siddiqui Estate Agency,"House 121, G-10, Gujranwala",23601784,2025-08-13,8,Residential,Registry,Unapproved,F-7 Sector,Plot 434
+REG-PRO-EX626,Saima Iqbal,Bhatti Estate Agency,"House 20, Johar Town, Peshawar",23444930,2023-07-21,10,Residential,Registry,Approved,Satellite Town,Plot 350
+REG-PRO-EX634,Naveed Bhatti,Malik Estate Agency,"House 43, Bahria Town, Islamabad",26344020,2025-05-05,10,Residential,Registry,Approved,Satellite Town,Plot 438
+REG-PRO-EX635,Sobia Mirza,Malik Estate Agency,"House 60, Hayatabad, Quetta",15555185,2022-09-04,5,Commercial,File,Pending,Bahria Town,Plot 476
+REG-PRO-EX638,Nadia Malik,Malik Estate Agency,"House 57, Johar Town, Peshawar",26048392,2026-01-04,8,Commercial,File,Approved,Gulberg,Plot 864
+REG-PRO-EX640,Naveed Nawaz,Butt Estate Agency,"House 115, Satellite Town, Quetta",40968480,2026-12-15,20,Commercial,File,Unapproved,Johar Town,Plot 350
+REG-PRO-EX643,Kashif Baig,Bhatti Estate Agency,"House 48, G-10, Hyderabad",7896560,2024-11-04,7,Residential,Registry,Approved,Cantt Society,Plot 120
+REG-PRO-EX644,Tariq Chaudhry,Mirza Estate Agency,"House 65, Garden Town, Multan",56023700,2025-11-24,20,Commercial,File,Approved,F-7 Sector,Plot 833
+REG-PRO-EX651,Ahmed Qureshi,Ahmed Estate Agency,"House 94, Cantt, Gujranwala",8001405,2022-12-07,5,Residential,Registry,Pending,Gulberg,Plot 666
+REG-PRO-EX652,Hamza Chaudhry,Siddiqui Estate Agency,"House 93, Bahria Town, Lahore",61179560,2022-05-25,20,Residential,Registry,Pending,Cantt Society,Plot 23
+REG-PRO-EX653,Ayesha Abbasi,Mirza Estate Agency,"House 94, Johar Town, Faisalabad",27290704,2025-08-01,7,Residential,Registry,Approved,Johar Town,Plot 584
+REG-PRO-EX657,Amna Soomro,Baig Estate Agency,"House 95, DHA, Quetta",52220980,2025-12-19,20,Commercial,Registry,Approved,Garden Town,Plot 410
+REG-PRO-EX668,Hina Iqbal,Nawaz Estate Agency,"House 138, Hayatabad, Quetta",50992020,2022-08-20,20,Commercial,Registry,Pending,Cantt Society,Plot 22
+REG-PRO-EX669,Tariq Sheikh,Nawaz Estate Agency,"House 146, G-10, Multan",32123000,2024-08-08,20,Commercial,Registry,Unapproved,Clifton,Plot 944
+REG-PRO-EX673,Amna Nawaz,Qureshi Estate Agency,"House 182, G-10, Hyderabad",30659680,2025-11-21,8,Commercial,Registry,Pending,Gulberg,Plot 637
+REG-PRO-EX674,Sobia Khan,Malik Estate Agency,"House 153, Gulberg, Gujranwala",78852000,2025-03-06,20,Residential,Registry,Unapproved,Garden Town,Plot 104
+REG-PRO-EX678,Asad Javed,Khan Estate Agency,"House 157, Cantt, Gujranwala",11968068,2024-05-12,12,Commercial,Registry,Approved,Satellite Town,Plot 33
+REG-PRO-EX681,Amna Javed,Rizvi Estate Agency,"House 36, Clifton, Rawalpindi",9143414,2023-08-09,7,Residential,Registry,Approved,Satellite Town,Plot 274
+REG-PRO-EX686,Bilal Hassan,Mirza Estate Agency,"House 4, Bahria Town, Faisalabad",13181890,2022-02-26,5,Commercial,Registry,Unapproved,DHA,Plot 520
+REG-PRO-EX687,Ahmed Qureshi,Siddiqui Estate Agency,"House 172, Nazimabad, Multan",25903520,2024-03-24,20,Residential,File,Unapproved,Garden Town,Plot 751
+REG-PRO-EX689,Tariq Abbasi,Raza Estate Agency,"House 181, Gulberg, Gujranwala",17627560,2022-04-15,8,Residential,Registry,Approved,Garden Town,Plot 350
+REG-PRO-EX690,Sobia Bhatti,Javed Estate Agency,"House 96, Bahria Town, Rawalpindi",8102472,2024-12-25,7,Residential,Registry,Approved,Gulberg,Plot 772
+REG-PRO-EX693,Kashif Sheikh,Baig Estate Agency,"House 144, Bahria Town, Quetta",25339640,2025-09-26,10,Commercial,Registry,Approved,Garden Town,Plot 150
+REG-PRO-EX697,Nadia Rizvi,Qureshi Estate Agency,"House 98, Johar Town, Peshawar",16963088,2023-07-02,8,Residential,Registry,Approved,F-7 Sector,Plot 60
+REG-PRO-EX713,Muhammad Rizvi,Siddiqui Estate Agency,"House 142, Johar Town, Gujranwala",26714520,2026-10-26,10,Commercial,File,Approved,Cantt Society,Plot 795
+REG-PRO-EX714,Nadia Hassan,Sheikh Estate Agency,"House 28, Nazimabad, Lahore",9227992,2026-06-13,8,Commercial,Registry,Unapproved,Satellite Town,Plot 291
+REG-PRO-EX715,Saima Qureshi,Iqbal Estate Agency,"House 118, F-7, Faisalabad",37372284,2026-06-25,12,Commercial,Registry,Approved,DHA,Plot 912
+REG-PRO-EX718,Farah Javed,Baig Estate Agency,"House 140, DHA, Peshawar",30777600,2026-02-24,8,Residential,Registry,Approved,Satellite Town,Plot 363
+REG-PRO-EX719,Sana Hassan,Mirza Estate Agency,"House 145, Garden Town, Sukkur",26464760,2024-10-24,20,Residential,File,Approved,Model Town,Plot 825
+REG-PRO-EX726,Sana Javed,Soomro Estate Agency,"House 127, Bahria Town, Islamabad",15947424,2023-12-13,8,Commercial,Registry,Approved,Clifton,Plot 529
+REG-PRO-EX730,Amna Hassan,Baig Estate Agency,"House 175, Gulberg, Faisalabad",51709640,2022-02-02,20,Residential,Registry,Pending,Model Town,Plot 457
+REG-PRO-EX731,Nadia Nawaz,Qureshi Estate Agency,"House 36, Gulberg, Sukkur",60145500,2026-09-17,20,Residential,Registry,Unapproved,Garden Town,Plot 652
+REG-PRO-EX738,Sobia Bibi,Mirza Estate Agency,"House 133, Cantt, Gujranwala",19832743,2023-12-17,7,Commercial,Registry,Approved,Garden Town,Plot 485
+REG-PRO-EX739,Zainab Baig,Chaudhry Estate Agency,"House 102, Model Town, Multan",22013089,2022-10-28,7,Residential,Registry,Approved,Clifton,Plot 586
+REG-PRO-EX740,Bilal Malik,Ahmed Estate Agency,"House 148, Clifton, Sukkur",17316060,2024-05-12,12,Residential,Registry,Pending,DHA,Plot 811
+REG-PRO-EX741,Asad Butt,Sheikh Estate Agency,"House 153, Model Town, Peshawar",30827712,2024-05-07,12,Residential,File,Approved,Bahria Town,Plot 561
+REG-PRO-EX762,Usman Malik,Rizvi Estate Agency,"House 26, Hayatabad, Multan",22218600,2022-11-15,10,Commercial,Registry,Approved,Gulberg,Plot 725
+REG-PRO-EX763,Hamza Javed,Iqbal Estate Agency,"House 166, Cantt, Faisalabad",75340900,2026-11-04,20,Commercial,Registry,Approved,F-7 Sector,Plot 555
+REG-PRO-EX765,Hina Bhatti,Siddiqui Estate Agency,"House 19, Johar Town, Rawalpindi",35860728,2025-09-01,12,Residential,Registry,Approved,Johar Town,Plot 806
+REG-PRO-EX766,Hina Malik,Mirza Estate Agency,"House 5, Nazimabad, Faisalabad",64616400,2022-09-20,20,Residential,File,Unapproved,DHA,Plot 504
+REG-PRO-EX768,Ahmed Abbasi,Baig Estate Agency,"House 53, Gulberg, Peshawar",15571050,2022-09-11,10,Residential,Registry,Approved,Bahria Town,Plot 102
+REG-PRO-EX770,Zainab Ahmed,Malik Estate Agency,"House 4, Model Town, Peshawar",13103111,2023-05-14,7,Commercial,Registry,Approved,F-7 Sector,Plot 985
+REG-PRO-EX772,Hina Mirza,Qureshi Estate Agency,"House 131, Satellite Town, Peshawar",10250020,2022-06-05,5,Residential,Registry,Approved,Cantt Society,Plot 965
+REG-PRO-EX774,Zainab Sheikh,Bhatti Estate Agency,"House 142, Pechs, Faisalabad",12635357,2026-04-16,7,Commercial,File,Approved,Johar Town,Plot 63
+REG-PRO-EX777,Sobia Bhatti,Bibi Estate Agency,"House 63, Cantt, Hyderabad",12545760,2022-05-18,5,Commercial,Registry,Approved,Satellite Town,Plot 668
+REG-PRO-EX781,Ahmed Soomro,Siddiqui Estate Agency,"House 146, Bahria Town, Sialkot",57979300,2023-06-18,20,Residential,Registry,Unapproved,Cantt Society,Plot 985
+REG-PRO-EX784,Fatima Malik,Iqbal Estate Agency,"House 41, F-7, Quetta",34035290,2023-01-02,10,Residential,Registry,Unapproved,Johar Town,Plot 860
+REG-PRO-EX788,Zainab Soomro,Sheikh Estate Agency,"House 111, Johar Town, Lahore",23758860,2023-12-18,12,Commercial,Registry,Approved,Bahria Town,Plot 405
+REG-PRO-EX794,Kashif Khan,Butt Estate Agency,"House 181, Satellite Town, Sukkur",25620756,2024-12-15,12,Residential,Registry,Approved,Clifton,Plot 216
+REG-PRO-EX797,Ahmed Chaudhry,Khan Estate Agency,"House 181, Garden Town, Sialkot",27217720,2026-08-01,20,Residential,Registry,Pending,Satellite Town,Plot 917
+REG-PRO-EX801,Imran Mirza,Malik Estate Agency,"House 3, Model Town, Sukkur",70632180,2026-01-27,20,Commercial,File,Approved,Clifton,Plot 996
+REG-PRO-EX805,Zainab Bhatti,Ahmed Estate Agency,"House 112, DHA, Sukkur",16707260,2025-06-07,20,Residential,Registry,Approved,DHA,Plot 777
+REG-PRO-EX806,Sobia Rizvi,Siddiqui Estate Agency,"House 68, Satellite Town, Multan",46016200,2022-10-21,20,Residential,Registry,Approved,Garden Town,Plot 991
+REG-PRO-EX808,Zainab Iqbal,Bhatti Estate Agency,"House 21, DHA, Karachi",75304760,2023-01-07,20,Commercial,File,Approved,Johar Town,Plot 583
+REG-PRO-EX810,Ali Raza,Soomro Estate Agency,"House 193, Clifton, Peshawar",24972934,2026-10-06,7,Residential,Registry,Approved,Gulberg,Plot 266
+REG-PRO-EX815,Nadia Ahmed,Rizvi Estate Agency,"House 107, Hayatabad, Sukkur",17939220,2026-05-22,20,Commercial,File,Approved,Cantt Society,Plot 657
+REG-PRO-EX822,Saima Mirza,Nawaz Estate Agency,"House 130, G-10, Lahore",33084072,2024-09-25,12,Residential,Registry,Approved,Johar Town,Plot 941
+REG-PRO-EX825,Asad Hassan,Malik Estate Agency,"House 154, DHA, Gujranwala",15426999,2026-01-24,7,Residential,File,Approved,Model Town,Plot 202
+REG-PRO-EX826,Tariq Chaudhry,Ahmed Estate Agency,"House 118, Satellite Town, Sukkur",8508696,2022-08-14,8,Residential,Registry,Approved,Model Town,Plot 111
+REG-PRO-EX832,Saima Bibi,Bhatti Estate Agency,"House 191, G-10, Gujranwala",16582170,2025-02-21,5,Residential,Registry,Approved,DHA,Plot 939
+REG-PRO-EX833,Hina Sheikh,Malik Estate Agency,"House 163, Garden Town, Quetta",29665424,2023-01-26,8,Residential,Registry,Approved,F-7 Sector,Plot 642
+REG-PRO-EX835,Asad Hassan,Sheikh Estate Agency,"House 81, Johar Town, Karachi",15728490,2024-07-13,5,Residential,File,Approved,F-7 Sector,Plot 807
+REG-PRO-EX837,Saima Khan,Baig Estate Agency,"House 83, DHA, Lahore",27470340,2026-10-04,10,Residential,Registry,Pending,Satellite Town,Plot 337
+REG-PRO-EX839,Rabia Abbasi,Malik Estate Agency,"House 87, F-7, Peshawar",16481725,2026-04-19,5,Residential,Registry,Approved,Cantt Society,Plot 493
+REG-PRO-EX842,Bilal Nawaz,Raza Estate Agency,"House 180, Johar Town, Multan",5268590,2024-10-14,5,Commercial,Registry,Approved,F-7 Sector,Plot 907
+REG-PRO-EX844,Usman Bhatti,Bhatti Estate Agency,"House 52, Gulberg, Peshawar",20946740,2024-05-12,10,Residential,Registry,Approved,Model Town,Plot 520
+REG-PRO-EX847,Ali Iqbal,Siddiqui Estate Agency,"House 93, Garden Town, Karachi",12956768,2023-02-11,8,Residential,File,Pending,F-7 Sector,Plot 710
+REG-PRO-EX853,Rabia Sheikh,Nawaz Estate Agency,"House 3, Garden Town, Islamabad",9769660,2023-01-21,10,Residential,Registry,Pending,F-7 Sector,Plot 219
+REG-PRO-EX854,Imran Javed,Qureshi Estate Agency,"House 13, G-10, Quetta",43809500,2023-07-06,20,Residential,Registry,Approved,Bahria Town,Plot 367
+REG-PRO-EX855,Zubair Malik,Iqbal Estate Agency,"House 128, Johar Town, Karachi",6986385,2025-04-21,5,Commercial,Registry,Approved,DHA,Plot 204
+REG-PRO-EX856,Amna Khan,Javed Estate Agency,"House 24, Pechs, Karachi",12028254,2023-06-28,7,Commercial,Registry,Approved,Model Town,Plot 23
+REG-PRO-EX857,Hamza Mirza,Khan Estate Agency,"House 85, G-10, Faisalabad",9795376,2023-07-21,8,Residential,Registry,Approved,Johar Town,Plot 468
+REG-PRO-EX858,Asad Iqbal,Hassan Estate Agency,"House 141, G-10, Lahore",28576416,2026-10-14,8,Commercial,Registry,Approved,Gulberg,Plot 904
+REG-PRO-EX861,Amna Baig,Chaudhry Estate Agency,"House 150, DHA, Quetta",37123310,2024-10-14,10,Commercial,Registry,Approved,F-7 Sector,Plot 602
+REG-PRO-EX862,Imran Abbasi,Raza Estate Agency,"House 99, Pechs, Karachi",24406692,2024-04-02,12,Commercial,Registry,Approved,Satellite Town,Plot 992
+REG-PRO-EX869,Sobia Javed,Abbasi Estate Agency,"House 52, DHA, Sialkot",39512140,2024-08-17,10,Residential,Registry,Approved,Clifton,Plot 539
+REG-PRO-EX873,Waseem Hassan,Soomro Estate Agency,"House 107, Nazimabad, Islamabad",34764080,2022-04-08,10,Residential,File,Approved,Cantt Society,Plot 224
+REG-PRO-EX880,Amna Khan,Mirza Estate Agency,"House 165, Model Town, Multan",10187605,2026-06-08,5,Commercial,Registry,Pending,Satellite Town,Plot 637
+REG-PRO-EX886,Sana Bhatti,Mirza Estate Agency,"House 18, Model Town, Islamabad",7765765,2023-05-21,5,Residential,Registry,Approved,Johar Town,Plot 863
+REG-PRO-EX889,Zainab Bhatti,Ahmed Estate Agency,"House 21, Nazimabad, Quetta",14041736,2022-02-12,8,Residential,Registry,Approved,Model Town,Plot 692
+REG-PRO-EX894,Waseem Chaudhry,Raza Estate Agency,"House 100, Model Town, Lahore",66670040,2026-05-01,20,Residential,Registry,Approved,Cantt Society,Plot 969
+REG-PRO-EX901,Nadia Bhatti,Bibi Estate Agency,"House 37, Bahria Town, Quetta",17545330,2023-08-08,10,Commercial,File,Pending,Clifton,Plot 811
+REG-PRO-EX902,Tariq Qureshi,Baig Estate Agency,"House 34, Hayatabad, Quetta",18189416,2023-08-15,7,Commercial,Registry,Approved,Gulberg,Plot 592
+REG-PRO-EX909,Zainab Chaudhry,Qureshi Estate Agency,"House 144, Nazimabad, Multan",36762970,2026-05-11,10,Commercial,Registry,Unapproved,DHA,Plot 945
+REG-PRO-EX910,Farah Ahmed,Bhatti Estate Agency,"House 192, Pechs, Sukkur",25465320,2026-10-28,8,Residential,File,Approved,Cantt Society,Plot 66
+REG-PRO-EX912,Hamza Chaudhry,Soomro Estate Agency,"House 21, Gulberg, Karachi",10896300,2025-11-10,5,Residential,Registry,Approved,Satellite Town,Plot 182
+REG-PRO-EX913,Zainab Nawaz,Nawaz Estate Agency,"House 113, Hayatabad, Sukkur",66613820,2022-03-07,20,Residential,File,Approved,Model Town,Plot 239
+REG-PRO-EX914,Hamza Khan,Mirza Estate Agency,"House 41, Bahria Town, Hyderabad",13122180,2022-06-17,12,Residential,Registry,Approved,Cantt Society,Plot 401
+REG-PRO-EX915,Naveed Malik,Rizvi Estate Agency,"House 24, Clifton, Hyderabad",6708210,2025-08-24,5,Residential,File,Approved,Gulberg,Plot 892
+REG-PRO-EX916,Zubair Qureshi,Nawaz Estate Agency,"House 148, Hayatabad, Rawalpindi",37765780,2023-10-19,10,Residential,Registry,Unapproved,Garden Town,Plot 283
+REG-PRO-EX917,Fatima Abbasi,Malik Estate Agency,"House 66, F-7, Sialkot",18686731,2025-10-26,7,Residential,Registry,Unapproved,Garden Town,Plot 472
+REG-PRO-EX919,Imran Baig,Mirza Estate Agency,"House 91, Satellite Town, Gujranwala",10037945,2024-12-27,5,Commercial,Registry,Pending,F-7 Sector,Plot 844
+REG-PRO-EX921,Usman Nawaz,Bhatti Estate Agency,"House 189, Satellite Town, Islamabad",10872435,2025-08-13,7,Commercial,Registry,Unapproved,Bahria Town,Plot 403
+REG-PRO-EX923,Kashif Javed,Rizvi Estate Agency,"House 126, G-10, Quetta",13638100,2024-11-03,7,Commercial,Registry,Pending,Cantt Society,Plot 781
+REG-PRO-EX926,Hamza Javed,Butt Estate Agency,"House 121, Nazimabad, Islamabad",14577925,2025-08-06,5,Residential,Registry,Unapproved,DHA,Plot 474
+REG-PRO-EX927,Tariq Javed,Mirza Estate Agency,"House 116, Satellite Town, Multan",74257680,2025-06-24,20,Residential,Registry,Pending,DHA,Plot 11
+REG-PRO-EX928,Usman Raza,Butt Estate Agency,"House 190, Nazimabad, Rawalpindi",27448820,2025-08-15,20,Residential,Registry,Unapproved,Model Town,Plot 731
+REG-PRO-EX930,Ali Siddiqui,Hassan Estate Agency,"House 66, Satellite Town, Karachi",11814560,2022-10-04,8,Residential,Registry,Approved,Satellite Town,Plot 760
+REG-PRO-EX932,Farah Abbasi,Javed Estate Agency,"House 125, G-10, Peshawar",18205750,2023-08-12,5,Residential,Registry,Approved,Satellite Town,Plot 222
+REG-PRO-EX934,Bilal Bhatti,Ahmed Estate Agency,"House 166, G-10, Faisalabad",59861880,2025-12-10,20,Residential,Registry,Unapproved,DHA,Plot 50
+REG-PRO-EX939,Asad Soomro,Baig Estate Agency,"House 112, Hayatabad, Hyderabad",4336350,2022-01-11,5,Residential,Registry,Approved,Bahria Town,Plot 817
+REG-PRO-EX943,Ahmed Baig,Butt Estate Agency,"House 161, Clifton, Multan",15019896,2024-09-21,12,Residential,Registry,Unapproved,Cantt Society,Plot 962
+REG-PRO-EX945,Amna Khan,Butt Estate Agency,"House 48, Bahria Town, Lahore",11477945,2023-01-13,5,Commercial,Registry,Approved,Cantt Society,Plot 218
+REG-PRO-EX947,Ayesha Sheikh,Bhatti Estate Agency,"House 69, Gulberg, Faisalabad",28208528,2024-01-03,8,Residential,File,Approved,F-7 Sector,Plot 512
+REG-PRO-EX949,Hina Qureshi,Hassan Estate Agency,"House 175, Model Town, Sialkot",38249028,2024-02-20,12,Residential,File,Approved,Clifton,Plot 180

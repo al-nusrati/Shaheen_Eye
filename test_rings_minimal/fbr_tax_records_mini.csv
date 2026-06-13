@@ -1,0 +1,9 @@
+fbr_id,full_name,declared_income_pkr,tax_paid_pkr,filer_status,reported_address,phone_number,income_source,wealth_source,occupation,years_as_nonfiler,has_bank_account
+FBR-8000,Ayesha Siddiqui,0,0,Non-ATL,"House 10, Gulberg, Lahore",0311-5614226,Cash,Cash,Driver,3,False
+FBR-8001,Bilal Ahmed,0,0,Non-ATL,"House 10, Gulberg, Lahore",0316-2458591,Cash,Cash,Student,5,False
+FBR-8002,Fatima Raza,0,0,Non-ATL,"House 10, Gulberg, Lahore",0311-2571945,Cash,Cash,Driver,3,False
+FBR-8003,Hassan Ali,1800000,24446,ATL,"House 29, DHA, Lahore",0300-1234567,Salary,Savings,Businessman,0,True
+FBR-8004,Zara Malik,1800000,32298,ATL,"House 18, DHA, Lahore",0300-1234567,Salary,Savings,Engineer,0,True
+FBR-8005,Omar Farooq,1200000,16078,ATL,"House 25, Gulberg, Lahore",0300-1234567,Salary,Savings,Engineer,0,True
+FBR-8006,Sana Khan,960000,18223,Non-ATL,"House 59, Bahria Town, Rawalpindi",0344-3094235,Business,Savings,Teacher,0,True
+FBR-8007,Usman Chaudhry,480000,5750,ATL,"House 99, F-7, Rawalpindi",0328-2338687,Salary,Savings,Teacher,2,True
