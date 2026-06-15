@@ -74,8 +74,6 @@ def login_screen():
             st.markdown("<p style='color:#94a3b8; font-size:13px; font-weight:600; text-transform:uppercase;'>Officer Login</p>", unsafe_allow_html=True)
             username = st.text_input("Username").strip().lower()
             password = st.text_input("Password", type="password")
-            st.markdown("<p style='color:#6b7280; font-size:11px; margin-top:8px;'>🔑 Tap YubiKey here to unlock data-at-rest encryption (optional for demo):</p>", unsafe_allow_html=True)
-            yubikey_input = st.text_input("YubiKey static password", type="password", key="yubikey_field", label_visibility="collapsed")
             submitted = st.form_submit_button("🔐 Authenticate", use_container_width=True)
 
         if submitted:
@@ -85,16 +83,6 @@ def login_screen():
                 st.session_state["username"] = username
                 st.session_state["role"] = user["role"]
                 st.session_state["display_name"] = user["display"]
-                if yubikey_input:
-                    # Derive at-rest encryption key from YubiKey-typed static password.
-                    # Never written to .env or disk - lives only in this session's memory.
-                    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-                    from cryptography.hazmat.primitives import hashes
-                    import base64 as _b64
-                    _kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=b"shaheen-eye-pfis-salt-v1", iterations=200_000)
-                    st.session_state["pfis_encryption_key"] = _b64.urlsafe_b64encode(_kdf.derive(yubikey_input.encode())).decode()
-                else:
-                    st.session_state["pfis_encryption_key"] = None
                 st.rerun()
             else:
                 st.error("⛔ Invalid credentials. This attempt has been logged.")
@@ -345,17 +333,34 @@ def get_ring_evidence_chain(ring_id, rings_df, graph, persons_df):
     lines.append(f"Ring #{ring_id} contains {ring_data['size']} persons.")
     lines.append(f"Anchor (likely beneficiary): {ring_data['anchor_name']} (assets: Rs.{ring_data['total_estimated_assets']/1e6:.1f}M, income: Rs.{ring_data['anchor_income']/1e6:.1f}M).")
     lines.append(f"Non‑filers: {ring_data['non_filer_count']} out of {ring_data['size']}.")
-    # Collect edges
+    
+    # Collect common elements
+    members_df = persons_df[persons_df['master_person_id'].isin(members)]
     edge_summary = []
-    for u, v, data in graph.edges(data=True):
-        if u in members and v in members:
-            edge_type = data.get('type', '')
-            edge_summary.append(f"{persons_df[persons_df['master_person_id']==u]['full_name'].iloc[0] if u in persons_df['master_person_id'].values else u} ↔ {persons_df[persons_df['master_person_id']==v]['full_name'].iloc[0] if v in persons_df['master_person_id'].values else v} : {edge_type}")
+    
+    if 'phone_number' in members_df.columns:
+        for phone, group in members_df.groupby('phone_number'):
+            if len(group) > 1 and str(phone).strip().lower() not in ('nan', 'none', 'n/a', ''):
+                names = group['full_name'].tolist()
+                edge_summary.append(f"📞 Shared Phone ({phone}): {', '.join(names)}")
+                
+    if 'reported_address' in members_df.columns:
+        for addr, group in members_df.groupby('reported_address'):
+            if len(group) > 1 and str(addr).strip().lower() not in ('nan', 'none', 'n/a', ''):
+                names = group['full_name'].tolist()
+                edge_summary.append(f"🏠 Shared Address ({addr}): {', '.join(names)}")
+                
+    if 'fbr_id' in members_df.columns:
+        for fbr, group in members_df.groupby('fbr_id'):
+            if len(group) > 1 and str(fbr).strip().lower() not in ('nan', 'none', 'n/a', ''):
+                names = group['full_name'].tolist()
+                edge_summary.append(f"📋 Shared FBR ID ({fbr}): {', '.join(names)}")
+
     if edge_summary:
         lines.append("Evidence links:")
-        lines.extend(edge_summary[:10])  # limit
+        lines.extend(edge_summary)
     else:
-        lines.append("No explicit shared address/phone/FBR ID edges found (but ring detected via transitive closure).")
+        lines.append("No explicit shared address/phone/FBR ID attributes found (but ring detected via transitive closure).")
     return "\n".join(lines)
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -772,7 +777,7 @@ def page_risk_leaderboard():
     fdf.index += 1
     st.markdown(f"<p style='color:#6b7280;font-size:12px'>Showing <b style='color:#94a3b8'>{len(fdf)}</b> profiles</p>", unsafe_allow_html=True)
     try:
-        disp = ['full_name','city','deviation_score','risk_category','filer_status','declared_income_pkr','vehicle_make_model','top_fraud_flags']
+        disp = ['full_name', 'phone_number', 'city', 'deviation_score', 'risk_category', 'filer_status', 'declared_income_pkr', 'vehicle_make_model', 'top_fraud_flags']
         avail = [c for c in disp if c in fdf.columns]
         gb = GridOptionsBuilder.from_dataframe(fdf[avail])
         gb.configure_selection('single', use_checkbox=False)
@@ -780,9 +785,10 @@ def page_risk_leaderboard():
         gb.configure_column("deviation_score", headerName="⚡ Score",
             cellStyle=JsCode("function(p){var v=p.value;if(v>=80) return {background:'#1f0707',color:'#ef4444',fontWeight:'bold'};if(v>=65) return {background:'#1f1207',color:'#f59e0b'};if(v>=45) return {background:'#07101f',color:'#3b82f6'};return {background:'#071f10',color:'#22c55e'};}"))
         gb.configure_column("risk_category", headerName="🚨 Level",
-            cellRenderer=JsCode("function(p){var m={'CRITICAL':'#ef4444','HIGH':'#f59e0b','MEDIUM':'#3b82f6','LOW':'#22d3ee','COMPLIANT':'#22c55e'};var c=m[p.value]||'#6b7280';var tc=(p.value==='HIGH')?'black':'white';return `<span style=\"background:${c};color:${tc};padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700\">${p.value}</span>`;}"))
+            cellStyle=JsCode("function(p){var v=p.value;if(v==='CRITICAL') return {background:'#1f0707',color:'#ef4444',fontWeight:'bold'};if(v==='HIGH') return {background:'#1f1207',color:'#f59e0b',fontWeight:'bold'};if(v==='MEDIUM') return {background:'#07101f',color:'#3b82f6',fontWeight:'bold'};if(v==='LOW') return {background:'#071f20',color:'#22d3ee',fontWeight:'bold'};if(v==='COMPLIANT') return {background:'#071f10',color:'#22c55e',fontWeight:'bold'};return {background:'#1f2937',color:'#6b7280',fontWeight:'bold'};}"))
         gb.configure_column("declared_income_pkr", headerName="Declared Income", valueFormatter=JsCode("function(p){return 'Rs. '+(p.value||0).toLocaleString();}"))
         gb.configure_column("full_name", headerName="👤 Name")
+        gb.configure_column("phone_number", headerName="📞 Phone")
         gb.configure_column("city", headerName="🏙️ City")
         gb.configure_column("filer_status", headerName="ATL")
         gb.configure_column("vehicle_make_model", headerName="Vehicle")
@@ -805,7 +811,7 @@ def page_risk_leaderboard():
         st.info("For interactive table: pip install streamlit-aggrid")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 3 – INDIVIDUAL PROFILE (with ring indicator)
+# PAGE 3 – INDIVIDUAL PROFILE (with ring indicator and star-topology graph)
 # ════════════════════════════════════════════════════════════════════════════
 def page_individual_profile():
     df = load_data()
@@ -816,14 +822,27 @@ def page_individual_profile():
     audits = load_audit()
     # Fraud ring detection
     rings_df, person_to_ring = detect_fraud_rings()
-    names = df['full_name'].drop_duplicates().tolist()
+    
+    # --- FIX: Clean names list (remove NaN) ---
+    names = df['full_name'].dropna().drop_duplicates().tolist()
+    if not names:
+        st.error("No valid citizen names found in the data.")
+        return
+    
     default = 0
     if 'sel_pid' in st.session_state:
         pid_sel = st.session_state['sel_pid']
         m = df[df['master_person_id'] == pid_sel]
         if len(m) > 0 and m.iloc[0]['full_name'] in names:
             default = names.index(m.iloc[0]['full_name'])
+    
     sel_name = st.selectbox("Select citizen profile", names, index=default)
+    
+    # --- FIX: Validate selection ---
+    if pd.isna(sel_name) or sel_name not in df['full_name'].values:
+        st.error(f"Selected profile '{sel_name}' not found. Please choose a valid name.")
+        return
+    
     person = df[df['full_name'] == sel_name].iloc[0]
     pid = person['master_person_id']
     score = float(person.get('deviation_score', 0))
@@ -844,8 +863,12 @@ def page_individual_profile():
     with col_graph:
         st.markdown("<p class='section-title'>Financial Footprint Graph</p>", unsafe_allow_html=True)
         net = Network(height="420px", width="100%", bgcolor="#111827", font_color="#e2e8f0", directed=False)
-        net.set_options("""{"physics":{"stabilization":{"iterations":80},"barnesHut":{"gravitationalConstant":-8000}},"nodes":{"borderWidth":2,"shadow":{"enabled":true}},"edges":{"shadow":{"enabled":true},"smooth":{"type":"continuous"}}}""")
+        net.set_options("""{"physics":{"stabilization":{"iterations":80},"barnesHut":{"gravitationalConstant":-6000,"springLength": 120}},"nodes":{"borderWidth":2,"shadow":{"enabled":true}},"edges":{"shadow":{"enabled":true},"smooth":{"type":"continuous"}}}""")
+        
+        # Central person node
         net.add_node(pid, label=sel_name.split()[0], color={"background": clr, "border": "#ffffff", "highlight": {"background": clr}}, size=45, title=f"<b>{sel_name}</b><br>Score: {score:.0f}<br>Status: {cat}", shape="dot")
+        
+        # Asset nodes (vehicles, properties, utility, FBR)
         if float(person.get('vehicle_count',0)) > 0:
             v_id = f"V_{pid}"
             net.add_node(v_id, label=f"🚗 {str(person.get('vehicle_make_model','Vehicle'))[:18]}", color={"background":"#7f1d1d","border":"#ef4444"}, size=28, title=f"<b>Vehicle</b><br>{person.get('vehicle_make_model','N/A')}<br>CC: {person.get('max_vehicle_cc',0)}<br>Import: {person.get('import_type','N/A')}", shape="diamond")
@@ -862,16 +885,72 @@ def page_individual_profile():
         fbr_clr = "#22c55e" if person.get('filer_status')=='ATL' else "#ef4444"
         net.add_node(fbr_id, label=f"📋 FBR\nRs.{float(person.get('declared_income_pkr',0)):,.0f}", color={"background":"#0f172a","border":fbr_clr}, size=22, title=f"<b>FBR Filing</b><br>Income: Rs.{float(person.get('declared_income_pkr',0)):,.0f}<br>Status: {person.get('filer_status','N/A')}", shape="box")
         net.add_edge(pid, fbr_id, label="FILED", color=fbr_clr, width=2)
-        if graph.number_of_nodes() > 0:
-            try:
-                for n_id in list(graph.neighbors(pid))[:4]:
-                    edge_type = graph.get_edge_data(pid, n_id, {}).get('type', '')
-                    if 'SHARES_ADDRESS' in edge_type:
-                        ndata = graph.nodes.get(n_id, {})
-                        net.add_node(n_id, label=str(ndata.get('name',''))[:12], color={"background":"#2e1065","border":"#a855f7"}, size=20, title=f"<b>Same Address</b><br>{ndata.get('name',n_id)}", shape="dot")
-                        net.add_edge(pid, n_id, label="SAME ADDRESS", color="#a855f7", width=1, dashes=True)
-            except Exception:
-                pass
+        
+        # ── Hub-and-spoke for shared attributes (phone, address, FBR ID) ──
+        def is_valid_attr(val):
+            return pd.notna(val) and str(val).strip().lower() not in ('nan', 'none', 'n/a', '')
+        
+        my_phone = person.get('phone_number')
+        my_addr = person.get('reported_address')
+        my_fbr = person.get('fbr_id')
+        
+        existing_nodes = {pid, fbr_id}
+        if float(person.get('vehicle_count',0)) > 0:
+            existing_nodes.add(f"V_{pid}")
+        if float(person.get('property_count',0)) > 0:
+            existing_nodes.add(f"P_{pid}")
+        if float(person.get('avg_monthly_bill_pkr',0)) > 0:
+            existing_nodes.add(f"M_{pid}")
+        
+        # Shared Phone Hub
+        if is_valid_attr(my_phone):
+            matches = df[df['phone_number'].astype(str).str.strip().str.lower() == str(my_phone).strip().lower()]
+            if len(matches) > 1:
+                hub_id = f"PHONE_{hash(my_phone)}"
+                net.add_node(hub_id, label=f"📞 {my_phone}", color={"background":"#1e3a8a","border":"#3b82f6"}, size=25, title=f"Shared Phone<br>{my_phone}", shape="box")
+                net.add_edge(pid, hub_id, color="#3b82f6", width=2)
+                existing_nodes.add(hub_id)
+                for _, r in matches.iterrows():
+                    other_pid = r['master_person_id']
+                    if other_pid != pid and other_pid not in existing_nodes:
+                        other_name = str(r.get('full_name', other_pid)).split()[0]
+                        net.add_node(other_pid, label=other_name, color={"background":"#1f2937","border":"#4b5563"}, size=20, shape="dot", title=f"<b>{r.get('full_name','')}</b>")
+                        existing_nodes.add(other_pid)
+                        net.add_edge(other_pid, hub_id, color="#3b82f6", width=1, dashes=True)
+        
+        # Shared Address Hub
+        if is_valid_attr(my_addr):
+            matches = df[df['reported_address'].astype(str).str.strip().str.lower() == str(my_addr).strip().lower()]
+            if len(matches) > 1:
+                hub_id = f"ADDR_{hash(my_addr)}"
+                short_addr = str(my_addr)[:15] + "..." if len(str(my_addr)) > 15 else str(my_addr)
+                net.add_node(hub_id, label=f"🏠 {short_addr}", color={"background":"#4c1d95","border":"#8b5cf6"}, size=25, title=f"Shared Address<br>{my_addr}", shape="box")
+                net.add_edge(pid, hub_id, color="#8b5cf6", width=2)
+                existing_nodes.add(hub_id)
+                for _, r in matches.iterrows():
+                    other_pid = r['master_person_id']
+                    if other_pid != pid and other_pid not in existing_nodes:
+                        other_name = str(r.get('full_name', other_pid)).split()[0]
+                        net.add_node(other_pid, label=other_name, color={"background":"#1f2937","border":"#4b5563"}, size=20, shape="dot", title=f"<b>{r.get('full_name','')}</b>")
+                        existing_nodes.add(other_pid)
+                        net.add_edge(other_pid, hub_id, color="#8b5cf6", width=1, dashes=True)
+        
+        # Shared FBR ID Hub
+        if is_valid_attr(my_fbr):
+            matches = df[df['fbr_id'].astype(str).str.strip().str.lower() == str(my_fbr).strip().lower()]
+            if len(matches) > 1:
+                hub_id = f"FBR_{hash(my_fbr)}"
+                net.add_node(hub_id, label=f"📋 FBR: {my_fbr}", color={"background":"#7f1d1d","border":"#ef4444"}, size=25, title=f"Shared FBR ID<br>{my_fbr}", shape="box")
+                net.add_edge(pid, hub_id, color="#ef4444", width=2)
+                existing_nodes.add(hub_id)
+                for _, r in matches.iterrows():
+                    other_pid = r['master_person_id']
+                    if other_pid != pid and other_pid not in existing_nodes:
+                        other_name = str(r.get('full_name', other_pid)).split()[0]
+                        net.add_node(other_pid, label=other_name, color={"background":"#1f2937","border":"#4b5563"}, size=20, shape="dot", title=f"<b>{r.get('full_name','')}</b>")
+                        existing_nodes.add(other_pid)
+                        net.add_edge(other_pid, hub_id, color="#ef4444", width=1, dashes=True)
+        
         os.makedirs("outputs/graphs", exist_ok=True)
         graph_path = f"outputs/graphs/{pid}.html"
         try:
@@ -884,6 +963,7 @@ def page_individual_profile():
                 neighbors = list(graph.neighbors(pid))
                 if neighbors:
                     st.write("Connected entities:", [graph.nodes[n].get('name', n) for n in neighbors[:5]])
+        
         st.markdown("<p class='section-title' style='margin-top:20px'>Forensic Enforcement Directive</p>", unsafe_allow_html=True)
         directive_text = ""
         if score >= 80:
@@ -987,7 +1067,7 @@ def page_individual_profile():
             try:
                 buf = io.BytesIO()
                 with zipfile.ZipFile(buf, "w") as zf:
-                    from pdf_export import generate_pdf
+                    # generate_pdf is already imported globally at the top
                     pp = generate_pdf(person.to_dict(), audits.get(pid,""))
                     zf.write(pp, f"Investigation_{pid}.pdf")
                     zf.writestr(f"Evidence_{pid}.csv", person.to_frame().T.to_csv(index=False))
@@ -997,7 +1077,7 @@ def page_individual_profile():
                 st.error(f"ZIP error: {e}")
 
 # ════════════════════════════════════════════════════════════════════════════
-# PAGE 4 – FRAUD RINGS INTELLIGENCE
+# PAGE 4 – FRAUD RINGS INTELLIGENCE (star-topology graph already implemented)
 # ════════════════════════════════════════════════════════════════════════════
 def page_fraud_rings():
     st.markdown("<p class='section-title'>🕸️ Fraud Rings Intelligence</p>", unsafe_allow_html=True)
@@ -1043,18 +1123,51 @@ def page_fraud_rings():
     evidence = get_ring_evidence_chain(selected_ring_id, rings_df, graph, persons_df)
     st.markdown(f"<div class='audit-box' style='background:#0f1b2d;'>{evidence.replace(chr(10), '<br>')}</div>", unsafe_allow_html=True)
 
-    # Network graph of the ring
+    # Network graph of the ring — STAR TOPOLOGY (hub-and-spoke)
     st.subheader("Ring Network Graph")
     members = ring_data['members']
-    subgraph = graph.subgraph(members)
-    net = Network(height="500px", width="100%", bgcolor="#111827", font_color="#e2e8f0")
-    for node in subgraph.nodes():
-        risk = persons_df[persons_df['master_person_id'] == node]['risk_category'].values
-        color = risk_color(risk[0]) if len(risk) > 0 else "#6b7280"
-        net.add_node(node, label=node[:10], color=color, title=f"Person ID: {node}")
-    for u, v, data in subgraph.edges(data=True):
-        typ = data.get('type', 'edge')
-        net.add_edge(u, v, title=typ)
+    members_df = persons_df[persons_df['master_person_id'].isin(members)]
+    
+    net = Network(height="500px", width="100%", bgcolor="#111827", font_color="#e2e8f0", directed=False)
+    net.set_options("""{"physics":{"stabilization":{"iterations":80},"barnesHut":{"gravitationalConstant":-6000,"springLength": 120}},"nodes":{"borderWidth":2,"shadow":{"enabled":true}},"edges":{"shadow":{"enabled":true},"smooth":{"type":"continuous"}}}""")
+
+    # 1. Person nodes
+    for _, row in members_df.iterrows():
+        pid = row['master_person_id']
+        name = str(row.get('full_name', pid))
+        risk = str(row.get('risk_category', 'UNKNOWN'))
+        color = risk_color(risk)
+        short_name = name.split()[0] if name else pid[:10]
+        net.add_node(pid, label=short_name, color=color, title=f"<b>{name}</b><br>Risk: {risk}<br>ID: {pid}", shape="dot", size=30)
+
+    # 2. Shared Phone hub
+    if 'phone_number' in members_df.columns:
+        for phone, group in members_df.groupby('phone_number'):
+            if len(group) > 1 and str(phone).strip().lower() not in ('nan', 'none', 'n/a', ''):
+                node_id = f"PHONE_{hash(phone)}"
+                net.add_node(node_id, label=f"📞 {phone}", color="#3b82f6", title=f"Shared Phone<br>{phone}", shape="box", size=25)
+                for pid in group['master_person_id']:
+                    net.add_edge(pid, node_id, color="#3b82f6", width=2)
+
+    # 3. Shared Address hub
+    if 'reported_address' in members_df.columns:
+        for addr, group in members_df.groupby('reported_address'):
+            if len(group) > 1 and str(addr).strip().lower() not in ('nan', 'none', 'n/a', ''):
+                node_id = f"ADDR_{hash(addr)}"
+                short_addr = str(addr)[:20] + "..." if len(str(addr)) > 20 else str(addr)
+                net.add_node(node_id, label=f"🏠 {short_addr}", color="#8b5cf6", title=f"Shared Address<br>{addr}", shape="box", size=25)
+                for pid in group['master_person_id']:
+                    net.add_edge(pid, node_id, color="#8b5cf6", width=2)
+
+    # 4. Shared FBR ID hub
+    if 'fbr_id' in members_df.columns:
+        for fbr, group in members_df.groupby('fbr_id'):
+            if len(group) > 1 and str(fbr).strip().lower() not in ('nan', 'none', 'n/a', ''):
+                node_id = f"FBR_{hash(fbr)}"
+                net.add_node(node_id, label=f"📋 FBR: {fbr}", color="#ef4444", title=f"Shared FBR ID<br>{fbr}", shape="box", size=25)
+                for pid in group['master_person_id']:
+                    net.add_edge(pid, node_id, color="#ef4444", width=2)
+
     os.makedirs("outputs/graphs", exist_ok=True)
     net.save_graph("outputs/graphs/ring_network.html")
     with open("outputs/graphs/ring_network.html", "r", encoding="utf-8") as f:
@@ -1573,8 +1686,17 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
     if st.button("🚪 Logout", key="logout_btn"):
-        for key in ["authenticated", "username", "role", "display_name"]:
-            st.session_state.pop(key, None)
+        keys_to_clear = [k for k in st.session_state.keys() if k != "logout_btn"]
+        for key in keys_to_clear:
+            try:
+                del st.session_state[key]
+            except KeyError:
+                pass
+        try:
+            st.cache_data.clear()
+            st.cache_resource.clear()
+        except Exception:
+            pass
         st.rerun()
     st.markdown("<p style='color:#4ade80;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px'>Navigation</p>", unsafe_allow_html=True)
     page = st.radio("", [
