@@ -1705,6 +1705,7 @@ with st.sidebar:
         "🔍 Individual Profile",
         "🕸️ Fraud Rings",
         "🤖 Intelligence Query",
+        "🔍 Verification & Alerts",
         "📤 Live Data Upload",
     ], label_visibility="collapsed")
     st.markdown("<hr style='border-color:#1f2937;margin:16px 0'>", unsafe_allow_html=True)
@@ -1742,6 +1743,139 @@ with st.sidebar:
     st.markdown("<p style='color:#374151;font-size:10px;text-align:center'>Shaheen-Eye P-FIS v1.0<br>FMU — Govt. of Pakistan<br>© 2025 — CONFIDENTIAL</p>", unsafe_allow_html=True)
 
 # ════════════════════════════════════════════════════════════════════════════
+# PAGE 7 – VERIFICATION & ALERTS
+# ════════════════════════════════════════════════════════════════════════════
+def page_verification_alerts():
+    from validation_utils import validate_cnic, validate_ntn, detect_smurfing_structuring
+    
+    st.markdown("<p class='section-title'>🔍 Verification & Intelligence Alerts</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#4b5563;font-size:13px;margin-bottom:20px'>Verify identity authenticity (CNIC/NTN) and detect suspicious cash structuring (smurfing) patterns.</p>", unsafe_allow_html=True)
+    
+    tab1, tab2 = st.tabs(["🔒 ID Verification Gate", "🚨 Structuring & Smurfing Alerts"])
+    
+    with tab1:
+        st.subheader("NADRA CNIC & FBR NTN Verification")
+        st.write("Perform cryptographic checksum and structural validation on national identity numbers.")
+        st.markdown("<br>", unsafe_allow_html=True)
+        
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("### CNIC Verification")
+            cnic_input = st.text_input("Enter CNIC (e.g., 37405-1234567-1 or 13 digits)", value="", placeholder="37405-1234567-1")
+            if st.button("🔐 Verify CNIC"):
+                if cnic_input:
+                    res = validate_cnic(cnic_input)
+                    if res["valid"]:
+                        st.success("✅ Valid CNIC Structure")
+                        st.markdown(f"""
+                        <div class='query-result-box' style='border-left-color: #22c55e;'>
+                        <b>Formatted CNIC:</b> {res['cnic']}<br>
+                        <b>Province of Origin:</b> {res['province']}<br>
+                        <b>Gender:</b> {res['gender']}<br>
+                        <b>Region Code:</b> {res['region_code']}
+                        </div>
+                        """, unsafe_allow_html=True)
+                    else:
+                        st.error(f"❌ Invalid CNIC: {res['reason']}")
+                else:
+                    st.warning("Please enter a CNIC number.")
+                    
+        with c2:
+            st.markdown("### NTN Verification")
+            ntn_input = st.text_input("Enter FBR NTN (e.g., 1234567-1 or 8 digits)", value="", placeholder="1234567-1")
+            if st.button("🔐 Verify NTN"):
+                if ntn_input:
+                    res = validate_ntn(ntn_input)
+                    if res["valid"]:
+                        st.success("✅ Valid FBR NTN Checksum")
+                        st.markdown(f"""
+                        <div class='query-result-box' style='border-left-color: #22c55e;'>
+                        <b>Formatted NTN:</b> {res['ntn']}<br>
+                        <b>Verification Check:</b> Modulus-11 checksum passed successfully.
+                        </div>
+                        """, unsafe_allow_html=True)
+                    else:
+                        st.error(f"❌ Invalid NTN: {res['reason']}")
+                else:
+                    st.warning("Please enter an NTN number.")
+                    
+    with tab2:
+        st.subheader("Potential Smurfing / Structured Deposits Alerts")
+        st.write("Identifies entities that perform cash transactions just under the PKR 2,500,000 threshold inside a 3-day window.")
+        
+        # Load or generate mock transactions
+        tx_file = "outputs/transactions.csv"
+        if not os.path.exists(tx_file):
+            df_entities = load_data()
+            if not df_entities.empty:
+                import random
+                tx_records = []
+                pids = df_entities['master_person_id'].tolist()
+                
+                # We insert structuring alerts for high-risk targets PK-0007 (Sardar Kamran) & PK-0008 (Javed Afridi)
+                smurfers = ["PK-0007", "PK-0008"]
+                base_date = datetime.now() - timedelta(days=10)
+                
+                for pid in pids:
+                    for _ in range(random.randint(1, 4)):
+                        tx_date = base_date + timedelta(days=random.randint(1, 8), hours=random.randint(0, 23))
+                        amount = random.uniform(50000, 1500000)
+                        tx_records.append({
+                            "sender_id": pid,
+                            "amount": round(amount, 2),
+                            "date": tx_date.strftime("%Y-%m-%d %H:%M:%S")
+                        })
+                    
+                    if pid in smurfers:
+                        for offset_hours in [12, 28, 44]:
+                            tx_date = base_date + timedelta(days=2, hours=offset_hours)
+                            amount = random.uniform(2410000, 2485000)
+                            tx_records.append({
+                                "sender_id": pid,
+                                "amount": round(amount, 2),
+                                "date": tx_date.strftime("%Y-%m-%d %H:%M:%S")
+                            })
+                
+                df_tx = pd.DataFrame(tx_records)
+                os.makedirs("outputs", exist_ok=True)
+                df_tx.to_csv(tx_file, index=False)
+                
+        # Load and detect smurfing
+        df_tx = pd.read_csv(tx_file)
+        alerts = detect_smurfing_structuring(df_tx, threshold=2500000.0, margin=150000.0, days_window=3)
+        
+        if alerts.empty:
+            st.success("✅ No suspicious structured transaction patterns detected.")
+        else:
+            st.warning(f"🚨 Detected {len(alerts)} suspicious structuring (smurfing) patterns!")
+            
+            # Enrich alerts with person names
+            persons_df = load_data()
+            if not persons_df.empty:
+                name_map = dict(zip(persons_df['master_person_id'], persons_df['full_name']))
+                risk_map = dict(zip(persons_df['master_person_id'], persons_df['risk_category']))
+                alerts['name'] = alerts['sender_id'].map(name_map).fillna("Unknown")
+                alerts['risk'] = alerts['sender_id'].map(risk_map).fillna("UNKNOWN")
+            
+            for idx, row in alerts.iterrows():
+                with st.expander(f"⚠️ {row['name']} ({row['sender_id']}) - Total Structured: Rs. {row['total_structured_amount']:,} ({row['suspicious_tx_count']} deposits)"):
+                    st.markdown(f"""
+                    **Risk Category:** <span style='color:{risk_color(row['risk'])};font-weight:600;'>{row['risk']}</span><br>
+                    **Structuring Window:** {row['window_start']} to {row['window_end']}<br>
+                    **Total Deposits In Window:** Rs. {row['total_structured_amount']:,}
+                    """, unsafe_allow_html=True)
+                    
+                    # Detail individual transactions
+                    st.markdown("**Flagged Transactions Details:**")
+                    details_data = []
+                    dates = eval(row['transaction_dates']) if isinstance(row['transaction_dates'], str) else row['transaction_dates']
+                    amounts = eval(row['transaction_amounts']) if isinstance(row['transaction_amounts'], str) else row['transaction_amounts']
+                    
+                    for d, a in zip(dates, amounts):
+                        details_data.append({"Transaction Date": d, "Amount (PKR)": f"Rs. {a:,}"})
+                    st.table(details_data)
+
+# ════════════════════════════════════════════════════════════════════════════
 # PAGE ROUTING
 # ════════════════════════════════════════════════════════════════════════════
 if "National" in page:
@@ -1754,5 +1888,7 @@ elif "Fraud Rings" in page:
     page_fraud_rings()
 elif "Query" in page:
     page_intelligence_query()
+elif "Verification" in page:
+    page_verification_alerts()
 elif "Upload" in page:
     page_live_data_upload()
