@@ -1,4 +1,4 @@
-# 🦅 Shaheen-Eye | Pakistan Financial Intelligence Suite (P-FIS) v1.0
+#  Shaheen-Eye | Pakistan Financial Intelligence Suite (P-FIS) v1.0
 
 > **Federal Board of Revenue (FBR) — Intelligence & Investigation Wing**  
 > **Financial Monitoring Unit (FMU) — Government of Pakistan**  
@@ -6,13 +6,13 @@
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 **Shaheen-Eye (P-FIS)** is a premium, secure financial intelligence and compliance audit suite designed for tax evasion detection, shell company auditing, money laundering tracking, and fraud ring identification. The tool ingests financial transcripts, resolves duplicate identities, scores risk vectors, detects circular transaction loops, and generates detailed audit files.
 
 ---
 
-## 🏗️ System Architecture & Workflow
+##  System Architecture & Workflow
 
 The platform follows a multi-stage data processing pipeline:
 
@@ -29,7 +29,7 @@ graph TD
 
 ---
 
-## 🛡️ Role-Based Access Control (RBAC)
+##  Role-Based Access Control (RBAC)
 
 The dashboard enforces strict credentials authentication based on officer duties:
 
@@ -41,7 +41,7 @@ The dashboard enforces strict credentials authentication based on officer duties
 
 ---
 
-## ⚙️ Core Modules
+##  Core Modules
 
 1. **[preprocess.py](file:///D:/Projects/Shaheen-Eye/preprocess.py) (Data Preprocessing):** Standardizes NTNs, CNICs, entity names, and transactions.
 2. **[entity_resolution.py](file:///D:/Projects/Shaheen-Eye/entity_resolution.py) (Entity Linkage):** Resolves duplicate entities across data feeds using `splink` and `rapidfuzz` string similarity distance.
@@ -51,7 +51,7 @@ The dashboard enforces strict credentials authentication based on officer duties
 
 ---
 
-## 🚀 Quick Start & Local Run
+##  Quick Start & Local Run
 
 ### Prerequisites
 * Python 3.10+
